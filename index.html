@@ -876,7 +876,177 @@
       font-weight: 800;
     }
     .admin-feedback.active { display: block; }
-    .review-list .featured-review { display: none; }
+
+
+
+    /* === V6: pestaña de capítulos y recomendaciones destacadas también publicadas === */
+    .chapter-tabs-section {
+      background: linear-gradient(180deg, rgba(16,42,53,.025), rgba(214,181,109,.05));
+    }
+    .chapter-explorer {
+      border-radius: var(--radius-xl);
+      background: rgba(251,250,245,.88);
+      border: 1px solid var(--line);
+      box-shadow: 0 26px 70px rgba(16,42,53,.10);
+      overflow: hidden;
+    }
+    .chapter-tabbar {
+      display: flex;
+      gap: 8px;
+      padding: 12px;
+      background: rgba(16,42,53,.055);
+      border-bottom: 1px solid rgba(16,42,53,.08);
+      overflow-x: auto;
+      scrollbar-gutter: stable;
+    }
+    .chapter-tabbar::-webkit-scrollbar { height: 8px; }
+    .chapter-tabbar::-webkit-scrollbar-thumb { background: rgba(31,97,112,.28); border-radius: 999px; }
+    .chapter-tab {
+      flex: 0 0 auto;
+      border: 1px solid rgba(16,42,53,.14);
+      background: rgba(255,255,255,.72);
+      color: var(--navy);
+      border-radius: 999px;
+      padding: 12px 16px;
+      font-weight: 900;
+      cursor: pointer;
+      letter-spacing: .01em;
+      transition: background .18s ease, color .18s ease, transform .18s ease, border-color .18s ease;
+    }
+    .chapter-tab:hover { transform: translateY(-1px); border-color: rgba(214,181,109,.55); }
+    .chapter-tab.active { background: var(--navy); color: var(--cream); border-color: var(--navy); }
+    .chapter-panel {
+      display: none;
+      padding: 26px;
+    }
+    .chapter-panel.active { display: block; }
+    .chapter-panel-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: flex-end;
+      margin-bottom: 20px;
+      border-bottom: 1px solid rgba(16,42,53,.08);
+      padding-bottom: 18px;
+    }
+    .chapter-panel-head h3 {
+      margin: 0;
+      color: var(--navy);
+      font-size: clamp(26px, 3vw, 42px);
+      letter-spacing: -.035em;
+      line-height: 1;
+    }
+    .chapter-panel-head p {
+      margin: 0;
+      color: var(--muted);
+      max-width: 560px;
+      font-weight: 700;
+    }
+    .chapter-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+    .chapter-card {
+      position: relative;
+      border-radius: 24px;
+      padding: 22px;
+      background: rgba(255,255,255,.72);
+      border: 1px solid rgba(16,42,53,.10);
+      box-shadow: 0 16px 40px rgba(16,42,53,.06);
+      min-height: 240px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    .chapter-card::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 5px;
+      background: linear-gradient(180deg, var(--gold), var(--teal));
+    }
+    .chapter-no {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      gap: 8px;
+      border-radius: 999px;
+      padding: 7px 10px;
+      background: rgba(214,181,109,.16);
+      color: #735a19;
+      font-size: 11px;
+      font-weight: 950;
+      letter-spacing: .11em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .chapter-card h4 {
+      margin: 0;
+      color: var(--navy);
+      font-size: 21px;
+      line-height: 1.08;
+      letter-spacing: -.02em;
+    }
+    .chapter-card .teaser {
+      color: #42535b;
+      margin: 12px 0 14px;
+      font-size: 15px;
+      line-height: 1.5;
+    }
+    .chapter-points {
+      margin-top: auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .chapter-points span {
+      border-radius: 999px;
+      padding: 7px 10px;
+      background: rgba(16,42,53,.06);
+      border: 1px solid rgba(16,42,53,.07);
+      color: var(--navy);
+      font-size: 12px;
+      font-weight: 850;
+    }
+    .chapter-cta {
+      margin-top: 22px;
+      padding: 18px;
+      border-radius: 22px;
+      background: linear-gradient(135deg, rgba(16,42,53,.96), rgba(31,97,112,.88));
+      color: var(--cream);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+    .chapter-cta strong { display:block; font-size: 18px; }
+    .chapter-cta span { color: rgba(243,240,231,.74); }
+    .review-list .featured-review {
+      display: flex !important;
+      border-color: rgba(214,181,109,.45);
+      background: linear-gradient(180deg, rgba(255,255,255,.95), rgba(251,250,245,.84));
+    }
+    .review-list .featured-review::after {
+      content: "Destacada";
+      position: absolute;
+      right: 16px;
+      bottom: 14px;
+      color: rgba(115,90,25,.42);
+      font-size: 11px;
+      font-weight: 950;
+      text-transform: uppercase;
+      letter-spacing: .10em;
+    }
+    @media (max-width: 900px) {
+      .chapter-panel-head { display: block; }
+      .chapter-panel-head p { margin-top: 10px; }
+      .chapter-grid { grid-template-columns: 1fr; }
+      .chapter-cta { display: block; }
+      .chapter-cta .btn { margin-top: 14px; }
+    }
 
   </style>
 </head>
@@ -892,6 +1062,7 @@
         <a href="#concepto">Concepto</a>
         <a href="#autor">Autor</a>
         <a href="#reto">Reto</a>
+        <a href="#capitulos">Capítulos</a>
         <a href="#recomendaciones">Recomendaciones</a>
         <a class="btn btn-primary" href="https://www.amazon.com.mx/N%C3%B3mina-Muerta-p%C3%A9rdida-capitalizar-sepulte/dp/B0FCC9TLRM/ref=sr_1_1?crid=36Q4FTI8QAIPO&dib=eyJ2IjoiMSJ9.jeZzbPCzxWGI8uNZBU_ScOBux1AnAd-oMfUVvGxOIyNsbIgNNo7Qxjr6Ty346Lm_m95Ih3F7jma0XL8zz_HkUGyzzi-e6tfHa5XA_wxj1K0oNMcRUMmJ3NLf4rdADwD6P-TR8sdVIvs2ybw2XHFzlL4K1QLf3iVrnTveFDbSNGyqxLz_77XfUOBilfozOow0.mISqZCqIAd8oH-NFYLKAfgNlEWUuTWzTaJHuLFG3FQM&dib_tag=se&keywords=nomina+muerta&qid=1780362284&sprefix=nomina+muerta%2Caps%2C177&sr=8-1&ufe=app_do%3Aamzn1.fos.de93fa6a-174c-4df7-be7c-5bc8e9c5a71b" target="_blank" rel="noopener">Comprar en Amazon</a>
       </nav>
@@ -1005,6 +1176,84 @@
           <div class="reto-card"><strong>Acciones inmediatas</strong><span>Mapea mejoras concretas aplicadas a tareas, flujos y hábitos improductivos.</span></div>
           <div class="reto-card"><strong>Resultados tangibles</strong><span>Horas recuperadas, tareas eliminadas, mejor flujo y mayor claridad de ejecución.</span></div>
           <div class="reto-card"><strong>Tablero operativo</strong><span>Gestión visual para comunicación, colaboración, trazabilidad y seguimiento interno.</span></div>
+        </div>
+      </div>
+    </section>
+
+
+    <section id="capitulos" class="chapter-tabs-section">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="kicker">Mapa de lectura</div>
+            <h2>Una mirada breve por capítulo para despertar la conversación.</h2>
+          </div>
+          <p class="lead">Un recorrido ejecutivo, sin revelar demasiado: solo la idea central y los puntos que hacen que cada capítulo invite a seguir leyendo.</p>
+        </div>
+
+        <div class="chapter-explorer" data-chapter-tabs>
+          <div class="chapter-tabbar" role="tablist" aria-label="Bloques del libro Nómina Muerta">
+            <button class="chapter-tab active" type="button" data-chapter-tab="bloque1">Bloque I · Problema invisible</button>
+            <button class="chapter-tab" type="button" data-chapter-tab="bloque2">Bloque II · Impacto oculto</button>
+            <button class="chapter-tab" type="button" data-chapter-tab="bloque3">Bloque III · Transformación</button>
+            <button class="chapter-tab" type="button" data-chapter-tab="bloque4">Bloque IV · Radiografía</button>
+          </div>
+
+          <div class="chapter-panel active" id="bloque1" role="tabpanel">
+            <div class="chapter-panel-head">
+              <h3>Bloque I — El problema invisible</h3>
+              <p>Presenta el concepto, sus síntomas y las raíces culturales que lo vuelven tan difícil de ver.</p>
+            </div>
+            <div class="chapter-grid">
+              <article class="chapter-card"><span class="chapter-no">Capítulo I</span><h4>¿Qué es la Nómina Muerta?</h4><p class="teaser">Define la pérdida silenciosa que ocurre cuando el tiempo pagado no se convierte en avance real. El capítulo instala la pregunta incómoda: ¿cuánto de tu nómina se mueve, pero no progresa?</p><div class="chapter-points"><span>Ocupación vs. productividad</span><span>Tiempo pagado sin retorno</span><span>No es explotación</span></div></article>
+              <article class="chapter-card"><span class="chapter-no">Capítulo II</span><h4>La epidemia del siglo XXI</h4><p class="teaser">Expone a las empresas llenas de juntas, correos y urgencias que aparentan ritmo, pero no necesariamente generan valor. Una crítica directa a la hiperactividad improductiva.</p><div class="chapter-points"><span>Urgencia permanente</span><span>Actividad vacía</span><span>Foco perdido</span></div></article>
+              <article class="chapter-card"><span class="chapter-no">Capítulo III</span><h4>Raíces de la Nómina Muerta</h4><p class="teaser">Rastrea cómo los sistemas heredados, la fragmentación comunicacional y la falta de accountability crean organizaciones que trabajan mucho, pero cierran poco.</p><div class="chapter-points"><span>Sistemas heredados</span><span>Fragmentación</span><span>Accountability invisible</span></div></article>
+              <article class="chapter-card"><span class="chapter-no">Capítulo IV</span><h4>El enemigo en la cultura</h4><p class="teaser">Muestra cómo la mentalidad de control, el presentismo y ciertas herencias organizacionales siguen dictando decisiones que ya no sirven para competir.</p><div class="chapter-points"><span>Control vs. impacto</span><span>Ocupación como escudo</span><span>Herencias obsoletas</span></div></article>
+            </div>
+          </div>
+
+          <div class="chapter-panel" id="bloque2" role="tabpanel">
+            <div class="chapter-panel-head">
+              <h3>Bloque II — El impacto que nadie cuantifica</h3>
+              <p>Convierte el problema en costo: financiero, estratégico, humano y competitivo.</p>
+            </div>
+            <div class="chapter-grid">
+              <article class="chapter-card"><span class="chapter-no">Capítulo V</span><h4>El costo oculto de la inacción</h4><p class="teaser">Plantea que no hacer nada también cuesta. Cada tarea inconclusa, decisión postergada y talento subutilizado se convierte en una fuga que la empresa paga sin verla.</p><div class="chapter-points"><span>Inacción costosa</span><span>Tareas sin cierre</span><span>Talento mal usado</span></div></article>
+              <article class="chapter-card"><span class="chapter-no">Capítulo VI</span><h4>Lo que no se mide, sí te cuesta</h4><p class="teaser">Contrasta la nómina pagada con la nómina útil y reta la comodidad de medir solo lo visible. El capítulo invita a construir evidencia operacional.</p><div class="chapter-points"><span>Nómina útil</span><span>Costo de oportunidad</span><span>Evidencia operacional</span></div></article>
+              <article class="chapter-card"><span class="chapter-no">Capítulo VII</span><h4>El costo humano de la Nómina Muerta</h4><p class="teaser">Explora el desgaste emocional que se genera cuando las personas se esfuerzan sin ver impacto: burnout, cinismo, autoestima profesional erosionada y renuncias silenciosas.</p><div class="chapter-points"><span>Burnout</span><span>Deserción emocional</span><span>Renuncias silenciosas</span></div></article>
+              <article class="chapter-card"><span class="chapter-no">Capítulo VIII</span><h4>La economía de la Nómina Muerta</h4><p class="teaser">Eleva el tema a competitividad, sostenibilidad y futuro. No basta crecer si la estructura que sostiene ese crecimiento está llena de desperdicio invisible.</p><div class="chapter-points"><span>Competitividad</span><span>Sostenibilidad</span><span>Futuro organizacional</span></div></article>
+            </div>
+          </div>
+
+          <div class="chapter-panel" id="bloque3" role="tabpanel">
+            <div class="chapter-panel-head">
+              <h3>Bloque III — Transformación y soluciones</h3>
+              <p>Presenta decisiones concretas para pasar de la denuncia del problema al rediseño del trabajo.</p>
+            </div>
+            <div class="chapter-grid">
+              <article class="chapter-card"><span class="chapter-no">Capítulo IX</span><h4>Romper el ciclo</h4><p class="teaser">Propone las primeras decisiones para recuperar control: nombrar el problema, crear visibilidad, cambiar el lenguaje operativo y hacer del cierre un hábito.</p><div class="chapter-points"><span>Visibilidad compartida</span><span>Cultura de cierre</span><span>Foco quirúrgico</span></div></article>
+              <article class="chapter-card"><span class="chapter-no">Capítulo X</span><h4>Trabajo enfocado</h4><p class="teaser">Presenta el enfoque como antídoto contra la dispersión. El trabajo valioso no se mide por cantidad de tareas, sino por impacto y cierre.</p><div class="chapter-points"><span>Menos dispersión</span><span>Más impacto</span><span>Disciplina con intención</span></div></article>
+              <article class="chapter-card"><span class="chapter-no">Capítulo XI</span><h4>Digitaliza tu empresa</h4><p class="teaser">Explica por qué digitalizar no es sumar apps, sino rediseñar la operación para recuperar tiempo, energía y resultados con herramientas bien elegidas.</p><div class="chapter-points"><span>Kanban adecuado</span><span>Automatización simple</span><span>Monitoreo inteligente</span></div></article>
+              <article class="chapter-card"><span class="chapter-no">Capítulo XII</span><h4>Operación esbelta y ejecución ágil</h4><p class="teaser">Traduce principios Lean y Agile a la realidad ejecutiva: limitar trabajo en curso, asignar por capacidad y crear ritmo sin vivir en urgencia.</p><div class="chapter-points"><span>WIP controlado</span><span>Pull, no push</span><span>Cadencias sanas</span></div></article>
+              <article class="chapter-card"><span class="chapter-no">Capítulo XIII</span><h4>Casos de transformación real</h4><p class="teaser">Muestra que la Nómina Muerta no solo se puede detectar: también se puede revertir. Los casos funcionan como prueba de posibilidad y conversación directiva.</p><div class="chapter-points"><span>Casos reales</span><span>Mejora continua</span><span>Transformación medible</span></div></article>
+            </div>
+          </div>
+
+          <div class="chapter-panel" id="bloque4" role="tabpanel">
+            <div class="chapter-panel-head">
+              <h3>Bloque IV — Radiografía</h3>
+              <p>Cierra con medición, diagnóstico y una mirada al sector público, donde la ineficiencia también la paga el ciudadano.</p>
+            </div>
+            <div class="chapter-grid">
+              <article class="chapter-card"><span class="chapter-no">Capítulo XIV</span><h4>El verdadero costo</h4><p class="teaser">Aterriza la cuantificación financiera de la Nómina Muerta. El lector encuentra métricas iniciales para estimar lo que antes parecía imposible de medir.</p><div class="chapter-points"><span>Fórmulas iniciales</span><span>Indicadores</span><span>Diagnóstico económico</span></div></article>
+              <article class="chapter-card"><span class="chapter-no">Capítulo XV</span><h4>Nómina Muerta en el gobierno</h4><p class="teaser">Lleva el concepto al sector público: trámites lentos, burocracia, cuellos de botella y tiempo institucional mal utilizado que termina afectando al ciudadano.</p><div class="chapter-points"><span>IXEP</span><span>Costo social</span><span>Eficiencia pública</span></div></article>
+              <article class="chapter-card"><span class="chapter-no">Epílogo</span><h4>Carta al líder</h4><p class="teaser">Un cierre provocador para quien dirige: la pregunta ya no es si existe pérdida invisible, sino qué tan dispuesto está el líder a dejar de financiarla.</p><div class="chapter-points"><span>Decisión</span><span>Responsabilidad</span><span>Acción</span></div></article>
+            </div>
+          </div>
+        </div>
+        <div class="chapter-cta">
+          <div><strong>El resumen abre la conversación. El libro revela el costo completo.</strong><span>Ideal para líderes que quieren cuestionar cómo se trabaja, se mide y se lidera.</span></div>
+          <a class="btn btn-light" href="https://www.amazon.com.mx/N%C3%B3mina-Muerta-p%C3%A9rdida-capitalizar-sepulte/dp/B0FCC9TLRM/ref=sr_1_1?crid=36Q4FTI8QAIPO&dib=eyJ2IjoiMSJ9.jeZzbPCzxWGI8uNZBU_ScOBux1AnAd-oMfUVvGxOIyNsbIgNNo7Qxjr6Ty346Lm_m95Ih3F7jma0XL8zz_HkUGyzzi-e6tfHa5XA_wxj1K0oNMcRUMmJ3NLf4rdADwD6P-TR8sdVIvs2ybw2XHFzlL4K1QLf3iVrnTveFDbSNGyqxLz_77XfUOBilfozOow0.mISqZCqIAd8oH-NFYLKAfgNlEWUuTWzTaJHuLFG3FQM&dib_tag=se&keywords=nomina+muerta&qid=1780362284&sprefix=nomina+muerta%2Caps%2C177&sr=8-1&ufe=app_do%3Aamzn1.fos.de93fa6a-174c-4df7-be7c-5bc8e9c5a71b" target="_blank" rel="noopener">Comprar el libro</a>
         </div>
       </div>
     </section>
@@ -1224,6 +1473,19 @@
     }
   </script>
   <script>
+
+    document.querySelectorAll('[data-chapter-tabs]').forEach(explorer => {
+      const tabs = explorer.querySelectorAll('.chapter-tab');
+      const panels = explorer.querySelectorAll('.chapter-panel');
+      tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          const target = tab.getAttribute('data-chapter-tab');
+          tabs.forEach(t => t.classList.toggle('active', t === tab));
+          panels.forEach(panel => panel.classList.toggle('active', panel.id === target));
+        });
+      });
+    });
+
     const KEY = 'nomina_muerta_recomendaciones_v5';
     const OWNER_KEY = 'nomina_muerta_owner_id_v1';
     const ADMIN_PASSWORD = 'NMADMIN2026'; // Solo demo estática. En producción debe vivir en el servidor.
@@ -1433,7 +1695,7 @@
       const userReviews = uniqueById(getUserReviews());
       const mode = publicSort ? publicSort.value : 'best';
       const approvedAll = sortReviewList(allReviews().filter(r => r.status === 'approved' && !r.hidden), mode);
-      const publicReviews = approvedAll.filter(r => !r.featured);
+      const publicReviews = approvedAll;
       const approvedIds = new Set(approvedAll.map(r => r.id));
       const pendingMine = userReviews.filter(r =>
         r.ownerId === ownerId() &&
@@ -1447,7 +1709,7 @@
       }
 
       if (!publicReviews.length && !pendingMine.length) {
-        reviewList.innerHTML = '<div class="empty">Aún no hay recomendaciones publicadas adicionales. Las principales aparecen arriba en Publicaciones destacadas.</div>';
+        reviewList.innerHTML = '<div class="empty">Aún no hay recomendaciones publicadas. Cuando se aprueben, aparecerán aquí ordenadas por puntuación.</div>';
       } else {
         reviewList.innerHTML = [
           ...publicReviews.map(r => reviewArticle(r)),
