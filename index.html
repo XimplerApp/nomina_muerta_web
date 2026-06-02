@@ -1591,6 +1591,259 @@
       .activation-lead, .activation-card, .contact-band, .timeline-item, .method-step, .quote-card { border-radius: 22px; }
     }
 
+
+
+    /* === V10: Consultoría irresistible para líderes empresariales === */
+    .consult-hero-metrics {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 24px;
+      position: relative;
+      z-index: 1;
+    }
+    .consult-hero-metric {
+      border-radius: 20px;
+      padding: 16px;
+      background: rgba(243,240,231,.10);
+      border: 1px solid rgba(243,240,231,.16);
+      color: rgba(243,240,231,.78);
+      min-height: 116px;
+    }
+    .consult-hero-metric strong {
+      display: block;
+      color: var(--cream);
+      font-size: clamp(26px, 3vw, 42px);
+      line-height: .95;
+      letter-spacing: -.055em;
+      margin-bottom: 8px;
+    }
+    .consult-hero-metric span {
+      display: block;
+      font-size: 13px;
+      font-weight: 800;
+      line-height: 1.28;
+    }
+    .executive-promise {
+      margin-top: 24px;
+      border-radius: var(--radius-xl);
+      padding: clamp(26px, 4vw, 44px);
+      background:
+        radial-gradient(circle at 84% 12%, rgba(214,181,109,.14), transparent 22rem),
+        rgba(251,250,245,.93);
+      border: 1px solid rgba(214,181,109,.34);
+      box-shadow: 0 26px 70px rgba(16,42,53,.10);
+    }
+    .executive-promise h2 { margin-bottom: 14px; }
+    .executive-promise p { color: #40525a; font-size: 18px; max-width: 920px; }
+    .promise-strip {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 24px;
+    }
+    .promise-item {
+      border-radius: 22px;
+      padding: 20px;
+      background: rgba(255,255,255,.76);
+      border: 1px solid rgba(16,42,53,.10);
+    }
+    .promise-item strong { display: block; color: var(--navy); font-size: 20px; line-height: 1.08; margin-bottom: 8px; }
+    .promise-item span { color: #526168; font-weight: 700; }
+    .impact-ledger {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 22px;
+    }
+    .ledger-card {
+      border-radius: 24px;
+      padding: 22px;
+      background: rgba(255,255,255,.76);
+      border: 1px solid rgba(16,42,53,.10);
+      box-shadow: 0 14px 34px rgba(16,42,53,.06);
+    }
+    .ledger-card h3 { margin: 0 0 10px; color: var(--navy); font-size: 23px; line-height: 1.08; }
+    .ledger-card p { margin: 0; color: #46585f; }
+    .kpi-wall {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 22px;
+    }
+    .kpi-tile {
+      border-radius: 24px;
+      padding: 20px;
+      background: linear-gradient(180deg, rgba(255,255,255,.82), rgba(243,240,231,.70));
+      border: 1px solid rgba(16,42,53,.10);
+      box-shadow: 0 14px 34px rgba(16,42,53,.06);
+      min-height: 220px;
+      display: flex;
+      flex-direction: column;
+    }
+    .kpi-tile .kpi-code {
+      display: inline-flex;
+      width: fit-content;
+      border-radius: 999px;
+      padding: 6px 10px;
+      margin-bottom: 12px;
+      background: rgba(31,97,112,.10);
+      color: var(--teal);
+      font-size: 11px;
+      font-weight: 950;
+      letter-spacing: .10em;
+      text-transform: uppercase;
+    }
+    .kpi-tile h3 { margin: 0 0 8px; color: var(--navy); font-size: 20px; line-height: 1.08; }
+    .kpi-tile p { margin: 0; color: #495b62; font-size: 14.5px; line-height: 1.45; }
+    .kpi-tile .kpi-target {
+      margin-top: auto;
+      padding-top: 14px;
+      color: #735a19;
+      font-size: 13px;
+      font-weight: 900;
+    }
+    .problem-solution {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 22px;
+    }
+    .ps-card {
+      border-radius: 24px;
+      overflow: hidden;
+      border: 1px solid rgba(16,42,53,.10);
+      box-shadow: 0 14px 34px rgba(16,42,53,.06);
+      background: rgba(255,255,255,.78);
+    }
+    .ps-card .ps-top {
+      padding: 18px 20px;
+      background: rgba(16,42,53,.94);
+      color: var(--cream);
+    }
+    .ps-card .ps-top strong { display: block; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
+    .ps-card .ps-top h3 { margin: 0; font-size: 22px; line-height: 1.1; color: var(--cream); }
+    .ps-card .ps-body { padding: 20px; }
+    .ps-card p { margin: 0 0 12px; color: #46585f; }
+    .ps-card ul { margin: 0; padding-left: 20px; color: #46585f; }
+    .ps-card li { margin: 7px 0; }
+    .roi-panel {
+      border-radius: var(--radius-xl);
+      padding: clamp(26px, 4vw, 44px);
+      margin-top: 24px;
+      background: linear-gradient(135deg, var(--navy), #0b1f28 72%);
+      color: var(--cream);
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+    .roi-panel::after {
+      content: "$";
+      position: absolute;
+      right: 28px;
+      bottom: -60px;
+      font-size: clamp(150px, 22vw, 280px);
+      font-weight: 950;
+      color: rgba(243,240,231,.045);
+      line-height: 1;
+    }
+    .roi-panel h2 { color: var(--cream); margin-bottom: 12px; position: relative; z-index: 1; }
+    .roi-panel p { color: rgba(243,240,231,.78); font-size: 18px; position: relative; z-index: 1; }
+    .roi-formula {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 22px;
+      position: relative;
+      z-index: 1;
+    }
+    .formula-chip {
+      border-radius: 18px;
+      padding: 16px;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(243,240,231,.14);
+      color: rgba(243,240,231,.80);
+      font-weight: 800;
+    }
+    .formula-chip strong { display: block; color: var(--cream); font-size: 18px; line-height: 1.05; margin-bottom: 6px; }
+    .proof-table-shell {
+      overflow-x: auto;
+      border-radius: 24px;
+      border: 1px solid rgba(16,42,53,.10);
+      background: rgba(255,255,255,.78);
+      margin-top: 22px;
+    }
+    .proof-table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 840px;
+    }
+    .proof-table th, .proof-table td {
+      border-bottom: 1px solid rgba(16,42,53,.09);
+      padding: 15px 16px;
+      text-align: left;
+      vertical-align: top;
+    }
+    .proof-table th {
+      background: rgba(16,42,53,.07);
+      color: var(--navy);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+    .proof-table td { color: #44565e; }
+    .proof-table td strong { color: var(--navy); }
+    .execution-path {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 22px;
+    }
+    .path-step {
+      border-radius: 22px;
+      padding: 18px;
+      background: rgba(255,255,255,.78);
+      border: 1px solid rgba(16,42,53,.10);
+      box-shadow: 0 14px 34px rgba(16,42,53,.06);
+      position: relative;
+      overflow: hidden;
+    }
+    .path-step::after {
+      content: attr(data-step);
+      position: absolute;
+      right: 12px;
+      bottom: -8px;
+      color: rgba(16,42,53,.06);
+      font-size: 64px;
+      font-weight: 950;
+      line-height: 1;
+    }
+    .path-step strong { display: block; color: var(--navy); font-size: 18px; line-height: 1.08; margin-bottom: 8px; position: relative; z-index: 1; }
+    .path-step span { color: #526168; font-size: 14px; font-weight: 700; position: relative; z-index: 1; }
+    .consult-close {
+      margin-top: 24px;
+      border-radius: var(--radius-xl);
+      padding: clamp(28px, 4vw, 48px);
+      background:
+        radial-gradient(circle at 82% 12%, rgba(214,181,109,.16), transparent 22rem),
+        linear-gradient(135deg, rgba(31,97,112,.96), rgba(16,42,53,.98));
+      color: var(--cream);
+      box-shadow: 0 26px 70px rgba(16,42,53,.18);
+    }
+    .consult-close h2 { color: var(--cream); margin-bottom: 12px; }
+    .consult-close p { color: rgba(243,240,231,.78); font-size: 18px; max-width: 900px; }
+    @media (max-width: 1100px) {
+      .consult-hero-metrics, .kpi-wall, .execution-path { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .roi-formula { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 900px) {
+      .promise-strip, .impact-ledger, .problem-solution { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 620px) {
+      .consult-hero-metrics, .kpi-wall, .execution-path, .roi-formula { grid-template-columns: 1fr; }
+      .executive-promise, .roi-panel, .consult-close { border-radius: 24px; }
+    }
+
   </style>
 </head>
 <body>
@@ -2244,62 +2497,109 @@
       <div class="wrap">
         <div class="subpage-hero">
           <div class="kicker">Consultoría · Copiloto de Eficiencia Operativa</div>
-          <h1>Un acompañamiento ejecutivo para recuperar velocidad, foco y capacidad de ejecución.</h1>
-          <p>El Copiloto de Eficiencia Operativa ayuda a líderes y equipos a detectar dónde se está muriendo el tiempo, priorizar las fugas más caras y rediseñar la forma de trabajar para que la nómina pagada produzca más valor real.</p>
+          <h1>Convierte el tiempo perdido de tu empresa en capacidad operativa, velocidad de ejecución y resultados medibles.</h1>
+          <p>El Copiloto de Eficiencia Operativa es una intervención ejecutiva para líderes que ya no quieren administrar el caos: quieren medirlo, reducirlo y transformarlo en flujo real de trabajo. Detectamos dónde muere el tiempo, cuánto cuesta, qué procesos lo provocan y qué decisiones deben tomarse para recuperar capacidad instalada sin contratar más gente.</p>
           <div class="subpage-nav">
             <a class="btn btn-light" href="https://wa.me/526671450096" target="_blank" rel="noopener">Pedir información por WhatsApp</a>
             <a class="btn btn-outline" href="#/recupera-nomina-muerta">Calcular Nómina Muerta</a>
           </div>
-        </div>
-
-        <div class="tool-grid">
-          <div class="tool-card">
-            <h3>Para qué sirve</h3>
-            <p>Para convertir la intuición de “algo no está funcionando” en una lectura clara de fricción, retrabajo, saturación, falta de seguimiento y pérdida de trazabilidad.</p>
-          </div>
-          <div class="tool-card">
-            <h3>Para quién es</h3>
-            <p>Empresas, áreas directivas, gobiernos, equipos administrativos y organizaciones que ya trabajan mucho, pero sienten que el avance no corresponde al esfuerzo.</p>
-          </div>
-          <div class="tool-card">
-            <h3>Cómo se diferencia</h3>
-            <p>No agrega más juntas ni más control manual: acompaña al líder como copiloto para crear visibilidad, ritmo de cierre y decisiones con información viva.</p>
+          <div class="consult-hero-metrics" aria-label="Indicadores de impacto de la consultoría">
+            <div class="consult-hero-metric"><strong>25–40%</strong><span>del tiempo laboral puede perderse en tareas no esenciales, redundantes o mal priorizadas.</span></div>
+            <div class="consult-hero-metric"><strong>80/20</strong><span>muchas empresas coordinan demasiado y ejecutan demasiado poco.</span></div>
+            <div class="consult-hero-metric"><strong>70/30</strong><span>meta operativa: más ejecución visible, menos coordinación improductiva.</span></div>
+            <div class="consult-hero-metric"><strong>ROI</strong><span>cada hora recuperada se traduce en capacidad, respuesta, margen y foco directivo.</span></div>
           </div>
         </div>
 
-        <div class="tool-form-card">
-          <h2>Enfoque integrado de intervención</h2>
-          <p class="lead">La consultoría une diagnóstico operativo, rediseño del flujo de trabajo, cultura de accountability y uso estratégico de herramientas digitales bajo una lógica simple: menos coordinación inútil, más ejecución visible.</p>
-          <div class="method-steps">
-            <article class="method-step"><span class="step-no">01</span><h3>Radiografía de fricción</h3><p>Se identifican las zonas donde el tiempo se pierde: esperas, autorizaciones, reprocesos, comunicación dispersa, prioridades confusas y tareas sin dueño real.</p></article>
-            <article class="method-step"><span class="step-no">02</span><h3>Mapa de prioridades</h3><p>Se separa lo urgente de lo importante y se enfoca la intervención en los puntos donde la pérdida de tiempo tiene mayor impacto económico, operativo y humano.</p></article>
-            <article class="method-step"><span class="step-no">03</span><h3>Diseño de flujo vivo</h3><p>Se ordena la operación alrededor de responsables, fechas, estatus, evidencia, acuerdos y seguimiento para que el trabajo deje de depender de memoria o persecución.</p></article>
-            <article class="method-step"><span class="step-no">04</span><h3>Ritmo de ejecución</h3><p>Se construyen hábitos de cierre, revisión, priorización y seguimiento que evitan que la empresa viva atrapada en gerundios: revisando, viendo, analizando o esperando.</p></article>
-            <article class="method-step"><span class="step-no">05</span><h3>Visibilidad y accountability</h3><p>La supervisión deja de ser vigilancia y se convierte en claridad compartida: todos saben qué se espera, quién responde, qué falta y qué se debe destrabar.</p></article>
-            <article class="method-step"><span class="step-no">06</span><h3>Activación digital</h3><p>Cuando aplica, se utiliza Ximpler.App como ecosistema digital para centralizar tareas, minutas, compromisos, comunicación contextual, trazabilidad y tableros de avance.</p></article>
+        <div class="executive-promise">
+          <div class="kicker">Propuesta de alto impacto</div>
+          <h2>No vendemos más consultoría. Instalamos una forma distinta de dirigir la ejecución.</h2>
+          <p>La mayoría de las empresas no tiene un problema de esfuerzo: tiene un problema de diseño operativo. El equipo trabaja, se reúne, manda mensajes, responde correos y “atiende pendientes”; pero la Alta Dirección no siempre puede ver qué está atorado, quién lo tiene, cuánto cuesta el retraso, qué prioridad real tiene y qué decisión destraba el avance.</p>
+          <div class="promise-strip">
+            <div class="promise-item"><strong>Diagnóstico económico del tiempo</strong><span>Convertimos la pérdida invisible en pesos, horas, capacidad instalada y costo de oportunidad.</span></div>
+            <div class="promise-item"><strong>Rediseño del flujo de trabajo</strong><span>Quitamos fricción, duplicidad, burocracia, juntas innecesarias y seguimiento informal.</span></div>
+            <div class="promise-item"><strong>Gobernanza de ejecución</strong><span>Instalamos visibilidad, accountability, KPIs, alertas y ritmo de cierre sin microgestión.</span></div>
           </div>
         </div>
 
         <div class="tool-form-card">
-          <h2>Problemas que ayuda a corregir</h2>
-          <div class="tool-grid">
-            <div class="tool-card"><h3>Seguimiento informal</h3><p>Cuando todo depende de WhatsApp, correos, llamadas, memoria o presión personal.</p></div>
-            <div class="tool-card"><h3>Juntas sin cierre</h3><p>Reuniones que hablan mucho, pero no dejan responsables, fechas ni compromisos verificables.</p></div>
-            <div class="tool-card"><h3>Retrabajo y duplicidad</h3><p>Equipos que repiten información, rehacen tareas o corrigen errores provocados por falta de claridad.</p></div>
-            <div class="tool-card"><h3>Cuellos de botella</h3><p>Procesos detenidos por firmas, autorizaciones, decisiones pendientes o dependencias invisibles.</p></div>
-            <div class="tool-card"><h3>Saturación directiva</h3><p>Líderes apagando incendios, persiguiendo pendientes y tomando decisiones con información incompleta.</p></div>
-            <div class="tool-card"><h3>Bajo impacto</h3><p>Mucho esfuerzo, poca ejecución visible y poca relación entre horas invertidas y resultados reales.</p></div>
+          <h2>Qué problemas resuelve para la Alta Dirección</h2>
+          <p class="lead">El objetivo es atacar las fugas que más dinero, velocidad y energía directiva consumen. No desde opiniones, sino desde evidencia operativa.</p>
+          <div class="problem-solution">
+            <article class="ps-card"><div class="ps-top"><strong>Problema 01</strong><h3>Oscuridad operativa</h3></div><div class="ps-body"><p>La dirección no sabe en tiempo real qué avance existe, qué está detenido y qué depende de quién.</p><ul><li>Dashboard ejecutivo de avance.</li><li>Alertas de desviación.</li><li>Trazabilidad de decisiones, responsables y fechas.</li></ul></div></article>
+            <article class="ps-card"><div class="ps-top"><strong>Problema 02</strong><h3>Comunicación fragmentada</h3></div><div class="ps-body"><p>La información crítica vive dispersa entre correos, chats, reuniones, documentos y llamadas.</p><ul><li>Comunicación contextual por tarea o proyecto.</li><li>Historial único de acuerdos.</li><li>Menos reconstrucción de contexto.</li></ul></div></article>
+            <article class="ps-card"><div class="ps-top"><strong>Problema 03</strong><h3>Mandos medios sin métricas claras</h3></div><div class="ps-body"><p>El desempeño se evalúa por percepción, presencia o urgencia, no por cumplimiento medible.</p><ul><li>KPIs de cumplimiento, velocidad y cierre.</li><li>Registro de acciones ejecutadas.</li><li>Accountability sin culpabilidad.</li></ul></div></article>
+            <article class="ps-card"><div class="ps-top"><strong>Problema 04</strong><h3>Recursos mal asignados</h3></div><div class="ps-body"><p>Algunas áreas viven saturadas mientras otras tienen capacidad subutilizada o tareas de bajo impacto.</p><ul><li>Mapa de carga operativa.</li><li>Priorización PEPS: Primero en Ejecutarse, Primero en Supervisarse.</li><li>Reasignación hacia tareas de mayor impacto.</li></ul></div></article>
+            <article class="ps-card"><div class="ps-top"><strong>Problema 05</strong><h3>Decisiones lentas y burocracia</h3></div><div class="ps-body"><p>La toma de decisiones depende de reportes manuales, reuniones largas y autorizaciones sin trazabilidad.</p><ul><li>Panel de riesgos y oportunidades.</li><li>Semáforos de bloqueo.</li><li>Rutas de decisión y autorización más cortas.</li></ul></div></article>
+            <article class="ps-card"><div class="ps-top"><strong>Problema 06</strong><h3>Silos entre áreas</h3></div><div class="ps-body"><p>Cada área opera con su propio lenguaje, sistema y prioridades, generando duplicidad y retrasos.</p><ul><li>Tablero interdepartamental.</li><li>Responsables visibles por etapa.</li><li>Estándares comunes de seguimiento.</li></ul></div></article>
           </div>
         </div>
 
-        <div class="quote-card">
-          <p>“El objetivo no es que la gente trabaje más. Es que el sistema permita que el trabajo realmente avance.”</p>
-          <span>Copiloto de Eficiencia Operativa</span>
+        <div class="roi-panel">
+          <div class="kicker">Impacto financiero</div>
+          <h2>La pregunta no es cuánto cuesta intervenir. La pregunta es cuánto cuesta seguir igual.</h2>
+          <p>La intervención parte de una ecuación simple: si tu empresa paga miles de horas al mes, pero una parte importante se consume en coordinación improductiva, retrabajo, esperas, juntas sin cierre y búsqueda de información, entonces existe una bolsa de capacidad operativa recuperable que hoy ya estás pagando.</p>
+          <div class="roi-formula">
+            <div class="formula-chip"><strong>Nómina mensual</strong>¿Cuánto pagas por capacidad laboral instalada?</div>
+            <div class="formula-chip"><strong>% tiempo muerto</strong>¿Qué parte se pierde por fricción, espera o retrabajo?</div>
+            <div class="formula-chip"><strong>% recuperable</strong>¿Cuánto puede convertirse en ejecución real?</div>
+            <div class="formula-chip"><strong>Valor recuperado</strong>Horas útiles, capacidad, velocidad, margen y oportunidad.</div>
+          </div>
         </div>
 
-        <div class="contact-band">
-          <div><strong>¿Quieres saber si este acompañamiento aplica para tu empresa?</strong><span>Solicita información, agenda una conversación inicial o comparte tu contexto por WhatsApp.</span></div>
-          <a class="btn btn-light" href="https://wa.me/526671450096" target="_blank" rel="noopener">Pedir información por WhatsApp</a>
+        <div class="tool-form-card">
+          <h2>Indicadores que instalamos para dirigir con datos</h2>
+          <p class="lead">La consultoría no se queda en diagnóstico. Define un tablero de control para medir avance, presión operativa, cuellos de botella, productividad y mejora real.</p>
+          <div class="kpi-wall">
+            <article class="kpi-tile"><span class="kpi-code">INM</span><h3>Índice de Nómina Muerta</h3><p>Porcentaje de tiempo pagado que no se convierte en avance, entrega, cierre o valor.</p><div class="kpi-target">Meta: reducir la pérdida visible semana a semana.</div></article>
+            <article class="kpi-tile"><span class="kpi-code">IVE</span><h3>Velocidad de Ejecución</h3><p>Mide cuánto tarda una tarea, proceso o proyecto desde asignación hasta cierre validado.</p><div class="kpi-target">Meta: acortar ciclos y eliminar esperas.</div></article>
+            <article class="kpi-tile"><span class="kpi-code">ICB</span><h3>Cuellos de Botella</h3><p>Identifica áreas, personas, firmas, aprobaciones o etapas donde se acumulan retrasos.</p><div class="kpi-target">Meta: anticipar bloqueos antes de crisis.</div></article>
+            <article class="kpi-tile"><span class="kpi-code">ITA</span><h3>Trazabilidad Activa</h3><p>Evalúa qué porcentaje de decisiones, acuerdos y tareas tienen responsable, fecha y evidencia.</p><div class="kpi-target">Meta: cero pendientes invisibles.</div></article>
+            <article class="kpi-tile"><span class="kpi-code">IRC</span><h3>Retrabajo y Corrección</h3><p>Registra tareas repetidas, errores por falta de claridad y duplicidad de información.</p><div class="kpi-target">Meta: menos corrección, más primera vez bien.</div></article>
+            <article class="kpi-tile"><span class="kpi-code">ICT</span><h3>Coordinación vs. Ejecución</h3><p>Compara tiempo dedicado a coordinar contra tiempo destinado a producir resultados.</p><div class="kpi-target">Meta: migrar hacia 70% ejecución.</div></article>
+            <article class="kpi-tile"><span class="kpi-code">IRA</span><h3>Responsabilidad Activa</h3><p>Mide cumplimiento de compromisos por líder, área o proyecto con evidencia objetiva.</p><div class="kpi-target">Meta: accountability sin persecución.</div></article>
+            <article class="kpi-tile"><span class="kpi-code">COR</span><h3>Capacidad Operativa Recuperable</h3><p>Estima horas y valor monetario que pueden liberarse al rediseñar procesos críticos.</p><div class="kpi-target">Meta: recuperar capacidad sin inflar nómina.</div></article>
+          </div>
+        </div>
+
+        <div class="tool-form-card">
+          <h2>Indicadores de mejora esperados</h2>
+          <p class="lead">Las metas se calibran con la realidad de cada empresa, pero la intervención se orienta a mejoras concretas, medibles y defendibles ante dirección general.</p>
+          <div class="proof-table-shell">
+            <table class="proof-table" aria-label="Indicadores esperados de mejora">
+              <thead><tr><th>Área de impacto</th><th>Qué se mide</th><th>Indicador esperado</th><th>Cómo se logra</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Costos operativos</strong></td><td>Tiempo, retrabajo, esperas, tareas redundantes y procesos manuales.</td><td>Reducción objetivo de 20%–30% en costos/fricción operativa según alcance.</td><td>Simplificación, automatización, eliminación de duplicidad y priorización.</td></tr>
+                <tr><td><strong>Velocidad de respuesta</strong></td><td>Tiempo entre solicitud, atención, decisión y cierre.</td><td>Mejora objetivo de 20%–35% en tiempos de respuesta entre colaboradores.</td><td>Tableros, alertas, responsables visibles y comunicación contextual.</td></tr>
+                <tr><td><strong>Tiempo de ejecución</strong></td><td>Duración promedio de tareas, procesos internos y proyectos clave.</td><td>Reducción objetivo de 15%–20% en tiempo promedio de ejecución.</td><td>Flujos claros, menos aprobaciones innecesarias y seguimiento PEPS.</td></tr>
+                <tr><td><strong>Tareas administrativas</strong></td><td>Horas consumidas en actividades repetitivas, reportes manuales y seguimiento informal.</td><td>Ahorro potencial de hasta 60% en tareas repetitivas y administrativas.</td><td>Automatización inteligente, minutas accionables, recordatorios y reportes dinámicos.</td></tr>
+                <tr><td><strong>Productividad operativa</strong></td><td>Relación entre horas invertidas y resultados cerrados.</td><td>Mejora objetivo de 30%–70% según madurez, sector y proceso intervenido.</td><td>Visibilidad, foco, accountability y mejora continua basada en datos.</td></tr>
+                <tr><td><strong>Riesgos y crisis</strong></td><td>Problemas detectados tarde, desviaciones no atendidas e incidentes sin responsable.</td><td>Mayor anticipación y menor reacción tardía.</td><td>Matriz de riesgos, semáforos, alertas y responsables de resolución.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="tool-form-card">
+          <h2>Ruta de intervención ejecutiva</h2>
+          <p class="lead">Una ruta simple para pasar de intuición a evidencia, de evidencia a rediseño y de rediseño a ejecución sostenida.</p>
+          <div class="execution-path">
+            <div class="path-step" data-step="01"><strong>Radiografía</strong><span>Mapeo de procesos críticos, fugas de tiempo, cuellos de botella y costo visible de la Nómina Muerta.</span></div>
+            <div class="path-step" data-step="02"><strong>Priorización</strong><span>Selección de los procesos con mayor impacto económico, operativo y directivo.</span></div>
+            <div class="path-step" data-step="03"><strong>Rediseño</strong><span>Simplificación de flujos, responsables, acuerdos, fechas, reglas de seguimiento y rutas de decisión.</span></div>
+            <div class="path-step" data-step="04"><strong>Activación</strong><span>Implementación de tableros, KPIs, alertas, disciplina de cierre y comunicación contextual.</span></div>
+            <div class="path-step" data-step="05"><strong>Escalamiento</strong><span>Medición de resultados, ajustes, expansión a áreas críticas y cultura de mejora continua.</span></div>
+          </div>
+        </div>
+
+        <div class="consult-close">
+          <div class="kicker">Para líderes que quieren resultados, no discursos</div>
+          <h2>El Copiloto de Eficiencia Operativa le da a la Alta Dirección una ventaja: ver el trabajo como realmente ocurre.</h2>
+          <p>Cuando el trabajo se vuelve visible, el desperdicio deja de esconderse. Cuando el desperdicio se mide, se puede reducir. Y cuando se reduce, la empresa recupera tiempo, capacidad, margen, velocidad y tranquilidad directiva.</p>
+          <div class="utility-actions">
+            <a class="btn btn-light" href="https://wa.me/526671450096" target="_blank" rel="noopener">Solicitar información por WhatsApp</a>
+            <a class="btn btn-outline" href="#/recupera-nomina-muerta">Estimar mi Nómina Muerta</a>
+          </div>
         </div>
       </div>
     </section>
