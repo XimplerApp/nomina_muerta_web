@@ -1069,6 +1069,214 @@
       .chapter-cta .btn { margin-top: 14px; }
     }
 
+
+    /* === V8: Subpáginas integradas en un solo index === */
+    .page-main.is-hidden { display: none; }
+    .single-index-pages { display: none; min-height: 70vh; }
+    .single-index-pages.active { display: block; }
+    .tool-subpage {
+      display: none;
+      padding: 72px 0 92px;
+      background:
+        radial-gradient(circle at top left, rgba(31,97,112,.10), transparent 28rem),
+        linear-gradient(180deg, rgba(251,250,245,.98), rgba(243,240,231,.86));
+    }
+    .tool-subpage.active { display: block; }
+    .subpage-hero {
+      border-radius: var(--radius-xl);
+      padding: clamp(28px, 5vw, 58px);
+      color: var(--cream);
+      background:
+        radial-gradient(circle at 86% 12%, rgba(214,181,109,.18), transparent 21rem),
+        linear-gradient(135deg, var(--navy), #0b1f28 72%);
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 28px;
+    }
+    .subpage-hero::after {
+      content:"NM";
+      position:absolute;
+      right: 24px;
+      bottom: -52px;
+      font-family: Georgia, serif;
+      font-size: clamp(120px, 18vw, 260px);
+      color: rgba(243,240,231,.055);
+      line-height: 1;
+      pointer-events:none;
+    }
+    .subpage-hero .kicker { color: var(--gold); }
+    .subpage-hero h1 {
+      font-size: clamp(38px, 5.5vw, 78px);
+      line-height: .95;
+      letter-spacing: -.055em;
+      max-width: 900px;
+      position: relative;
+      z-index: 1;
+    }
+    .subpage-hero p {
+      color: rgba(243,240,231,.78);
+      font-size: 18px;
+      max-width: 860px;
+      position: relative;
+      z-index: 1;
+    }
+    .subpage-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 18px 0 0;
+      position: relative;
+      z-index: 1;
+    }
+    .tool-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin: 24px 0;
+    }
+    .tool-card {
+      background: rgba(255,255,255,.78);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 22px;
+      box-shadow: 0 16px 44px rgba(16,42,53,.08);
+    }
+    .tool-card h3 {
+      margin: 0 0 10px;
+      color: var(--navy);
+      line-height: 1.1;
+      letter-spacing: -.02em;
+      font-size: 22px;
+    }
+    .tool-card p, .tool-card li { color: #46585f; }
+    .tool-card ul { padding-left: 20px; margin: 10px 0 0; }
+    .tool-form-card {
+      background: rgba(251,250,245,.94);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      padding: clamp(22px, 3.2vw, 36px);
+      box-shadow: 0 24px 70px rgba(16,42,53,.10);
+      margin-top: 20px;
+    }
+    .tool-form-card h2 {
+      font-size: clamp(28px, 3.6vw, 48px);
+      margin-bottom: 12px;
+    }
+    .mini-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .tool-result {
+      display: none;
+      margin-top: 22px;
+      border-left: 7px solid var(--teal);
+      background: rgba(255,255,255,.82);
+      border-radius: 18px;
+      padding: 18px;
+      color: #203039;
+      box-shadow: 0 12px 34px rgba(16,42,53,.06);
+      white-space: pre-line;
+      line-height: 1.55;
+    }
+    .tool-result.active { display: block; }
+    .reto-category {
+      background: rgba(255,255,255,.78);
+      border: 1px solid rgba(16,42,53,.10);
+      border-radius: 22px;
+      padding: 20px;
+      margin-bottom: 14px;
+    }
+    .reto-category h3 {
+      margin: 0 0 14px;
+      color: var(--navy);
+      font-size: 20px;
+    }
+    .check-item {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      padding: 9px 0;
+      color: #35474f;
+      font-weight: 650;
+      line-height: 1.35;
+    }
+    .check-item input { width: 18px; height: 18px; flex: 0 0 auto; margin-top: 2px; }
+    .diag-question {
+      border: 1px solid rgba(16,42,53,.10);
+      background: rgba(255,255,255,.72);
+      border-radius: 22px;
+      padding: 18px;
+      margin-bottom: 14px;
+    }
+    .diag-question p {
+      margin: 0 0 12px;
+      color: var(--navy);
+      font-weight: 900;
+      line-height: 1.25;
+    }
+    .diag-question label {
+      text-transform: none;
+      letter-spacing: normal;
+      color: #40525a;
+      font-weight: 650;
+      margin: 8px 0;
+      display: flex;
+      gap: 9px;
+      align-items: flex-start;
+    }
+    .diag-question input[type="radio"] {
+      width: 17px;
+      height: 17px;
+      flex: 0 0 auto;
+      margin-top: 2px;
+    }
+    .focus-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 16px;
+      overflow: hidden;
+      border-radius: 18px;
+      background: rgba(255,255,255,.76);
+    }
+    .focus-table th, .focus-table td {
+      border: 1px solid rgba(16,42,53,.10);
+      padding: 12px;
+      text-align: left;
+      vertical-align: top;
+    }
+    .focus-table th {
+      background: rgba(16,42,53,.07);
+      color: var(--navy);
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+    .inline-note {
+      padding: 14px 16px;
+      border-radius: 18px;
+      background: rgba(31,97,112,.08);
+      color: #31444c;
+      border: 1px solid rgba(31,97,112,.13);
+      margin: 14px 0;
+      font-weight: 700;
+    }
+    .utility-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+    .calc-output strong { color: var(--navy); }
+    @media (max-width: 980px) {
+      .tool-grid, .mini-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 620px) {
+      .subpage-hero, .tool-form-card { border-radius: 24px; }
+      .subpage-nav .btn, .utility-actions .btn { width: 100%; }
+    }
+
   </style>
 </head>
 <body>
@@ -1082,15 +1290,17 @@
       <nav class="nav-links" aria-label="Navegación principal">
         <a href="#concepto">Concepto</a>
         <a href="#autor">Autor</a>
-        <a href="#reto">Reto</a>
+        <a href="#/reto-nomina-muerta">Reto</a>
         <a href="#capitulos">Capítulos</a>
+        <a href="#/recupera-nomina-muerta">Recupera</a>
+        <a href="#/autodiagnostico-lideres">Diagnóstico</a>
         <a href="#recomendaciones">Recomendaciones</a>
         <a class="btn btn-primary" href="https://www.amazon.com.mx/N%C3%B3mina-Muerta-p%C3%A9rdida-capitalizar-sepulte/dp/B0FCC9TLRM/ref=sr_1_1?crid=36Q4FTI8QAIPO&dib=eyJ2IjoiMSJ9.jeZzbPCzxWGI8uNZBU_ScOBux1AnAd-oMfUVvGxOIyNsbIgNNo7Qxjr6Ty346Lm_m95Ih3F7jma0XL8zz_HkUGyzzi-e6tfHa5XA_wxj1K0oNMcRUMmJ3NLf4rdADwD6P-TR8sdVIvs2ybw2XHFzlL4K1QLf3iVrnTveFDbSNGyqxLz_77XfUOBilfozOow0.mISqZCqIAd8oH-NFYLKAfgNlEWUuTWzTaJHuLFG3FQM&dib_tag=se&keywords=nomina+muerta&qid=1780362284&sprefix=nomina+muerta%2Caps%2C177&sr=8-1&ufe=app_do%3Aamzn1.fos.de93fa6a-174c-4df7-be7c-5bc8e9c5a71b" target="_blank" rel="noopener">Comprar en Amazon</a>
       </nav>
     </div>
   </header>
 
-  <main>
+  <main id="homePage" class="page-main">
     <section class="hero">
       <div class="wrap hero-grid">
         <div>
@@ -1100,6 +1310,7 @@
           <p class="hero-copy">Una lectura directa, reveladora y necesaria para líderes que se atreven a mirar lo que otros prefieren ignorar: el tiempo pagado que no se convierte en avance, cierre ni valor real.</p>
           <div class="hero-actions">
             <a class="btn btn-light" href="https://www.amazon.com.mx/N%C3%B3mina-Muerta-p%C3%A9rdida-capitalizar-sepulte/dp/B0FCC9TLRM/ref=sr_1_1?crid=36Q4FTI8QAIPO&dib=eyJ2IjoiMSJ9.jeZzbPCzxWGI8uNZBU_ScOBux1AnAd-oMfUVvGxOIyNsbIgNNo7Qxjr6Ty346Lm_m95Ih3F7jma0XL8zz_HkUGyzzi-e6tfHa5XA_wxj1K0oNMcRUMmJ3NLf4rdADwD6P-TR8sdVIvs2ybw2XHFzlL4K1QLf3iVrnTveFDbSNGyqxLz_77XfUOBilfozOow0.mISqZCqIAd8oH-NFYLKAfgNlEWUuTWzTaJHuLFG3FQM&dib_tag=se&keywords=nomina+muerta&qid=1780362284&sprefix=nomina+muerta%2Caps%2C177&sr=8-1&ufe=app_do%3Aamzn1.fos.de93fa6a-174c-4df7-be7c-5bc8e9c5a71b" target="_blank" rel="noopener">Comprar en Amazon México</a>
+            <a class="btn btn-outline" href="#/recupera-nomina-muerta">Recupera tu Nómina Muerta</a>
             <a class="btn btn-outline" href="#recomendaciones">Dejar una recomendación</a>
           </div>
         </div>
@@ -1197,6 +1408,10 @@
           <div class="reto-card"><strong>Acciones inmediatas</strong><span>Mapea mejoras concretas aplicadas a tareas, flujos y hábitos improductivos.</span></div>
           <div class="reto-card"><strong>Resultados tangibles</strong><span>Horas recuperadas, tareas eliminadas, mejor flujo y mayor claridad de ejecución.</span></div>
           <div class="reto-card"><strong>Tablero operativo</strong><span>Gestión visual para comunicación, colaboración, trazabilidad y seguimiento interno.</span></div>
+        </div>
+        <div class="utility-actions" style="margin-top: 24px;">
+          <a class="btn btn-primary" href="#/reto-nomina-muerta">Iniciar Reto Nómina Muerta</a>
+          <a class="btn btn-light" href="#/autodiagnostico-lideres">Aplicar autodiagnóstico</a>
         </div>
       </div>
     </section>
@@ -1460,6 +1675,193 @@
           <p>Una lectura para CEOs, directores, empresarios, gerentes y líderes que quieren dejar de medir solo actividad y empezar a capitalizar el tiempo que ya pagan.</p>
         </div>
         <a class="btn btn-light" href="https://www.amazon.com.mx/N%C3%B3mina-Muerta-p%C3%A9rdida-capitalizar-sepulte/dp/B0FCC9TLRM/ref=sr_1_1?crid=36Q4FTI8QAIPO&dib=eyJ2IjoiMSJ9.jeZzbPCzxWGI8uNZBU_ScOBux1AnAd-oMfUVvGxOIyNsbIgNNo7Qxjr6Ty346Lm_m95Ih3F7jma0XL8zz_HkUGyzzi-e6tfHa5XA_wxj1K0oNMcRUMmJ3NLf4rdADwD6P-TR8sdVIvs2ybw2XHFzlL4K1QLf3iVrnTveFDbSNGyqxLz_77XfUOBilfozOow0.mISqZCqIAd8oH-NFYLKAfgNlEWUuTWzTaJHuLFG3FQM&dib_tag=se&keywords=nomina+muerta&qid=1780362284&sprefix=nomina+muerta%2Caps%2C177&sr=8-1&ufe=app_do%3Aamzn1.fos.de93fa6a-174c-4df7-be7c-5bc8e9c5a71b" target="_blank" rel="noopener">Ir a Amazon México</a>
+      </div>
+    </section>
+  </main>
+
+
+  <main id="singleIndexPages" class="single-index-pages" aria-live="polite">
+    <section id="recupera-nomina-muerta" class="tool-subpage" data-page-route="recupera-nomina-muerta">
+      <div class="wrap">
+        <div class="subpage-hero">
+          <div class="kicker">Recupera tu Nómina Muerta</div>
+          <h1>Monetiza el tiempo operativo que ya estás pagando.</h1>
+          <p>Esta subpágina integra el diagnóstico económico base para estimar cuánto dinero puede estar atrapado en desorganización, retrabajo, falta de seguimiento, comunicación dispersa y procesos sin trazabilidad.</p>
+          <div class="subpage-nav">
+            <a class="btn btn-light" href="#/reto-nomina-muerta">Ir al Reto</a>
+            <a class="btn btn-outline" href="#/autodiagnostico-lideres">Diagnóstico líderes</a>
+            <a class="btn btn-outline" href="#/autodiagnostico-colaboradores">Diagnóstico colaboradores</a>
+            <a class="btn btn-outline" href="#top">Volver al inicio</a>
+          </div>
+        </div>
+
+        <div class="tool-grid">
+          <div class="tool-card">
+            <h3>1. Detecta la pérdida</h3>
+            <p>Identifica el porcentaje de tiempo muerto generado por fricción operativa, juntas improductivas, esperas, reprocesos y falta de claridad.</p>
+          </div>
+          <div class="tool-card">
+            <h3>2. Cuantifica el impacto</h3>
+            <p>Convierte ese porcentaje en dinero mensual y anual para hacerlo visible ante dirección, socios o responsables de área.</p>
+          </div>
+          <div class="tool-card">
+            <h3>3. Recupera capacidad</h3>
+            <p>El objetivo no es trabajar más: es rediseñar el sistema para que la nómina pagada genere más avance, cierre y valor real.</p>
+          </div>
+        </div>
+
+        <div class="tool-form-card">
+          <h2>Calculadora rápida de recuperación</h2>
+          <p class="lead">Usa datos estimados. La calculadora te dará una lectura ejecutiva de la Nómina Muerta mensual, anual y la capacidad recuperable con un ajuste operativo del 70%.</p>
+          <div class="mini-grid">
+            <div>
+              <label for="calcEmpleados">Número de personal staff y ejecutivo</label>
+              <input type="number" id="calcEmpleados" min="1" value="20">
+            </div>
+            <div>
+              <label for="calcTiempo">Estatus actual de tiempos muertos</label>
+              <select id="calcTiempo">
+                <option value="15">15% — Procesos con posibilidades de mejora</option>
+                <option value="20" selected>20% — Oportunidad de mejora en ejecución y seguimiento</option>
+                <option value="25">25% — Desorganización operativa y fallas de colaboración</option>
+                <option value="30">30% — Procesos sustantivos sin control</option>
+                <option value="35">35% — Fallas entre dirección, mandos medios y operación</option>
+              </select>
+            </div>
+            <div>
+              <label for="calcSueldo">Sueldo mensual promedio por persona</label>
+              <input type="text" id="calcSueldo" value="15,000" inputmode="numeric">
+            </div>
+            <div>
+              <label for="calcSueldoTotal">O nómina mensual total del equipo</label>
+              <input type="text" id="calcSueldoTotal" placeholder="Opcional" inputmode="numeric">
+            </div>
+          </div>
+          <div class="utility-actions">
+            <button class="btn btn-primary" type="button" id="calcBtn">Calcular recuperación</button>
+            <button class="btn btn-light" type="button" id="calcResetBtn">Limpiar</button>
+          </div>
+          <div id="calcResultado" class="tool-result calc-output"></div>
+        </div>
+
+        <div class="tool-form-card" id="solucion-ximpler">
+          <h2>La solución operativa: Ximpler.App</h2>
+          <p class="lead">Ximpler.App concentra ejecución, seguimiento, comunicación, coordinación, supervisión y trazabilidad para que el trabajo diario deje de depender de memoria, correos sueltos, WhatsApp o reuniones repetidas.</p>
+          <div class="tool-grid">
+            <div class="tool-card"><h3>Visualiza y prioriza</h3><p>Tableros visuales para cargas de trabajo, avances, retrasos, acuerdos, autorizaciones y cuellos de botella.</p></div>
+            <div class="tool-card"><h3>Coordina y ejecuta</h3><p>Tarjetas de acción con responsable, plazo, comentarios, involucrados, checklist, etiquetas, historial y estatus.</p></div>
+            <div class="tool-card"><h3>Supervisa y mejora</h3><p>Seguimiento activo de compromisos, procesos, proyectos, minutas, productividad y desempeño.</p></div>
+          </div>
+          <div class="utility-actions">
+            <a class="btn btn-primary" href="https://wa.me/526671450096" target="_blank" rel="noopener">Solicitar demo por WhatsApp</a>
+            <a class="btn btn-light" href="#/reto-nomina-muerta">Medir síntomas con el Reto</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="reto-nomina-muerta" class="tool-subpage" data-page-route="reto-nomina-muerta">
+      <div class="wrap">
+        <div class="subpage-hero">
+          <div class="kicker">Reto Nómina Muerta</div>
+          <h1>Una alerta rápida para detectar inercia operativa disfrazada de productividad.</h1>
+          <p>Selecciona con honestidad los síntomas que reflejan la realidad actual de tu empresa o equipo. Al final, el sistema estima el nivel de riesgo y permite calcular el impacto económico tentativo.</p>
+          <div class="subpage-nav">
+            <a class="btn btn-light" href="#/recupera-nomina-muerta">Recupera tu Nómina Muerta</a>
+            <a class="btn btn-outline" href="#/autodiagnostico-lideres">Diagnóstico líderes</a>
+            <a class="btn btn-outline" href="#/autodiagnostico-colaboradores">Diagnóstico colaboradores</a>
+            <a class="btn btn-outline" href="#top">Volver al inicio</a>
+          </div>
+        </div>
+
+        <div class="tool-form-card">
+          <h2>Checklist del Reto</h2>
+          <p class="lead">Marca solo los síntomas que claramente existen hoy. No es una encuesta de opinión: es una radiografía operativa de señales críticas.</p>
+          <div id="retoChecklist"></div>
+          <div class="utility-actions">
+            <button class="btn btn-primary" type="button" id="retoBtn">Evaluar riesgo</button>
+            <button class="btn btn-light" type="button" id="retoClearBtn">Limpiar selección</button>
+          </div>
+          <div id="retoResultado" class="tool-result"></div>
+
+          <div id="retoCalculatorBox" style="display:none; margin-top:22px;">
+            <div class="inline-note" id="retoPorcentajeTentativo"></div>
+            <label for="retoNominaInput">Ingresa la nómina mensual actual del equipo</label>
+            <input id="retoNominaInput" type="text" placeholder="Ej. 350,000" inputmode="numeric">
+            <div class="utility-actions">
+              <button class="btn btn-primary" type="button" id="retoCalcMoneyBtn">Calcular impacto económico</button>
+            </div>
+            <div id="retoCalculoResultados" class="tool-result"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="autodiagnostico-lideres" class="tool-subpage" data-page-route="autodiagnostico-lideres">
+      <div class="wrap">
+        <div class="subpage-hero">
+          <div class="kicker">Autodiagnóstico para líderes</div>
+          <h1>Evalúa la calidad de ejecución, supervisión y alineación de tu equipo.</h1>
+          <p>Diseñado para directores, gerentes, coordinadores y responsables de área que necesitan detectar riesgos operativos antes de que se conviertan en cultura.</p>
+          <div class="subpage-nav">
+            <a class="btn btn-light" href="#/autodiagnostico-colaboradores">Ir a colaboradores</a>
+            <a class="btn btn-outline" href="#/reto-nomina-muerta">Ir al Reto</a>
+            <a class="btn btn-outline" href="#/recupera-nomina-muerta">Recupera tu Nómina Muerta</a>
+            <a class="btn btn-outline" href="#top">Volver al inicio</a>
+          </div>
+        </div>
+        <div class="tool-form-card">
+          <h2>Información del diagnóstico</h2>
+          <div class="mini-grid">
+            <div><label for="liderNombre">Nombre</label><input id="liderNombre" type="text"></div>
+            <div><label for="liderArea">Área o departamento</label><input id="liderArea" type="text"></div>
+            <div><label for="liderPlaza">Plaza o ubicación</label><input id="liderPlaza" type="text"></div>
+            <div><label for="liderCorreo">Correo electrónico</label><input id="liderCorreo" type="email"></div>
+          </div>
+          <div class="inline-note">Fecha y hora del diagnóstico: <strong id="liderFecha"></strong></div>
+          <p class="lead">Selecciona una opción por cada pregunta según la realidad de tu equipo.</p>
+          <div id="liderQuestions"></div>
+          <div class="utility-actions">
+            <button class="btn btn-primary" type="button" id="liderBtn">Calcular puntaje</button>
+            <button class="btn btn-light" type="button" id="liderClearBtn">Limpiar respuestas</button>
+          </div>
+          <div id="liderResultado" class="tool-result"></div>
+          <div id="liderFocus" class="tool-result"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="autodiagnostico-colaboradores" class="tool-subpage" data-page-route="autodiagnostico-colaboradores">
+      <div class="wrap">
+        <div class="subpage-hero">
+          <div class="kicker">Autodiagnóstico para colaboradores</div>
+          <h1>Detecta fricción diaria, retrabajo, esperas y desgaste operativo desde la experiencia real.</h1>
+          <p>Esta versión permite capturar lo que muchas veces no aparece en los reportes: interrupciones, tareas repetidas, falta de claridad, dependencia de otros y sensación de estar ocupado sin avanzar.</p>
+          <div class="subpage-nav">
+            <a class="btn btn-light" href="#/autodiagnostico-lideres">Ir a líderes</a>
+            <a class="btn btn-outline" href="#/reto-nomina-muerta">Ir al Reto</a>
+            <a class="btn btn-outline" href="#/recupera-nomina-muerta">Recupera tu Nómina Muerta</a>
+            <a class="btn btn-outline" href="#top">Volver al inicio</a>
+          </div>
+        </div>
+        <div class="tool-form-card">
+          <h2>Información del diagnóstico</h2>
+          <div class="mini-grid">
+            <div><label for="colabNombre">Nombre</label><input id="colabNombre" type="text"></div>
+            <div><label for="colabArea">Área o departamento</label><input id="colabArea" type="text"></div>
+            <div><label for="colabPlaza">Plaza o ubicación</label><input id="colabPlaza" type="text"></div>
+            <div><label for="colabCorreo">Correo electrónico</label><input id="colabCorreo" type="email"></div>
+          </div>
+          <div class="inline-note">Fecha y hora del diagnóstico: <strong id="colabFecha"></strong></div>
+          <p class="lead">Selecciona la opción que más se acerque a tu experiencia laboral real. No hay respuestas buenas o malas, solo verdades útiles.</p>
+          <div id="colabQuestions"></div>
+          <div class="utility-actions">
+            <button class="btn btn-primary" type="button" id="colabBtn">Calcular puntaje</button>
+            <button class="btn btn-light" type="button" id="colabClearBtn">Limpiar respuestas</button>
+          </div>
+          <div id="colabResultado" class="tool-result"></div>
+          <div id="colabFocus" class="tool-result"></div>
+        </div>
       </div>
     </section>
   </main>
@@ -2027,5 +2429,284 @@
 
     renderReviews();
   </script>
+
+  <script>
+    /* === V8: SPA interna para subpáginas, calculadora y diagnósticos === */
+    const NM_RETO_CATEGORIES = [{"title": "Flujo operativo ineficiente", "questions": ["¿Hay procesos detenidos solo por una firma que podrías automatizar?", "¿Se comparte el mismo archivo con varias personas, pero nadie asume el compromiso, provocando retrasos?", "¿Tu equipo repite información constantemente porque los sistemas internos no están integrados?", "¿Hay tareas críticas detenidas porque dependen de una persona específica y no del sistema?", "¿El mismo dato se captura o corrige más de una vez porque el flujo de trabajo quedó abierto o mal cerrado?"]}, {"title": "Coordinación Interáreas y Flujo de Información Formal", "questions": ["¿El seguimiento a tareas o procesos formales depende de correos o llamadas sin dejar trazabilidad?", "¿Se extravían archivos o documentos digitales porque no hay un registro centralizado?", "¿Se repiten solicitudes entre áreas porque no hay coordinación o visibilidad interna?", "¿La colaboración entre áreas ocurre más por relaciones personales que por procesos definidos?", "¿Las entregas o respuestas a clientes se retrasan porque los equipos internos no están alineados?", "¿No existe una plataforma para saber en tiempo real quién tiene una tarea y en qué estado está?", "¿Se cierran tareas sin validar si el problema, interno o externo, fue resuelto de fondo?", "¿Tu equipo pierde más tiempo buscando información que resolviendo problemas?", "¿Se gestionan temas urgentes por canales informales, sin dejar evidencia operativa?", "¿El cliente o el colaborador, deben repetir lo mismo varias veces porque la información no fluye entre áreas?"]}, {"title": "Comunicación dispersa", "questions": ["¿El equipo manda correos con copia a todos solo para protegerse?", "¿Lo urgente se pierde entre memes y mensajes mezclados en WhatsApp, o cadenas de correos?", "¿Toman decisiones por teléfono que luego nadie documenta ni respalda?", "¿Tu equipo consulta varios medios (correo, chats, notas, agendas…) para priorizar qué debe hacer hoy?", "¿La mayoría de los acuerdos clave se pierden entre conversaciones informales?"]}, {"title": "Gestión de tareas y supervisión", "questions": ["¿Se da seguimiento a tareas por memoria o intuición, sin sistema visible?", "¿Los líderes necesitan supervisar con reuniones constantes porque no hay visibilidad de avance?", "¿Se repiten errores por instrucciones vagas o mal entendidas desde el inicio?", "¿Hay tareas que se siguen haciendo solo porque “así se ha hecho siempre”?", "¿Las prioridades cambian sin que el equipo se entere hasta que se comteió un error?"]}, {"title": "Trabajo en equipo mal coordinado", "questions": ["¿Hay personas trabajando en lo mismo sin saber que otros ya lo están haciendo?", "¿Existen proyectos sin responsabilidad clara y definida en todas sus etapas y acciones?", "¿Se llevan a cabo reuniones donde no se asignan responsables ni fechas claras a los acuerdos?", "¿Tienes reuniones de “coordinación” que no coordinan nada y hay que repetirlas?", "¿Las tareas se trasladan entre áreas sin contexto claro, generando retrabajos o errores?"]}, {"title": "Desalineación estratégica", "questions": ["¿Se sigue destinando tiempo a tareas que ya no aportan valor real al proceso, objetivos o metas?", "¿Estás midiendo cosas que no cambian los resultados clave del negocio?", "¿Has hecho cambios que el equipo no entiende ni aplica correctamente?", "¿Tu equipo sabe cómo su trabajo impacta los objetivos y metas reales del negocio?", "¿Se toman decisiones operativas sin tener clara la información estratégica?"]}, {"title": "Desgaste cognitivo o emocional", "questions": ["¿El equipo pierde tiempo constantemente buscando instrucciones en múltiples canales dispersos cada vez?", "¿Continuamente los equipos saltan de tarea en tarea sin cerrar ni lograr foco?", "¿Se repiten las mismas explicaciones porque no hay un canal unificado?", "¿Tu equipo termina el día agotado pero sin sensación de avance?", "¿Sientes que están ocupados todo el tiempo, pero no sabes si están siendo productivos?"]}, {"title": "Variables adicionales frecuentes", "questions": ["¿Constantemente se busca un correo importante durante 10 minutos?", "¿Pides autorizaciones urgentes por mensajes y correos que luego nadie encuentra?", "¿Continuamente revisan lo mismo en cada reunión porque no hay un seguimiento formal?", "¿Hay procesos sustantivos que se congelan esperando validación sin trazabilidad entre áreas?", "¿Se envía el mismo reporte a varios jefes, duplicando tiempo y esfuerzo sin valor agregado?", "¿Das seguimiento por correo a temas urgentes que se entierran en la bandeja?", "¿Se ha normalizado la espera como parte del proceso “natural” del día a día?", "¿Reinician tareas porque no quedó registro del previo avance?", "¿Confías más en preguntar otra vez que en revisar algún sistema o plataforma?"]}];
+    const NM_LEADER_QUESTIONS = [{"text": "¿Qué tan frecuente es la sobrecarga operativa por desorganización?", "options": ["Rara vez me siento saturado.", "Algunas veces me abruma el volumen de temas abiertos.", "Muchas veces estoy mentalmente agotado por fragmentación.", "Vivo con estrés operativo constante sin lograr resultados claros."]}, {"text": "¿Con qué frecuencia se repiten tareas o validaciones por doble cadena de mando?", "options": ["Nunca.", "Ocasionalmente.", "Con frecuencia.", "Todo el tiempo."]}, {"text": "¿Qué tan alineadas están las actividades con los objetivos actuales?", "options": ["Totalmente alineadas.", "Alineadas en general, con algunos rezagos.", "Muchas tareas ya no tienen sentido, pero siguen activas.", "Nadie tiene claridad de si lo que hace sigue siendo prioridad."]}, {"text": "¿Cómo es el seguimiento entre áreas en procesos compartidos?", "options": ["Trazabilidad total: usamos tableros o sistemas visibles.", "A veces se actualiza el estatus, pero no siempre.", "Solo se da seguimiento si alguien insiste.", "No hay forma clara de saber qué pasó con lo que se envió."]}, {"text": "¿Cuántos procesos siguen dependiendo de firmas físicas o aprobaciones manuales?", "options": ["Ninguno.", "Algunos casos excepcionales.", "Muchos trámites internos.", "Casi todos los flujos."]}, {"text": "¿Tenemos visibilidad sobre tareas en curso, estancadas o innecesarias?", "options": ["Total: usamos tableros o sistemas que lo muestran en tiempo real.", "Parcial: sabemos lo general, pero no en detalle ni por persona.", "Mínima: solo reaccionamos cuando hay retrasos o problemas.", "Nula: no hay forma clara de saberlo."]}, {"text": "¿Cuántas actividades se hacen solo por inercia o tradición?", "options": ["Casi ninguna: lo cuestionamos constantemente.", "Algunas: las detectamos, pero cuesta eliminarlas.", "Muchas: sabemos que existen, pero nadie las toca.", "La mayoría: no hay revisión crítica real de procesos."]}, {"text": "¿Qué tanto tiempo del equipo se va en tareas urgentes sin impacto?", "options": ["<10%: trabajamos por prioridades reales.", "10-30%: lo reconocemos y lo estamos corrigiendo.", "30-50%: hay demasiada reacción y poca planeación.", ">50%: estamos en modo “apagafuegos” constante."]}, {"text": "¿Cuántas juntas podrían reemplazarse por un mensaje o decisión directa?", "options": ["<10%: nuestras juntas son breves y resolutivas.", "10-30%: algunas se alargan sin sentido.", "30-50%: varias se hacen por costumbre.", ">50%: nos reunimos mucho… pero resolvemos poco."]}, {"text": "¿Qué tanto retrabajo o errores se podrían evitar con procesos claros?", "options": ["Casi nada: nuestros procesos están bien definidos y documentados.", "Algunos: hay ambigüedades que provocan fallas.", "Muchos: falta claridad y se improvisa demasiado.", "La mayoría: no hay procesos claros ni consistentes."]}, {"text": "¿Qué tan claro es lo que se espera de cada persona en términos de impacto?", "options": ["Muy claro: cada quien conoce su aporte estratégico.", "Medianamente claro: sabemos qué hacer, pero no por qué.", "Poco claro: ejecutamos sin saber el impacto real.", "Nada claro: todos hacen lo suyo, pero sin dirección común."]}, {"text": "¿Cuántos proyectos siguen activos aunque ya no generan valor?", "options": ["Ninguno: hacemos revisiones periódicas.", "Pocos: los cuestionamos, pero cuesta cerrarlos.", "Varios: se mantienen por compromiso político o miedo al cambio.", "Muchos: no cerramos nada aunque ya no sirva."]}, {"text": "¿A quién se reconoce más: al que resuelve caos o al que lo previene?", "options": ["Al que previene: valoramos la anticipación y el diseño.", "A ambos por igual: hay equilibrio.", "Al que resuelve: se premia la reacción visible.", "Solo al que apaga fuegos: la prevención pasa desapercibida."]}, {"text": "¿Qué tanto talento de alto nivel está ocupado en tareas operativas de bajo valor?", "options": ["Casi nada: el talento está enfocado en generar valor estratégico.", "Algunas funciones: estamos migrando responsabilidades.", "Muchas personas: el potencial está desperdiciado.", "La mayoría: usamos mal el tiempo del mejor talento."]}, {"text": "¿Tenemos mecanismos mensuales para detectar y reducir Nómina Muerta?", "options": ["Sí: forma parte de nuestra operación continua.", "A veces: lo hacemos si alguien lo propone.", "Rara vez: solo si hay una crisis.", "Nunca: no hay un sistema ni cultura de prevención."]}, {"text": "¿Qué tanto tiempo del equipo se invierte en tareas que no deberían existir?", "options": ["Revisamos y eliminamos tareas sin impacto cada semana", "Se detectan algunas, pero siguen en curso", "Sospechamos de algunas, pero nadie las elimina", "Nunca lo hemos cuestionado"]}, {"text": "¿Qué tan definidos están los entregables antes de ejecutar una tarea?", "options": ["Cada tarea parte con un entregable definido y validable", "Entendemos lo esperado, pero cambia al avanzar", "Hay objetivos, pero no entregables claros", "Casi nunca. Las instrucciones son vagas"]}, {"text": "¿Qué tan común es repetir tareas o procesos que ya se habían hecho?", "options": ["Rara vez sucede, tenemos trazabilidad operativa", "A veces, pero se detecta a tiempo", "Frecuente: por falta de trazabilidad o duplicación", "Todo el tiempo. Nadie sabe qué se ha hecho"]}, {"text": "¿Qué tan visible es el estatus real de una tarea sin necesidad de preguntar?", "options": ["Todo es visible en tableros compartidos con trazabilidad", "Hay formas de verlo, pero no en tiempo real", "Más o menos, si el equipo está disponible", "No es visible. Hay que preguntar a cada persona"]}, {"text": "¿Quién da seguimiento para verificar que lo que pidió… sí se hizo?", "options": ["El sistema exige validación del solicitante", "El líder lo revisa informalmente", "Solo si hay problemas o retrasos", "Nadie. Si no lo mencionan, se asume hecho"]}];
+    const NM_COLLAB_QUESTIONS = [{"text": "¿Qué tan frecuente es que las reuniones se repitan sin acciones claras de la anterior?", "options": ["Nunca: siempre se da seguimiento.", "A veces falta claridad.", "Se discute lo mismo con frecuencia.", "Siempre volvemos a empezar desde cero."]}, {"text": "¿Qué tan seguido das seguimiento por email a tareas que se pierden entre cadenas y reenvíos?", "options": ["Casi nunca.", "Algunas veces.", "Frecuente.", "Todo el tiempo."]}, {"text": "¿Con qué frecuencia pierdes tiempo buscando archivos, correos o instrucciones mal organizadas?", "options": ["Rara vez.", "Algunas veces a la semana.", "Casi todos los días.", "Todo el tiempo."]}, {"text": "¿Qué tan fácil es rastrear en qué estatus va algo que ya entregaste a otra área?", "options": ["Muy claro y transparente.", "Regularmente informan.", "Casi nunca hay visibilidad.", "Nunca sabes en qué quedó."]}, {"text": "¿Con qué frecuencia se repite el envío o reporte a varios líderes sin saber quién debe validarlo?", "options": ["Nunca.", "Ocasionalmente.", "Frecuente.", "Todo el tiempo."]}, {"text": "¿Qué tan claro tienes hoy qué tareas son prioritarias y qué impacto generan?", "options": ["Muy claro: sé qué hacer, para qué sirve y a qué meta contribuye.", "Más o menos: tengo tareas asignadas, pero no siempre entiendo su valor.", "Poco claro: hago lo que me piden, sin mucha visibilidad del propósito.", "Nada claro: solo reacciono a lo que llega."]}, {"text": "¿Con qué frecuencia haces tareas que sientes que no sirven de mucho?", "options": ["Casi nunca: casi todo lo que hago tiene sentido y aporta.", "Algunas veces a la semana.", "Casi todos los días.", "Todo el tiempo: muchas cosas parecen perder el tiempo."]}, {"text": "¿Qué tanto tiempo de tu jornada se va en juntas, correos o esperas improductivas?", "options": ["Menos de 1 hora.", "Entre 1 y 2 horas.", "Entre 2 y 4 horas.", "Más de 4 horas al día."]}, {"text": "¿Qué tan seguido haces retrabajo o tienes que corregir cosas por falta de claridad?", "options": ["Muy rara vez: las instrucciones son claras y el trabajo fluye.", "A veces: hay confusión en algunos procesos.", "Frecuente: las tareas cambian o no se explican bien.", "Muy seguido: casi todo implica ajustes, correcciones o volver a empezar."]}, {"text": "¿Te has quedado esperando a alguien, sistema, firma o proceso que frena tu avance?", "options": ["Casi nunca.", "A veces, pero lo resolvemos rápido.", "Frecuente: hay muchas dependencias que traban.", "Todo el tiempo: siempre estoy esperando algo para poder avanzar."]}, {"text": "¿Qué tan seguido entregas algo que nadie te da retroalimentación si sirvió o no?", "options": ["Casi nunca: me dan seguimiento y validación frecuente.", "A veces: recibo comentarios, pero no siempre.", "Frecuente: entrego cosas y nadie las revisa o responde.", "Todo el tiempo: no sé si lo que hago tiene uso real."]}, {"text": "¿Sientes que parte de tu talento o capacidad está subutilizado?", "options": ["No: estoy usando todo mi potencial en tareas de impacto.", "Un poco: hay margen para aportar más.", "Sí, bastante: hago cosas muy por debajo de lo que podría aportar.", "Totalmente: mi tiempo y talento están muy desperdiciados."]}, {"text": "¿Con qué frecuencia cambian las prioridades sin explicación?", "options": ["Rara vez: hay claridad y estabilidad en lo importante.", "A veces: cambian, pero se comunica bien.", "Frecuente: hay giros sin aviso.", "Todo el tiempo: el caos es parte del día a día."]}, {"text": "¿Qué tanto control sientes que tienes sobre el uso de tu tiempo?", "options": ["Mucho: administro bien mi jornada y tengo foco.", "Algo: aunque me interrumpen, logro organizarme.", "Poco: mi agenda depende 100% de lo que llega.", "Nada: mi día se consume en urgencias ajenas."]}, {"text": "¿Te sientes productivo o solo ocupado?", "options": ["Muy productivo: avanzo en cosas que generan resultados.", "Productivo, pero podría ser mejor.", "Más ocupado que productivo: hago mucho, pero no se ve reflejado.", "Solo ocupado: el tiempo se va, pero los avances son pocos."]}, {"text": "¿Qué tan seguido haces tareas urgentes que terminan siendo innecesarias o cambiadas después?", "options": ["Casi nada: los flujos están bien definidos.", "Algunos minutos, pero no siempre.", "Entre 30 minutos y 1 hora al día.", "Más de 1 hora diaria."]}, {"text": "¿Qué tanto tiempo pierdes esperando aprobaciones, datos o respuestas para poder avanzar?", "options": ["Rara vez: el trabajo se aprovecha tal cual está.", "A veces: duplico solo en algunos casos.", "Frecuente: me piden lo mismo con cambios menores.", "Todo el tiempo: lo tengo que hacer varias veces para distintos fines."]}, {"text": "¿Qué tan común es tener que repetir el mismo archivo, reporte o tarea para diferentes personas o plataformas?", "options": ["Muy claro: todo lo que hago tiene propósito y valor.", "Sé qué tareas aportan, pero también hay unas dudosas.", "Algunas cosas sí, pero muchas otras parecen cumplir por cumplir.", "No es claro: hago lo que me toca sin saber el impacto."]}, {"text": "¿Qué tan claro es para ti qué tareas sí aportan valor al área y cuáles solo son “relleno”?", "options": ["Casi nunca: las urgencias son reales y bien planteadas.", "A veces pasa, aunque tratamos de prever.", "Muy frecuente: muchas veces cambian las instrucciones después.", "Todo el tiempo: lo que urgía… ya no era necesario."]}, {"text": "¿Qué tan frecuente haces tareas que ya se habían hecho antes por alguien más?", "options": ["Rara vez: hay trazabilidad y claridad sobre avances previos.", "A veces: sucede, pero lo detectamos a tiempo.", "Muy seguido: nos pasamos el trabajo como si empezara de cero.", "Todo el tiempo: no hay visibilidad de lo que otros ya hicieron."]}];
+    const NM_LEADER_FOCUS = {"Flujo operativo ineficiente": [0, 4, 5, 7, 17], "Comunicación dispersa": [8], "Supervisión débil": [6, 9, 13, 15, 18, 19], "Desalineación estratégica": [2, 11, 12, 16], "Desgaste cognitivo": [1, 3, 10]};
+    const NM_COLLAB_FOCUS = {"Flujo operativo ineficiente": [0, 3, 4, 16, 17, 19], "Comunicación dispersa": [1, 10], "Supervisión débil": [2, 8, 9, 18], "Desalineación estratégica": [5, 11, 12], "Desgaste cognitivo": [6, 7, 13, 14, 15]};
+
+    function nmMoney(value) {
+      const numeric = String(value || '').replace(/[^0-9]/g, '');
+      return numeric ? Number(numeric).toLocaleString('es-MX') : '';
+    }
+    function nmParseMoney(value) {
+      return parseInt(String(value || '').replace(/[^0-9]/g, ''), 10) || 0;
+    }
+    function nmFormatCurrency(value) {
+      return '$' + Math.round(value || 0).toLocaleString('es-MX') + ' MXN';
+    }
+    function nmShowResult(id, html) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      el.innerHTML = html;
+      el.classList.add('active');
+    }
+    function nmHideResult(id) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      el.innerHTML = '';
+      el.classList.remove('active');
+    }
+
+    function nmRoute() {
+      const hash = window.location.hash || '#top';
+      const route = hash.startsWith('#/') ? hash.slice(2) : '';
+      const home = document.getElementById('homePage');
+      const pages = document.getElementById('singleIndexPages');
+      const subpages = document.querySelectorAll('.tool-subpage');
+
+      if (route) {
+        if (home) home.classList.add('is-hidden');
+        if (pages) pages.classList.add('active');
+        let found = false;
+        subpages.forEach(page => {
+          const active = page.dataset.pageRoute === route;
+          page.classList.toggle('active', active);
+          if (active) found = true;
+        });
+        if (!found) {
+          window.location.hash = '#/recupera-nomina-muerta';
+          return;
+        }
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        if (home) home.classList.remove('is-hidden');
+        if (pages) pages.classList.remove('active');
+        subpages.forEach(page => page.classList.remove('active'));
+        if (hash && hash !== '#top') {
+          setTimeout(() => {
+            const anchor = document.querySelector(hash);
+            if (anchor) anchor.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }, 20);
+        }
+      }
+    }
+
+    function nmRenderReto() {
+      const container = document.getElementById('retoChecklist');
+      if (!container || container.dataset.rendered === '1') return;
+      container.innerHTML = NM_RETO_CATEGORIES.map((cat, ci) => `
+        <div class="reto-category">
+          <h3>${cat.title}</h3>
+          ${cat.questions.map((q, qi) => `
+            <label class="check-item">
+              <input type="checkbox" class="nm-reto-check" value="1" data-category="${ci}" data-question="${qi}">
+              <span>${q}</span>
+            </label>
+          `).join('')}
+        </div>
+      `).join('');
+      container.dataset.rendered = '1';
+    }
+
+    function nmEvaluateReto() {
+      const total = document.querySelectorAll('.nm-reto-check:checked').length;
+      const max = document.querySelectorAll('.nm-reto-check').length || 49;
+      let interpretation = '';
+      if (total <= 5) {
+        interpretation = `🟢 <strong>Nivel Bajo (0–5 síntomas)</strong><br>Tu operación muestra señales de eficiencia y control. Aun así, los síntomas marcados deben atenderse antes de que escalen.`;
+      } else if (total <= 9) {
+        interpretation = `🟡 <strong>Nivel Moderado (6–9 síntomas)</strong><br>La Nómina Muerta comienza a camuflarse como “operación normal”. Rediseñar ahora evita que el problema se convierta en cultura.`;
+      } else if (total <= 19) {
+        interpretation = `🔴 <strong>Nivel Alto (10–19 síntomas)</strong><br>Estás pagando por trabajo que no produce resultados reales. Hay fricción estructural en procesos, roles, comunicación o seguimiento.`;
+      } else {
+        interpretation = `🚨 <strong>Nivel Crítico (20+ síntomas)</strong><br>Esto ya no es solo eficiencia: es liderazgo y sostenibilidad. No necesitas más esfuerzo, necesitas rediseñar el sistema operativo.`;
+      }
+      const pct = (total / max) * 100;
+      nmShowResult('retoResultado', `<strong>Síntomas detectados:</strong> ${total} de ${max}<br><br>${interpretation}`);
+      const pctBox = document.getElementById('retoPorcentajeTentativo');
+      if (pctBox) pctBox.innerHTML = `📊 <strong>% tentativo de Nómina Muerta:</strong> ${pct.toFixed(1)}%`;
+      const box = document.getElementById('retoCalculatorBox');
+      if (box) box.style.display = 'block';
+    }
+
+    function nmCalculateRetoMoney() {
+      const nomina = nmParseMoney(document.getElementById('retoNominaInput')?.value);
+      if (!nomina) {
+        nmShowResult('retoCalculoResultados', '⚠️ Ingresa una nómina mensual válida.');
+        return;
+      }
+      const total = document.querySelectorAll('.nm-reto-check:checked').length;
+      const max = document.querySelectorAll('.nm-reto-check').length || 49;
+      const pct = total / max;
+      const mensual = nomina * pct;
+      const anual = mensual * 12;
+      nmShowResult('retoCalculoResultados',
+        `<strong>Estimación mensual:</strong> ${nmFormatCurrency(mensual)}<br>` +
+        `<strong>Estimación anual:</strong> ${nmFormatCurrency(anual)}<br><br>` +
+        `<strong>Lectura ejecutiva:</strong> este monto no significa necesariamente recorte; representa capacidad pagada que puede rediseñarse, reasignarse y convertirse en avance real.`
+      );
+    }
+
+    function nmRenderDiagnostic(containerId, questions, prefix) {
+      const container = document.getElementById(containerId);
+      if (!container || container.dataset.rendered === '1') return;
+      container.innerHTML = questions.map((q, i) => `
+        <div class="diag-question">
+          <p>${i + 1}. ${q.text}</p>
+          ${q.options.map((opt, j) => `
+            <label>
+              <input type="radio" name="${prefix}q${i}" value="${j + 1}">
+              <span>${opt}</span>
+            </label>
+          `).join('')}
+        </div>
+      `).join('');
+      container.dataset.rendered = '1';
+    }
+
+    function nmDiagnosticInterpretation(avg, typeLabel) {
+      if (avg <= 1.5) return `Nivel Excelente: ${typeLabel} muestra alto aprovechamiento del tiempo y baja presencia de Nómina Muerta. Estimación: <10%.`;
+      if (avg <= 2.1) return `Nivel Bueno: hay funcionamiento razonable, aunque existen oportunidades de mejora. Estimación de Nómina Muerta: 10–20%.`;
+      if (avg <= 2.7) return `Nivel Moderado: se detectan focos visibles de fricción operativa. Estimación de Nómina Muerta: 20–30%.`;
+      if (avg <= 3.3) return `Nivel Crítico: existen síntomas estructurales de ineficiencia, retrabajo, desgaste o falta de seguimiento. Estimación: 30–40%.`;
+      return `Nivel Muy Alto: hay alta presencia de Nómina Muerta. Se recomienda intervención, rediseño de flujos y claridad inmediata de prioridades. Estimación: >40%.`;
+    }
+
+    function nmCalcDiagnostic(prefix, questions, focusMap, resultId, focusId, typeLabel) {
+      let total = 0;
+      let answered = 0;
+      const values = [];
+      for (let i = 0; i < questions.length; i++) {
+        const selected = document.querySelector(`input[name="${prefix}q${i}"]:checked`);
+        if (selected) {
+          const value = parseInt(selected.value, 10);
+          total += value;
+          values[i] = value;
+          answered++;
+        } else {
+          values[i] = 0;
+        }
+      }
+      if (answered < questions.length) {
+        nmShowResult(resultId, `⚠️ Responde las ${questions.length} preguntas para obtener un resultado completo. Te faltan ${questions.length - answered}.`);
+        nmHideResult(focusId);
+        return;
+      }
+      const avg = total / questions.length;
+      const pct = ((avg - 1) / 3) * 100;
+      const interpretation = nmDiagnosticInterpretation(avg, typeLabel);
+      nmShowResult(resultId,
+        `<strong>Puntaje total:</strong> ${total} de ${questions.length * 4}<br>` +
+        `<strong>Promedio de riesgo:</strong> ${avg.toFixed(2)} / 4<br>` +
+        `<strong>% tentativo de Nómina Muerta:</strong> ${pct.toFixed(1)}%<br><br>${interpretation}`
+      );
+
+      const rows = Object.entries(focusMap).map(([focus, indexes]) => {
+        const score = indexes.reduce((acc, idx) => acc + (values[idx] || 0), 0);
+        const max = indexes.length * 4;
+        const focusPct = max ? (score / max) * 100 : 0;
+        const indicators = indexes.map(idx => `${idx + 1}`).join(', ');
+        return `<tr><td><strong>${focus}</strong></td><td>${score} / ${max} (${focusPct.toFixed(0)}%)</td><td>Preguntas ${indicators}</td></tr>`;
+      }).join('');
+      nmShowResult(focusId,
+        `<strong>Resumen de focos de intervención</strong>` +
+        `<table class="focus-table"><thead><tr><th>Foco</th><th>Puntaje</th><th>Indicadores</th></tr></thead><tbody>${rows}</tbody></table>`
+      );
+    }
+
+    function nmClearDiagnostic(prefix, resultId, focusId) {
+      document.querySelectorAll(`input[name^="${prefix}q"]`).forEach(input => input.checked = false);
+      nmHideResult(resultId);
+      nmHideResult(focusId);
+    }
+
+    function nmCalculateRecovery() {
+      const empleados = parseInt(document.getElementById('calcEmpleados')?.value, 10) || 0;
+      const tiempo = (parseInt(document.getElementById('calcTiempo')?.value, 10) || 0) / 100;
+      const sueldo = nmParseMoney(document.getElementById('calcSueldo')?.value);
+      const sueldoTotalInput = nmParseMoney(document.getElementById('calcSueldoTotal')?.value);
+      if (!empleados || !tiempo || (!sueldo && !sueldoTotalInput)) {
+        nmShowResult('calcResultado', '⚠️ Completa el número de personas, el porcentaje de tiempo muerto y al menos una referencia de sueldo.');
+        return;
+      }
+      const sueldoTotal = sueldoTotalInput || (empleados * sueldo);
+      const personalOptimizable = Math.round(empleados * tiempo);
+      const nominaMuertaMensual = Math.round(sueldoTotal * tiempo);
+      const nominaMuertaAnual = nominaMuertaMensual * 12;
+      const recuperacionMensual = Math.round(nominaMuertaMensual * 0.7);
+      const recuperacionAnual = recuperacionMensual * 12;
+      nmShowResult('calcResultado',
+        `<strong>Personal equivalente optimizable:</strong> ${personalOptimizable} personas<br>` +
+        `<strong>Nómina Muerta mensual actual promedio:</strong> ${nmFormatCurrency(nominaMuertaMensual)}<br>` +
+        `<strong>Nómina Muerta anual actual promedio:</strong> ${nmFormatCurrency(nominaMuertaAnual)}<br><br>` +
+        `<strong>Recuperación por optimización de la capacidad laboral instalada:</strong><br>` +
+        `Mensual: ${nmFormatCurrency(recuperacionMensual)}<br>` +
+        `Anual: ${nmFormatCurrency(recuperacionAnual)}<br><br>` +
+        `<span>Este cálculo estima el valor económico del tiempo recuperable. No equivale necesariamente a recorte de personal; puede convertirse en capacidad de ejecución, servicio, ventas, seguimiento o proyectos críticos.</span>`
+      );
+    }
+
+    function nmInitTools() {
+      nmRenderReto();
+      nmRenderDiagnostic('liderQuestions', NM_LEADER_QUESTIONS, 'lider');
+      nmRenderDiagnostic('colabQuestions', NM_COLLAB_QUESTIONS, 'colab');
+
+      const now = new Date().toLocaleString('es-MX');
+      const liderFecha = document.getElementById('liderFecha');
+      const colabFecha = document.getElementById('colabFecha');
+      if (liderFecha && !liderFecha.textContent) liderFecha.textContent = now;
+      if (colabFecha && !colabFecha.textContent) colabFecha.textContent = now;
+
+      ['calcSueldo','calcSueldoTotal','retoNominaInput'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el && !el.dataset.bound) {
+          el.addEventListener('input', () => { el.value = nmMoney(el.value); });
+          el.dataset.bound = '1';
+        }
+      });
+
+      document.getElementById('calcBtn')?.addEventListener('click', nmCalculateRecovery);
+      document.getElementById('calcResetBtn')?.addEventListener('click', () => {
+        ['calcEmpleados','calcSueldo','calcSueldoTotal'].forEach(id => {
+          const el = document.getElementById(id);
+          if (!el) return;
+          if (id === 'calcEmpleados') el.value = '20';
+          else if (id === 'calcSueldo') el.value = '15,000';
+          else el.value = '';
+        });
+        const tiempo = document.getElementById('calcTiempo');
+        if (tiempo) tiempo.value = '20';
+        nmHideResult('calcResultado');
+      });
+
+      document.getElementById('retoBtn')?.addEventListener('click', nmEvaluateReto);
+      document.getElementById('retoClearBtn')?.addEventListener('click', () => {
+        document.querySelectorAll('.nm-reto-check').forEach(cb => cb.checked = false);
+        nmHideResult('retoResultado');
+        nmHideResult('retoCalculoResultados');
+        const box = document.getElementById('retoCalculatorBox');
+        if (box) box.style.display = 'none';
+        const nomina = document.getElementById('retoNominaInput');
+        if (nomina) nomina.value = '';
+      });
+      document.getElementById('retoCalcMoneyBtn')?.addEventListener('click', nmCalculateRetoMoney);
+
+      document.getElementById('liderBtn')?.addEventListener('click', () => nmCalcDiagnostic('lider', NM_LEADER_QUESTIONS, NM_LEADER_FOCUS, 'liderResultado', 'liderFocus', 'El equipo'));
+      document.getElementById('liderClearBtn')?.addEventListener('click', () => nmClearDiagnostic('lider', 'liderResultado', 'liderFocus'));
+      document.getElementById('colabBtn')?.addEventListener('click', () => nmCalcDiagnostic('colab', NM_COLLAB_QUESTIONS, NM_COLLAB_FOCUS, 'colabResultado', 'colabFocus', 'Tu jornada'));
+      document.getElementById('colabClearBtn')?.addEventListener('click', () => nmClearDiagnostic('colab', 'colabResultado', 'colabFocus'));
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      nmInitTools();
+      nmRoute();
+    });
+    window.addEventListener('hashchange', nmRoute);
+  </script>
+
 </body>
 </html>
