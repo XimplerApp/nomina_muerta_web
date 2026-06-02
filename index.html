@@ -700,6 +700,157 @@
       .admin-entry { align-items: flex-start; flex-direction: column; }
     }
 
+  
+
+    /* === V4: recomendaciones ordenadas, scroll, solicitud de destacada y admin más claro === */
+    .verification-box {
+      margin: 12px 0 18px;
+      padding: 18px;
+      border-radius: 20px;
+      border: 1px solid rgba(214,181,109,.42);
+      background: linear-gradient(180deg, rgba(214,181,109,.12), rgba(255,255,255,.58));
+    }
+    .verification-box .field-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .verification-box label { margin-top: 10px; }
+    .verification-note {
+      margin: 12px 0 0;
+      color: #65747b;
+      font-size: 13px;
+      line-height: 1.45;
+    }
+    .review-card { position: relative; }
+    .review-controls {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+      align-items: center;
+      margin: 0 0 16px;
+      padding: 14px;
+      border-radius: 20px;
+      background: rgba(16,42,53,.045);
+      border: 1px solid rgba(16,42,53,.08);
+    }
+    .review-controls select {
+      min-width: 230px;
+      background: rgba(255,255,255,.9);
+      padding: 11px 13px;
+      border-radius: 999px;
+      font-weight: 800;
+      color: var(--navy);
+    }
+    .review-counter {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 800;
+      line-height: 1.3;
+    }
+    .review-scroll-shell {
+      border-radius: 22px;
+      background: rgba(255,255,255,.36);
+      border: 1px solid rgba(16,42,53,.06);
+      padding: 10px;
+    }
+    .review-list {
+      max-height: 720px;
+      overflow-y: auto;
+      padding: 4px 8px 4px 4px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      align-items: start;
+      scrollbar-gutter: stable;
+    }
+    .review-list::-webkit-scrollbar, .admin-list::-webkit-scrollbar { width: 10px; }
+    .review-list::-webkit-scrollbar-track, .admin-list::-webkit-scrollbar-track { background: rgba(16,42,53,.06); border-radius: 999px; }
+    .review-list::-webkit-scrollbar-thumb, .admin-list::-webkit-scrollbar-thumb { background: rgba(31,97,112,.38); border-radius: 999px; }
+    .review-item {
+      min-height: 220px;
+      display: flex;
+      flex-direction: column;
+      transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+    }
+    .review-item:hover { transform: translateY(-2px); box-shadow: 0 16px 36px rgba(16,42,53,.10); border-color: rgba(31,97,112,.24); }
+    .review-item p { margin-top: 10px; line-height: 1.55; }
+    .review-badges {
+      display:flex;
+      gap:7px;
+      flex-wrap:wrap;
+      margin-top: auto;
+      padding-top: 12px;
+    }
+    .status-pill.status-requested { background: rgba(214,181,109,.18); color: #5f4a19; }
+    .status-pill.status-verified { background: rgba(31,97,112,.13); color: var(--teal); }
+    .status-pill.status-not-featured { background: rgba(83,96,104,.10); color: #536068; }
+    .owner-only { border-style: dashed; }
+    .featured-card-live .badge small { opacity: .68; font-size: 11px; margin-left: 6px; }
+    .admin-panel { scroll-margin-top: 95px; }
+    .admin-explainer {
+      margin: 18px 0;
+      padding: 18px;
+      border-radius: 22px;
+      background: rgba(243,240,231,.08);
+      border: 1px solid rgba(243,240,231,.14);
+      color: rgba(243,240,231,.82);
+      line-height: 1.55;
+    }
+    .admin-explainer strong { color: var(--cream); }
+    .admin-stats {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 10px;
+      margin: 0 0 16px;
+    }
+    .admin-stat {
+      border-radius: 18px;
+      padding: 12px;
+      background: rgba(243,240,231,.08);
+      border: 1px solid rgba(243,240,231,.13);
+      color: rgba(243,240,231,.78);
+      font-size: 12px;
+      font-weight: 800;
+    }
+    .admin-stat strong { display:block; color: var(--cream); font-size: 22px; line-height: 1; margin-bottom: 5px; }
+    .admin-list {
+      max-height: 620px;
+      overflow-y: auto;
+      padding-right: 8px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .admin-item { min-height: 210px; }
+    .admin-contact {
+      margin: 10px 0 0;
+      padding: 10px 12px;
+      border-radius: 14px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(243,240,231,.10);
+      color: rgba(243,240,231,.76);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+    .admin-actions { gap: 8px; }
+    .mini-btn:disabled {
+      opacity: .45;
+      cursor: not-allowed;
+      filter: grayscale(.2);
+    }
+    .admin-select-label { color: rgba(243,240,231,.78); font-weight: 900; font-size: 13px; margin: 0 0 8px; display:block; }
+    @media (max-width: 1120px) {
+      .review-list, .admin-list { grid-template-columns: 1fr; }
+      .admin-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 620px) {
+      .verification-box .field-grid, .review-controls { grid-template-columns: 1fr; }
+      .review-controls select { width: 100%; min-width: 0; }
+      .review-list { max-height: 620px; }
+      .admin-stats { grid-template-columns: 1fr; }
+    }
+
   </style>
 </head>
 <body>
@@ -885,6 +1036,35 @@
             <textarea id="message" name="message" placeholder="Escribe aquí tu recomendación..." required></textarea>
 
             <label class="check-row">
+              <input type="checkbox" id="requestFeature" />
+              <span>Quiero que mi recomendación pueda ser considerada como <strong>destacada</strong>. Para evitar comentarios falsos, autorizo que el administrador verifique mi correo, celular o perfil profesional antes de destacarla.</span>
+            </label>
+
+            <div class="verification-box" id="featureRequestBox" hidden>
+              <div class="field-grid">
+                <div>
+                  <label for="email">Correo de verificación</label>
+                  <input id="email" name="email" type="email" autocomplete="email" placeholder="tu@email.com" />
+                </div>
+                <div>
+                  <label for="phone">Celular / WhatsApp</label>
+                  <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="Ej. +52 667 000 0000" />
+                </div>
+              </div>
+              <label for="publicLink">LinkedIn / sitio / referencia pública</label>
+              <input id="publicLink" name="publicLink" type="url" placeholder="https://linkedin.com/in/tu-perfil" />
+
+              <label for="verificationMethod">Método preferido de verificación</label>
+              <select id="verificationMethod" name="verificationMethod">
+                <option value="Correo">Correo</option>
+                <option value="WhatsApp / celular">WhatsApp / celular</option>
+                <option value="LinkedIn / perfil público">LinkedIn / perfil público</option>
+                <option value="Otro">Otro</option>
+              </select>
+              <p class="verification-note">En esta versión estática no se envía un código real. En una publicación real, aquí se puede activar verificación por correo, OTP por WhatsApp/SMS o validación manual desde el panel.</p>
+            </div>
+
+            <label class="check-row">
               <input type="checkbox" id="permission" required />
               <span>Autorizo que mi recomendación pueda mostrarse en esta página. Si el sistema detecta lenguaje ofensivo, quedará pendiente de revisión.</span>
             </label>
@@ -893,14 +1073,23 @@
               <button class="btn btn-primary" type="submit" id="submitBtn">Publicar recomendación</button>
               <button class="btn btn-light" type="button" id="cancelEditBtn" style="display:none;">Cancelar edición</button>
             </div>
-            <p class="tiny-note">Versión estática/prototipo: las recomendaciones se guardan en este navegador. En publicación real conviene conectarlo a una base de datos con cuentas de usuario, moderación y panel de administrador.</p>
+            <p class="tiny-note">Versión estática/prototipo: las recomendaciones se guardan en este navegador. En publicación real conviene conectarlo a una base de datos con cuentas de usuario, verificación real y permisos de administrador.</p>
           </form>
 
           <div class="review-card">
             <div class="reviews-head">
               <h3>Recomendaciones publicadas</h3>
-              <span class="admin-note">Sin limpieza pública</span>
+              <span class="admin-note">Ordenadas por puntuación</span>
             </div>
+            <div class="review-controls" aria-label="Controles de recomendaciones publicadas">
+              <div class="review-counter" id="reviewCounter">Las mejores calificaciones aparecen primero.</div>
+              <select id="publicSort" aria-label="Ordenar recomendaciones">
+                <option value="best">Mayor puntuación primero</option>
+                <option value="featured">Destacadas primero</option>
+                <option value="recent">Más recientes primero</option>
+              </select>
+            </div>
+            <div class="review-scroll-shell">
             <div class="review-list" id="reviewList">
               <article class="review-item featured-review">
                 <div class="review-meta">
@@ -920,6 +1109,7 @@
                 <div class="review-meta" style="justify-content:flex-start; margin:2px 0 10px;">Director General · LLYASA</div>
                 <p>“Es un libro claro, directo y muy práctico para entender uno de los grandes problemas silenciosos de las empresas: la ineficiencia en la nómina. Me gustó especialmente porque va más allá de la teoría y aterriza conceptos que se viven todos los días en las organizaciones actuales.”</p>
               </article>
+            </div>
             </div>
           </div>
         </div>
@@ -942,11 +1132,18 @@
           <p class="tiny-note" id="adminHint">Clave demo para probar: <strong>NMADMIN2026</strong>. En producción esta clave no debe vivir dentro del HTML.</p>
 
           <div id="adminWorkspace" hidden>
+            <div class="admin-explainer">
+              <strong>Cómo usarlo:</strong> primero revisa “Todos”. Las recomendaciones nuevas aparecen aquí si se guardaron en este navegador. Para destacarlas, deben estar aprobadas, haber solicitado ser destacadas y tener contacto verificado. En una página real, esta verificación se haría con correo/SMS/WhatsApp o login.
+            </div>
+            <div class="admin-stats" id="adminStats"></div>
             <div class="admin-toolbar">
+              <label class="admin-select-label" for="adminFilter">Ver comentarios:</label>
               <select class="admin-select" id="adminFilter" aria-label="Filtrar comentarios">
                 <option value="all">Todos</option>
                 <option value="pending">Pendientes</option>
                 <option value="flagged">Marcados por lenguaje</option>
+                <option value="requested">Solicitan destacada</option>
+                <option value="verified">Verificados</option>
                 <option value="approved">Aprobados</option>
                 <option value="featured">Destacados</option>
                 <option value="hidden">Ocultos</option>
@@ -1022,6 +1219,11 @@
     const adminFilter = document.getElementById('adminFilter');
     const exportBtn = document.getElementById('exportBtn');
     const closeAdminBtn = document.getElementById('closeAdminBtn');
+    const requestFeature = document.getElementById('requestFeature');
+    const featureRequestBox = document.getElementById('featureRequestBox');
+    const publicSort = document.getElementById('publicSort');
+    const reviewCounter = document.getElementById('reviewCounter');
+    const adminStats = document.getElementById('adminStats');
 
     let editingId = null;
     let isAdmin = false;
@@ -1036,7 +1238,11 @@
         message: 'Nómina Muerta es un libro que supera las expectativas: más profundo, práctico y revelador que muchos bestsellers de negocios. Una lectura indispensable para quienes buscan transformar sus organizaciones.',
         featured: true,
         status: 'approved',
-        fixed: true
+        fixed: true,
+        requestedFeature: true,
+        verified: true,
+        contact: { email: '', phone: '', publicLink: '', method: 'Verificación editorial' },
+        createdAt: 0
       },
       {
         id: 'fixed-salomon-sabag',
@@ -1088,7 +1294,11 @@
           rating: r.rating || '5',
           message: r.message || '',
           date: r.date || new Date().toLocaleDateString('es-MX'),
+          createdAt: Number(r.createdAt || 0),
           featured: Boolean(r.featured),
+          requestedFeature: Boolean(r.requestedFeature),
+          verified: Boolean(r.verified),
+          contact: r.contact || { email: r.email || '', phone: r.phone || '', publicLink: r.publicLink || '', method: r.verificationMethod || 'Correo' },
           status: r.status || 'approved',
           flagged: Boolean(r.flagged || hasImproperLanguage((r.name || '') + ' ' + (r.role || '') + ' ' + (r.message || ''))),
           fixed: false
@@ -1104,6 +1314,35 @@
 
     function allReviews() {
       return [...defaultReviews, ...getUserReviews()];
+    }
+
+    function reviewSortValue(review) {
+      return Number(review.createdAt || 0);
+    }
+
+    function sortReviewList(list, mode = 'best') {
+      const copy = [...list];
+      copy.sort((a, b) => {
+        if (mode === 'recent') return reviewSortValue(b) - reviewSortValue(a);
+        if (mode === 'featured') {
+          return Number(Boolean(b.featured)) - Number(Boolean(a.featured))
+            || Number(b.rating || 0) - Number(a.rating || 0)
+            || reviewSortValue(b) - reviewSortValue(a);
+        }
+        return Number(b.rating || 0) - Number(a.rating || 0)
+          || Number(Boolean(b.featured)) - Number(Boolean(a.featured))
+          || Number(Boolean(b.verified)) - Number(Boolean(a.verified))
+          || reviewSortValue(b) - reviewSortValue(a);
+      });
+      return copy;
+    }
+
+    function verificationBadges(review) {
+      const badges = [];
+      if (review.requestedFeature) badges.push('<span class="status-pill status-requested">Solicita destacada</span>');
+      if (review.verified) badges.push('<span class="status-pill status-verified">Contacto verificado</span>');
+      if (review.requestedFeature && review.verified && !review.featured) badges.push('<span class="status-pill status-not-featured">Elegible</span>');
+      return badges.join('');
     }
 
     function starText(rating) {
@@ -1122,26 +1361,29 @@
       const mine = review.ownerId === ownerId() && !review.fixed;
       const isPrivatePending = options.privatePending;
       return `
-        <article class="review-item${review.featured ? ' featured-review' : ''}">
+        <article class="review-item${review.featured ? ' featured-review' : ''}${mine ? ' owner-only' : ''}">
           <div class="review-meta">
             <span class="stars" aria-label="${escapeHTML(review.rating)} de 5 estrellas">${starText(review.rating)}</span>
             <span>${escapeHTML(review.date)}</span>
-            ${review.featured ? '<span class="status-pill">Destacada</span>' : ''}
-            ${isPrivatePending ? statusLabel(review) : ''}
           </div>
           <div class="review-author">${escapeHTML(review.name)}</div>
           ${review.role ? `<div class="review-meta" style="justify-content:flex-start; margin:2px 0 10px;">${escapeHTML(review.role)}</div>` : ''}
           <p>“${escapeHTML(review.message)}”</p>
+          <div class="review-badges">
+            ${review.featured ? '<span class="status-pill">Destacada</span>' : ''}
+            ${verificationBadges(review)}
+            ${isPrivatePending ? statusLabel(review) : ''}
+          </div>
           ${isPrivatePending ? '<div class="private-note">Esta recomendación solo es visible para ti hasta que sea aprobada.</div>' : ''}
           ${mine ? `<div class="review-tools"><button class="mini-btn" type="button" data-edit="${review.id}">Editar mi comentario</button><button class="mini-btn" type="button" data-delete="${review.id}">Eliminar mi comentario</button></div>` : ''}
         </article>`;
     }
 
     function renderFeatured() {
-      const featured = allReviews().filter(r => r.status === 'approved' && r.featured).slice(0, 4);
+      const featured = sortReviewList(allReviews().filter(r => r.status === 'approved' && r.featured), 'featured').slice(0, 4);
       featuredList.innerHTML = featured.map(r => `
         <article class="featured-card-live">
-          <div class="badge">Recomendación destacada · ${starText(r.rating)}</div>
+          <div class="badge">Recomendación destacada · ${starText(r.rating)} ${r.verified ? '<small>Verificada</small>' : ''}</div>
           <p>“${escapeHTML(r.message)}”</p>
           <strong>${escapeHTML(r.name)}</strong>
           ${r.role ? `<span>${escapeHTML(r.role)}</span>` : ''}
@@ -1150,8 +1392,13 @@
 
     function renderReviews() {
       const userReviews = getUserReviews();
-      const approved = allReviews().filter(r => r.status === 'approved' && !r.hidden);
+      const mode = publicSort ? publicSort.value : 'best';
+      const approved = sortReviewList(allReviews().filter(r => r.status === 'approved' && !r.hidden), mode);
       const pendingMine = userReviews.filter(r => r.ownerId === ownerId() && r.status !== 'approved');
+      if (reviewCounter) {
+        const top = approved.filter(r => Number(r.rating) === 5).length;
+        reviewCounter.textContent = `${approved.length} recomendaciones publicadas · ${top} con 5 estrellas · scroll para ver más`;
+      }
 
       if (!approved.length && !pendingMine.length) {
         reviewList.innerHTML = '<div class="empty">Aún no hay recomendaciones publicadas.</div>';
@@ -1176,6 +1423,12 @@
       form.role.value = review.role;
       form.rating.value = review.rating;
       form.message.value = review.message;
+      requestFeature.checked = Boolean(review.requestedFeature);
+      featureRequestBox.hidden = !requestFeature.checked;
+      form.email.value = review.contact?.email || '';
+      form.phone.value = review.contact?.phone || '';
+      form.publicLink.value = review.contact?.publicLink || '';
+      form.verificationMethod.value = review.contact?.method || 'Correo';
       document.getElementById('permission').checked = true;
       submitBtn.textContent = 'Guardar cambios';
       cancelEditBtn.style.display = 'inline-flex';
@@ -1187,6 +1440,7 @@
       editingId = null;
       form.reset();
       form.rating.value = '5';
+      featureRequestBox.hidden = true;
       submitBtn.textContent = 'Publicar recomendación';
       cancelEditBtn.style.display = 'none';
       editBanner.classList.remove('active');
@@ -1202,6 +1456,18 @@
 
     form.addEventListener('submit', (event) => {
       event.preventDefault();
+      const wantsFeature = Boolean(requestFeature.checked);
+      const contact = {
+        email: form.email.value.trim(),
+        phone: form.phone.value.trim(),
+        publicLink: form.publicLink.value.trim(),
+        method: form.verificationMethod.value
+      };
+      if (wantsFeature && !contact.email && !contact.phone && !contact.publicLink) {
+        alert('Para solicitar que tu recomendación pueda ser destacada, deja al menos un dato de verificación: correo, celular o perfil público.');
+        featureRequestBox.hidden = false;
+        return;
+      }
       const textForModeration = `${form.name.value} ${form.role.value} ${form.message.value}`;
       const flagged = hasImproperLanguage(textForModeration);
       const payload = {
@@ -1209,6 +1475,8 @@
         role: form.role.value.trim(),
         rating: form.rating.value,
         message: form.message.value.trim(),
+        requestedFeature: wantsFeature,
+        contact,
         flagged,
         status: flagged ? 'pending' : 'approved'
       };
@@ -1218,7 +1486,8 @@
       if (editingId) {
         const index = reviews.findIndex(r => r.id === editingId && r.ownerId === ownerId());
         if (index >= 0) {
-          reviews[index] = { ...reviews[index], ...payload, date: reviews[index].date, featured: reviews[index].featured && !flagged };
+          const stillVerified = Boolean(reviews[index].verified) && wantsFeature;
+          reviews[index] = { ...reviews[index], ...payload, date: reviews[index].date, createdAt: reviews[index].createdAt || Date.now(), verified: stillVerified, featured: reviews[index].featured && !flagged && wantsFeature && stillVerified };
           saveUserReviews(reviews);
         }
       } else {
@@ -1226,19 +1495,31 @@
           id: uid(),
           ownerId: ownerId(),
           date: new Date().toLocaleDateString('es-MX', { year: 'numeric', month: 'short', day: 'numeric' }),
+          createdAt: Date.now(),
           featured: false,
+          verified: false,
           fixed: false,
           ...payload
         });
         saveUserReviews(reviews);
       }
-      const msg = flagged ? 'Tu recomendación fue recibida y quedó pendiente de revisión por el filtro de lenguaje.' : 'Tu recomendación fue publicada en este navegador.';
+      const msg = flagged
+        ? 'Tu recomendación fue recibida y quedó pendiente de revisión por el filtro de lenguaje.'
+        : wantsFeature
+          ? 'Tu recomendación fue publicada y quedó marcada como candidata a destacada. Falta verificar tu contacto y que el administrador la seleccione.'
+          : 'Tu recomendación fue publicada en este navegador.';
       alert(msg);
       cancelEdit();
       renderReviews();
     });
 
     cancelEditBtn.addEventListener('click', cancelEdit);
+
+    requestFeature.addEventListener('change', () => {
+      featureRequestBox.hidden = !requestFeature.checked;
+    });
+
+    if (publicSort) publicSort.addEventListener('change', renderReviews);
 
     adminToggleBtn.addEventListener('click', () => {
       adminPanel.hidden = !adminPanel.hidden;
@@ -1251,6 +1532,7 @@
         adminLogin.hidden = true;
         document.getElementById('adminHint').hidden = true;
         adminWorkspace.hidden = false;
+        adminFilter.value = 'all';
         renderAdminList();
       } else {
         alert('Clave incorrecta.');
@@ -1268,34 +1550,57 @@
       if (filter === 'all') return true;
       if (filter === 'flagged') return review.flagged;
       if (filter === 'featured') return review.featured;
+      if (filter === 'requested') return review.requestedFeature;
+      if (filter === 'verified') return review.verified;
       return review.status === filter;
+    }
+
+    function renderAdminStats(reviews) {
+      if (!adminStats) return;
+      const stats = [
+        ['Total', reviews.length],
+        ['Pendientes', reviews.filter(r => r.status === 'pending').length],
+        ['Aprobadas', reviews.filter(r => r.status === 'approved').length],
+        ['Solicitan destacada', reviews.filter(r => r.requestedFeature).length],
+        ['Verificadas', reviews.filter(r => r.verified).length]
+      ];
+      adminStats.innerHTML = stats.map(([label, value]) => `<div class="admin-stat"><strong>${value}</strong>${label}</div>`).join('');
     }
 
     function renderAdminList() {
       if (!adminList || !isAdmin) return;
-      const userReviews = getUserReviews().filter(filterAdminReview);
+      const allUserReviews = sortReviewList(getUserReviews(), 'recent');
+      renderAdminStats(allUserReviews);
+      const userReviews = allUserReviews.filter(filterAdminReview);
       if (!userReviews.length) {
-        adminList.innerHTML = '<div class="admin-item"><strong>No hay recomendaciones de usuarios con este filtro.</strong><p>Las recomendaciones fijas de Enrique Campoy y Salomon Sabag son testimonios editoriales base y se mantienen publicadas.</p></div>';
+        adminList.innerHTML = '<div class="admin-item"><strong>No hay recomendaciones de usuarios con este filtro.</strong><p>Cambia el filtro a “Todos” para ver todos los comentarios guardados en este navegador. Las recomendaciones fijas de Enrique Campoy y Salomon Sabag son testimonios editoriales base y se mantienen publicadas.</p></div>';
         return;
       }
-      adminList.innerHTML = userReviews.map(r => `
+      adminList.innerHTML = userReviews.map(r => {
+        const canFeature = r.status === 'approved' && r.requestedFeature && r.verified;
+        const contact = r.contact || {};
+        return `
         <div class="admin-item">
           <div style="display:flex; gap:8px; flex-wrap:wrap; align-items:center; margin-bottom:6px;">
             ${statusLabel(r)}
             ${r.featured ? '<span class="status-pill">Destacada</span>' : ''}
+            ${verificationBadges(r)}
             <span class="stars">${starText(r.rating)}</span>
           </div>
           <strong>${escapeHTML(r.name)}</strong>${r.role ? ` · ${escapeHTML(r.role)}` : ''}
           <p>“${escapeHTML(r.message)}”</p>
           <small>${escapeHTML(r.date)} · ID: ${escapeHTML(r.id)}</small>
+          ${r.requestedFeature ? `<div class="admin-contact"><strong>Solicita ser destacada.</strong><br>Verificación preferida: ${escapeHTML(contact.method || 'No indicada')}<br>Correo: ${escapeHTML(contact.email || '—')}<br>Celular: ${escapeHTML(contact.phone || '—')}<br>Perfil/referencia: ${contact.publicLink ? `<a href="${escapeHTML(contact.publicLink)}" target="_blank" rel="noopener" style="color:var(--cream);text-decoration:underline;">abrir liga</a>` : '—'}</div>` : '<div class="admin-contact">No solicitó aparecer como destacada. Puede publicarse normal, pero no debería destacarse sin consentimiento.</div>'}
           <div class="admin-actions">
             <button class="mini-btn" type="button" data-admin-action="approve" data-id="${r.id}">Aprobar</button>
             <button class="mini-btn" type="button" data-admin-action="pending" data-id="${r.id}">Mandar a revisión</button>
+            <button class="mini-btn" type="button" data-admin-action="verify" data-id="${r.id}">${r.verified ? 'Quitar verificación' : 'Marcar verificado'}</button>
             <button class="mini-btn" type="button" data-admin-action="hide" data-id="${r.id}">Ocultar</button>
-            <button class="mini-btn" type="button" data-admin-action="feature" data-id="${r.id}">${r.featured ? 'Quitar destacada' : 'Marcar destacada'}</button>
+            <button class="mini-btn" type="button" data-admin-action="feature" data-id="${r.id}" ${canFeature || r.featured ? '' : 'disabled title="Debe solicitar destacada, estar aprobada y tener contacto verificado"'}>${r.featured ? 'Quitar destacada' : 'Marcar destacada'}</button>
             <button class="mini-btn danger-btn" type="button" data-admin-action="delete" data-id="${r.id}">Eliminar</button>
           </div>
-        </div>`).join('');
+        </div>`;
+      }).join('');
 
       adminList.querySelectorAll('[data-admin-action]').forEach(btn => {
         btn.addEventListener('click', () => adminAction(btn.dataset.id, btn.dataset.adminAction));
@@ -1314,15 +1619,39 @@
         reviews[idx].flagged = false;
       } else if (action === 'pending') {
         reviews[idx].status = 'pending';
+      } else if (action === 'verify') {
+        if (!reviews[idx].requestedFeature) {
+          alert('Esta persona no solicitó ser considerada como destacada. Primero debe marcar esa opción o darte autorización por otro medio.');
+          return;
+        }
+        const c = reviews[idx].contact || {};
+        if (!c.email && !c.phone && !c.publicLink) {
+          alert('No hay correo, celular ni perfil público para verificar.');
+          return;
+        }
+        reviews[idx].verified = !reviews[idx].verified;
+        if (!reviews[idx].verified) reviews[idx].featured = false;
       } else if (action === 'hide') {
         reviews[idx].status = 'hidden';
         reviews[idx].featured = false;
       } else if (action === 'feature') {
-        if (reviews[idx].status !== 'approved') {
-          alert('Solo puedes destacar recomendaciones aprobadas.');
-          return;
+        if (reviews[idx].featured) {
+          reviews[idx].featured = false;
+        } else {
+          if (reviews[idx].status !== 'approved') {
+            alert('Solo puedes destacar recomendaciones aprobadas.');
+            return;
+          }
+          if (!reviews[idx].requestedFeature) {
+            alert('No conviene destacar este comentario porque la persona no solicitó aparecer como destacada.');
+            return;
+          }
+          if (!reviews[idx].verified) {
+            alert('Primero marca el contacto como verificado.');
+            return;
+          }
+          reviews[idx].featured = true;
         }
-        reviews[idx].featured = !reviews[idx].featured;
       }
       saveUserReviews(reviews);
       renderReviews();
@@ -1330,8 +1659,8 @@
 
     exportBtn.addEventListener('click', () => {
       const reviews = allReviews();
-      const header = ['ID','Nombre','Cargo/Empresa','Calificación','Fecha','Estatus','Destacada','Lenguaje marcado','Recomendación'];
-      const rows = reviews.map(r => [r.id, r.name, r.role, r.rating, r.date, r.status, r.featured ? 'Sí' : 'No', r.flagged ? 'Sí' : 'No', r.message]);
+      const header = ['ID','Nombre','Cargo/Empresa','Calificación','Fecha','Estatus','Solicita destacada','Contacto verificado','Destacada','Lenguaje marcado','Correo','Celular','Perfil','Método','Recomendación'];
+      const rows = reviews.map(r => [r.id, r.name, r.role, r.rating, r.date, r.status, r.requestedFeature ? 'Sí' : 'No', r.verified ? 'Sí' : 'No', r.featured ? 'Sí' : 'No', r.flagged ? 'Sí' : 'No', r.contact?.email || '', r.contact?.phone || '', r.contact?.publicLink || '', r.contact?.method || '', r.message]);
       const csv = [header, ...rows].map(row => row.map(cell => '"' + String(cell || '').replace(/"/g, '""') + '"').join(',')).join('\n');
       const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
       const url = URL.createObjectURL(blob);
