@@ -1844,6 +1844,208 @@
       .executive-promise, .roi-panel, .consult-close { border-radius: 24px; }
     }
 
+
+
+    /* === V11: Conferencias Viva la Nómina irresistibles === */
+    .conference-hero-metrics {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 24px;
+      position: relative;
+      z-index: 1;
+    }
+    .conference-hero-metric {
+      border-radius: 20px;
+      padding: 16px;
+      background: rgba(243,240,231,.10);
+      border: 1px solid rgba(243,240,231,.16);
+      color: rgba(243,240,231,.78);
+      min-height: 116px;
+    }
+    .conference-hero-metric strong {
+      display: block;
+      color: var(--cream);
+      font-size: clamp(26px, 3vw, 42px);
+      line-height: .95;
+      letter-spacing: -.055em;
+      margin-bottom: 8px;
+    }
+    .conference-hero-metric span {
+      display: block;
+      font-size: 13px;
+      font-weight: 800;
+      line-height: 1.28;
+    }
+    .conference-positioning {
+      margin-top: 24px;
+      border-radius: var(--radius-xl);
+      padding: clamp(26px, 4vw, 44px);
+      background:
+        radial-gradient(circle at 84% 12%, rgba(214,181,109,.16), transparent 22rem),
+        rgba(251,250,245,.94);
+      border: 1px solid rgba(214,181,109,.34);
+      box-shadow: 0 26px 70px rgba(16,42,53,.10);
+    }
+    .conference-positioning h2 { margin-bottom: 14px; }
+    .conference-positioning p { color: #40525a; font-size: 18px; max-width: 960px; }
+    .conference-promise-strip {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 24px;
+    }
+    .conference-promise-item {
+      border-radius: 22px;
+      padding: 20px;
+      background: rgba(255,255,255,.78);
+      border: 1px solid rgba(16,42,53,.10);
+    }
+    .conference-promise-item strong { display: block; color: var(--navy); font-size: 20px; line-height: 1.08; margin-bottom: 8px; }
+    .conference-promise-item span { color: #526168; font-weight: 700; }
+    .conference-format-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 22px;
+    }
+    .conference-format-card {
+      border-radius: 26px;
+      padding: 24px;
+      background: rgba(255,255,255,.78);
+      border: 1px solid rgba(16,42,53,.10);
+      box-shadow: 0 16px 44px rgba(16,42,53,.08);
+      position: relative;
+      overflow: hidden;
+      min-height: 260px;
+      display: flex;
+      flex-direction: column;
+    }
+    .conference-format-card::after {
+      content: attr(data-format);
+      position: absolute;
+      right: 14px;
+      bottom: -10px;
+      color: rgba(16,42,53,.06);
+      font-size: 76px;
+      font-weight: 950;
+      line-height: 1;
+    }
+    .conference-format-card .format-tag {
+      display: inline-flex;
+      width: fit-content;
+      border-radius: 999px;
+      padding: 7px 10px;
+      margin-bottom: 14px;
+      background: rgba(31,97,112,.10);
+      color: var(--teal);
+      font-size: 11px;
+      font-weight: 950;
+      letter-spacing: .10em;
+      text-transform: uppercase;
+    }
+    .conference-format-card h3 { margin: 0 0 10px; color: var(--navy); line-height: 1.08; font-size: 23px; letter-spacing: -.025em; }
+    .conference-format-card p { margin: 0 0 12px; color: #46585f; position: relative; z-index: 1; }
+    .conference-format-card ul { margin: auto 0 0; padding-left: 20px; color: #526168; position: relative; z-index: 1; }
+    .conference-format-card li { margin: 6px 0; }
+    .conference-dark-proof {
+      border-radius: var(--radius-xl);
+      padding: clamp(26px, 4vw, 44px);
+      margin-top: 24px;
+      background: linear-gradient(135deg, var(--navy), #0b1f28 72%);
+      color: var(--cream);
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+    .conference-dark-proof::after {
+      content: "VIVA";
+      position: absolute;
+      right: 24px;
+      bottom: -44px;
+      font-size: clamp(100px, 17vw, 220px);
+      font-weight: 950;
+      color: rgba(243,240,231,.045);
+      letter-spacing: -.08em;
+      line-height: 1;
+    }
+    .conference-dark-proof h2 { color: var(--cream); margin-bottom: 12px; position: relative; z-index: 1; }
+    .conference-dark-proof p { color: rgba(243,240,231,.78); font-size: 18px; position: relative; z-index: 1; max-width: 940px; }
+    .conference-proof-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 22px;
+      position: relative;
+      z-index: 1;
+    }
+    .conference-proof-chip {
+      border-radius: 18px;
+      padding: 16px;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(243,240,231,.14);
+      color: rgba(243,240,231,.80);
+      font-weight: 800;
+      min-height: 128px;
+    }
+    .conference-proof-chip strong { display: block; color: var(--cream); font-size: 19px; line-height: 1.05; margin-bottom: 6px; }
+    .conference-proof-chip span { display:block; font-size: 13px; line-height: 1.35; }
+    .conference-outcomes {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 22px;
+    }
+    .conference-outcome {
+      border-radius: 24px;
+      padding: 20px;
+      background: linear-gradient(180deg, rgba(255,255,255,.82), rgba(243,240,231,.70));
+      border: 1px solid rgba(16,42,53,.10);
+      box-shadow: 0 14px 34px rgba(16,42,53,.06);
+      min-height: 210px;
+      display: flex;
+      flex-direction: column;
+    }
+    .conference-outcome .outcome-code {
+      display: inline-flex;
+      width: fit-content;
+      border-radius: 999px;
+      padding: 6px 10px;
+      margin-bottom: 12px;
+      background: rgba(214,181,109,.18);
+      color: #735a19;
+      font-size: 11px;
+      font-weight: 950;
+      letter-spacing: .10em;
+      text-transform: uppercase;
+    }
+    .conference-outcome h3 { margin: 0 0 8px; color: var(--navy); font-size: 20px; line-height: 1.08; }
+    .conference-outcome p { margin: 0; color: #495b62; font-size: 14.5px; line-height: 1.45; }
+    .conference-outcome .outcome-target { margin-top: auto; padding-top: 14px; color: var(--teal); font-size: 13px; font-weight: 900; }
+    .conference-cta-final {
+      margin-top: 24px;
+      border-radius: var(--radius-xl);
+      padding: clamp(28px, 4vw, 48px);
+      background:
+        radial-gradient(circle at 82% 12%, rgba(214,181,109,.16), transparent 22rem),
+        linear-gradient(135deg, rgba(31,97,112,.96), rgba(16,42,53,.98));
+      color: var(--cream);
+      box-shadow: 0 26px 70px rgba(16,42,53,.18);
+    }
+    .conference-cta-final h2 { color: var(--cream); margin-bottom: 12px; }
+    .conference-cta-final p { color: rgba(243,240,231,.78); font-size: 18px; max-width: 930px; }
+    @media (max-width: 1100px) {
+      .conference-hero-metrics, .conference-proof-grid, .conference-outcomes { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .conference-format-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 900px) {
+      .conference-promise-strip { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 620px) {
+      .conference-hero-metrics, .conference-proof-grid, .conference-outcomes, .conference-format-grid { grid-template-columns: 1fr; }
+      .conference-positioning, .conference-dark-proof, .conference-cta-final, .conference-format-card { border-radius: 24px; }
+    }
+
   </style>
 </head>
 <body>
@@ -1859,7 +2061,7 @@
         <a href="#/reto-nomina-muerta">Reto</a>
         <a href="#/recupera-nomina-muerta">Recupera</a>
         <a href="#/autodiagnostico-lideres">Diagnóstico</a>
-        <a href="#/viva-la-nomina">Viva la Nómina</a>
+        <a href="#/viva-la-nomina">Conferencias</a>
         <a href="#/consultoria-copiloto">Consultoría</a>
         <a href="https://wa.me/526671450096" target="_blank" rel="noopener">WhatsApp</a>
         <a class="btn btn-primary" href="https://www.amazon.com.mx/N%C3%B3mina-Muerta-p%C3%A9rdida-capitalizar-sepulte/dp/B0FCC9TLRM/ref=sr_1_1?crid=36Q4FTI8QAIPO&dib=eyJ2IjoiMSJ9.jeZzbPCzxWGI8uNZBU_ScOBux1AnAd-oMfUVvGxOIyNsbIgNNo7Qxjr6Ty346Lm_m95Ih3F7jma0XL8zz_HkUGyzzi-e6tfHa5XA_wxj1K0oNMcRUMmJ3NLf4rdADwD6P-TR8sdVIvs2ybw2XHFzlL4K1QLf3iVrnTveFDbSNGyqxLz_77XfUOBilfozOow0.mISqZCqIAd8oH-NFYLKAfgNlEWUuTWzTaJHuLFG3FQM&dib_tag=se&keywords=nomina+muerta&qid=1780362284&sprefix=nomina+muerta%2Caps%2C177&sr=8-1&ufe=app_do%3Aamzn1.fos.de93fa6a-174c-4df7-be7c-5bc8e9c5a71b" target="_blank" rel="noopener">Comprar en Amazon</a>
@@ -1877,7 +2079,7 @@
           <p class="hero-copy">Una lectura directa, reveladora y necesaria para líderes que se atreven a mirar lo que otros prefieren ignorar: el tiempo pagado que no se convierte en avance, cierre ni valor real.</p>
           <div class="hero-actions">
             <a class="btn btn-primary" href="https://wa.me/526671450096" target="_blank" rel="noopener">Contacto por WhatsApp</a>
-            <a class="btn btn-outline" href="#/viva-la-nomina">Conferencia Viva la Nómina</a>
+            <a class="btn btn-outline" href="#/viva-la-nomina">Conferencias para empresas</a>
           </div>
         </div>
         <div class="book-card" aria-label="Portada del libro Nómina Muerta">
@@ -2418,77 +2620,210 @@
     <section id="viva-la-nomina" class="tool-subpage" data-page-route="viva-la-nomina">
       <div class="wrap">
         <div class="subpage-hero">
-          <div class="kicker">Conferencia ejecutiva · 45–55 min</div>
-          <h1>Viva la Nómina: del desperdicio invisible a la eficiencia extrema.</h1>
-          <p>Una conferencia diseñada para líderes, directivos y equipos que necesitan dejar de confundir ocupación con avance. El objetivo es que la audiencia entienda dónde se muere el tiempo, cuánto cuesta y cómo convertirlo en capacidad viva de ejecución.</p>
+          <div class="kicker">Conferencias ejecutivas · Viva la Nómina · 45–55 min</div>
+          <h1>Conferencias Viva la Nómina: convierte el tiempo muerto en ejecución, foco y resultados.</h1>
+          <p>Ofrezco conferencias para empresas, consejos directivos, convenciones, universidades corporativas y equipos de liderazgo que necesitan despertar una conversación incómoda pero necesaria: ¿cuánto tiempo está pagando la organización que no se convierte en avance real?</p>
           <div class="subpage-nav">
-            <a class="btn btn-light" href="https://wa.me/526671450096" target="_blank" rel="noopener">Solicitar información por WhatsApp</a>
+            <a class="btn btn-light" href="https://wa.me/526671450096" target="_blank" rel="noopener">Solicitar conferencia por WhatsApp</a>
             <a class="btn btn-outline" href="#/consultoria-copiloto">Ver consultoría Copiloto</a>
+          </div>
+          <div class="conference-hero-metrics" aria-label="Datos provocadores de la conferencia">
+            <div class="conference-hero-metric"><strong>25–40%</strong><span>del tiempo laboral puede estar atrapado en tareas no esenciales, redundantes o mal priorizadas.</span></div>
+            <div class="conference-hero-metric"><strong>70–80%</strong><span>del día se va en coordinar, perseguir, aclarar, reportar o reconstruir contexto.</span></div>
+            <div class="conference-hero-metric"><strong>30%</strong><span>es el punto de partida para calcular cuánto valor se podría recuperar si el tiempo muerto se rediseña.</span></div>
+            <div class="conference-hero-metric"><strong>60 seg.</strong><span>es lo que debería tomarle a un líder ver qué está atrasado, quién bloquea y qué decisión urge.</span></div>
+          </div>
+        </div>
+
+        <div class="conference-positioning">
+          <div class="kicker">Lo que vendo con esta conferencia</div>
+          <h2>No es una charla motivacional. Es una sacudida ejecutiva para que la organización deje de premiar la ocupación y empiece a exigir avance.</h2>
+          <p>Viva la Nómina transforma el concepto de Nómina Muerta en una experiencia clara, directa y accionable. La audiencia no solo escucha: identifica síntomas, calcula dinero perdido, reconoce hábitos que frenan la ejecución y entiende cómo encender una operación viva con visibilidad, trazabilidad, accountability y foco.</p>
+          <div class="conference-promise-strip">
+            <div class="conference-promise-item"><strong>Provoca urgencia sin atacar personas.</strong><span>El problema se presenta como un fallo del modelo operativo, no como culpa individual.</span></div>
+            <div class="conference-promise-item"><strong>Convierte el tiempo en dinero visible.</strong><span>El público calcula con sus propios números el costo mensual de la inercia.</span></div>
+            <div class="conference-promise-item"><strong>Deja lenguaje común para actuar.</strong><span>Nómina Muerta, Nómina Viva, oscuridad operativa, accountability positivo y 70/30 se vuelven conceptos de gestión.</span></div>
           </div>
         </div>
 
         <div class="tool-grid">
           <div class="tool-card">
-            <h3>Objetivo de la conferencia</h3>
-            <p>Provocar una conversación honesta sobre el tiempo que la empresa ya paga, pero que no siempre se transforma en cierre, avance o valor real.</p>
+            <h3>¿Para quién es?</h3>
+            <p>Dueños, CEOs, directores, gerentes, mandos medios, equipos administrativos, comerciales y operativos que viven juntas excesivas, retrasos, retrabajo, seguimiento informal y falta de claridad.</p>
           </div>
           <div class="tool-card">
-            <h3>Formato</h3>
-            <p>Sesión ejecutiva de alto impacto, con ejemplos, dinámicas de mano alzada, cálculo en vivo y lenguaje directo para dirección y mandos medios.</p>
+            <h3>¿Qué problema resuelve?</h3>
+            <p>Abre una conversación que muchas empresas evitan: la pérdida invisible de tiempo pagado, la fragmentación operativa, la falta de trazabilidad y la desconexión entre esfuerzo y resultado.</p>
           </div>
           <div class="tool-card">
-            <h3>Audiencia ideal</h3>
-            <p>Dueños, CEOs, directores, gerentes, coordinadores, equipos administrativos, comerciales, operativos y organizaciones que viven saturación, juntas y retrasos.</p>
+            <h3>¿Qué hace irresistible la sesión?</h3>
+            <p>Combina narrativa, datos, provocación, cálculo en vivo, dinámica con el público y un cierre orientado a acción. La audiencia sale hablando de su propia operación.</p>
           </div>
         </div>
 
-        <div class="quote-card">
-          <p>“La nómina no está muerta. Solo está esperando dirección, claridad y herramientas.”</p>
-          <span>Mensaje central de la conferencia Viva la Nómina</span>
+        <div class="conference-dark-proof">
+          <h2>La conferencia empieza con una verdad que todos reconocen, pero pocos miden.</h2>
+          <p>Respondiste mensajes, fuiste a juntas, apagaste urgencias y ayudaste a todos. Pero al final del día, la pregunta sigue siendo la misma: ¿qué avance real produjo todo ese movimiento?</p>
+          <div class="conference-proof-grid">
+            <div class="conference-proof-chip"><strong>Actividad ≠ Productividad</strong><span>Estar ocupado no significa generar valor, cerrar pendientes ni mover indicadores.</span></div>
+            <div class="conference-proof-chip"><strong>Visibilidad ≠ Vigilancia</strong><span>La visibilidad reemplaza la persecución manual por claridad operativa.</span></div>
+            <div class="conference-proof-chip"><strong>Delegar ≠ Desentenderse</strong><span>Sin seguimiento, la delegación se vuelve abandono con apariencia de confianza.</span></div>
+            <div class="conference-proof-chip"><strong>Urgencia ≠ Prioridad</strong><span>Cuando todo es urgente, nada tiene dirección estratégica.</span></div>
+          </div>
+        </div>
+
+        <div class="roi-panel">
+          <h2>El momento que vuelve inevitable la conversación: calcular la Nómina Muerta en vivo.</h2>
+          <p>La audiencia aterriza el concepto con una fórmula simple. No se trata de asustar: se trata de mostrar cuánto valor ya existe dentro de la empresa, pero está atrapado en coordinación, retrabajo, espera, duplicidad y falta de seguimiento.</p>
+          <div class="roi-formula" aria-label="Fórmula de cálculo de Nómina Muerta">
+            <div class="formula-chip"><strong>Colaboradores</strong><span>Número de personas en el equipo o área.</span></div>
+            <div class="formula-chip"><strong>Sueldo promedio</strong><span>Costo mensual promedio por colaborador.</span></div>
+            <div class="formula-chip"><strong>% tiempo muerto</strong><span>Escenario conservador: 25% a 30%.</span></div>
+            <div class="formula-chip"><strong>Costo mensual</strong><span>Lo que la empresa paga sin convertirlo en valor real.</span></div>
+          </div>
+          <p style="margin-top:18px;"><strong>Ejemplo ejecutivo:</strong> 100 colaboradores × $15,000 mensuales × 30% = $450,000 al mes. $5.4 millones al año antes de contar costo de oportunidad, desgaste humano y pérdida de competitividad.</p>
         </div>
 
         <div class="tool-form-card">
           <h2>Ruta de la conferencia</h2>
-          <p class="lead">La sesión avanza en cinco actos para mover a la audiencia desde el golpe de realidad hasta el compromiso de acción.</p>
+          <p class="lead">La sesión avanza en cinco actos para mover a la audiencia desde el golpe de realidad hasta una decisión concreta: seguir financiando la inercia o encender la Nómina Viva.</p>
           <div class="conference-timeline">
             <article class="timeline-item">
               <strong>Acto I</strong>
-              <div><h3>El golpe</h3><p>Ese día que todos han tenido: muchos mensajes, varias juntas, muchas solicitudes y al final una pregunta incómoda: ¿qué avances reales traes?</p></div>
+              <div><h3>El golpe</h3><p>Todos han tenido ese día: 200 mensajes, 3 juntas, 5 solicitudes y cero claridad sobre el avance real. La conferencia abre con una dinámica de reconocimiento inmediato.</p></div>
             </article>
             <article class="timeline-item">
               <strong>Acto II</strong>
-              <div><h3>El diagnóstico</h3><p>Síntomas normalizados: esperas eternas, correos que nadie lee, reuniones sin conclusión, tareas en el limbo e información perdida en chats.</p></div>
+              <div><h3>El diagnóstico</h3><p>Se hacen visibles los síntomas normalizados: esperas eternas, correos que nadie lee, tareas en el limbo, información perdida en chats, retrasos invisibles y reuniones sin conclusión.</p></div>
             </article>
             <article class="timeline-item">
               <strong>Acto III</strong>
-              <div><h3>El costo real</h3><p>La audiencia calcula el costo mensual de su propia Nómina Muerta y entiende sus cinco caras: nominal, humana, oportunidad, emocional y competitiva.</p></div>
+              <div><h3>El costo real</h3><p>El público calcula su propia pérdida y entiende las cinco caras del costo: nominal, humano, oportunidad, mental-emocional y competitividad.</p></div>
             </article>
             <article class="timeline-item">
               <strong>Acto IV</strong>
-              <div><h3>Encender la Nómina Viva</h3><p>Se presentan los principios de propósito compartido, visibilidad total, flujo vivo y accountability positivo para transformar la operación.</p></div>
+              <div><h3>Encender la Nómina Viva</h3><p>Se presenta el cambio de mentalidad: de controlar a conectar, de vigilar a visualizar, de reaccionar al caos a liderar con datos en tiempo real.</p></div>
             </article>
             <article class="timeline-item">
               <strong>Acto V</strong>
-              <div><h3>El llamado</h3><p>La conferencia aterriza en no negociables: hacer lo que toca, entregar, usar herramientas y comunicar en tiempo real.</p></div>
+              <div><h3>El llamado</h3><p>La conferencia cierra con cuatro no negociables: hacer lo que toca, entregar, usar herramientas y comunicar en tiempo real.</p></div>
             </article>
           </div>
         </div>
 
         <div class="tool-form-card">
-          <h2>Temas que se trabajan durante la sesión</h2>
-          <div class="tool-grid">
-            <div class="tool-card"><h3>70–30%</h3><p>La empresa dedica demasiado tiempo a coordinar y muy poco a ejecutar. La conferencia vuelve visible esa proporción.</p></div>
-            <div class="tool-card"><h3>Obesidad digital</h3><p>Más herramientas no siempre significan más eficiencia: muchas veces crean ruido, fragmentación y pérdida de contexto.</p></div>
-            <div class="tool-card"><h3>Trazabilidad</h3><p>Sin responsables, fechas, evidencia y seguimiento, las tareas se convierten en promesas dispersas.</p></div>
-            <div class="tool-card"><h3>Accountability positivo</h3><p>No se trata de culpar personas; se trata de honrar compromisos con claridad, visibilidad y consecuencias justas.</p></div>
-            <div class="tool-card"><h3>Lean Execution</h3><p>Supervisión digital, cuellos de botella visibles, cargas de trabajo, alertas y tableros ejecutivos.</p></div>
-            <div class="tool-card"><h3>Ximpler.App</h3><p>La plataforma como ecosistema digital para ejecución, seguimiento, comunicación contextual y eficiencia operativa.</p></div>
+          <h2>Problemas empresariales que la conferencia pone sobre la mesa</h2>
+          <p class="lead">La conferencia no se queda en inspiración. Nombra los problemas que frenan a la Alta Dirección y los baja a comportamientos observables.</p>
+          <div class="problem-solution">
+            <article class="ps-card">
+              <div class="ps-top"><strong>Problema</strong><h3>Comunicación fragmentada</h3></div>
+              <div class="ps-body"><p>Información clave dispersa entre correos, chats, juntas y documentos sin responsable claro.</p><ul><li>Pérdida de contexto</li><li>Malentendidos estratégicos</li><li>Decisiones sin trazabilidad</li></ul></div>
+            </article>
+            <article class="ps-card">
+              <div class="ps-top"><strong>Problema</strong><h3>Reuniones sin cierre</h3></div>
+              <div class="ps-body"><p>Mucho tiempo invertido en hablar, poco en decidir, documentar, asignar y dar seguimiento.</p><ul><li>Acuerdos ambiguos</li><li>Compromisos sin fecha</li><li>Seguimiento informal</li></ul></div>
+            </article>
+            <article class="ps-card">
+              <div class="ps-top"><strong>Problema</strong><h3>Silos y duplicidad</h3></div>
+              <div class="ps-body"><p>Áreas que trabajan desconectadas, repiten esfuerzos y no comparten información crítica a tiempo.</p><ul><li>Retrabajo</li><li>Cuellos de botella</li><li>Conflictos entre áreas</li></ul></div>
+            </article>
+            <article class="ps-card">
+              <div class="ps-top"><strong>Problema</strong><h3>Miedo a la visibilidad</h3></div>
+              <div class="ps-body"><p>La resistencia al cambio no siempre es tecnológica: muchas veces es miedo a que el trabajo se vea, se mida y se compare.</p><ul><li>Oscuridad operativa</li><li>Accountability débil</li><li>Cultura de excusas</li></ul></div>
+            </article>
           </div>
         </div>
 
-        <div class="contact-band">
-          <div><strong>¿Quieres llevar Viva la Nómina a tu empresa o evento?</strong><span>Agenda información, fecha tentativa o una llamada de 15 minutos por WhatsApp.</span></div>
-          <a class="btn btn-light" href="https://wa.me/526671450096" target="_blank" rel="noopener">Contactar por WhatsApp</a>
+        <div class="tool-form-card">
+          <h2>Indicadores que la conferencia deja instalados en la conversación</h2>
+          <p class="lead">Después de escuchar Viva la Nómina, los líderes pueden empezar a medir lo que antes solo intuían.</p>
+          <div class="proof-table-shell">
+            <table class="proof-table">
+              <thead>
+                <tr><th>Indicador</th><th>Pregunta ejecutiva</th><th>Qué revela</th><th>Impacto esperado al gestionarlo</th></tr>
+              </thead>
+              <tbody>
+                <tr><td><strong>Costo mensual de Nómina Muerta</strong></td><td>¿Cuánto pagamos por tiempo que no produce valor?</td><td>La pérdida económica base del desperdicio operativo.</td><td>Hace visible el costo de no actuar.</td></tr>
+                <tr><td><strong>Relación Coordinación / Ejecución</strong></td><td>¿Cuánto tiempo se va en coordinar vs. ejecutar?</td><td>La proporción real entre movimiento y avance.</td><td>Permite rediseñar juntas, reportes, seguimiento y comunicación.</td></tr>
+                <tr><td><strong>Índice de Trazabilidad Operativa</strong></td><td>¿Sabemos quién tiene qué, para cuándo y con qué evidencia?</td><td>La claridad de responsables, fechas, estatus y decisiones.</td><td>Reduce persecución manual, ambigüedad y retrasos invisibles.</td></tr>
+                <tr><td><strong>Índice de Seguimiento Activo</strong></td><td>¿Los acuerdos se convierten en tareas supervisables?</td><td>La disciplina para cerrar ciclos, no solo abrir conversaciones.</td><td>Disminuye tareas en el limbo y reuniones repetidas.</td></tr>
+                <tr><td><strong>Velocidad de Respuesta</strong></td><td>¿Cuánto tarda el equipo en responder, desbloquear y decidir?</td><td>La fricción entre áreas y niveles jerárquicos.</td><td>Incrementa agilidad operativa y reduce tiempos muertos.</td></tr>
+                <tr><td><strong>Índice de Accountability Positivo</strong></td><td>¿Los compromisos se honran con claridad o se diluyen?</td><td>La madurez de ejecución sin culpas, pero con consecuencias.</td><td>Fortalece cultura de cumplimiento y confianza operativa.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="tool-form-card">
+          <h2>Formatos de conferencia que ofrezco</h2>
+          <p class="lead">La conferencia puede adaptarse al contexto: comité directivo, convención anual, reunión gerencial, kick-off de transformación, capacitación ejecutiva o evento empresarial.</p>
+          <div class="conference-format-grid">
+            <article class="conference-format-card" data-format="45">
+              <span class="format-tag">Formato base</span>
+              <h3>Keynote ejecutiva Viva la Nómina</h3>
+              <p>Conferencia de alto impacto para abrir la conversación en toda la organización.</p>
+              <ul><li>45–55 minutos</li><li>Dinámicas con audiencia</li><li>Cálculo en vivo</li></ul>
+            </article>
+            <article class="conference-format-card" data-format="90">
+              <span class="format-tag">Formato extendido</span>
+              <h3>Conferencia + taller ejecutivo</h3>
+              <p>Ideal para líderes que quieren salir con primeras hipótesis de mejora y problemas priorizados.</p>
+              <ul><li>90–120 minutos</li><li>Mapa de síntomas</li><li>Conversación por equipos</li></ul>
+            </article>
+            <article class="conference-format-card" data-format="CEO">
+              <span class="format-tag">Alta Dirección</span>
+              <h3>Sesión para Consejo / Comité Directivo</h3>
+              <p>Versión enfocada en dinero, capacidad instalada, ROI, riesgo operativo y velocidad estratégica.</p>
+              <ul><li>Lenguaje financiero</li><li>KPIs ejecutivos</li><li>Decisiones de transformación</li></ul>
+            </article>
+            <article class="conference-format-card" data-format="DX">
+              <span class="format-tag">Con diagnóstico</span>
+              <h3>Conferencia + radiografía exprés</h3>
+              <p>Se complementa con una primera lectura de fricciones, tiempos muertos y oportunidades de recuperación.</p>
+              <ul><li>Encuesta previa</li><li>Lectura de síntomas</li><li>Siguiente paso claro</li></ul>
+            </article>
+            <article class="conference-format-card" data-format="EDGE">
+              <span class="format-tag">Transformación</span>
+              <h3>Viva la Nómina + Método EDGE</h3>
+              <p>Enfoque para empresas que desean conectar cultura, tecnología, visibilidad y ejecución ágil.</p>
+              <ul><li>Simplicidad radical</li><li>Priorización extrema</li><li>Mejora continua con datos</li></ul>
+            </article>
+            <article class="conference-format-card" data-format="X">
+              <span class="format-tag">Evento interno</span>
+              <h3>Kick-off de eficiencia operativa</h3>
+              <p>Para lanzar una iniciativa interna de productividad, reducción de juntas, seguimiento y accountability.</p>
+              <ul><li>Mensaje alineador</li><li>Lenguaje común</li><li>Compromiso colectivo</li></ul>
+            </article>
+          </div>
+        </div>
+
+        <div class="tool-form-card">
+          <h2>Resultados que la conferencia busca detonar</h2>
+          <p class="lead">La conferencia no promete magia; instala urgencia, lenguaje común y una ruta de medición para convertir conciencia en acción.</p>
+          <div class="conference-outcomes">
+            <div class="conference-outcome"><span class="outcome-code">01</span><h3>Conciencia financiera</h3><p>Los líderes ven el tiempo muerto como dinero, capacidad y oportunidad perdida.</p><div class="outcome-target">Indicador: costo mensual estimado.</div></div>
+            <div class="conference-outcome"><span class="outcome-code">02</span><h3>Claridad operativa</h3><p>La organización empieza a distinguir actividad, avance, entrega, evidencia y resultado.</p><div class="outcome-target">Indicador: tareas con responsable y fecha.</div></div>
+            <div class="conference-outcome"><span class="outcome-code">03</span><h3>Reducción de fricción</h3><p>Se identifican puntos donde se pierde tiempo por juntas, esperas, retrabajo y duplicidad.</p><div class="outcome-target">Indicador: tiempo de respuesta.</div></div>
+            <div class="conference-outcome"><span class="outcome-code">04</span><h3>Accountability positivo</h3><p>El seguimiento deja de sentirse como persecución y se convierte en responsabilidad compartida.</p><div class="outcome-target">Indicador: acuerdos cerrados.</div></div>
+            <div class="conference-outcome"><span class="outcome-code">05</span><h3>Velocidad de ejecución</h3><p>El equipo entiende que la competitividad depende de decidir, desbloquear y entregar más rápido.</p><div class="outcome-target">Indicador: ciclo de ejecución.</div></div>
+            <div class="conference-outcome"><span class="outcome-code">06</span><h3>Menos oscuridad operativa</h3><p>Lo invisible se vuelve medible: estatus, cargas, bloqueos, retrasos, prioridades y responsables.</p><div class="outcome-target">Indicador: trazabilidad.</div></div>
+            <div class="conference-outcome"><span class="outcome-code">07</span><h3>Mejor conversación directiva</h3><p>El CEO y los mandos medios comparten un mismo lenguaje para hablar de ejecución.</p><div class="outcome-target">Indicador: alineación estrategia-ejecución.</div></div>
+            <div class="conference-outcome"><span class="outcome-code">08</span><h3>Siguiente paso natural</h3><p>La conferencia abre la puerta a diagnóstico, demo, consultoría o implementación operativa.</p><div class="outcome-target">Indicador: agenda de acción.</div></div>
+          </div>
+        </div>
+
+        <div class="quote-card">
+          <p>“No solo se llega a trabajar. Se llega a dar resultados.”</p>
+          <span>Mensaje de cierre para líderes, mandos medios y equipos que quieren encender su Nómina Viva.</span>
+        </div>
+
+        <div class="conference-cta-final">
+          <h2>Lleva Viva la Nómina a tu empresa, convención, comité directivo o evento de liderazgo.</h2>
+          <p>Una conferencia diseñada para incomodar con respeto, despertar conciencia ejecutiva y abrir una conversación que puede transformar la forma en que tu organización usa su activo más caro: el tiempo.</p>
+          <div class="utility-actions">
+            <a class="btn btn-light" href="https://wa.me/526671450096" target="_blank" rel="noopener">Solicitar información por WhatsApp</a>
+            <a class="btn btn-outline" href="#/consultoria-copiloto">Ver Copiloto de Eficiencia Operativa</a>
+          </div>
         </div>
       </div>
     </section>
