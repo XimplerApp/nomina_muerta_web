@@ -2342,7 +2342,203 @@
       .nm-definition-card, .nm-proof-card, .nm-calc-card, .nm-indicator-card, .nm-reader-panel { border-radius: 24px; }
     }
 
-  </style>
+  
+
+    /* === V13: Manifiesto visual tipo imagen enviada === */
+    .nm-manifest-section {
+      padding: 74px 0 88px;
+      background: linear-gradient(180deg, rgba(16,42,53,.025), rgba(214,181,109,.035));
+    }
+    .manifesto-card {
+      min-height: 456px;
+      display: grid;
+      grid-template-columns: .82fr 1fr;
+      overflow: hidden;
+      position: relative;
+      border-radius: 34px;
+      background:
+        radial-gradient(circle at 86% 30%, rgba(31,97,112,.12), transparent 28rem),
+        linear-gradient(135deg, #17333d 0%, #0d2530 48%, #071d26 100%);
+      color: var(--cream);
+      box-shadow: 0 28px 78px rgba(16,42,53,.26);
+    }
+    .manifesto-card::after {
+      content: "NM";
+      position: absolute;
+      right: 32px;
+      bottom: -46px;
+      font-family: Georgia, serif;
+      font-size: clamp(150px, 19vw, 250px);
+      line-height: 1;
+      letter-spacing: -.08em;
+      color: rgba(243,240,231,.055);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .manifesto-left,
+    .manifesto-right {
+      position: relative;
+      z-index: 1;
+      padding: clamp(34px, 4.3vw, 58px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .manifesto-left {
+      border-right: 1px solid rgba(243,240,231,.12);
+      background: rgba(255,255,255,.025);
+    }
+    .manifesto-label {
+      margin-bottom: 18px;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: .24em;
+      font-size: 12px;
+      font-weight: 950;
+    }
+    .manifesto-left h2 {
+      margin: 0;
+      max-width: 470px;
+      color: var(--cream);
+      font-size: clamp(42px, 5.1vw, 62px);
+      line-height: .94;
+      letter-spacing: -.06em;
+    }
+    .manifesto-quote {
+      margin: 0;
+      max-width: 590px;
+      color: rgba(243,240,231,.96);
+      font-size: clamp(32px, 4vw, 47px);
+      line-height: 1.05;
+      letter-spacing: -.045em;
+      font-weight: 950;
+    }
+    .manifesto-quote cite {
+      display: block;
+      margin-top: 24px;
+      color: rgba(243,240,231,.58);
+      font-style: normal;
+      font-size: 16px;
+      letter-spacing: normal;
+      font-weight: 800;
+    }
+    .manifesto-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 28px;
+      max-width: 560px;
+    }
+    .manifesto-pills span {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 40px;
+      border-radius: 999px;
+      padding: 9px 15px;
+      border: 1px solid rgba(243,240,231,.18);
+      color: rgba(243,240,231,.84);
+      background: rgba(255,255,255,.018);
+      font-size: 13px;
+      font-weight: 900;
+      line-height: 1;
+      white-space: nowrap;
+    }
+    @media (max-width: 980px) {
+      .manifesto-card {
+        grid-template-columns: 1fr;
+        min-height: auto;
+      }
+      .manifesto-left {
+        border-right: 0;
+        border-bottom: 1px solid rgba(243,240,231,.12);
+      }
+      .manifesto-left h2,
+      .manifesto-quote,
+      .manifesto-pills {
+        max-width: none;
+      }
+    }
+    @media (max-width: 620px) {
+      .nm-manifest-section {
+        padding: 58px 0 68px;
+      }
+      .manifesto-card {
+        border-radius: 26px;
+      }
+      .manifesto-left,
+      .manifesto-right {
+        padding: 28px 22px;
+      }
+      .manifesto-left h2 {
+        font-size: clamp(34px, 12vw, 46px);
+      }
+      .manifesto-quote {
+        font-size: clamp(27px, 9vw, 38px);
+      }
+      .manifesto-pills span {
+        white-space: normal;
+      }
+    }
+
+
+    /* === V13: Contraportada en código con sinopsis oficial, sin imagen === */
+    .synopsis-cover-card {
+      min-height: 600px;
+      justify-content: flex-start;
+      padding: 34px 28px 28px;
+      border-radius: 8px 28px 28px 8px;
+      background:
+        radial-gradient(circle at 84% 15%, rgba(214,181,109,.18), transparent 18rem),
+        linear-gradient(145deg, #2d3b43, #223139 72%);
+    }
+    .synopsis-cover-card::after { display: none; }
+    .synopsis-cover-card .back-label {
+      color: var(--gold);
+      font-size: 12px;
+      letter-spacing: .18em;
+      margin-bottom: 18px;
+    }
+    .synopsis-cover-card h3 {
+      margin: 0 0 12px;
+      text-align: center;
+      text-transform: uppercase;
+      font-size: clamp(34px, 3.5vw, 48px);
+      line-height: 1;
+      letter-spacing: .12em;
+      color: rgba(243,240,231,.88);
+    }
+    .synopsis-subtitle {
+      margin: 0 0 18px !important;
+      text-align: center;
+      color: rgba(243,240,231,.90) !important;
+      font-family: Georgia, serif;
+      font-size: clamp(17px, 1.8vw, 24px) !important;
+      line-height: 1.15 !important;
+      font-weight: 500;
+    }
+    .synopsis-official-text {
+      position: relative;
+      z-index: 1;
+      color: rgba(243,240,231,.92);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(10.6px, 1.02vw, 13.2px);
+      line-height: 1.16;
+      letter-spacing: -.01em;
+    }
+    .synopsis-official-text p {
+      margin: 0 0 8px;
+      color: rgba(243,240,231,.92) !important;
+      font-size: inherit !important;
+      line-height: inherit !important;
+    }
+    .synopsis-official-text strong { color: #fff; font-weight: 700; }
+    @media (max-width: 900px) {
+      .synopsis-cover-card { min-height: auto; }
+      .synopsis-official-text { font-size: 14px; line-height: 1.35; }
+    }
+
+</style>
 </head>
 <body>
   <!-- versión recomendaciones fijas 2026-06-02: testimonios visibles sin depender de JavaScript -->
@@ -2387,19 +2583,25 @@
 
     <div class="wrap metric-strip" aria-label="Indicadores clave del concepto Nómina Muerta">
       <div class="metric"><strong>25%–40%</strong><span>del tiempo laboral se pierde en juntas, retrabajo, esperas, correos, validaciones y busqueda de información.</span></div>
-      <div class="metric"><strong>70/30</strong><span>El reto no es estar ocupado: es pasar de la eterna coordinación a la inmediata ejecución, con cierre y resultados.</span></div>
+      <div class="metric"><strong>De 70/30 a 30/70</strong><span>El reto no es estar ocupado: es convertir la eterna coordinación en ágil ejecución, con cierre y resultados.</span></div>
       <div class="metric"><strong>$200k–$500k</strong><span>Mx se pierden mensualmente por cada 100 personas, por falta de aprovechamiento del tiempo.</span></div>
     </div>
 
     <section class="back-cover-section" aria-label="Contraportada del libro Nómina Muerta">
       <div class="wrap back-cover-grid">
-        <div class="back-cover-card">
+        <div class="back-cover-card synopsis-cover-card">
           <div>
             <div class="back-label">Contraportada</div>
-            <h3>La pérdida que debes capitalizar… antes de que esta también te sepulte.</h3>
-            <p>Nómina Muerta no señala personas: revela sistemas, hábitos y estructuras que consumen tiempo pagado sin convertirlo en avance, cierre o valor real.</p>
+            <h3>Sinopsis</h3>
+            <p class="synopsis-subtitle">Ensayo de contraste y crítica a los indicadores tradicionales</p>
+            <div class="synopsis-official-text">
+              <p>En <strong>Nómina Muerta. La pérdida que debes atender… antes de que esta también te sepulte</strong>, el Economista Melchor Iván Angulo Zamorán lanza una alerta urgente sobre una verdad incómoda que se esconde a plena vista: las empresas están pagando por estar ocupadas, pero no necesariamente por avanzar… y mucho menos por aprovechar su mayor capital: el humano.</p>
+              <p>Este libro desafía los indicadores clásicos de eficiencia y rentabilidad, y destapa una economía interna plagada de tareas sin cierre, procesos que no resuelven, estructuras mal diseñadas y talento desaprovechado. Una pérdida silenciosa, constante y millonaria: la nómina muerta.</p>
+              <p>No importa cuántos KPI’s presumas, cuánto crezca tu EBITDA o qué tan bonito luzca tu dashboard ejecutivo, si no estás aprovechando tu nómina al 100%, estás financiando inercia disfrazada de productividad. Y mientras no la veas, no la midas y no la enfrentes, esa pérdida seguirá drenando tu operación desde adentro, como un cáncer invisible.</p>
+              <p>Este no es un libro de teoría organizacional ni una guía de buenas intenciones. Es un espejo, un diagnóstico brutal. Es un llamado a romper dicha inercia y desterrar el autoengaño corporativo. Un llamado a rediseñar la forma en que se trabaja, se mide y se lidera. Porque no todo lo que se mueve, avanza. Y no toda empresa que crece, progresa.</p>
+              <p>Una lectura directa, reveladora y necesaria para líderes modernos que se atreven a mirar lo que otros prefieren ignorar.</p>
+            </div>
           </div>
-          <div class="back-cover-signature">Melchor Iván Angulo Zamorán</div>
         </div>
         <div class="back-cover-copy">
           <div class="kicker">Lectura ejecutiva</div>
@@ -2440,9 +2642,9 @@
               <p>Pagar la nómina es una transferencia bancaria. Capitalizar la nómina es el retorno real de ese tiempo: decisiones tomadas, compromisos cumplidos, proyectos cerrados, clientes atendidos, valor generado, etc.</p>
             </div>
             <div class="nm-proof-metrics">
-              <div class="nm-proof-metric"><strong>30%</strong><span>del tiempo no se aprovecha</span></div>
-              <div class="nm-proof-metric"><strong>4 de 12</strong><span>meses se desperdician</span></div>
-              <div class="nm-proof-metric"><strong>2 a 3 horas</strong><span>al día no se avanza</span></div>
+              <div class="nm-proof-metric"><strong> 30% a 40%</strong><span>del tiempo no se aprovecha</span></div>
+              <div class="nm-proof-metric"><strong> 2 a 3 horas</strong><span>al día no se avanza</span></div>
+              <div class="nm-proof-metric"><strong> 4 de 12</strong><span>meses se desperdician al año</span></div>
             </div>
           </div>
         </div>
@@ -2507,7 +2709,7 @@
         <div class="nm-indicator-card">
           <div class="kicker">Radiografía operativa</div>
           <h3>Del concepto a la medición.</h3>
-          <p>La página principal ahora presenta la idea con fuerza, pero también deja claro que la Nómina Muerta puede diagnosticarse con indicadores concretos, no solo con intuición.</p>
+          <p>La Nómina Muerta puede diagnosticarse con indicadores concretos, no solo con intuición.</p>
           <div class="nm-indicator-grid">
             <div class="nm-indicator"><strong>Índice de Ejecución Eficiente</strong><span>Tareas cerradas dentro del plazo vs. total de tareas asignadas.</span></div>
             <div class="nm-indicator"><strong>Tiempo Improductivo Estimado</strong><span>Horas sin entregable, decisión o avance real sobre horas laborales totales.</span></div>
@@ -2520,33 +2722,28 @@
       </div>
     </section>
 
-    <section aria-label="Manifiesto del libro" class="nm-reader-section">
-      <div class="wrap nm-reader-panel">
-        <div class="nm-reader-side">
-          <div class="kicker">Manifiesto</div>
-          <h2>Un espejo para líderes que ya no quieren financiar inercia.</h2>
-        </div>
-        <div class="nm-reader-main">
-          <p class="quote">“Porque no todo lo que se mueve, avanza. Y no toda empresa que crece, progresa.”<small>— Nómina Muerta</small></p>
-          <p>Este libro es para CEO’s, directores, empresarios, gerentes y líderes que sospechan algo incómodo: que su empresa no necesita simplemente trabajar más, sino dejar de desperdiciar la capacidad que ya paga.</p>
-          <div class="nm-reader-list" aria-label="Promesas de lectura del libro">
-            <div class="nm-reader-item">Verás la diferencia entre nómina pagada y nómina útil.</div>
-            <div class="nm-reader-item">Detectarás tareas, juntas y procesos que parecen trabajo pero no generan valor.</div>
-            <div class="nm-reader-item">Entenderás por qué la ocupación puede ser una trampa cultural.</div>
-            <div class="nm-reader-item">Conectarás eficiencia, liderazgo, cultura de cierre y transformación digital.</div>
+    <section aria-label="Manifiesto del libro" class="nm-manifest-section" id="manifiesto">
+      <div class="wrap">
+        <div class="manifesto-card">
+          <div class="manifesto-left">
+            <div class="manifesto-label">Manifiesto</div>
+            <h2>Un espejo para líderes que ya no quieren financiar inercia.</h2>
           </div>
-          <div class="pill-list" aria-label="Temas principales del libro">
-            <span class="pill">Eficiencia real</span>
-            <span class="pill">Accountability</span>
-            <span class="pill">Cultura de cierre</span>
-            <span class="pill">Operación esbelta</span>
-            <span class="pill">Ejecución ágil</span>
-            <span class="pill">Transformación digital</span>
-          </div>
-          <div class="nm-reader-actions">
-            <a class="btn btn-outline" href="#recomendaciones">Leer recomendaciones</a>
-            <a class="btn btn-outline" href="#/recupera-nomina-muerta">Calcular mi Nómina Muerta</a>
-            <a class="btn btn-outline" href="https://wa.me/526671450096" target="_blank" rel="noopener">Solicitar información</a>
+
+          <div class="manifesto-right">
+            <blockquote class="manifesto-quote">
+              “Porque no todo lo que se mueve, avanza. Y no toda empresa que crece, progresa.”
+              <cite>— Nómina Muerta</cite>
+            </blockquote>
+
+            <div class="manifesto-pills" aria-label="Temas principales del manifiesto">
+              <span>Eficiencia real</span>
+              <span>Accountability</span>
+              <span>Cultura de cierre</span>
+              <span>Operación esbelta</span>
+              <span>Ejecución ágil</span>
+              <span>Transformación digital</span>
+            </div>
           </div>
         </div>
       </div>
@@ -2581,7 +2778,6 @@
             <div class="kicker">Mapa de lectura</div>
             <h2>Una mirada breve por capítulo para despertar la conversación.</h2>
           </div>
-          <p class="lead">Un recorrido ejecutivo, sin revelar demasiado: solo la idea central y los puntos que hacen que cada capítulo invite a seguir leyendo.</p>
         </div>
 
         <div class="chapter-explorer" data-chapter-tabs>
@@ -2646,7 +2842,7 @@
           </div>
         </div>
         <div class="chapter-cta">
-          <div><strong>El resumen abre la conversación. El libro revela el costo completo.</strong><span>Ideal para líderes que quieren cuestionar cómo se trabaja, se mide y se lidera.</span></div>
+          <div><strong>CARPE DIEM: OPERA.OPTIMIZA.LIDERA.</strong></div>
           <a class="btn btn-light" href="https://www.amazon.com.mx/N%C3%B3mina-Muerta-p%C3%A9rdida-capitalizar-sepulte/dp/B0FCC9TLRM/ref=sr_1_1?crid=36Q4FTI8QAIPO&dib=eyJ2IjoiMSJ9.jeZzbPCzxWGI8uNZBU_ScOBux1AnAd-oMfUVvGxOIyNsbIgNNo7Qxjr6Ty346Lm_m95Ih3F7jma0XL8zz_HkUGyzzi-e6tfHa5XA_wxj1K0oNMcRUMmJ3NLf4rdADwD6P-TR8sdVIvs2ybw2XHFzlL4K1QLf3iVrnTveFDbSNGyqxLz_77XfUOBilfozOow0.mISqZCqIAd8oH-NFYLKAfgNlEWUuTWzTaJHuLFG3FQM&dib_tag=se&keywords=nomina+muerta&qid=1780362284&sprefix=nomina+muerta%2Caps%2C177&sr=8-1&ufe=app_do%3Aamzn1.fos.de93fa6a-174c-4df7-be7c-5bc8e9c5a71b" target="_blank" rel="noopener">Comprar el libro</a>
         </div>
       </div>
@@ -2904,7 +3100,7 @@
             <div class="tool-card"><h3>Supervisa y mejora</h3><p>Seguimiento activo de compromisos, procesos, proyectos, minutas, productividad y desempeño.</p></div>
           </div>
           <div class="utility-actions">
-            <a class="btn btn-primary" href="https://wa.me/526671450096" target="_blank" rel="noopener">Solicitar demo por WhatsApp</a>
+            <a class="btn btn-primary" href="https://wa.me/526671450096" target="_blank" rel="noopener">Más Información</a>
             <a class="btn btn-light" href="#/reto-nomina-muerta">Medir síntomas con el Reto</a>
           </div>
         </div>
@@ -2921,7 +3117,7 @@
 
         <div class="tool-form-card">
           <h2>Checklist del Reto</h2>
-          <p class="lead">Marca solo los síntomas que claramente existen hoy. No es una encuesta de opinión: es una radiografía operativa de señales críticas.</p>
+          <p class="lead">Marca todos los síntomas que claramente existen hoy. No es una encuesta de opinión: es una radiografía operativa de señales críticas.</p>
           <div id="retoChecklist"></div>
           <div class="utility-actions">
             <button class="btn btn-primary" type="button" id="retoBtn">Evaluar riesgo</button>
@@ -3203,8 +3399,7 @@
           <h2>Lleva Viva la Nómina a tu empresa, convención, comité directivo o evento de liderazgo.</h2>
           <p>Una conferencia diseñada para incomodar con respeto, despertar conciencia ejecutiva y abrir una conversación que puede transformar la forma en que tu organización usa su activo más caro: el tiempo.</p>
           <div class="utility-actions">
-            <a class="btn btn-light" href="https://wa.me/526671450096" target="_blank" rel="noopener">Solicitar información por WhatsApp</a>
-            <a class="btn btn-outline" href="#/consultoria-copiloto">Ver Copiloto de Eficiencia Operativa</a>
+            <a class="btn btn-light" href="https://wa.me/526671450096" target="_blank" rel="noopener">Solicitar información</a>
           </div>
         </div>
       </div>
@@ -3217,8 +3412,6 @@
           <h1>Convierte el tiempo perdido de tu empresa en capacidad operativa, velocidad de ejecución y resultados medibles.</h1>
           <p>El Copiloto de Eficiencia Operativa es una intervención ejecutiva para líderes que ya no quieren administrar el caos: quieren medirlo, reducirlo y transformarlo en flujo real de trabajo. Detectamos dónde muere el tiempo, cuánto cuesta, qué procesos lo provocan y qué decisiones deben tomarse para recuperar capacidad instalada sin contratar más gente.</p>
           <div class="subpage-nav">
-            <a class="btn btn-light" href="https://wa.me/526671450096" target="_blank" rel="noopener">Pedir información por WhatsApp</a>
-            <a class="btn btn-outline" href="#/recupera-nomina-muerta">Calcular Nómina Muerta</a>
           </div>
           <div class="consult-hero-metrics" aria-label="Indicadores de impacto de la consultoría">
             <div class="consult-hero-metric"><strong>25–40%</strong><span>del tiempo laboral puede perderse en tareas no esenciales, redundantes o mal priorizadas.</span></div>
@@ -3314,8 +3507,7 @@
           <h2>El Copiloto de Eficiencia Operativa le da a la Alta Dirección una ventaja: ver el trabajo como realmente ocurre.</h2>
           <p>Cuando el trabajo se vuelve visible, el desperdicio deja de esconderse. Cuando el desperdicio se mide, se puede reducir. Y cuando se reduce, la empresa recupera tiempo, capacidad, margen, velocidad y tranquilidad directiva.</p>
           <div class="utility-actions">
-            <a class="btn btn-light" href="https://wa.me/526671450096" target="_blank" rel="noopener">Solicitar información por WhatsApp</a>
-            <a class="btn btn-outline" href="#/recupera-nomina-muerta">Estimar mi Nómina Muerta</a>
+            <a class="btn btn-light" href="https://wa.me/526671450096" target="_blank" rel="noopener">Solicitar información</a>
           </div>
         </div>
       </div>
