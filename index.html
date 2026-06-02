@@ -2480,6 +2480,64 @@
         white-space: normal;
       }
     }
+
+
+    /* === V13: Contraportada en código con sinopsis oficial, sin imagen === */
+    .synopsis-cover-card {
+      min-height: 600px;
+      justify-content: flex-start;
+      padding: 34px 28px 28px;
+      border-radius: 8px 28px 28px 8px;
+      background:
+        radial-gradient(circle at 84% 15%, rgba(214,181,109,.18), transparent 18rem),
+        linear-gradient(145deg, #2d3b43, #223139 72%);
+    }
+    .synopsis-cover-card::after { display: none; }
+    .synopsis-cover-card .back-label {
+      color: var(--gold);
+      font-size: 12px;
+      letter-spacing: .18em;
+      margin-bottom: 18px;
+    }
+    .synopsis-cover-card h3 {
+      margin: 0 0 12px;
+      text-align: center;
+      text-transform: uppercase;
+      font-size: clamp(34px, 3.5vw, 48px);
+      line-height: 1;
+      letter-spacing: .12em;
+      color: rgba(243,240,231,.88);
+    }
+    .synopsis-subtitle {
+      margin: 0 0 18px !important;
+      text-align: center;
+      color: rgba(243,240,231,.90) !important;
+      font-family: Georgia, serif;
+      font-size: clamp(17px, 1.8vw, 24px) !important;
+      line-height: 1.15 !important;
+      font-weight: 500;
+    }
+    .synopsis-official-text {
+      position: relative;
+      z-index: 1;
+      color: rgba(243,240,231,.92);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(10.6px, 1.02vw, 13.2px);
+      line-height: 1.16;
+      letter-spacing: -.01em;
+    }
+    .synopsis-official-text p {
+      margin: 0 0 8px;
+      color: rgba(243,240,231,.92) !important;
+      font-size: inherit !important;
+      line-height: inherit !important;
+    }
+    .synopsis-official-text strong { color: #fff; font-weight: 700; }
+    @media (max-width: 900px) {
+      .synopsis-cover-card { min-height: auto; }
+      .synopsis-official-text { font-size: 14px; line-height: 1.35; }
+    }
+
 </style>
 </head>
 <body>
@@ -2531,13 +2589,19 @@
 
     <section class="back-cover-section" aria-label="Contraportada del libro Nómina Muerta">
       <div class="wrap back-cover-grid">
-        <div class="back-cover-card">
+        <div class="back-cover-card synopsis-cover-card">
           <div>
             <div class="back-label">Contraportada</div>
-            <h3>La pérdida que debes capitalizar… antes de que esta también te sepulte.</h3>
-            <p>Nómina Muerta no señala personas: revela sistemas, hábitos y estructuras que consumen tiempo pagado sin convertirlo en avance, cierre o valor real.</p>
+            <h3>Sinopsis</h3>
+            <p class="synopsis-subtitle">Ensayo de contraste y crítica a los indicadores tradicionales</p>
+            <div class="synopsis-official-text">
+              <p>En <strong>Nómina Muerta. La pérdida que debes atender… antes de que esta también te sepulte</strong>, el Economista Melchor Iván Angulo Zamorán lanza una alerta urgente sobre una verdad incómoda que se esconde a plena vista: las empresas están pagando por estar ocupadas, pero no necesariamente por avanzar… y mucho menos por aprovechar su mayor capital: el humano.</p>
+              <p>Este libro desafía los indicadores clásicos de eficiencia y rentabilidad, y destapa una economía interna plagada de tareas sin cierre, procesos que no resuelven, estructuras mal diseñadas y talento desaprovechado. Una pérdida silenciosa, constante y millonaria: la nómina muerta.</p>
+              <p>No importa cuántos KPI’s presumas, cuánto crezca tu EBITDA o qué tan bonito luzca tu dashboard ejecutivo, si no estás aprovechando tu nómina al 100%, estás financiando inercia disfrazada de productividad. Y mientras no la veas, no la midas y no la enfrentes, esa pérdida seguirá drenando tu operación desde adentro, como un cáncer invisible.</p>
+              <p>Este no es un libro de teoría organizacional ni una guía de buenas intenciones. Es un espejo, un diagnóstico brutal. Es un llamado a romper dicha inercia y desterrar el autoengaño corporativo. Un llamado a rediseñar la forma en que se trabaja, se mide y se lidera. Porque no todo lo que se mueve, avanza. Y no toda empresa que crece, progresa.</p>
+              <p>Una lectura directa, reveladora y necesaria para líderes modernos que se atreven a mirar lo que otros prefieren ignorar.</p>
+            </div>
           </div>
-          <div class="back-cover-signature">Melchor Iván Angulo Zamorán</div>
         </div>
         <div class="back-cover-copy">
           <div class="kicker">Lectura ejecutiva</div>
@@ -2645,7 +2709,7 @@
         <div class="nm-indicator-card">
           <div class="kicker">Radiografía operativa</div>
           <h3>Del concepto a la medición.</h3>
-          <p>La página principal ahora presenta la idea con fuerza, pero también deja claro que la Nómina Muerta puede diagnosticarse con indicadores concretos, no solo con intuición.</p>
+          <p>La Nómina Muerta puede diagnosticarse con indicadores concretos, no solo con intuición.</p>
           <div class="nm-indicator-grid">
             <div class="nm-indicator"><strong>Índice de Ejecución Eficiente</strong><span>Tareas cerradas dentro del plazo vs. total de tareas asignadas.</span></div>
             <div class="nm-indicator"><strong>Tiempo Improductivo Estimado</strong><span>Horas sin entregable, decisión o avance real sobre horas laborales totales.</span></div>
@@ -2714,7 +2778,6 @@
             <div class="kicker">Mapa de lectura</div>
             <h2>Una mirada breve por capítulo para despertar la conversación.</h2>
           </div>
-          <p class="lead">Un recorrido ejecutivo, sin revelar demasiado: solo la idea central y los puntos que hacen que cada capítulo invite a seguir leyendo.</p>
         </div>
 
         <div class="chapter-explorer" data-chapter-tabs>
@@ -2779,7 +2842,7 @@
           </div>
         </div>
         <div class="chapter-cta">
-          <div><strong>El resumen abre la conversación. El libro revela el costo completo.</strong><span>Ideal para líderes que quieren cuestionar cómo se trabaja, se mide y se lidera.</span></div>
+          <div><strong>CARPE DIEM: OPERA.OPTIMIZA.LIDERA.</strong></div>
           <a class="btn btn-light" href="https://www.amazon.com.mx/N%C3%B3mina-Muerta-p%C3%A9rdida-capitalizar-sepulte/dp/B0FCC9TLRM/ref=sr_1_1?crid=36Q4FTI8QAIPO&dib=eyJ2IjoiMSJ9.jeZzbPCzxWGI8uNZBU_ScOBux1AnAd-oMfUVvGxOIyNsbIgNNo7Qxjr6Ty346Lm_m95Ih3F7jma0XL8zz_HkUGyzzi-e6tfHa5XA_wxj1K0oNMcRUMmJ3NLf4rdADwD6P-TR8sdVIvs2ybw2XHFzlL4K1QLf3iVrnTveFDbSNGyqxLz_77XfUOBilfozOow0.mISqZCqIAd8oH-NFYLKAfgNlEWUuTWzTaJHuLFG3FQM&dib_tag=se&keywords=nomina+muerta&qid=1780362284&sprefix=nomina+muerta%2Caps%2C177&sr=8-1&ufe=app_do%3Aamzn1.fos.de93fa6a-174c-4df7-be7c-5bc8e9c5a71b" target="_blank" rel="noopener">Comprar el libro</a>
         </div>
       </div>
@@ -3037,7 +3100,7 @@
             <div class="tool-card"><h3>Supervisa y mejora</h3><p>Seguimiento activo de compromisos, procesos, proyectos, minutas, productividad y desempeño.</p></div>
           </div>
           <div class="utility-actions">
-            <a class="btn btn-primary" href="https://wa.me/526671450096" target="_blank" rel="noopener">Solicitar demo por WhatsApp</a>
+            <a class="btn btn-primary" href="https://wa.me/526671450096" target="_blank" rel="noopener">Más Información</a>
             <a class="btn btn-light" href="#/reto-nomina-muerta">Medir síntomas con el Reto</a>
           </div>
         </div>
@@ -3054,7 +3117,7 @@
 
         <div class="tool-form-card">
           <h2>Checklist del Reto</h2>
-          <p class="lead">Marca solo los síntomas que claramente existen hoy. No es una encuesta de opinión: es una radiografía operativa de señales críticas.</p>
+          <p class="lead">Marca todos los síntomas que claramente existen hoy. No es una encuesta de opinión: es una radiografía operativa de señales críticas.</p>
           <div id="retoChecklist"></div>
           <div class="utility-actions">
             <button class="btn btn-primary" type="button" id="retoBtn">Evaluar riesgo</button>
