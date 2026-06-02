@@ -851,6 +851,33 @@
       .admin-stats { grid-template-columns: 1fr; }
     }
 
+
+    /* === V5: correcciones de destacadas, visibilidad y moderación === */
+    .featured-panel h3 {
+      margin: 0 0 22px;
+      font-size: clamp(38px, 5vw, 68px);
+      line-height: .95;
+      letter-spacing: -.04em;
+      position: relative;
+      z-index: 1;
+    }
+    .featured-card-live p { color: var(--ink) !important; opacity: 1 !important; }
+    .featured-card-live strong { color: var(--navy) !important; }
+    .featured-card-live span { color: var(--muted) !important; }
+    .featured-card-live .badge { color: var(--navy) !important; }
+    .admin-feedback {
+      display: none;
+      margin: 14px 0;
+      padding: 13px 15px;
+      border-radius: 16px;
+      background: rgba(214,181,109,.16);
+      border: 1px solid rgba(214,181,109,.32);
+      color: var(--cream);
+      font-weight: 800;
+    }
+    .admin-feedback.active { display: block; }
+    .review-list .featured-review { display: none; }
+
   </style>
 </head>
 <body>
@@ -993,9 +1020,7 @@
         </div>
 
         <div class="featured-panel" aria-label="Publicaciones destacadas">
-          <div class="kicker">Publicaciones destacadas</div>
-          <h3>Seleccionadas por criterio editorial, no al azar.</h3>
-          <p>Las recomendaciones destacadas inician con testimonios verificados de líderes. Después, el administrador puede marcar como destacada cualquier recomendación aprobada para rotarlas, mantenerlas fijas o usarlas como prueba social principal.</p>
+          <h3>Publicaciones destacadas</h3>
           <div class="featured-live-grid" id="featuredList">
             <article class="featured-card-live">
               <div class="badge">Recomendación destacada · ★★★★★</div>
@@ -1010,7 +1035,6 @@
               <span>Director General · LLYASA</span>
             </article>
           </div>
-          <div class="featured-rules"><strong>Regla sugerida:</strong> mantener 2 a 4 recomendaciones destacadas. No conviene que cambien al azar en cada visita, porque pierden fuerza editorial. Es mejor que el administrador las elija, las rote por campaña o destaque las más estratégicas: CEOs, directores, industria objetivo, gobiernos o líderes con mayor autoridad.</div>
         </div>
 
         <div class="form-grid">
@@ -1124,7 +1148,7 @@
 
         <div class="admin-panel" id="adminPanel" hidden>
           <h3>Panel de moderación</h3>
-          <p>Este panel permite probar la lógica de moderación en versión estática. Para una página pública real, debe conectarse a servidor/base de datos para que solo el administrador tenga permisos reales.</p>
+          <p>Aquí se revisan las recomendaciones recibidas. <strong>Pendiente</strong> significa que no aparece públicamente; <strong>Aprobar</strong> la publica; <strong>Ocultar</strong> la retira; <strong>Verificar</strong> confirma el dato de contacto de quien pidió ser considerado como destacado.</p>
           <div class="admin-login" id="adminLogin">
             <input id="adminPassword" type="password" placeholder="Clave de administrador" autocomplete="current-password" />
             <button class="btn btn-primary" type="button" id="adminLoginBtn">Entrar</button>
@@ -1133,8 +1157,9 @@
 
           <div id="adminWorkspace" hidden>
             <div class="admin-explainer">
-              <strong>Cómo usarlo:</strong> primero revisa “Todos”. Las recomendaciones nuevas aparecen aquí si se guardaron en este navegador. Para destacarlas, deben estar aprobadas, haber solicitado ser destacadas y tener contacto verificado. En una página real, esta verificación se haría con correo/SMS/WhatsApp o login.
+              <strong>Flujo recomendado:</strong> revisa el comentario → aprueba si es publicable → verifica el correo/celular/perfil si la persona pidió aparecer como destacada → marca destacada solo si ya está aprobada y verificada. Los pendientes se revisan aquí mismo usando el filtro “Pendientes”.
             </div>
+            <div class="admin-feedback" id="adminFeedback"></div>
             <div class="admin-stats" id="adminStats"></div>
             <div class="admin-toolbar">
               <label class="admin-select-label" for="adminFilter">Ver comentarios:</label>
@@ -1199,7 +1224,7 @@
     }
   </script>
   <script>
-    const KEY = 'nomina_muerta_recomendaciones_v3';
+    const KEY = 'nomina_muerta_recomendaciones_v5';
     const OWNER_KEY = 'nomina_muerta_owner_id_v1';
     const ADMIN_PASSWORD = 'NMADMIN2026'; // Solo demo estática. En producción debe vivir en el servidor.
 
@@ -1224,6 +1249,7 @@
     const publicSort = document.getElementById('publicSort');
     const reviewCounter = document.getElementById('reviewCounter');
     const adminStats = document.getElementById('adminStats');
+    const adminFeedback = document.getElementById('adminFeedback');
 
     let editingId = null;
     let isAdmin = false;
@@ -1253,7 +1279,11 @@
         message: 'Es un libro claro, directo y muy práctico para entender uno de los grandes problemas silenciosos de las empresas: la ineficiencia en la nómina. Me gustó especialmente porque va más allá de la teoría y aterriza conceptos que se viven todos los días en las organizaciones actuales. El autor explica con ejemplos reales cómo la falta de medición, accountability y cultura de desempeño impacta directamente la rentabilidad. Los conceptos son totalmente aplicables a la empresa de hoy, sin importar el tamaño o la industria. Es una lectura recomendable para directivos que buscan ordenar, profesionalizar y hacer más productivos a sus equipos.',
         featured: true,
         status: 'approved',
-        fixed: true
+        fixed: true,
+        requestedFeature: true,
+        verified: true,
+        contact: { email: '', phone: '', publicLink: '', method: 'Verificación editorial' },
+        createdAt: 0
       }
     ];
 
@@ -1313,7 +1343,16 @@
     }
 
     function allReviews() {
-      return [...defaultReviews, ...getUserReviews()];
+      return uniqueById([...defaultReviews, ...getUserReviews()]);
+    }
+
+    function uniqueById(list) {
+      const seen = new Set();
+      return list.filter(item => {
+        if (!item || seen.has(item.id)) return false;
+        seen.add(item.id);
+        return true;
+      });
     }
 
     function reviewSortValue(review) {
@@ -1391,20 +1430,27 @@
     }
 
     function renderReviews() {
-      const userReviews = getUserReviews();
+      const userReviews = uniqueById(getUserReviews());
       const mode = publicSort ? publicSort.value : 'best';
-      const approved = sortReviewList(allReviews().filter(r => r.status === 'approved' && !r.hidden), mode);
-      const pendingMine = userReviews.filter(r => r.ownerId === ownerId() && r.status !== 'approved');
+      const approvedAll = sortReviewList(allReviews().filter(r => r.status === 'approved' && !r.hidden), mode);
+      const publicReviews = approvedAll.filter(r => !r.featured);
+      const approvedIds = new Set(approvedAll.map(r => r.id));
+      const pendingMine = userReviews.filter(r =>
+        r.ownerId === ownerId() &&
+        r.status !== 'approved' &&
+        r.status !== 'hidden' &&
+        !approvedIds.has(r.id)
+      );
       if (reviewCounter) {
-        const top = approved.filter(r => Number(r.rating) === 5).length;
-        reviewCounter.textContent = `${approved.length} recomendaciones publicadas · ${top} con 5 estrellas · scroll para ver más`;
+        const top = approvedAll.filter(r => Number(r.rating) === 5).length;
+        reviewCounter.textContent = `${approvedAll.length} recomendaciones publicadas · ${top} con 5 estrellas · scroll para ver más`;
       }
 
-      if (!approved.length && !pendingMine.length) {
-        reviewList.innerHTML = '<div class="empty">Aún no hay recomendaciones publicadas.</div>';
+      if (!publicReviews.length && !pendingMine.length) {
+        reviewList.innerHTML = '<div class="empty">Aún no hay recomendaciones publicadas adicionales. Las principales aparecen arriba en Publicaciones destacadas.</div>';
       } else {
         reviewList.innerHTML = [
-          ...approved.map(r => reviewArticle(r)),
+          ...publicReviews.map(r => reviewArticle(r)),
           ...pendingMine.map(r => reviewArticle(r, { privatePending: true }))
         ].join('');
       }
@@ -1592,8 +1638,8 @@
           <small>${escapeHTML(r.date)} · ID: ${escapeHTML(r.id)}</small>
           ${r.requestedFeature ? `<div class="admin-contact"><strong>Solicita ser destacada.</strong><br>Verificación preferida: ${escapeHTML(contact.method || 'No indicada')}<br>Correo: ${escapeHTML(contact.email || '—')}<br>Celular: ${escapeHTML(contact.phone || '—')}<br>Perfil/referencia: ${contact.publicLink ? `<a href="${escapeHTML(contact.publicLink)}" target="_blank" rel="noopener" style="color:var(--cream);text-decoration:underline;">abrir liga</a>` : '—'}</div>` : '<div class="admin-contact">No solicitó aparecer como destacada. Puede publicarse normal, pero no debería destacarse sin consentimiento.</div>'}
           <div class="admin-actions">
-            <button class="mini-btn" type="button" data-admin-action="approve" data-id="${r.id}">Aprobar</button>
-            <button class="mini-btn" type="button" data-admin-action="pending" data-id="${r.id}">Mandar a revisión</button>
+            <button class="mini-btn" type="button" data-admin-action="approve" data-id="${r.id}">Publicar / aprobar</button>
+            <button class="mini-btn" type="button" data-admin-action="pending" data-id="${r.id}">Poner pendiente</button>
             <button class="mini-btn" type="button" data-admin-action="verify" data-id="${r.id}">${r.verified ? 'Quitar verificación' : 'Marcar verificado'}</button>
             <button class="mini-btn" type="button" data-admin-action="hide" data-id="${r.id}">Ocultar</button>
             <button class="mini-btn" type="button" data-admin-action="feature" data-id="${r.id}" ${canFeature || r.featured ? '' : 'disabled title="Debe solicitar destacada, estar aprobada y tener contacto verificado"'}>${r.featured ? 'Quitar destacada' : 'Marcar destacada'}</button>
@@ -1607,21 +1653,36 @@
       });
     }
 
+    function setAdminFeedback(message) {
+      if (!adminFeedback) return;
+      adminFeedback.textContent = message;
+      adminFeedback.classList.add('active');
+      clearTimeout(setAdminFeedback.timer);
+      setAdminFeedback.timer = setTimeout(() => adminFeedback.classList.remove('active'), 4200);
+    }
+
     function adminAction(id, action) {
-      let reviews = getUserReviews();
+      let reviews = uniqueById(getUserReviews());
       const idx = reviews.findIndex(r => r.id === id);
       if (idx < 0) return;
+      let feedback = '';
+
       if (action === 'delete') {
         if (!confirm('¿Eliminar definitivamente esta recomendación de este navegador?')) return;
         reviews = reviews.filter(r => r.id !== id);
+        feedback = 'Recomendación eliminada.';
       } else if (action === 'approve') {
         reviews[idx].status = 'approved';
+        reviews[idx].hidden = false;
         reviews[idx].flagged = false;
+        feedback = 'Recomendación aprobada y publicada.';
       } else if (action === 'pending') {
         reviews[idx].status = 'pending';
+        reviews[idx].featured = false;
+        feedback = 'Recomendación puesta en pendiente. No aparece públicamente; se revisa aquí con el filtro “Pendientes”.';
       } else if (action === 'verify') {
         if (!reviews[idx].requestedFeature) {
-          alert('Esta persona no solicitó ser considerada como destacada. Primero debe marcar esa opción o darte autorización por otro medio.');
+          alert('Esta persona no pidió ser considerada como destacada. Para destacarla, primero debe solicitarlo o autorizarte por otro medio.');
           return;
         }
         const c = reviews[idx].contact || {};
@@ -1630,16 +1691,23 @@
           return;
         }
         reviews[idx].verified = !reviews[idx].verified;
-        if (!reviews[idx].verified) reviews[idx].featured = false;
+        if (!reviews[idx].verified) {
+          reviews[idx].featured = false;
+          feedback = 'Verificación retirada. Si estaba destacada, se quitó de destacadas.';
+        } else {
+          feedback = 'Contacto marcado como verificado. Ahora puede destacarse si también está aprobada.';
+        }
       } else if (action === 'hide') {
         reviews[idx].status = 'hidden';
         reviews[idx].featured = false;
+        feedback = 'Recomendación ocultada. Ya no aparece públicamente.';
       } else if (action === 'feature') {
         if (reviews[idx].featured) {
           reviews[idx].featured = false;
+          feedback = 'Recomendación retirada de Publicaciones destacadas.';
         } else {
           if (reviews[idx].status !== 'approved') {
-            alert('Solo puedes destacar recomendaciones aprobadas.');
+            alert('Solo puedes destacar recomendaciones aprobadas. Primero usa “Publicar / aprobar”.');
             return;
           }
           if (!reviews[idx].requestedFeature) {
@@ -1651,10 +1719,12 @@
             return;
           }
           reviews[idx].featured = true;
+          feedback = 'Recomendación agregada a Publicaciones destacadas.';
         }
       }
       saveUserReviews(reviews);
       renderReviews();
+      setAdminFeedback(feedback);
     }
 
     exportBtn.addEventListener('click', () => {
