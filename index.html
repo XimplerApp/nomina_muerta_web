@@ -203,12 +203,6 @@
       border: 1px solid rgba(255,255,255,.45);
     }
     .metric strong { display: block; color: var(--navy); font-size: clamp(32px, 4vw, 52px); line-height: 1; letter-spacing: -.04em; }
-    .metric strong.metric-nowrap {
-      white-space: nowrap;
-      font-size: clamp(24px, 2.8vw, 38px);
-      letter-spacing: -.075em;
-      line-height: 1.02;
-    }
     .metric span { color: var(--muted); display: block; margin-top: 10px; font-weight: 700; }
 
     section { padding: 92px 0; }
@@ -504,7 +498,6 @@
       .hero-actions { flex-direction: column; }
       section { padding: 64px 0; }
       .metric, .card, .panel-side, .panel-main, .form-card, .review-card { padding: 22px; }
-      .metric strong.metric-nowrap { font-size: clamp(24px, 7.4vw, 38px); }
       .reto-grid { grid-template-columns: 1fr; }
       .author-box { min-height: 390px; }
       .silhouette { transform: scale(.8); }
@@ -2545,6 +2538,100 @@
       .synopsis-official-text { font-size: 14px; line-height: 1.35; }
     }
 
+
+    /* === V14: Sistema integrado Reto + Diagnóstico + Recuperación === */
+    .flow-summary-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin: 18px 0 22px;
+    }
+    .flow-metric {
+      border-radius: 20px;
+      padding: 16px;
+      background: rgba(16,42,53,.055);
+      border: 1px solid rgba(16,42,53,.08);
+      color: var(--muted);
+      font-weight: 800;
+      min-height: 112px;
+    }
+    .flow-metric strong {
+      display: block;
+      color: var(--navy);
+      font-size: clamp(24px, 3vw, 38px);
+      line-height: .98;
+      letter-spacing: -.045em;
+      margin-bottom: 8px;
+    }
+    .flow-metric span { display: block; font-size: 13px; line-height: 1.3; }
+    .source-badge, .risk-weight {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      border-radius: 999px;
+      padding: 6px 10px;
+      margin: 0 0 10px;
+      background: rgba(214,181,109,.16);
+      color: #735a19;
+      font-size: 11px;
+      font-weight: 950;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+    }
+    .risk-weight {
+      margin: 0 0 0 8px;
+      background: rgba(31,97,112,.10);
+      color: var(--teal);
+      letter-spacing: .04em;
+    }
+    .integrated-note {
+      margin: 18px 0;
+      border-radius: 22px;
+      padding: 18px;
+      background: linear-gradient(135deg, rgba(31,97,112,.08), rgba(214,181,109,.10));
+      border: 1px solid rgba(31,97,112,.14);
+      color: #33464e;
+      font-weight: 750;
+    }
+    .funnel-steps {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin: 24px 0;
+    }
+    .funnel-step {
+      border-radius: 24px;
+      padding: 22px;
+      background: rgba(255,255,255,.78);
+      border: 1px solid rgba(16,42,53,.10);
+      box-shadow: 0 14px 34px rgba(16,42,53,.06);
+      position: relative;
+      overflow: hidden;
+      min-height: 190px;
+    }
+    .funnel-step::after {
+      content: attr(data-step);
+      position: absolute;
+      right: 12px;
+      bottom: -12px;
+      color: rgba(16,42,53,.055);
+      font-size: 74px;
+      font-weight: 950;
+      line-height: 1;
+    }
+    .funnel-step h3 { margin: 0 0 10px; color: var(--navy); font-size: 23px; line-height: 1.08; }
+    .funnel-step p { margin: 0; color: #46585f; position: relative; z-index: 1; }
+    .result-callout {
+      margin-top: 18px;
+      border-radius: 22px;
+      padding: 18px;
+      background: rgba(255,255,255,.72);
+      border: 1px solid rgba(16,42,53,.10);
+    }
+    @media (max-width: 980px) {
+      .flow-summary-grid, .funnel-steps { grid-template-columns: 1fr; }
+    }
+
 </style>
 </head>
 <body>
@@ -2557,9 +2644,9 @@
       </a>
       <nav class="nav-links" aria-label="Navegación principal">
         <a href="#concepto">Concepto</a>
-        <a href="#/reto-nomina-muerta">Reto</a>
-        <a href="#/recupera-nomina-muerta">Recupera</a>
-        <a href="#/autodiagnostico-lideres">Diagnóstico</a>
+        <a href="#/reto-nomina-muerta">Radar de Riesgo</a>
+        <a href="#/recupera-nomina-muerta">Calculadora</a>
+        <a href="#/autodiagnostico-lideres">Autopsia Operativa</a>
         <a href="#/viva-la-nomina">Conferencias</a>
         <a href="#/consultoria-copiloto">Consultoría</a>
         <a href="https://wa.me/526671450096" target="_blank" rel="noopener">Contacto</a>
@@ -2589,9 +2676,9 @@
     </section>
 
     <div class="wrap metric-strip" aria-label="Indicadores clave del concepto Nómina Muerta">
-      <div class="metric"><strong class="metric-nowrap">25% al 40%</strong><span>del tiempo laboral se pierde en juntas, retrabajo, esperas, correos, validaciones y busqueda de información.</span></div>
-      <div class="metric"><strong class="metric-nowrap">Del 70/30 al 30/70</strong><span>El reto no es estar ocupado: es convertir la eterna coordinación en ágil ejecución, con cierre y resultados.</span></div>
-      <div class="metric"><strong class="metric-nowrap">$200k a $500k</strong><span>Mx se pierden mensualmente por cada 100 personas, por falta de aprovechamiento del tiempo.</span></div>
+      <div class="metric"><strong>25%–40%</strong><span>del tiempo laboral se pierde en juntas, retrabajo, esperas, correos, validaciones y busqueda de información.</span></div>
+      <div class="metric"><strong>De 70/30 a 30/70</strong><span>El reto no es estar ocupado: es convertir la eterna coordinación en ágil ejecución, con cierre y resultados.</span></div>
+      <div class="metric"><strong>$200k–$500k</strong><span>Mx se pierden mensualmente por cada 100 personas, por falta de aprovechamiento del tiempo.</span></div>
     </div>
 
     <section class="back-cover-section" aria-label="Contraportada del libro Nómina Muerta">
@@ -2649,7 +2736,7 @@
               <p>Pagar la nómina es una transferencia bancaria. Capitalizar la nómina es el retorno real de ese tiempo: decisiones tomadas, compromisos cumplidos, proyectos cerrados, clientes atendidos, valor generado, etc.</p>
             </div>
             <div class="nm-proof-metrics">
-              <div class="nm-proof-metric"><strong> 30 a 40%</strong><span>del tiempo no se aprovecha</span></div>
+              <div class="nm-proof-metric"><strong> 30% a 40%</strong><span>del tiempo no se aprovecha</span></div>
               <div class="nm-proof-metric"><strong> 2 a 3 horas</strong><span>al día no se avanza</span></div>
               <div class="nm-proof-metric"><strong> 4 de 12</strong><span>meses se desperdician al año</span></div>
             </div>
@@ -2707,7 +2794,7 @@
             <thead><tr><th>Escenario</th><th>Cada 100 personas</th><th>Lectura ejecutiva</th></tr></thead>
             <tbody>
               <tr><td>Conservador</td><td>$200,000–$300,000 MXN/mes</td><td>Aun con baja improductividad, la fuga anual puede superar siete cifras.</td></tr>
-              <tr><td>Promedio</td><td>≈ $550,000 MXN/mes</td><td>Medio millón mensual puede estar escondido en operación sin cierre.</td></tr>
+              <tr><td>Promedio crítico</td><td>≈ $550,000 MXN/mes</td><td>Medio millón mensual puede estar escondido en operación sin cierre.</td></tr>
               <tr><td>Alto desgaste</td><td>$750,000+ MXN/mes</td><td>Cuando hay burocracia, retrabajo y baja trazabilidad, la pérdida escala rápido.</td></tr>
             </tbody>
           </table>
@@ -3044,43 +3131,47 @@
     <section id="recupera-nomina-muerta" class="tool-subpage" data-page-route="recupera-nomina-muerta">
       <div class="wrap">
         <div class="subpage-hero">
-          <div class="kicker">Recupera tu Nómina Muerta</div>
-          <h1>Monetiza el tiempo operativo que ya estás pagando.</h1>
-          <p>Esta subpágina integra el diagnóstico económico base para estimar cuánto dinero puede estar atrapado en desorganización, retrabajo, falta de seguimiento, comunicación dispersa y procesos sin trazabilidad.</p>
+          <div class="kicker">Calculadora de Recuperación</div>
+          <h1>Convierte el riesgo operativo en dinero recuperable.</h1>
+          <p>Esta calculadora ya no funciona como una herramienta aislada: puede usar el porcentaje manual, el Radar de Riesgo o la Autopsia Operativa para estimar la Nómina Muerta mensual, anual y la recuperación potencial según el tipo dominante de fuga.</p>
+          <div class="subpage-nav">
+            <a class="btn btn-outline" href="#/reto-nomina-muerta">1. Iniciar con Radar de Riesgo</a>
+            <a class="btn btn-outline" href="#/autodiagnostico-lideres">2. Profundizar con Autopsia Operativa</a>
+          </div>
         </div>
 
-        <div class="tool-grid">
-          <div class="tool-card">
-            <h3>1. Detecta la pérdida</h3>
-            <p>Identifica el porcentaje de tiempo muerto generado por fricción operativa, juntas improductivas, esperas, reprocesos y falta de claridad.</p>
-          </div>
-          <div class="tool-card">
-            <h3>2. Cuantifica el impacto</h3>
-            <p>Convierte ese porcentaje en dinero mensual y anual para hacerlo visible ante dirección, socios o responsables de área.</p>
-          </div>
-          <div class="tool-card">
-            <h3>3. Recupera capacidad</h3>
-            <p>El objetivo no es trabajar más: es rediseñar el sistema para que la nómina pagada genere más avance, cierre y valor real.</p>
-          </div>
+        <div class="funnel-steps">
+          <div class="funnel-step" data-step="01"><span class="source-badge">Radar</span><h3>Detecta exposición</h3><p>El Reto ahora mide síntomas ponderados. No todos los síntomas valen igual: una molestia operativa no pesa lo mismo que una falla estructural.</p></div>
+          <div class="funnel-step" data-step="02"><span class="source-badge">Autopsia</span><h3>Encuentra la causa</h3><p>El diagnóstico identifica dónde se origina la pérdida: seguimiento, trazabilidad, comunicación, retrabajo, prioridades o desgaste.</p></div>
+          <div class="funnel-step" data-step="03"><span class="source-badge">ROI</span><h3>Monetiza recuperación</h3><p>El cálculo usa el porcentaje estimado y un factor de recuperabilidad ajustado al tipo de problema dominante.</p></div>
         </div>
 
         <div class="tool-form-card">
-          <h2>Calculadora rápida de recuperación</h2>
-          <p class="lead">Usa datos estimados. La calculadora te dará una lectura ejecutiva de la Nómina Muerta mensual, anual y la capacidad recuperable con un ajuste operativo del 70%.</p>
+          <h2>Calculadora ejecutiva de recuperación</h2>
+          <p class="lead">Elige la fuente del porcentaje. Puedes usar un cálculo manual o tomar automáticamente el resultado del Radar de Riesgo o de la Autopsia Operativa si ya los respondiste.</p>
           <div class="mini-grid">
+            <div>
+              <label for="calcFuente">Fuente del cálculo</label>
+              <select id="calcFuente">
+                <option value="manual" selected>Manual — usar porcentaje seleccionado abajo</option>
+                <option value="reto">Radar de Riesgo — resultado del Reto</option>
+                <option value="lider">Autopsia Operativa — líder</option>
+                <option value="colab">Autopsia Operativa — colaboradores</option>
+              </select>
+            </div>
+            <div>
+              <label for="calcTiempo">Porcentaje manual de Nómina Muerta</label>
+              <select id="calcTiempo">
+                <option value="12">12% — Riesgo bajo controlable</option>
+                <option value="18">18% — Oportunidad visible de mejora</option>
+                <option value="25" selected>25% — Fricción operativa recurrente</option>
+                <option value="32">32% — Falla estructural de seguimiento</option>
+                <option value="40">40% — Riesgo crítico de ejecución</option>
+              </select>
+            </div>
             <div>
               <label for="calcEmpleados">Número de personal staff y ejecutivo</label>
               <input type="number" id="calcEmpleados" min="1" value="20">
-            </div>
-            <div>
-              <label for="calcTiempo">Estatus actual de tiempos muertos</label>
-              <select id="calcTiempo">
-                <option value="15">15% — Procesos con posibilidades de mejora</option>
-                <option value="20" selected>20% — Oportunidad de mejora en ejecución y seguimiento</option>
-                <option value="25">25% — Desorganización operativa y fallas de colaboración</option>
-                <option value="30">30% — Procesos sustantivos sin control</option>
-                <option value="35">35% — Fallas entre dirección, mandos medios y operación</option>
-              </select>
             </div>
             <div>
               <label for="calcSueldo">Sueldo mensual promedio por persona</label>
@@ -3091,6 +3182,7 @@
               <input type="text" id="calcSueldoTotal" placeholder="Opcional" inputmode="numeric">
             </div>
           </div>
+          <div class="integrated-note">Lectura recomendada: primero usa el Radar para generar urgencia; después la Autopsia para ubicar causa; finalmente esta calculadora para convertir el problema en una oportunidad económica defendible.</div>
           <div class="utility-actions">
             <button class="btn btn-primary" type="button" id="calcBtn">Calcular recuperación</button>
             <button class="btn btn-light" type="button" id="calcResetBtn">Limpiar</button>
@@ -3099,16 +3191,16 @@
         </div>
 
         <div class="tool-form-card" id="solucion-ximpler">
-          <h2>La solución operativa: Ximpler.App</h2>
-          <p class="lead">Ximpler.App concentra ejecución, seguimiento, comunicación, coordinación, supervisión y trazabilidad para que el trabajo diario deje de depender de memoria, correos sueltos, WhatsApp o reuniones repetidas.</p>
+          <h2>De diagnóstico a intervención: Ximpler.App</h2>
+          <p class="lead">Cuando el sistema detecta que la fuga dominante está en coordinación, seguimiento, trazabilidad o retrabajo, la conversación deja de ser “comprar software” y se convierte en recuperar capacidad laboral ya pagada.</p>
           <div class="tool-grid">
-            <div class="tool-card"><h3>Visualiza y prioriza</h3><p>Tableros visuales para cargas de trabajo, avances, retrasos, acuerdos, autorizaciones y cuellos de botella.</p></div>
-            <div class="tool-card"><h3>Coordina y ejecuta</h3><p>Tarjetas de acción con responsable, plazo, comentarios, involucrados, checklist, etiquetas, historial y estatus.</p></div>
-            <div class="tool-card"><h3>Supervisa y mejora</h3><p>Seguimiento activo de compromisos, procesos, proyectos, minutas, productividad y desempeño.</p></div>
+            <div class="tool-card"><h3>Centraliza el trabajo</h3><p>Un solo tablero para tareas, responsables, fechas, acuerdos, comentarios, archivos, autorizaciones y evidencia.</p></div>
+            <div class="tool-card"><h3>Reduce la coordinación eterna</h3><p>Menos juntas de seguimiento, menos correos perdidos, menos WhatsApp operativo y más ejecución visible.</p></div>
+            <div class="tool-card"><h3>Convierte tiempo en avance</h3><p>La recuperación se expresa en dinero, pero se captura como capacidad de ejecución, servicio, ventas, mejora y cierre.</p></div>
           </div>
           <div class="utility-actions">
             <a class="btn btn-primary" href="https://wa.me/526671450096" target="_blank" rel="noopener">Más Información</a>
-            <a class="btn btn-light" href="#/reto-nomina-muerta">Medir síntomas con el Reto</a>
+            <a class="btn btn-light" href="#/reto-nomina-muerta">Medir riesgo operativo</a>
           </div>
         </div>
       </div>
@@ -3117,14 +3209,18 @@
     <section id="reto-nomina-muerta" class="tool-subpage" data-page-route="reto-nomina-muerta">
       <div class="wrap">
         <div class="subpage-hero">
-          <div class="kicker">Reto Nómina Muerta</div>
-          <h1>Identificar, medir y reducir la pérdida operativa ya pagada.</h1>
-          <p>Selecciona con honestidad los síntomas que reflejan la realidad actual de tu empresa o equipo. Al final, el sistema estima el nivel de riesgo y permite calcular el impacto económico tentativo.</p>
+          <div class="kicker">Radar de Riesgo de Nómina Muerta</div>
+          <h1>Detecta qué tan expuesta está tu empresa a perder tiempo pagado.</h1>
+          <p>Este Reto ya no es otro diagnóstico. Es una prueba rápida de exposición: pondera síntomas, identifica la fuga dominante y genera un rango tentativo que puede alimentar la calculadora de recuperación.</p>
+          <div class="subpage-nav">
+            <a class="btn btn-outline" href="#/autodiagnostico-lideres">Profundizar con Autopsia</a>
+            <a class="btn btn-outline" href="#/recupera-nomina-muerta">Ir a Calculadora</a>
+          </div>
         </div>
 
         <div class="tool-form-card">
-          <h2>Checklist del Reto</h2>
-          <p class="lead">Marca todos los síntomas que claramente existen hoy. No es una encuesta de opinión: es una radiografía operativa de señales críticas.</p>
+          <h2>Checklist ponderado del Radar</h2>
+          <p class="lead">Marca solo los síntomas que existen hoy. El sistema asigna peso según severidad: molestia operativa, fricción recurrente, falla estructural o alerta crítica.</p>
           <div id="retoChecklist"></div>
           <div class="utility-actions">
             <button class="btn btn-primary" type="button" id="retoBtn">Evaluar riesgo</button>
@@ -3138,6 +3234,7 @@
             <input id="retoNominaInput" type="text" placeholder="Ej. 350,000" inputmode="numeric">
             <div class="utility-actions">
               <button class="btn btn-primary" type="button" id="retoCalcMoneyBtn">Calcular impacto económico</button>
+              <a class="btn btn-light" href="#/recupera-nomina-muerta">Usar este resultado en la Calculadora</a>
             </div>
             <div id="retoCalculoResultados" class="tool-result"></div>
           </div>
@@ -3148,12 +3245,16 @@
     <section id="autodiagnostico-lideres" class="tool-subpage" data-page-route="autodiagnostico-lideres">
       <div class="wrap">
         <div class="subpage-hero">
-          <div class="kicker">Autodiagnóstico para líderes</div>
-          <h1>Evalúa la calidad de ejecución, supervisión y alineación de tu equipo.</h1>
-          <p>Diseñado para directores, gerentes, coordinadores y responsables de área que necesitan detectar riesgos operativos antes de que se conviertan en cultura.</p>
+          <div class="kicker">Autopsia Operativa · Líderes</div>
+          <h1>Encuentra la causa real de la Nómina Muerta.</h1>
+          <p>Este diagnóstico complementa el Radar: no solo confirma si hay riesgo, sino que identifica dónde nace la pérdida y qué foco debe atenderse primero.</p>
+          <div class="subpage-nav">
+            <a class="btn btn-outline" href="#/reto-nomina-muerta">Hacer Radar primero</a>
+            <a class="btn btn-outline" href="#/autodiagnostico-colaboradores">Comparar con colaboradores</a>
+          </div>
         </div>
         <div class="tool-form-card">
-          <h2>Información del diagnóstico</h2>
+          <h2>Información de la Autopsia Operativa</h2>
           <div class="mini-grid">
             <div><label for="liderNombre">Nombre</label><input id="liderNombre" type="text"></div>
             <div><label for="liderArea">Área o departamento</label><input id="liderArea" type="text"></div>
@@ -3161,11 +3262,12 @@
             <div><label for="liderCorreo">Correo electrónico</label><input id="liderCorreo" type="email"></div>
           </div>
           <div class="inline-note">Fecha y hora del diagnóstico: <strong id="liderFecha"></strong></div>
-          <p class="lead">Selecciona una opción por cada pregunta según la realidad de tu equipo.</p>
+          <p class="lead">Selecciona una opción por cada pregunta según la realidad de tu equipo. El resultado alimenta la calculadora y muestra los focos de intervención.</p>
           <div id="liderQuestions"></div>
           <div class="utility-actions">
-            <button class="btn btn-primary" type="button" id="liderBtn">Calcular puntaje</button>
+            <button class="btn btn-primary" type="button" id="liderBtn">Calcular Autopsia</button>
             <button class="btn btn-light" type="button" id="liderClearBtn">Limpiar respuestas</button>
+            <a class="btn btn-light" href="#/recupera-nomina-muerta">Usar resultado en Calculadora</a>
           </div>
           <div id="liderResultado" class="tool-result"></div>
           <div id="liderFocus" class="tool-result"></div>
@@ -3176,31 +3278,35 @@
     <section id="autodiagnostico-colaboradores" class="tool-subpage" data-page-route="autodiagnostico-colaboradores">
       <div class="wrap">
         <div class="subpage-hero">
-          <div class="kicker">Autodiagnóstico para colaboradores</div>
-          <h1>Detecta fricción diaria, retrabajo, esperas y desgaste operativo desde la experiencia real.</h1>
-          <p>Esta versión permite capturar lo que muchas veces no aparece en los reportes: interrupciones, tareas repetidas, falta de claridad, dependencia de otros y sensación de estar ocupado sin avanzar.</p>
+          <div class="kicker">Autopsia Operativa · Colaboradores</div>
+          <h1>Contrasta la percepción directiva contra la experiencia real de operación.</h1>
+          <p>Esta versión captura fricción diaria, retrabajo, esperas, interrupciones y desgaste desde quien vive el flujo operativo todos los días.</p>
+          <div class="subpage-nav">
+            <a class="btn btn-outline" href="#/autodiagnostico-lideres">Ver versión líderes</a>
+            <a class="btn btn-outline" href="#/recupera-nomina-muerta">Ir a Calculadora</a>
+          </div>
         </div>
         <div class="tool-form-card">
           <h2>Información del diagnóstico</h2>
           <div class="mini-grid">
             <div><label for="colabNombre">Nombre</label><input id="colabNombre" type="text"></div>
             <div><label for="colabArea">Área o departamento</label><input id="colabArea" type="text"></div>
-            <div><label for="colabPlaza">Plaza o ubicación</label><input id="colabPlaza" type="text"></div>
+            <div><label for="colabPuesto">Puesto</label><input id="colabPuesto" type="text"></div>
             <div><label for="colabCorreo">Correo electrónico</label><input id="colabCorreo" type="email"></div>
           </div>
           <div class="inline-note">Fecha y hora del diagnóstico: <strong id="colabFecha"></strong></div>
-          <p class="lead">Selecciona la opción que más se acerque a tu experiencia laboral real. No hay respuestas buenas o malas, solo verdades útiles.</p>
+          <p class="lead">Responde con honestidad. Este resultado ayuda a detectar brechas entre lo que la dirección cree que ocurre y lo que realmente vive el equipo.</p>
           <div id="colabQuestions"></div>
           <div class="utility-actions">
-            <button class="btn btn-primary" type="button" id="colabBtn">Calcular puntaje</button>
+            <button class="btn btn-primary" type="button" id="colabBtn">Calcular Autopsia</button>
             <button class="btn btn-light" type="button" id="colabClearBtn">Limpiar respuestas</button>
+            <a class="btn btn-light" href="#/recupera-nomina-muerta">Usar resultado en Calculadora</a>
           </div>
           <div id="colabResultado" class="tool-result"></div>
           <div id="colabFocus" class="tool-result"></div>
         </div>
       </div>
     </section>
-
 
     <section id="viva-la-nomina" class="tool-subpage" data-page-route="viva-la-nomina">
       <div class="wrap">
@@ -4151,59 +4257,182 @@
       }
     }
 
+    const NM_FLOW_STATE = {
+      reto: null,
+      lider: null,
+      colab: null
+    };
+
+    function nmClamp(value, min, max) {
+      return Math.min(max, Math.max(min, value));
+    }
+
+    function nmPctRangeFromRisk(score) {
+      const center = nmClamp(6 + (score * 0.40), 6, 46);
+      return {
+        min: nmClamp(center - 5, 5, 42),
+        center,
+        max: nmClamp(center + 5, 10, 50)
+      };
+    }
+
+    function nmRiskLevel(score) {
+      if (score <= 15) return {icon:'🟢', label:'Bajo', urgency:'baja', message:'Hay señales aisladas. El reto es prevenir que se normalicen.'};
+      if (score <= 35) return {icon:'🟡', label:'Moderado', urgency:'media', message:'La Nómina Muerta empieza a camuflarse como operación normal.'};
+      if (score <= 65) return {icon:'🔴', label:'Alto', urgency:'alta', message:'Ya existe fricción estructural que consume capacidad pagada.'};
+      return {icon:'🚨', label:'Crítico', urgency:'inmediata', message:'Esto ya no es solo eficiencia: es rediseño del sistema operativo.'};
+    }
+
+    function nmRecoveryFactorForFocus(focus) {
+      const f = String(focus || '').toLowerCase();
+      if (f.includes('comunicación')) return 0.70;
+      if (f.includes('seguimiento') || f.includes('supervisión') || f.includes('accountability')) return 0.65;
+      if (f.includes('junta') || f.includes('coordinación')) return 0.60;
+      if (f.includes('retrabajo') || f.includes('flujo') || f.includes('proceso')) return 0.55;
+      if (f.includes('trazabilidad') || f.includes('autorización') || f.includes('cuello')) return 0.50;
+      if (f.includes('desgaste') || f.includes('cognitivo') || f.includes('cultura')) return 0.42;
+      return 0.58;
+    }
+
+    function nmRetoFocus(catTitle, question) {
+      const t = `${catTitle} ${question}`.toLowerCase();
+      if (t.includes('firma') || t.includes('autoriz') || t.includes('validación') || t.includes('congelan')) return 'Autorizaciones y trazabilidad';
+      if (t.includes('junta') || t.includes('reun')) return 'Juntas y coordinación improductiva';
+      if (t.includes('whatsapp') || t.includes('correo') || t.includes('mensaje') || t.includes('comunicación')) return 'Comunicación dispersa';
+      if (t.includes('seguimiento') || t.includes('responsable') || t.includes('supervis')) return 'Seguimiento y accountability';
+      if (t.includes('retrabajo') || t.includes('repite') || t.includes('duplic') || t.includes('corrige')) return 'Retrabajo y duplicidad';
+      if (t.includes('valor') || t.includes('objetivo') || t.includes('prioridad')) return 'Prioridades y valor estratégico';
+      if (t.includes('agotado') || t.includes('ocupados') || t.includes('buscar') || t.includes('cognitivo')) return 'Carga cognitiva y desgaste';
+      if (catTitle.includes('Coordinación')) return 'Trazabilidad interáreas';
+      if (catTitle.includes('Flujo')) return 'Flujo operativo ineficiente';
+      return catTitle;
+    }
+
+    function nmRetoWeight(catTitle, question) {
+      const t = `${catTitle} ${question}`.toLowerCase();
+      let weight = 1;
+      if (t.includes('constantemente') || t.includes('continuamente') || t.includes('más tiempo') || t.includes('urgente')) weight = 2;
+      if (t.includes('tareas críticas') || t.includes('procesos sustantivos') || t.includes('sin trazabilidad') || t.includes('no existe una plataforma') || t.includes('responsabilidad clara')) weight = 3;
+      if (t.includes('congelan') || t.includes('no hay forma clara') || t.includes('la mayoría') || t.includes('todo el tiempo')) weight = 4;
+      return weight;
+    }
+
+    function nmSourceLabel(source) {
+      if (source === 'reto') return 'Radar de Riesgo';
+      if (source === 'lider') return 'Autopsia Operativa · Líder';
+      if (source === 'colab') return 'Autopsia Operativa · Colaboradores';
+      return 'Manual';
+    }
+
+    function nmStoreSourceResult(source, data) {
+      NM_FLOW_STATE[source] = data;
+      try { localStorage.setItem('nmFlowState', JSON.stringify(NM_FLOW_STATE)); } catch(e) {}
+    }
+
+    function nmLoadStoredFlowState() {
+      try {
+        const saved = JSON.parse(localStorage.getItem('nmFlowState') || '{}');
+        ['reto','lider','colab'].forEach(k => { if (saved[k]) NM_FLOW_STATE[k] = saved[k]; });
+      } catch(e) {}
+    }
+
+    function nmBuildSummaryCards(data) {
+      return `<div class="flow-summary-grid">
+        <div class="flow-metric"><strong>${Math.round(data.riskScore)} / 100</strong><span>Índice de riesgo</span></div>
+        <div class="flow-metric"><strong>${data.pctMin.toFixed(0)}%–${data.pctMax.toFixed(0)}%</strong><span>Rango tentativo de Nómina Muerta</span></div>
+        <div class="flow-metric"><strong>${Math.round(data.recoveryFactor * 100)}%</strong><span>Recuperabilidad estimada</span></div>
+        <div class="flow-metric"><strong>${data.levelLabel}</strong><span>Urgencia ${data.urgency}</span></div>
+      </div>`;
+    }
+
     function nmRenderReto() {
       const container = document.getElementById('retoChecklist');
       if (!container || container.dataset.rendered === '1') return;
       container.innerHTML = NM_RETO_CATEGORIES.map((cat, ci) => `
         <div class="reto-category">
           <h3>${cat.title}</h3>
-          ${cat.questions.map((q, qi) => `
+          ${cat.questions.map((q, qi) => {
+            const weight = nmRetoWeight(cat.title, q);
+            const focus = nmRetoFocus(cat.title, q);
+            return `
             <label class="check-item">
-              <input type="checkbox" class="nm-reto-check" value="1" data-category="${ci}" data-question="${qi}">
-              <span>${q}</span>
-            </label>
-          `).join('')}
+              <input type="checkbox" class="nm-reto-check" value="${weight}" data-category="${ci}" data-question="${qi}" data-weight="${weight}" data-focus="${focus}">
+              <span>${q}<span class="risk-weight">Peso ${weight}</span></span>
+            </label>`;
+          }).join('')}
         </div>
       `).join('');
       container.dataset.rendered = '1';
     }
 
     function nmEvaluateReto() {
-      const total = document.querySelectorAll('.nm-reto-check:checked').length;
-      const max = document.querySelectorAll('.nm-reto-check').length || 49;
-      let interpretation = '';
-      if (total <= 5) {
-        interpretation = `🟢 <strong>Nivel Bajo (0–5 síntomas)</strong><br>Tu operación muestra señales de eficiencia y control. Aun así, los síntomas marcados deben atenderse antes de que escalen.`;
-      } else if (total <= 9) {
-        interpretation = `🟡 <strong>Nivel Moderado (6–9 síntomas)</strong><br>La Nómina Muerta comienza a camuflarse como “operación normal”. Rediseñar ahora evita que el problema se convierta en cultura.`;
-      } else if (total <= 19) {
-        interpretation = `🔴 <strong>Nivel Alto (10–19 síntomas)</strong><br>Estás pagando por trabajo que no produce resultados reales. Hay fricción estructural en procesos, roles, comunicación o seguimiento.`;
-      } else {
-        interpretation = `🚨 <strong>Nivel Crítico (20+ síntomas)</strong><br>Esto ya no es solo eficiencia: es liderazgo y sostenibilidad. No necesitas más esfuerzo, necesitas rediseñar el sistema operativo.`;
-      }
-      const pct = (total / max) * 100;
-      nmShowResult('retoResultado', `<strong>Síntomas detectados:</strong> ${total} de ${max}<br><br>${interpretation}`);
+      const checks = Array.from(document.querySelectorAll('.nm-reto-check'));
+      const selected = checks.filter(cb => cb.checked);
+      const maxScore = checks.reduce((acc, cb) => acc + (parseInt(cb.dataset.weight, 10) || 1), 0) || 1;
+      const scoreRaw = selected.reduce((acc, cb) => acc + (parseInt(cb.dataset.weight, 10) || 1), 0);
+      const riskScore = (scoreRaw / maxScore) * 100;
+      const level = nmRiskLevel(riskScore);
+      const pct = nmPctRangeFromRisk(riskScore);
+
+      const focusScores = {};
+      selected.forEach(cb => {
+        const focus = cb.dataset.focus || 'Otros síntomas';
+        focusScores[focus] = (focusScores[focus] || 0) + (parseInt(cb.dataset.weight, 10) || 1);
+      });
+      const dominantFocus = Object.entries(focusScores).sort((a,b) => b[1] - a[1])[0]?.[0] || 'Sin foco dominante';
+      const recoveryFactor = nmRecoveryFactorForFocus(dominantFocus);
+      const data = {
+        source: 'reto',
+        riskScore,
+        pctMin: pct.min,
+        pctCenter: pct.center,
+        pctMax: pct.max,
+        focus: dominantFocus,
+        recoveryFactor,
+        levelLabel: level.label,
+        urgency: level.urgency
+      };
+      nmStoreSourceResult('reto', data);
+
+      const focusRows = Object.entries(focusScores).sort((a,b) => b[1]-a[1]).slice(0,5).map(([focus, score]) => `<tr><td><strong>${focus}</strong></td><td>${score} puntos ponderados</td></tr>`).join('') || '<tr><td colspan="2">Sin síntomas seleccionados.</td></tr>';
+
+      nmShowResult('retoResultado',
+        `<span class="source-badge">Radar de Riesgo</span>` +
+        nmBuildSummaryCards(data) +
+        `<strong>${level.icon} Nivel ${level.label}</strong><br>${level.message}<br><br>` +
+        `<strong>Fuga dominante:</strong> ${dominantFocus}<br>` +
+        `<strong>Síntomas marcados:</strong> ${selected.length} de ${checks.length}<br>` +
+        `<strong>Puntaje ponderado:</strong> ${scoreRaw} de ${maxScore}<br><br>` +
+        `<table class="focus-table"><thead><tr><th>Foco detectado</th><th>Peso acumulado</th></tr></thead><tbody>${focusRows}</tbody></table>` +
+        `<div class="result-callout"><strong>Siguiente paso recomendado:</strong> usa la Autopsia Operativa para validar la causa raíz o pasa directo a la Calculadora para monetizar el rango estimado.</div>`
+      );
       const pctBox = document.getElementById('retoPorcentajeTentativo');
-      if (pctBox) pctBox.innerHTML = `📊 <strong>% tentativo de Nómina Muerta:</strong> ${pct.toFixed(1)}%`;
+      if (pctBox) pctBox.innerHTML = `📊 <strong>Rango tentativo de Nómina Muerta:</strong> ${pct.min.toFixed(0)}%–${pct.max.toFixed(0)}% · <strong>Fuga dominante:</strong> ${dominantFocus}`;
       const box = document.getElementById('retoCalculatorBox');
       if (box) box.style.display = 'block';
+      const fuente = document.getElementById('calcFuente');
+      if (fuente) fuente.value = 'reto';
     }
 
     function nmCalculateRetoMoney() {
+      if (!NM_FLOW_STATE.reto) nmEvaluateReto();
+      const data = NM_FLOW_STATE.reto;
       const nomina = nmParseMoney(document.getElementById('retoNominaInput')?.value);
       if (!nomina) {
         nmShowResult('retoCalculoResultados', '⚠️ Ingresa una nómina mensual válida.');
         return;
       }
-      const total = document.querySelectorAll('.nm-reto-check:checked').length;
-      const max = document.querySelectorAll('.nm-reto-check').length || 49;
-      const pct = total / max;
-      const mensual = nomina * pct;
-      const anual = mensual * 12;
+      const mensualMin = nomina * (data.pctMin / 100);
+      const mensualMax = nomina * (data.pctMax / 100);
+      const mensualCentro = nomina * (data.pctCenter / 100);
+      const recuperacionMensual = mensualCentro * data.recoveryFactor;
+      const recuperacionAnual = recuperacionMensual * 12;
       nmShowResult('retoCalculoResultados',
-        `<strong>Estimación mensual:</strong> ${nmFormatCurrency(mensual)}<br>` +
-        `<strong>Estimación anual:</strong> ${nmFormatCurrency(anual)}<br><br>` +
-        `<strong>Lectura ejecutiva:</strong> este monto no significa necesariamente recorte; representa capacidad pagada que puede rediseñarse, reasignarse y convertirse en avance real.`
+        `<span class="source-badge">Impacto económico preliminar</span>` +
+        `<strong>Nómina Muerta mensual estimada:</strong> ${nmFormatCurrency(mensualMin)} – ${nmFormatCurrency(mensualMax)}<br>` +
+        `<strong>Recuperación mensual razonable:</strong> ${nmFormatCurrency(recuperacionMensual)}<br>` +
+        `<strong>Recuperación anual razonable:</strong> ${nmFormatCurrency(recuperacionAnual)}<br><br>` +
+        `<strong>Lectura ejecutiva:</strong> este monto no significa recorte; representa capacidad pagada que puede rediseñarse, reasignarse y convertirse en avance real.`
       );
     }
 
@@ -4224,12 +4453,17 @@
       container.dataset.rendered = '1';
     }
 
-    function nmDiagnosticInterpretation(avg, typeLabel) {
-      if (avg <= 1.5) return `Nivel Excelente: ${typeLabel} muestra alto aprovechamiento del tiempo y baja presencia de Nómina Muerta. Estimación: <10%.`;
-      if (avg <= 2.1) return `Nivel Bueno: hay funcionamiento razonable, aunque existen oportunidades de mejora. Estimación de Nómina Muerta: 10–20%.`;
-      if (avg <= 2.7) return `Nivel Moderado: se detectan focos visibles de fricción operativa. Estimación de Nómina Muerta: 20–30%.`;
-      if (avg <= 3.3) return `Nivel Crítico: existen síntomas estructurales de ineficiencia, retrabajo, desgaste o falta de seguimiento. Estimación: 30–40%.`;
-      return `Nivel Muy Alto: hay alta presencia de Nómina Muerta. Se recomienda intervención, rediseño de flujos y claridad inmediata de prioridades. Estimación: >40%.`;
+    function nmDiagnosticModel(avg, typeLabel) {
+      const riskScore = nmClamp(((avg - 1) / 3) * 100, 0, 100);
+      const pct = nmPctRangeFromRisk(riskScore);
+      const level = nmRiskLevel(riskScore);
+      let message = '';
+      if (avg <= 1.5) message = `${typeLabel} muestra alto aprovechamiento del tiempo y baja presencia de Nómina Muerta.`;
+      else if (avg <= 2.1) message = `Hay funcionamiento razonable, pero ya existen oportunidades visibles de mejora.`;
+      else if (avg <= 2.7) message = `Se detectan focos claros de fricción operativa que deben priorizarse.`;
+      else if (avg <= 3.3) message = `Existen síntomas estructurales de ineficiencia, retrabajo, desgaste o falta de seguimiento.`;
+      else message = `Hay alta presencia de Nómina Muerta. Se recomienda intervención, rediseño de flujos y claridad inmediata de prioridades.`;
+      return {riskScore, pctMin:pct.min, pctCenter:pct.center, pctMax:pct.max, levelLabel:level.label, urgency:level.urgency, icon:level.icon, message};
     }
 
     function nmCalcDiagnostic(prefix, questions, focusMap, resultId, focusId, typeLabel) {
@@ -4253,25 +4487,50 @@
         return;
       }
       const avg = total / questions.length;
-      const pct = ((avg - 1) / 3) * 100;
-      const interpretation = nmDiagnosticInterpretation(avg, typeLabel);
+      const model = nmDiagnosticModel(avg, typeLabel);
+
+      const focusRowsData = Object.entries(focusMap).map(([focus, indexes]) => {
+        const score = indexes.reduce((acc, idx) => acc + (values[idx] || 0), 0);
+        const min = indexes.length;
+        const max = indexes.length * 4;
+        const focusPct = max > min ? ((score - min) / (max - min)) * 100 : 0;
+        const indicators = indexes.map(idx => `${idx + 1}`).join(', ');
+        return {focus, score, max, focusPct, indicators};
+      }).sort((a,b) => b.focusPct - a.focusPct);
+
+      const dominant = focusRowsData[0]?.focus || 'Sin foco dominante';
+      const recoveryFactor = nmRecoveryFactorForFocus(dominant);
+      const data = {
+        source: prefix,
+        riskScore: model.riskScore,
+        pctMin: model.pctMin,
+        pctCenter: model.pctCenter,
+        pctMax: model.pctMax,
+        focus: dominant,
+        recoveryFactor,
+        levelLabel: model.levelLabel,
+        urgency: model.urgency
+      };
+      nmStoreSourceResult(prefix, data);
+
       nmShowResult(resultId,
+        `<span class="source-badge">${nmSourceLabel(prefix)}</span>` +
+        nmBuildSummaryCards(data) +
+        `<strong>${model.icon} Nivel ${model.levelLabel}</strong><br>${model.message}<br><br>` +
         `<strong>Puntaje total:</strong> ${total} de ${questions.length * 4}<br>` +
         `<strong>Promedio de riesgo:</strong> ${avg.toFixed(2)} / 4<br>` +
-        `<strong>% tentativo de Nómina Muerta:</strong> ${pct.toFixed(1)}%<br><br>${interpretation}`
+        `<strong>Foco dominante:</strong> ${dominant}<br>` +
+        `<strong>Rango tentativo de Nómina Muerta:</strong> ${model.pctMin.toFixed(0)}%–${model.pctMax.toFixed(0)}%`
       );
 
-      const rows = Object.entries(focusMap).map(([focus, indexes]) => {
-        const score = indexes.reduce((acc, idx) => acc + (values[idx] || 0), 0);
-        const max = indexes.length * 4;
-        const focusPct = max ? (score / max) * 100 : 0;
-        const indicators = indexes.map(idx => `${idx + 1}`).join(', ');
-        return `<tr><td><strong>${focus}</strong></td><td>${score} / ${max} (${focusPct.toFixed(0)}%)</td><td>Preguntas ${indicators}</td></tr>`;
-      }).join('');
+      const rows = focusRowsData.map(row => `<tr><td><strong>${row.focus}</strong></td><td>${row.score} / ${row.max} (${row.focusPct.toFixed(0)}% riesgo)</td><td>Preguntas ${row.indicators}</td></tr>`).join('');
       nmShowResult(focusId,
         `<strong>Resumen de focos de intervención</strong>` +
-        `<table class="focus-table"><thead><tr><th>Foco</th><th>Puntaje</th><th>Indicadores</th></tr></thead><tbody>${rows}</tbody></table>`
+        `<table class="focus-table"><thead><tr><th>Foco</th><th>Riesgo relativo</th><th>Indicadores</th></tr></thead><tbody>${rows}</tbody></table>` +
+        `<div class="result-callout"><strong>Lectura:</strong> este diagnóstico no duplica el Radar; explica la causa raíz y alimenta una estimación más defendible en la Calculadora de Recuperación.</div>`
       );
+      const fuente = document.getElementById('calcFuente');
+      if (fuente) fuente.value = prefix;
     }
 
     function nmClearDiagnostic(prefix, resultId, focusId) {
@@ -4281,32 +4540,70 @@
     }
 
     function nmCalculateRecovery() {
+      nmLoadStoredFlowState();
       const empleados = parseInt(document.getElementById('calcEmpleados')?.value, 10) || 0;
-      const tiempo = (parseInt(document.getElementById('calcTiempo')?.value, 10) || 0) / 100;
+      const fuente = document.getElementById('calcFuente')?.value || 'manual';
+      const manualPct = parseInt(document.getElementById('calcTiempo')?.value, 10) || 0;
       const sueldo = nmParseMoney(document.getElementById('calcSueldo')?.value);
       const sueldoTotalInput = nmParseMoney(document.getElementById('calcSueldoTotal')?.value);
-      if (!empleados || !tiempo || (!sueldo && !sueldoTotalInput)) {
-        nmShowResult('calcResultado', '⚠️ Completa el número de personas, el porcentaje de tiempo muerto y al menos una referencia de sueldo.');
+      if (!empleados || (!sueldo && !sueldoTotalInput)) {
+        nmShowResult('calcResultado', '⚠️ Completa el número de personas y al menos una referencia de sueldo o nómina total.');
         return;
       }
+
+      let data;
+      if (fuente === 'manual') {
+        const pct = manualPct || 25;
+        const riskScore = nmClamp(((pct - 6) / 0.40), 0, 100);
+        data = {
+          source: 'manual',
+          riskScore,
+          pctMin: Math.max(5, pct - 4),
+          pctCenter: pct,
+          pctMax: Math.min(50, pct + 4),
+          focus: 'Estimación manual',
+          recoveryFactor: 0.60,
+          levelLabel: nmRiskLevel(riskScore).label,
+          urgency: nmRiskLevel(riskScore).urgency
+        };
+      } else {
+        data = NM_FLOW_STATE[fuente];
+        if (!data) {
+          nmShowResult('calcResultado', `⚠️ Todavía no existe un resultado de ${nmSourceLabel(fuente)}. Responde esa herramienta primero o cambia la fuente a Manual.`);
+          return;
+        }
+      }
+
       const sueldoTotal = sueldoTotalInput || (empleados * sueldo);
-      const personalOptimizable = Math.round(empleados * tiempo);
-      const nominaMuertaMensual = Math.round(sueldoTotal * tiempo);
+      const pctCenter = data.pctCenter / 100;
+      const pctMin = data.pctMin / 100;
+      const pctMax = data.pctMax / 100;
+      const personalOptimizable = Math.round(empleados * pctCenter);
+      const nominaMuertaMensual = Math.round(sueldoTotal * pctCenter);
+      const nominaMuertaMin = Math.round(sueldoTotal * pctMin);
+      const nominaMuertaMax = Math.round(sueldoTotal * pctMax);
       const nominaMuertaAnual = nominaMuertaMensual * 12;
-      const recuperacionMensual = Math.round(nominaMuertaMensual * 0.7);
+      const recuperacionMensual = Math.round(nominaMuertaMensual * data.recoveryFactor);
       const recuperacionAnual = recuperacionMensual * 12;
+
       nmShowResult('calcResultado',
+        `<span class="source-badge">Fuente: ${nmSourceLabel(fuente)}</span>` +
+        nmBuildSummaryCards(data) +
+        `<strong>Nómina mensual analizada:</strong> ${nmFormatCurrency(sueldoTotal)}<br>` +
         `<strong>Personal equivalente optimizable:</strong> ${personalOptimizable} personas<br>` +
-        `<strong>Nómina Muerta mensual actual promedio:</strong> ${nmFormatCurrency(nominaMuertaMensual)}<br>` +
-        `<strong>Nómina Muerta anual actual promedio:</strong> ${nmFormatCurrency(nominaMuertaAnual)}<br><br>` +
-        `<strong>Recuperación por optimización de la capacidad laboral instalada:</strong><br>` +
+        `<strong>Nómina Muerta mensual estimada:</strong> ${nmFormatCurrency(nominaMuertaMin)} – ${nmFormatCurrency(nominaMuertaMax)}<br>` +
+        `<strong>Nómina Muerta mensual central:</strong> ${nmFormatCurrency(nominaMuertaMensual)}<br>` +
+        `<strong>Nómina Muerta anual central:</strong> ${nmFormatCurrency(nominaMuertaAnual)}<br><br>` +
+        `<strong>Recuperación potencial razonable:</strong><br>` +
         `Mensual: ${nmFormatCurrency(recuperacionMensual)}<br>` +
         `Anual: ${nmFormatCurrency(recuperacionAnual)}<br><br>` +
-        `<span>Este cálculo estima el valor económico del tiempo recuperable. No equivale necesariamente a recorte de personal; puede convertirse en capacidad de ejecución, servicio, ventas, seguimiento o proyectos críticos.</span>`
+        `<strong>Fuga dominante:</strong> ${data.focus}<br>` +
+        `<strong>Lectura ejecutiva:</strong> este cálculo no propone recorte de personal; muestra capacidad laboral instalada que puede convertirse en ejecución, servicio, ventas, seguimiento, innovación o proyectos críticos.`
       );
     }
 
     function nmInitTools() {
+      nmLoadStoredFlowState();
       nmRenderReto();
       nmRenderDiagnostic('liderQuestions', NM_LEADER_QUESTIONS, 'lider');
       nmRenderDiagnostic('colabQuestions', NM_COLLAB_QUESTIONS, 'colab');
@@ -4335,13 +4632,17 @@
           else el.value = '';
         });
         const tiempo = document.getElementById('calcTiempo');
-        if (tiempo) tiempo.value = '20';
+        if (tiempo) tiempo.value = '25';
+        const fuente = document.getElementById('calcFuente');
+        if (fuente) fuente.value = 'manual';
         nmHideResult('calcResultado');
       });
 
       document.getElementById('retoBtn')?.addEventListener('click', nmEvaluateReto);
       document.getElementById('retoClearBtn')?.addEventListener('click', () => {
         document.querySelectorAll('.nm-reto-check').forEach(cb => cb.checked = false);
+        NM_FLOW_STATE.reto = null;
+        try { localStorage.setItem('nmFlowState', JSON.stringify(NM_FLOW_STATE)); } catch(e) {}
         nmHideResult('retoResultado');
         nmHideResult('retoCalculoResultados');
         const box = document.getElementById('retoCalculatorBox');
@@ -4352,9 +4653,9 @@
       document.getElementById('retoCalcMoneyBtn')?.addEventListener('click', nmCalculateRetoMoney);
 
       document.getElementById('liderBtn')?.addEventListener('click', () => nmCalcDiagnostic('lider', NM_LEADER_QUESTIONS, NM_LEADER_FOCUS, 'liderResultado', 'liderFocus', 'El equipo'));
-      document.getElementById('liderClearBtn')?.addEventListener('click', () => nmClearDiagnostic('lider', 'liderResultado', 'liderFocus'));
+      document.getElementById('liderClearBtn')?.addEventListener('click', () => { NM_FLOW_STATE.lider = null; try { localStorage.setItem('nmFlowState', JSON.stringify(NM_FLOW_STATE)); } catch(e) {} nmClearDiagnostic('lider', 'liderResultado', 'liderFocus'); });
       document.getElementById('colabBtn')?.addEventListener('click', () => nmCalcDiagnostic('colab', NM_COLLAB_QUESTIONS, NM_COLLAB_FOCUS, 'colabResultado', 'colabFocus', 'Tu jornada'));
-      document.getElementById('colabClearBtn')?.addEventListener('click', () => nmClearDiagnostic('colab', 'colabResultado', 'colabFocus'));
+      document.getElementById('colabClearBtn')?.addEventListener('click', () => { NM_FLOW_STATE.colab = null; try { localStorage.setItem('nmFlowState', JSON.stringify(NM_FLOW_STATE)); } catch(e) {} nmClearDiagnostic('colab', 'colabResultado', 'colabFocus'); });
     }
 
     document.addEventListener('DOMContentLoaded', () => {
