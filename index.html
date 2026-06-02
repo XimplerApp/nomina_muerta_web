@@ -2046,6 +2046,302 @@
       .conference-positioning, .conference-dark-proof, .conference-cta-final, .conference-format-card { border-radius: 24px; }
     }
 
+
+    /* === V12: Concepto principal irresistible NM === */
+    .nm-concept-section {
+      padding-top: 96px;
+      background:
+        radial-gradient(circle at 10% 5%, rgba(31,97,112,.09), transparent 25rem),
+        linear-gradient(180deg, rgba(251,250,245,.98), rgba(243,240,231,.82));
+    }
+    .nm-concept-hero-panel {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 22px;
+      align-items: stretch;
+      margin-bottom: 24px;
+    }
+    .nm-definition-card {
+      border-radius: var(--radius-xl);
+      padding: clamp(26px, 4vw, 46px);
+      background:
+        radial-gradient(circle at 94% 12%, rgba(214,181,109,.16), transparent 20rem),
+        linear-gradient(135deg, rgba(16,42,53,.98), rgba(13,31,40,.94));
+      color: var(--cream);
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+    .nm-definition-card::after {
+      content: "NM";
+      position: absolute;
+      right: 24px;
+      bottom: -48px;
+      font-family: Georgia, serif;
+      font-size: clamp(110px, 14vw, 220px);
+      line-height: 1;
+      color: rgba(243,240,231,.055);
+      pointer-events: none;
+    }
+    .nm-definition-card .kicker { color: var(--gold); }
+    .nm-definition-card h3 {
+      margin: 0 0 16px;
+      font-size: clamp(30px, 4vw, 56px);
+      line-height: .98;
+      letter-spacing: -.045em;
+      position: relative;
+      z-index: 1;
+    }
+    .nm-definition-card p {
+      color: rgba(243,240,231,.78);
+      font-size: 18px;
+      max-width: 760px;
+      position: relative;
+      z-index: 1;
+    }
+    .nm-definition-card strong { color: #fff; }
+    .nm-proof-card {
+      border-radius: var(--radius-xl);
+      padding: clamp(24px, 3.2vw, 36px);
+      background: rgba(251,250,245,.95);
+      border: 1px solid var(--line);
+      box-shadow: 0 24px 70px rgba(16,42,53,.10);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .nm-proof-card h3 {
+      margin: 0;
+      color: var(--navy);
+      font-size: clamp(28px, 3vw, 44px);
+      line-height: .98;
+      letter-spacing: -.035em;
+    }
+    .nm-proof-card p { color: #46585f; margin: 0; font-size: 17px; }
+    .nm-proof-metrics {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 4px;
+    }
+    .nm-proof-metric {
+      border-radius: 18px;
+      padding: 14px;
+      background: rgba(16,42,53,.055);
+      border: 1px solid rgba(16,42,53,.08);
+    }
+    .nm-proof-metric strong {
+      display: block;
+      color: var(--navy);
+      font-size: 24px;
+      line-height: 1;
+      letter-spacing: -.03em;
+    }
+    .nm-proof-metric span {
+      display: block;
+      margin-top: 7px;
+      color: var(--muted);
+      font-weight: 800;
+      font-size: 12px;
+      line-height: 1.25;
+    }
+    .concept-cards { margin-top: 18px; }
+    .concept-cards .card {
+      min-height: 260px;
+      position: relative;
+      overflow: hidden;
+    }
+    .concept-cards .card::after {
+      content: "";
+      position: absolute;
+      width: 92px;
+      height: 92px;
+      right: -28px;
+      bottom: -28px;
+      border-radius: 50%;
+      background: rgba(31,97,112,.07);
+    }
+    .nm-questions-strip {
+      margin-top: 24px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .nm-question {
+      border-radius: 24px;
+      padding: 22px;
+      background: rgba(255,255,255,.78);
+      border: 1px solid rgba(16,42,53,.10);
+      box-shadow: 0 16px 44px rgba(16,42,53,.07);
+      color: #33454d;
+      font-weight: 800;
+      line-height: 1.35;
+    }
+    .nm-question small {
+      display: block;
+      color: var(--gold);
+      font-size: 12px;
+      font-weight: 950;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      margin-bottom: 9px;
+    }
+    .nm-economic-section {
+      padding: 88px 0;
+      background: linear-gradient(180deg, rgba(214,181,109,.07), rgba(16,42,53,.035));
+    }
+    .nm-economics-grid {
+      display: grid;
+      grid-template-columns: .95fr 1.05fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+    .nm-calc-card, .nm-indicator-card {
+      border-radius: var(--radius-xl);
+      padding: clamp(24px, 3.4vw, 38px);
+      background: rgba(251,250,245,.94);
+      border: 1px solid var(--line);
+      box-shadow: 0 24px 70px rgba(16,42,53,.10);
+    }
+    .nm-calc-card {
+      background:
+        radial-gradient(circle at 90% 14%, rgba(214,181,109,.15), transparent 20rem),
+        rgba(251,250,245,.96);
+    }
+    .nm-calc-card h3, .nm-indicator-card h3 {
+      margin: 0 0 12px;
+      color: var(--navy);
+      font-size: clamp(28px, 3.4vw, 48px);
+      line-height: .98;
+      letter-spacing: -.04em;
+    }
+    .nm-formula {
+      margin: 20px 0;
+      border-radius: 22px;
+      background: var(--navy);
+      color: var(--cream);
+      padding: 20px;
+      font-weight: 950;
+      font-size: 18px;
+      line-height: 1.35;
+      box-shadow: 0 18px 46px rgba(16,42,53,.18);
+    }
+    .nm-cost-table {
+      width: 100%;
+      border-collapse: collapse;
+      border-radius: 20px;
+      overflow: hidden;
+      background: rgba(255,255,255,.82);
+      margin-top: 16px;
+    }
+    .nm-cost-table th, .nm-cost-table td {
+      border: 1px solid rgba(16,42,53,.10);
+      padding: 13px 12px;
+      text-align: left;
+      vertical-align: top;
+    }
+    .nm-cost-table th {
+      background: rgba(16,42,53,.075);
+      color: var(--navy);
+      font-size: 12px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .nm-cost-table td { color: #3d4f57; font-weight: 700; }
+    .nm-indicator-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 18px;
+    }
+    .nm-indicator {
+      border-radius: 20px;
+      padding: 16px;
+      background: rgba(16,42,53,.055);
+      border: 1px solid rgba(16,42,53,.08);
+    }
+    .nm-indicator strong {
+      display: block;
+      color: var(--navy);
+      margin-bottom: 5px;
+      line-height: 1.15;
+    }
+    .nm-indicator span { color: var(--muted); font-size: 14px; line-height: 1.35; display: block; }
+    .nm-reader-section {
+      padding: 0 0 92px;
+      background: linear-gradient(180deg, rgba(16,42,53,.035), transparent);
+    }
+    .nm-reader-panel {
+      border-radius: var(--radius-xl);
+      background:
+        radial-gradient(circle at 10% 90%, rgba(143,182,189,.12), transparent 22rem),
+        linear-gradient(135deg, var(--navy), #07161c 78%);
+      color: var(--cream);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: .82fr 1.18fr;
+      gap: 0;
+      position: relative;
+    }
+    .nm-reader-panel::after {
+      content: "";
+      position: absolute;
+      width: 420px;
+      height: 420px;
+      border-radius: 50%;
+      background: rgba(214,181,109,.12);
+      right: -160px;
+      top: -140px;
+      pointer-events: none;
+    }
+    .nm-reader-side {
+      padding: clamp(28px, 4vw, 52px);
+      background: rgba(255,255,255,.035);
+      border-right: 1px solid rgba(243,240,231,.12);
+      position: relative;
+      z-index: 1;
+    }
+    .nm-reader-side .kicker { color: var(--gold); }
+    .nm-reader-side h2 { color: var(--cream); }
+    .nm-reader-main {
+      padding: clamp(28px, 4vw, 52px);
+      position: relative;
+      z-index: 1;
+    }
+    .nm-reader-main p { color: rgba(243,240,231,.78); font-size: 17px; }
+    .nm-reader-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin: 22px 0 0;
+    }
+    .nm-reader-item {
+      border-radius: 20px;
+      padding: 16px;
+      background: rgba(243,240,231,.08);
+      border: 1px solid rgba(243,240,231,.13);
+      color: rgba(243,240,231,.85);
+      font-weight: 800;
+      line-height: 1.35;
+    }
+    .nm-reader-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 26px;
+    }
+    @media (max-width: 980px) {
+      .nm-concept-hero-panel, .nm-economics-grid, .nm-reader-panel { grid-template-columns: 1fr; }
+      .nm-reader-side { border-right: 0; border-bottom: 1px solid rgba(243,240,231,.12); }
+      .nm-proof-metrics, .nm-questions-strip { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 620px) {
+      .nm-indicator-grid, .nm-reader-list { grid-template-columns: 1fr; }
+      .nm-definition-card, .nm-proof-card, .nm-calc-card, .nm-indicator-card, .nm-reader-panel { border-radius: 24px; }
+    }
+
   </style>
 </head>
 <body>
@@ -2079,6 +2375,7 @@
           <p class="hero-copy">Una lectura directa, reveladora y necesaria para líderes que se atreven a mirar lo que otros prefieren ignorar: el tiempo pagado que no se convierte en avance, cierre ni valor real.</p>
           <div class="hero-actions">
             <a class="btn btn-primary" href="https://wa.me/526671450096" target="_blank" rel="noopener">Contacto por WhatsApp</a>
+            <a class="btn btn-outline" href="#recomendaciones">Leer recomendaciones</a>
             <a class="btn btn-outline" href="#/viva-la-nomina">Conferencias para empresas</a>
           </div>
         </div>
@@ -2089,9 +2386,9 @@
     </section>
 
     <div class="wrap metric-strip" aria-label="Indicadores clave del concepto Nómina Muerta">
-      <div class="metric"><strong>25–40%</strong><span>del tiempo laboral puede perderse en tareas redundantes, mal priorizadas o sin impacto.</span></div>
-      <div class="metric"><strong>100%</strong><span>de la nómina se paga; el reto es saber cuánto de ella realmente genera valor.</span></div>
-      <div class="metric"><strong>70-30%</strong><span>Las empresas dedican el 70% de su tiempo en coordinar, y solo el 30% en ejecutar.</span></div>
+      <div class="metric"><strong>25–40%</strong><span>del tiempo laboral puede perderse en juntas sin cierre, retrabajo, esperas, correos, validaciones y tareas de bajo impacto.</span></div>
+      <div class="metric"><strong>70/30</strong><span>El reto no es llenar agendas: es mover a la empresa de coordinar eternamente a ejecutar con claridad, foco y cierre.</span></div>
+      <div class="metric"><strong>$100k–$275k</strong><span>rango mensual que puede perderse por cada 50 personas cuando la nómina pagada no se convierte en nómina útil.</span></div>
     </div>
 
     <section class="back-cover-section" aria-label="Contraportada del libro Nómina Muerta">
@@ -2119,52 +2416,138 @@
       </div>
     </section>
 
-    <section id="concepto">
+    <section id="concepto" class="nm-concept-section">
       <div class="wrap">
         <div class="section-head">
           <div>
-            <div class="kicker">El concepto</div>
-            <h2>Lo que parece trabajo, pero no siempre genera avance.</h2>
+            <div class="kicker">El concepto central</div>
+            <h2>La pérdida que no aparece en contabilidad, pero sí se paga cada quincena.</h2>
           </div>
-          <p class="lead">La Nómina Muerta es la pérdida invisible del costo operativo que surge cuando el tiempo ya pagado no produce el valor real esperado. No señala personas: revela sistemas mal diseñados, culturas reactivas y estructuras que confunden ocupación con productividad.</p>
+          <p class="lead">La <strong>Nómina Muerta</strong> es el costo invisible que surge cuando el tiempo ya pagado no produce el valor real esperado. No acusa personas: revela sistemas mal diseñados, culturas reactivas, trabajo fragmentado y liderazgo que todavía mide ocupación en lugar de impacto.</p>
         </div>
-        <div class="cards">
+
+        <div class="nm-concept-hero-panel">
+          <div class="nm-definition-card">
+            <div class="kicker">Definición operativa</div>
+            <h3>No es flojera. No es falta de talento. Es tiempo pagado sin retorno real.</h3>
+            <p>Una empresa puede estar llena de movimiento y vacía de avance: correos que no resuelven, juntas que no cierran, tareas que se duplican, aprobaciones que se atoran, líderes que persiguen pendientes y talento estratégico usado para apagar fuegos. Todo parece trabajo. Pero no todo produce valor.</p>
+            <p><strong>Ese tramo invisible entre estar ocupado y realmente avanzar es la Nómina Muerta.</strong></p>
+          </div>
+          <div class="nm-proof-card">
+            <div>
+              <div class="kicker">El golpe para la Alta Dirección</div>
+              <h3>Pagas el 100% de la nómina. La pregunta es cuánto de esa nómina está viva.</h3>
+              <p>La nómina pagada es la transferencia bancaria. La nómina útil es el retorno real de ese tiempo: decisiones tomadas, compromisos cumplidos, proyectos cerrados, clientes atendidos y valor generado.</p>
+            </div>
+            <div class="nm-proof-metrics">
+              <div class="nm-proof-metric"><strong>30%</strong><span>puede representar fuga mensual crítica</span></div>
+              <div class="nm-proof-metric"><strong>4 de 10</strong><span>tareas fuera de plazo ya son alerta</span></div>
+              <div class="nm-proof-metric"><strong>1 hora</strong><span>sin cierre también se paga</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cards concept-cards">
           <article class="card">
             <div class="card-number">01</div>
-            <h3>Actividad no es productividad</h3>
-            <p>Calendarios llenos, correos interminables y reuniones constantes pueden crear la ilusión de avance, aunque el resultado siga detenido.</p>
+            <h3>Actividad disfrazada de productividad</h3>
+            <p>Calendarios llenos, mensajes urgentes y reuniones constantes crean sensación de avance, aunque el resultado siga detenido. Estar ocupado no es estar produciendo valor.</p>
           </article>
           <article class="card">
             <div class="card-number">02</div>
-            <h3>El costo no siempre grita</h3>
-            <p>Se filtra en tareas inconclusas, aprobaciones lentas, retrabajo, falta de seguimiento, información dispersa y talento subutilizado.</p>
+            <h3>Comunicación fragmentada</h3>
+            <p>Correos, WhatsApp, llamadas, documentos sueltos y versiones distintas de la verdad convierten el trabajo en un rompecabezas que nadie logra armar completo.</p>
           </article>
           <article class="card">
             <div class="card-number">03</div>
-            <h3>No es explotar a nadie</h3>
-            <p>El libro no propone trabajar más. Propone diseñar mejor el trabajo para generar más impacto con menos desgaste.</p>
+            <h3>Tareas que viven en el limbo</h3>
+            <p>Proyectos “en proceso”, responsables difusos y acuerdos sin fecha de cierre consumen atención, energía y dinero aunque nadie los vea en un estado financiero.</p>
           </article>
+          <article class="card">
+            <div class="card-number">04</div>
+            <h3>Accountability invisible</h3>
+            <p>Todos ven el problema, algunos lo comentan, pocos lo cierran y casi nadie responde por el resultado final. Sin claridad, la rendición de cuentas se vuelve narrativa.</p>
+          </article>
+          <article class="card">
+            <div class="card-number">05</div>
+            <h3>Talento mal aprovechado</h3>
+            <p>Directores filtrando correos, gerentes persiguiendo reportes y especialistas haciendo tareas repetitivas: salario estratégico invertido en trabajo de bajo valor.</p>
+          </article>
+          <article class="card">
+            <div class="card-number">06</div>
+            <h3>No es explotar a nadie</h3>
+            <p>El libro no pide más desgaste humano. Pide mejor diseño del trabajo: menos fricción, menos retrabajo, más foco, más claridad y más impacto con la misma capacidad.</p>
+          </article>
+        </div>
+
+        <div class="nm-questions-strip" aria-label="Preguntas ejecutivas sobre Nómina Muerta">
+          <div class="nm-question"><small>Pregunta incómoda 1</small>¿Cuánto vale cada hora de operación en tu empresa y qué porcentaje se pierde en actividades que no generan avance?</div>
+          <div class="nm-question"><small>Pregunta incómoda 2</small>¿Cuánto sumarías en ventas, utilidad, capacidad o velocidad si recuperaras solo una parte del tiempo muerto?</div>
+          <div class="nm-question"><small>Pregunta incómoda 3</small>¿Qué estás haciendo hoy, de forma concreta, para que la nómina pagada se convierta en nómina útil?</div>
         </div>
       </div>
     </section>
 
-    <section aria-label="Manifiesto del libro">
-      <div class="wrap dark-panel">
-        <div class="panel-grid">
-          <div class="panel-side">
-            <div class="kicker">Manifiesto</div>
-            <h2>Un espejo para líderes que ya no quieren financiar inercia.</h2>
+    <section class="nm-economic-section" aria-label="Costo económico de la Nómina Muerta">
+      <div class="wrap nm-economics-grid">
+        <div class="nm-calc-card">
+          <div class="kicker">El costo real</div>
+          <h3>Lo que no se mide, sí te cuesta.</h3>
+          <p class="lead">La Nómina Muerta convierte tiempo ya pagado en costo hundido. No solo pierdes sueldo: pierdes oportunidades, velocidad, foco directivo, clientes, energía cultural y competitividad futura.</p>
+          <div class="nm-formula">Nómina Muerta mensual = Nómina mensual total × % de tiempo desperdiciado</div>
+          <table class="nm-cost-table" aria-label="Ejemplo financiero de Nómina Muerta">
+            <thead><tr><th>Escenario</th><th>Ejemplo con 50 personas</th><th>Lectura ejecutiva</th></tr></thead>
+            <tbody>
+              <tr><td>Conservador</td><td>$100,000–$150,000 MXN/mes</td><td>Aun con baja improductividad, la fuga anual puede superar siete cifras.</td></tr>
+              <tr><td>Promedio crítico</td><td>≈ $275,000 MXN/mes</td><td>Un cuarto de millón mensual puede estar escondido en operación sin cierre.</td></tr>
+              <tr><td>Alto desgaste</td><td>$300,000+ MXN/mes</td><td>Cuando hay burocracia, retrabajo y baja trazabilidad, la pérdida escala rápido.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="nm-indicator-card">
+          <div class="kicker">Radiografía operativa</div>
+          <h3>Del concepto a la medición.</h3>
+          <p>La página principal ahora presenta la idea con fuerza, pero también deja claro que la Nómina Muerta puede diagnosticarse con indicadores concretos, no solo con intuición.</p>
+          <div class="nm-indicator-grid">
+            <div class="nm-indicator"><strong>Índice de Ejecución Eficiente</strong><span>Tareas cerradas dentro del plazo vs. total de tareas asignadas.</span></div>
+            <div class="nm-indicator"><strong>Tiempo Improductivo Estimado</strong><span>Horas sin entregable, decisión o avance real sobre horas laborales totales.</span></div>
+            <div class="nm-indicator"><strong>Mapa de Tareas por Rol</strong><span>Identifica si el talento estratégico está atrapado en tareas de bajo valor.</span></div>
+            <div class="nm-indicator"><strong>Mapa de Tiempos Muertos</strong><span>Ubica esperas, autorizaciones, retrabajos y cuellos de botella.</span></div>
+            <div class="nm-indicator"><strong>Output Operativo</strong><span>Relación entre entregables reales producidos y horas invertidas.</span></div>
+            <div class="nm-indicator"><strong>Cultura de Cierre</strong><span>Evalúa si las reuniones, proyectos y tareas terminan con responsable y resultado.</span></div>
           </div>
-          <div class="panel-main">
-            <p class="quote">“Porque no todo lo que se mueve, avanza. Y no toda empresa que crece, progresa.”<small>— Nómina Muerta</small></p>
-            <div class="pill-list" aria-label="Temas principales del libro">
-              <span class="pill">Eficiencia real</span>
-              <span class="pill">Accountability</span>
-              <span class="pill">Cultura de cierre</span>
-              <span class="pill">Operación esbelta</span>
-              <span class="pill">Ejecución ágil</span>
-              <span class="pill">Transformación digital</span>
-            </div>
+        </div>
+      </div>
+    </section>
+
+    <section aria-label="Manifiesto del libro" class="nm-reader-section">
+      <div class="wrap nm-reader-panel">
+        <div class="nm-reader-side">
+          <div class="kicker">Manifiesto</div>
+          <h2>Un espejo para líderes que ya no quieren financiar inercia.</h2>
+        </div>
+        <div class="nm-reader-main">
+          <p class="quote">“Porque no todo lo que se mueve, avanza. Y no toda empresa que crece, progresa.”<small>— Nómina Muerta</small></p>
+          <p>Este libro es para CEO’s, directores, empresarios, gerentes y líderes que sospechan algo incómodo: que su empresa no necesita simplemente trabajar más, sino dejar de desperdiciar la capacidad que ya paga.</p>
+          <div class="nm-reader-list" aria-label="Promesas de lectura del libro">
+            <div class="nm-reader-item">Verás la diferencia entre nómina pagada y nómina útil.</div>
+            <div class="nm-reader-item">Detectarás tareas, juntas y procesos que parecen trabajo pero no generan valor.</div>
+            <div class="nm-reader-item">Entenderás por qué la ocupación puede ser una trampa cultural.</div>
+            <div class="nm-reader-item">Conectarás eficiencia, liderazgo, cultura de cierre y transformación digital.</div>
+          </div>
+          <div class="pill-list" aria-label="Temas principales del libro">
+            <span class="pill">Eficiencia real</span>
+            <span class="pill">Accountability</span>
+            <span class="pill">Cultura de cierre</span>
+            <span class="pill">Operación esbelta</span>
+            <span class="pill">Ejecución ágil</span>
+            <span class="pill">Transformación digital</span>
+          </div>
+          <div class="nm-reader-actions">
+            <a class="btn btn-outline" href="#recomendaciones">Leer recomendaciones</a>
+            <a class="btn btn-outline" href="#/recupera-nomina-muerta">Calcular mi Nómina Muerta</a>
+            <a class="btn btn-outline" href="https://wa.me/526671450096" target="_blank" rel="noopener">Solicitar información</a>
           </div>
         </div>
       </div>
