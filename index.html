@@ -2342,7 +2342,145 @@
       .nm-definition-card, .nm-proof-card, .nm-calc-card, .nm-indicator-card, .nm-reader-panel { border-radius: 24px; }
     }
 
-  </style>
+  
+
+    /* === V13: Manifiesto visual tipo imagen enviada === */
+    .nm-manifest-section {
+      padding: 74px 0 88px;
+      background: linear-gradient(180deg, rgba(16,42,53,.025), rgba(214,181,109,.035));
+    }
+    .manifesto-card {
+      min-height: 456px;
+      display: grid;
+      grid-template-columns: .82fr 1fr;
+      overflow: hidden;
+      position: relative;
+      border-radius: 34px;
+      background:
+        radial-gradient(circle at 86% 30%, rgba(31,97,112,.12), transparent 28rem),
+        linear-gradient(135deg, #17333d 0%, #0d2530 48%, #071d26 100%);
+      color: var(--cream);
+      box-shadow: 0 28px 78px rgba(16,42,53,.26);
+    }
+    .manifesto-card::after {
+      content: "NM";
+      position: absolute;
+      right: 32px;
+      bottom: -46px;
+      font-family: Georgia, serif;
+      font-size: clamp(150px, 19vw, 250px);
+      line-height: 1;
+      letter-spacing: -.08em;
+      color: rgba(243,240,231,.055);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .manifesto-left,
+    .manifesto-right {
+      position: relative;
+      z-index: 1;
+      padding: clamp(34px, 4.3vw, 58px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .manifesto-left {
+      border-right: 1px solid rgba(243,240,231,.12);
+      background: rgba(255,255,255,.025);
+    }
+    .manifesto-label {
+      margin-bottom: 18px;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: .24em;
+      font-size: 12px;
+      font-weight: 950;
+    }
+    .manifesto-left h2 {
+      margin: 0;
+      max-width: 470px;
+      color: var(--cream);
+      font-size: clamp(42px, 5.1vw, 62px);
+      line-height: .94;
+      letter-spacing: -.06em;
+    }
+    .manifesto-quote {
+      margin: 0;
+      max-width: 590px;
+      color: rgba(243,240,231,.96);
+      font-size: clamp(32px, 4vw, 47px);
+      line-height: 1.05;
+      letter-spacing: -.045em;
+      font-weight: 950;
+    }
+    .manifesto-quote cite {
+      display: block;
+      margin-top: 24px;
+      color: rgba(243,240,231,.58);
+      font-style: normal;
+      font-size: 16px;
+      letter-spacing: normal;
+      font-weight: 800;
+    }
+    .manifesto-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 28px;
+      max-width: 560px;
+    }
+    .manifesto-pills span {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 40px;
+      border-radius: 999px;
+      padding: 9px 15px;
+      border: 1px solid rgba(243,240,231,.18);
+      color: rgba(243,240,231,.84);
+      background: rgba(255,255,255,.018);
+      font-size: 13px;
+      font-weight: 900;
+      line-height: 1;
+      white-space: nowrap;
+    }
+    @media (max-width: 980px) {
+      .manifesto-card {
+        grid-template-columns: 1fr;
+        min-height: auto;
+      }
+      .manifesto-left {
+        border-right: 0;
+        border-bottom: 1px solid rgba(243,240,231,.12);
+      }
+      .manifesto-left h2,
+      .manifesto-quote,
+      .manifesto-pills {
+        max-width: none;
+      }
+    }
+    @media (max-width: 620px) {
+      .nm-manifest-section {
+        padding: 58px 0 68px;
+      }
+      .manifesto-card {
+        border-radius: 26px;
+      }
+      .manifesto-left,
+      .manifesto-right {
+        padding: 28px 22px;
+      }
+      .manifesto-left h2 {
+        font-size: clamp(34px, 12vw, 46px);
+      }
+      .manifesto-quote {
+        font-size: clamp(27px, 9vw, 38px);
+      }
+      .manifesto-pills span {
+        white-space: normal;
+      }
+    }
+</style>
 </head>
 <body>
   <!-- versión recomendaciones fijas 2026-06-02: testimonios visibles sin depender de JavaScript -->
@@ -2520,33 +2658,28 @@
       </div>
     </section>
 
-    <section aria-label="Manifiesto del libro" class="nm-reader-section">
-      <div class="wrap nm-reader-panel">
-        <div class="nm-reader-side">
-          <div class="kicker">Manifiesto</div>
-          <h2>Un espejo para líderes que ya no quieren financiar inercia.</h2>
-        </div>
-        <div class="nm-reader-main">
-          <p class="quote">“Porque no todo lo que se mueve, avanza. Y no toda empresa que crece, progresa.”<small>— Nómina Muerta</small></p>
-          <p>Este libro es para CEO’s, directores, empresarios, gerentes y líderes que sospechan algo incómodo: que su empresa no necesita simplemente trabajar más, sino dejar de desperdiciar la capacidad que ya paga.</p>
-          <div class="nm-reader-list" aria-label="Promesas de lectura del libro">
-            <div class="nm-reader-item">Verás la diferencia entre nómina pagada y nómina útil.</div>
-            <div class="nm-reader-item">Detectarás tareas, juntas y procesos que parecen trabajo pero no generan valor.</div>
-            <div class="nm-reader-item">Entenderás por qué la ocupación puede ser una trampa cultural.</div>
-            <div class="nm-reader-item">Conectarás eficiencia, liderazgo, cultura de cierre y transformación digital.</div>
+    <section aria-label="Manifiesto del libro" class="nm-manifest-section" id="manifiesto">
+      <div class="wrap">
+        <div class="manifesto-card">
+          <div class="manifesto-left">
+            <div class="manifesto-label">Manifiesto</div>
+            <h2>Un espejo para líderes que ya no quieren financiar inercia.</h2>
           </div>
-          <div class="pill-list" aria-label="Temas principales del libro">
-            <span class="pill">Eficiencia real</span>
-            <span class="pill">Accountability</span>
-            <span class="pill">Cultura de cierre</span>
-            <span class="pill">Operación esbelta</span>
-            <span class="pill">Ejecución ágil</span>
-            <span class="pill">Transformación digital</span>
-          </div>
-          <div class="nm-reader-actions">
-            <a class="btn btn-outline" href="#recomendaciones">Leer recomendaciones</a>
-            <a class="btn btn-outline" href="#/recupera-nomina-muerta">Calcular mi Nómina Muerta</a>
-            <a class="btn btn-outline" href="https://wa.me/526671450096" target="_blank" rel="noopener">Solicitar información</a>
+
+          <div class="manifesto-right">
+            <blockquote class="manifesto-quote">
+              “Porque no todo lo que se mueve, avanza. Y no toda empresa que crece, progresa.”
+              <cite>— Nómina Muerta</cite>
+            </blockquote>
+
+            <div class="manifesto-pills" aria-label="Temas principales del manifiesto">
+              <span>Eficiencia real</span>
+              <span>Accountability</span>
+              <span>Cultura de cierre</span>
+              <span>Operación esbelta</span>
+              <span>Ejecución ágil</span>
+              <span>Transformación digital</span>
+            </div>
           </div>
         </div>
       </div>
