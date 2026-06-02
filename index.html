@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nómina Muerta | Melchor Iván Angulo Zamorán</title>
+  <title>Nómina Muerta | Melchor Iván Angulo Zamorán | Recomendaciones visibles</title>
   <meta name="description" content="Página oficial del libro Nómina Muerta, de Melchor Iván Angulo Zamorán. Un ensayo ejecutivo sobre la pérdida invisible que las empresas deben capitalizar." />
   <meta name="theme-color" content="#102a35" />
   <style>
@@ -350,10 +350,73 @@
     .check-row input { width: 18px; height: 18px; margin-top: 2px; }
     .form-actions { display: flex; flex-wrap: wrap; gap: 10px; }
     .tiny-note { color: #718087; font-size: 13px; margin-top: 14px; }
+
+    /* Recomendaciones destacadas fijas: visibles aunque JavaScript o caché del navegador falle */
+    .featured-testimonials {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin: 0 0 28px;
+    }
+    .testimonial-fixed {
+      background: rgba(251,250,245,.98);
+      border: 1px solid rgba(214,181,109,.46);
+      border-radius: 28px;
+      padding: 28px;
+      box-shadow: 0 24px 64px rgba(16,42,53,.12);
+      position: relative;
+      overflow: hidden;
+    }
+    .testimonial-fixed::before {
+      content: "“";
+      position: absolute;
+      right: 20px;
+      top: -24px;
+      font-family: Georgia, serif;
+      font-size: 132px;
+      line-height: 1;
+      color: rgba(214,181,109,.16);
+      pointer-events: none;
+    }
+    .testimonial-fixed .badge {
+      display: inline-flex;
+      align-items: center;
+      border-radius: 999px;
+      padding: 7px 11px;
+      margin-bottom: 16px;
+      background: rgba(214,181,109,.18);
+      color: var(--navy);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .testimonial-fixed p {
+      margin: 0 0 18px;
+      color: #23333a;
+      font-size: 16px;
+      line-height: 1.6;
+      position: relative;
+      z-index: 1;
+    }
+    .testimonial-fixed strong {
+      display: block;
+      color: var(--navy);
+      font-size: 19px;
+      line-height: 1.1;
+      margin-bottom: 4px;
+    }
+    .testimonial-fixed span {
+      color: var(--muted);
+      font-weight: 800;
+      font-size: 14px;
+    }
+
     .reviews-head { display: flex; justify-content: space-between; gap: 12px; align-items: center; margin-bottom: 18px; }
     .reviews-head h3 { margin: 0; color: var(--navy); font-size: 26px; }
     .review-list { display: grid; gap: 14px; }
     .review-item { border: 1px solid rgba(16,42,53,.12); border-radius: 18px; padding: 18px; background: rgba(255,255,255,.55); }
+    .featured-review { border-color: rgba(214,181,109,.52); background: linear-gradient(180deg, rgba(255,255,255,.82), rgba(243,240,231,.78)); box-shadow: 0 18px 46px rgba(16,42,53,.10); }
     .review-meta { display: flex; justify-content: space-between; gap: 12px; color: var(--muted); font-weight: 700; font-size: 13px; margin-bottom: 8px; }
     .review-author { color: var(--navy); font-weight: 900; font-size: 18px; }
     .stars { color: #b58d35; letter-spacing: .07em; white-space: nowrap; }
@@ -382,6 +445,7 @@
       .cards { grid-template-columns: 1fr; }
       .panel-side { border-right: 0; border-bottom: 1px solid rgba(243,240,231,.11); }
       .reto-grid { grid-template-columns: 1fr 1fr; }
+      .featured-testimonials { grid-template-columns: 1fr; }
       .amazon-inner { align-items: flex-start; flex-direction: column; }
     }
     @media (max-width: 620px) {
@@ -402,6 +466,7 @@
   </style>
 </head>
 <body>
+  <!-- versión recomendaciones fijas 2026-06-02: testimonios visibles sin depender de JavaScript -->
   <header class="topbar" id="top">
     <div class="wrap nav">
       <a class="brand" href="#top" aria-label="Inicio Nómina Muerta">
@@ -533,10 +598,25 @@
         <div class="section-head">
           <div>
             <div class="kicker">Voz de lectores</div>
-            <h2>Deja tu recomendación del libro.</h2>
+            <h2>Recomendaciones de líderes y lectores.</h2>
           </div>
-          <p class="lead">Comparte qué idea te movió, qué conversación detonó en tu empresa o por qué recomendarías <strong>Nómina Muerta</strong> a otros líderes.</p>
+          <p class="lead">Estas son algunas recomendaciones que ya ha recibido el libro. También puedes compartir qué idea te movió, qué conversación detonó en tu empresa o por qué recomendarías <strong>Nómina Muerta</strong> a otros líderes.</p>
         </div>
+        <div class="featured-testimonials" aria-label="Recomendaciones destacadas del libro Nómina Muerta">
+          <article class="testimonial-fixed">
+            <div class="badge">Recomendación destacada · ★★★★★</div>
+            <p>“Nómina Muerta es un libro que supera las expectativas: más profundo, práctico y revelador que muchos bestsellers de negocios. Una lectura indispensable para quienes buscan transformar sus organizaciones.”</p>
+            <strong>Enrique Campoy</strong>
+            <span>Director General · San Martín</span>
+          </article>
+          <article class="testimonial-fixed">
+            <div class="badge">Recomendación destacada · ★★★★★</div>
+            <p>“Es un libro claro, directo y muy práctico para entender uno de los grandes problemas silenciosos de las empresas: la ineficiencia en la nómina. Me gustó especialmente porque va más allá de la teoría y aterriza conceptos que se viven todos los días en las organizaciones actuales. El autor explica con ejemplos reales cómo la falta de medición, accountability y cultura de desempeño impacta directamente la rentabilidad. Los conceptos son totalmente aplicables a la empresa de hoy, sin importar el tamaño o la industria. Es una lectura recomendable para directivos que buscan ordenar, profesionalizar y hacer más productivos a sus equipos.”</p>
+            <strong>Salomon Sabag</strong>
+            <span>Director General · LLYASA</span>
+          </article>
+        </div>
+
         <div class="form-grid">
           <form class="form-card" id="recommendationForm">
             <label for="name">Nombre</label>
@@ -572,9 +652,29 @@
           <div class="review-card">
             <div class="reviews-head">
               <h3>Recomendaciones publicadas</h3>
-              <button class="btn btn-light" type="button" id="clearBtn" title="Borrar recomendaciones guardadas en este navegador">Limpiar</button>
+              <button class="btn btn-light" type="button" id="clearBtn" title="Borrar únicamente las recomendaciones nuevas guardadas en este navegador">Limpiar nuevas</button>
             </div>
-            <div class="review-list" id="reviewList"></div>
+            <div class="review-list" id="reviewList">
+              <article class="review-item featured-review">
+                <div class="review-meta">
+                  <span class="stars" aria-label="5 de 5 estrellas">★★★★★</span>
+                  <span>Recomendación destacada</span>
+                </div>
+                <div class="review-author">Enrique Campoy</div>
+                <div class="review-meta" style="justify-content:flex-start; margin:2px 0 10px;">Director General · San Martín</div>
+                <p>“Nómina Muerta es un libro que supera las expectativas: más profundo, práctico y revelador que muchos bestsellers de negocios. Una lectura indispensable para quienes buscan transformar sus organizaciones.”</p>
+              </article>
+
+              <article class="review-item featured-review">
+                <div class="review-meta">
+                  <span class="stars" aria-label="5 de 5 estrellas">★★★★★</span>
+                  <span>Recomendación destacada</span>
+                </div>
+                <div class="review-author">Salomon Sabag</div>
+                <div class="review-meta" style="justify-content:flex-start; margin:2px 0 10px;">Director General · LLYASA</div>
+                <p>“Es un libro claro, directo y muy práctico para entender uno de los grandes problemas silenciosos de las empresas: la ineficiencia en la nómina. Me gustó especialmente porque va más allá de la teoría y aterriza conceptos que se viven todos los días en las organizaciones actuales. El autor explica con ejemplos reales cómo la falta de medición, accountability y cultura de desempeño impacta directamente la rentabilidad. Los conceptos son totalmente aplicables a la empresa de hoy, sin importar el tamaño o la industria. Es una lectura recomendable para directivos que buscan ordenar, profesionalizar y hacer más productivos a sus equipos.”</p>
+              </article>
+            </div>
           </div>
         </div>
       </div>
@@ -606,7 +706,19 @@
       "author": { "@type": "Person", "name": "Melchor Iván Angulo Zamorán" },
       "inLanguage": "es-MX",
       "description": "La pérdida que debes capitalizar antes de que esta también te sepulte.",
-      "url": "https://www.amazon.com.mx/N%C3%B3mina-Muerta-p%C3%A9rdida-capitalizar-sepulte/dp/B0FCC9TLRM/ref=sr_1_1?crid=36Q4FTI8QAIPO&dib=eyJ2IjoiMSJ9.jeZzbPCzxWGI8uNZBU_ScOBux1AnAd-oMfUVvGxOIyNsbIgNNo7Qxjr6Ty346Lm_m95Ih3F7jma0XL8zz_HkUGyzzi-e6tfHa5XA_wxj1K0oNMcRUMmJ3NLf4rdADwD6P-TR8sdVIvs2ybw2XHFzlL4K1QLf3iVrnTveFDbSNGyqxLz_77XfUOBilfozOow0.mISqZCqIAd8oH-NFYLKAfgNlEWUuTWzTaJHuLFG3FQM&dib_tag=se&keywords=nomina+muerta&qid=1780362284&sprefix=nomina+muerta%2Caps%2C177&sr=8-1&ufe=app_do%3Aamzn1.fos.de93fa6a-174c-4df7-be7c-5bc8e9c5a71b"
+      "url": "https://www.amazon.com.mx/N%C3%B3mina-Muerta-p%C3%A9rdida-capitalizar-sepulte/dp/B0FCC9TLRM/ref=sr_1_1?crid=36Q4FTI8QAIPO&dib=eyJ2IjoiMSJ9.jeZzbPCzxWGI8uNZBU_ScOBux1AnAd-oMfUVvGxOIyNsbIgNNo7Qxjr6Ty346Lm_m95Ih3F7jma0XL8zz_HkUGyzzi-e6tfHa5XA_wxj1K0oNMcRUMmJ3NLf4rdADwD6P-TR8sdVIvs2ybw2XHFzlL4K1QLf3iVrnTveFDbSNGyqxLz_77XfUOBilfozOow0.mISqZCqIAd8oH-NFYLKAfgNlEWUuTWzTaJHuLFG3FQM&dib_tag=se&keywords=nomina+muerta&qid=1780362284&sprefix=nomina+muerta%2Caps%2C177&sr=8-1&ufe=app_do%3Aamzn1.fos.de93fa6a-174c-4df7-be7c-5bc8e9c5a71b",
+      "review": [
+        {
+          "@type": "Review",
+          "author": { "@type": "Person", "name": "Enrique Campoy" },
+          "reviewBody": "Nómina Muerta es un libro que supera las expectativas: más profundo, práctico y revelador que muchos bestsellers de negocios. Una lectura indispensable para quienes buscan transformar sus organizaciones."
+        },
+        {
+          "@type": "Review",
+          "author": { "@type": "Person", "name": "Salomon Sabag" },
+          "reviewBody": "Es un libro claro, directo y muy práctico para entender uno de los grandes problemas silenciosos de las empresas: la ineficiencia en la nómina."
+        }
+      ]
     }
   </script>
   <script>
@@ -616,13 +728,36 @@
     const exportBtn = document.getElementById('exportBtn');
     const clearBtn = document.getElementById('clearBtn');
 
+    const defaultReviews = [
+      {
+        name: 'Enrique Campoy',
+        role: 'Director General · San Martín',
+        rating: '5',
+        date: 'Recomendación destacada',
+        message: 'Nómina Muerta es un libro que supera las expectativas: más profundo, práctico y revelador que muchos bestsellers de negocios. Una lectura indispensable para quienes buscan transformar sus organizaciones.',
+        featured: true
+      },
+      {
+        name: 'Salomon Sabag',
+        role: 'Director General · LLYASA',
+        rating: '5',
+        date: 'Recomendación destacada',
+        message: 'Es un libro claro, directo y muy práctico para entender uno de los grandes problemas silenciosos de las empresas: la ineficiencia en la nómina. Me gustó especialmente porque va más allá de la teoría y aterriza conceptos que se viven todos los días en las organizaciones actuales. El autor explica con ejemplos reales cómo la falta de medición, accountability y cultura de desempeño impacta directamente la rentabilidad. Los conceptos son totalmente aplicables a la empresa de hoy, sin importar el tamaño o la industria. Es una lectura recomendable para directivos que buscan ordenar, profesionalizar y hacer más productivos a sus equipos.',
+        featured: true
+      }
+    ];
+
     const escapeHTML = (value) => String(value || '').replace(/[&<>'"]/g, char => ({
       '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;'
     }[char]));
 
-    function getReviews() {
+    function getUserReviews() {
       try { return JSON.parse(localStorage.getItem(KEY)) || []; }
       catch { return []; }
+    }
+
+    function getReviews() {
+      return [...getUserReviews(), ...defaultReviews];
     }
 
     function saveReviews(reviews) {
@@ -630,19 +765,20 @@
     }
 
     function starText(rating) {
-      const full = '★'.repeat(Number(rating));
-      const empty = '☆'.repeat(5 - Number(rating));
+      const value = Math.max(1, Math.min(5, Number(rating) || 5));
+      const full = '★'.repeat(value);
+      const empty = '☆'.repeat(5 - value);
       return full + empty;
     }
 
     function renderReviews() {
       const reviews = getReviews();
       if (!reviews.length) {
-        reviewList.innerHTML = '<div class="empty">Aún no hay recomendaciones publicadas en este navegador. Sé la primera persona en dejar una.</div>';
+        reviewList.innerHTML = '<div class="empty">Aún no hay recomendaciones publicadas. Sé la primera persona en dejar una.</div>';
         return;
       }
       reviewList.innerHTML = reviews.map(review => `
-        <article class="review-item">
+        <article class="review-item${review.featured ? ' featured-review' : ''}">
           <div class="review-meta">
             <span class="stars" aria-label="${review.rating} de 5 estrellas">${starText(review.rating)}</span>
             <span>${escapeHTML(review.date)}</span>
@@ -661,10 +797,11 @@
         role: form.role.value.trim(),
         rating: form.rating.value,
         message: form.message.value.trim(),
-        date: new Date().toLocaleDateString('es-MX', { year: 'numeric', month: 'short', day: 'numeric' })
+        date: new Date().toLocaleDateString('es-MX', { year: 'numeric', month: 'short', day: 'numeric' }),
+        featured: false
       };
       if (!review.name || !review.message || !document.getElementById('permission').checked) return;
-      const reviews = [review, ...getReviews()];
+      const reviews = [review, ...getUserReviews()];
       saveReviews(reviews);
       form.reset();
       form.rating.value = '5';
@@ -675,8 +812,7 @@
       const reviews = getReviews();
       const header = ['Nombre','Cargo/Empresa','Calificación','Fecha','Recomendación'];
       const rows = reviews.map(r => [r.name, r.role, r.rating, r.date, r.message]);
-      const csv = [header, ...rows].map(row => row.map(cell => '"' + String(cell || '').replace(/"/g, '""') + '"').join(',')).join('
-');
+      const csv = [header, ...rows].map(row => row.map(cell => '"' + String(cell || '').replace(/"/g, '""') + '"').join(',')).join('\n');
       const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
@@ -687,7 +823,7 @@
     });
 
     clearBtn.addEventListener('click', () => {
-      if (confirm('¿Borrar las recomendaciones guardadas en este navegador?')) {
+      if (confirm('¿Borrar solo las recomendaciones guardadas en este navegador? Las recomendaciones destacadas permanecerán visibles.')) {
         localStorage.removeItem(KEY);
         renderReviews();
       }
