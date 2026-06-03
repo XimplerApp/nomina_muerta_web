@@ -2869,9 +2869,7 @@
       </a>
       <nav class="nav-links" aria-label="Navegación principal">
         <a href="#concepto">Concepto</a>
-        <a href="#/reto-autopsia">Reto</a>
-        <a href="#/reto-autopsia">Recupera</a>
-        <a href="#/reto-autopsia">Diagnóstico</a>
+        <a href="#/reto-autopsia">Reto de Autopsia</a>
         <a href="#/viva-la-nomina">Conferencias</a>
         <a href="#/consultoria-copiloto">Consultoría</a>
         <a href="https://wa.me/526671450096" target="_blank" rel="noopener">Contacto</a>
@@ -4906,7 +4904,11 @@
     function nmAutopsiaRenderRadar() {
       const container = document.getElementById('autopsiaRadarChecklist');
       if (!container || container.dataset.rendered === '1') return;
-      const categories = window.NM_RETO_CATEGORIES || [];
+      const categories = (typeof NM_RETO_CATEGORIES !== 'undefined' && Array.isArray(NM_RETO_CATEGORIES)) ? NM_RETO_CATEGORIES : (window.NM_RETO_CATEGORIES || []);
+      if (!categories.length) {
+        container.innerHTML = '<div class="integrated-note">⚠️ No se encontraron las preguntas del Radar. Revisa que el bloque NM_RETO_CATEGORIES esté cargado antes de inicializar el Reto de Autopsia.</div>';
+        return;
+      }
       container.innerHTML = categories.map((cat, ci) => `
         <div class="autopsy-radar-category">
           <h3>${cat.title}</h3>
