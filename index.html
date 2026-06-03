@@ -2922,6 +2922,16 @@
     }
     .mapa-hero-panel {
       margin-bottom: 24px;
+      grid-template-columns: 1fr;
+      align-items: stretch;
+    }
+    .mapa-hero-panel .mapa-definition-card {
+      width: 100%;
+      min-height: 300px;
+    }
+    .mapa-quick-nav:empty {
+      display: none;
+      margin: 0;
     }
     .mapa-definition-card::after {
       content: "MAPA";
@@ -2946,6 +2956,11 @@
     }
     .mapa-question-strip {
       margin-bottom: 24px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      align-items: stretch;
+    }
+    .mapa-question-strip .nm-question {
+      min-height: 130px;
     }
     .chapter-map-panel {
       border-radius: var(--radius-xl);
@@ -2959,6 +2974,7 @@
     }
     .chapter-map-panel .section-head {
       margin-bottom: 26px;
+      grid-template-columns: .9fr 1.1fr;
     }
     .mapa-section-head {
       align-items: center;
@@ -2979,6 +2995,10 @@
     @media (max-width: 980px) {
       .mapa-subpage {
         padding-top: 64px;
+      }
+      .mapa-question-strip,
+      .chapter-map-panel .section-head {
+        grid-template-columns: 1fr;
       }
     }
     @media (max-width: 620px) {
@@ -3415,10 +3435,9 @@
           <div class="nm-definition-card mapa-definition-card">
             <div class="kicker">Mapa de lectura</div>
             <h3>Una ruta ejecutiva para leer, entender y conversar Nómina Muerta.</h3>
-            <p>Esta subpágina separa el mapa del concepto principal para que el lector pueda explorar la estructura del libro con claridad: bloques, capítulos, ideas clave y puntos de conversación para líderes.</p>
+            <p>Mapa del concepto principal para que el lector pueda explorar la estructura del libro con claridad: bloques, capítulos, ideas clave y puntos de conversación para líderes.</p>
             <div class="subpage-nav mapa-quick-nav">
             </div>
-          </div>
           </div>
         </div>
 
