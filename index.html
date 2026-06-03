@@ -5614,19 +5614,74 @@
         nmAutopsiaScrollToResult('autopsiaCalcResult');
         return;
       }
+
       const reportHTML = nmAutopsiaBuildReportHTML();
-      const printWindow = window.open('', '_blank', 'noopener,noreferrer,width=980,height=720');
-      if (!printWindow) {
-        alert('No se pudo abrir la ventana de exportación. Permite ventanas emergentes para generar el PDF.');
+      if (!reportHTML) {
+        nmAutopsiaShow('autopsiaCalcResult', '<div class="integrated-note">⚠️ No se pudo generar el contenido del reporte. Ejecuta nuevamente el cálculo final.</div>');
+        nmAutopsiaScrollToResult('autopsiaCalcResult');
         return;
       }
-      printWindow.document.open();
-      printWindow.document.write(reportHTML);
-      printWindow.document.close();
-      printWindow.focus();
+
+      const styleMatch = reportHTML.match(/<style[^>]*>([\s\S]*?)<\/style>/i);
+      const bodyMatch = reportHTML.match(/<body[^>]*>([\s\S]*?)<\/body>/i);
+      const reportCSS = styleMatch ? styleMatch[1] : '';
+      const reportBody = bodyMatch ? bodyMatch[1] : reportHTML;
+
+      let printStyle = document.getElementById('nmAutopsiaPrintStyle');
+      if (!printStyle) {
+        printStyle = document.createElement('style');
+        printStyle.id = 'nmAutopsiaPrintStyle';
+        document.head.appendChild(printStyle);
+      }
+
+      const scopedReportCSS = reportCSS
+        .replace(/(^|\})\s*body\s*\{/g, '$1 #nmAutopsiaPrintReport {')
+        .replace(/@media\s+print\s*\{\s*#nmAutopsiaPrintReport\s*\{/g, '@media print { #nmAutopsiaPrintReport {');
+
+      printStyle.textContent = `
+        #nmAutopsiaPrintReport { display: none; }
+        @media screen {
+          #nmAutopsiaPrintReport { display: none !important; }
+        }
+        @media print {
+          body.nm-autopsia-printing > *:not(#nmAutopsiaPrintReport) { display: none !important; }
+          body.nm-autopsia-printing #nmAutopsiaPrintReport { display: block !important; position: static !important; width: auto !important; height: auto !important; overflow: visible !important; }
+          body.nm-autopsia-printing { background: #fff !important; }
+          body.nm-autopsia-printing #nmAutopsiaPrintReport .report { max-width: none !important; }
+        }
+      ` + scopedReportCSS;
+
+      let printContainer = document.getElementById('nmAutopsiaPrintReport');
+      if (!printContainer) {
+        printContainer = document.createElement('div');
+        printContainer.id = 'nmAutopsiaPrintReport';
+        document.body.appendChild(printContainer);
+      }
+      printContainer.innerHTML = reportBody;
+
+      const cleanupPrint = () => {
+        document.body.classList.remove('nm-autopsia-printing');
+        window.removeEventListener('afterprint', cleanupPrint);
+      };
+
+      window.addEventListener('afterprint', cleanupPrint);
+      document.body.classList.add('nm-autopsia-printing');
+
+      // No usamos window.open para evitar bloqueos de ventanas emergentes en GitHub Pages, Safari o Chrome.
+      // El navegador abrirá el cuadro de impresión sobre esta misma página; ahí se elige "Guardar como PDF".
       setTimeout(() => {
-        printWindow.print();
-      }, 450);
+        try {
+          window.print();
+        } catch (error) {
+          cleanupPrint();
+          nmAutopsiaShow('autopsiaCalcResult', '<div class="integrated-note">⚠️ No se pudo abrir el cuadro de impresión. Usa Cmd/Ctrl + P y selecciona “Guardar como PDF”.</div>');
+          nmAutopsiaScrollToResult('autopsiaCalcResult');
+        }
+      }, 120);
+
+      setTimeout(() => {
+        if (document.body.classList.contains('nm-autopsia-printing')) cleanupPrint();
+      }, 8000);
     }
 
 
