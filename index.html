@@ -2911,6 +2911,86 @@
       font-weight: 750;
     }
 
+
+
+    /* === V17: Mapa de Lectura como subpágina independiente === */
+    .mapa-subpage {
+      padding-top: 84px;
+      background:
+        radial-gradient(circle at 10% 5%, rgba(31,97,112,.09), transparent 25rem),
+        linear-gradient(180deg, rgba(251,250,245,.98), rgba(243,240,231,.82));
+    }
+    .mapa-hero-panel {
+      margin-bottom: 24px;
+    }
+    .mapa-definition-card::after {
+      content: "MAPA";
+      right: 20px;
+      bottom: -36px;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: clamp(80px, 11vw, 170px);
+      font-weight: 950;
+      letter-spacing: -.08em;
+    }
+    .mapa-definition-card h3 {
+      max-width: 860px;
+    }
+    .mapa-quick-nav {
+      margin-top: 26px;
+    }
+    .mapa-proof-card {
+      min-height: 100%;
+    }
+    .mapa-proof-metrics .nm-proof-metric strong {
+      font-size: clamp(30px, 3.5vw, 48px);
+    }
+    .mapa-question-strip {
+      margin-bottom: 24px;
+    }
+    .chapter-map-panel {
+      border-radius: var(--radius-xl);
+      background:
+        radial-gradient(circle at top right, rgba(214,181,109,.12), transparent 24rem),
+        rgba(251,250,245,.92);
+      border: 1px solid var(--line);
+      box-shadow: 0 26px 70px rgba(16,42,53,.10);
+      padding: clamp(22px, 3vw, 34px);
+      overflow: hidden;
+    }
+    .chapter-map-panel .section-head {
+      margin-bottom: 26px;
+    }
+    .mapa-section-head {
+      align-items: center;
+    }
+    .mapa-subpage .chapter-explorer {
+      background: rgba(255,255,255,.62);
+      box-shadow: none;
+    }
+    .mapa-subpage .chapter-tabbar {
+      background: rgba(16,42,53,.065);
+    }
+    .mapa-subpage .chapter-card {
+      background: rgba(255,255,255,.78);
+    }
+    .mapa-subpage .chapter-cta {
+      margin-top: 22px;
+    }
+    @media (max-width: 980px) {
+      .mapa-subpage {
+        padding-top: 64px;
+      }
+    }
+    @media (max-width: 620px) {
+      .mapa-subpage .subpage-nav .btn {
+        width: 100%;
+      }
+      .chapter-map-panel {
+        border-radius: 24px;
+        padding: 18px;
+      }
+    }
+
 </style>
 </head>
 <body>
@@ -2923,6 +3003,7 @@
       </a>
       <nav class="nav-links" aria-label="Navegación principal">
         <a href="#concepto">Concepto</a>
+        <a href="#/mapa">Mapa</a>
         <a href="#/reto-autopsia">Reto de Autopsia</a>
         <a href="#/viva-la-nomina">Conferencias</a>
         <a href="#/consultoria-copiloto">Consultoría</a>
@@ -3139,82 +3220,7 @@
 
 
 
-    <section id="capitulos" class="chapter-tabs-section">
-      <div class="wrap">
-        <div class="section-head">
-          <div>
-            <div class="kicker">Mapa de lectura</div>
-            <h2>Una mirada breve por capítulo para despertar la conversación.</h2>
-          </div>
-        </div>
-
-        <div class="chapter-explorer" data-chapter-tabs>
-          <div class="chapter-tabbar" role="tablist" aria-label="Bloques del libro Nómina Muerta">
-            <button class="chapter-tab active" type="button" data-chapter-tab="bloque1">Bloque I · Problema invisible</button>
-            <button class="chapter-tab" type="button" data-chapter-tab="bloque2">Bloque II · Impacto oculto</button>
-            <button class="chapter-tab" type="button" data-chapter-tab="bloque3">Bloque III · Transformación</button>
-            <button class="chapter-tab" type="button" data-chapter-tab="bloque4">Bloque IV · Radiografía</button>
-          </div>
-
-          <div class="chapter-panel active" id="bloque1" role="tabpanel">
-            <div class="chapter-panel-head">
-              <h3>Bloque I — El problema invisible</h3>
-              <p>Presenta el concepto, sus síntomas y las raíces culturales que lo vuelven tan difícil de ver.</p>
-            </div>
-            <div class="chapter-grid">
-              <article class="chapter-card"><span class="chapter-no">Capítulo I</span><h4>¿Qué es la Nómina Muerta?</h4><p class="teaser">Define la pérdida silenciosa que ocurre cuando el tiempo pagado no se convierte en avance real. El capítulo instala la pregunta incómoda: ¿cuánto de tu nómina se mueve, pero no progresa?</p><div class="chapter-points"><span>Ocupación vs. productividad</span><span>Tiempo pagado sin retorno</span><span>No es explotación</span></div></article>
-              <article class="chapter-card"><span class="chapter-no">Capítulo II</span><h4>La epidemia del siglo XXI</h4><p class="teaser">Expone a las empresas llenas de juntas, correos y urgencias que aparentan ritmo, pero no necesariamente generan valor. Una crítica directa a la hiperactividad improductiva.</p><div class="chapter-points"><span>Urgencia permanente</span><span>Actividad vacía</span><span>Foco perdido</span></div></article>
-              <article class="chapter-card"><span class="chapter-no">Capítulo III</span><h4>Raíces de la Nómina Muerta</h4><p class="teaser">Rastrea cómo los sistemas heredados, la fragmentación comunicacional y la falta de accountability crean organizaciones que trabajan mucho, pero cierran poco.</p><div class="chapter-points"><span>Sistemas heredados</span><span>Fragmentación</span><span>Accountability invisible</span></div></article>
-              <article class="chapter-card"><span class="chapter-no">Capítulo IV</span><h4>El enemigo en la cultura</h4><p class="teaser">Muestra cómo la mentalidad de control, el presentismo y ciertas herencias organizacionales siguen dictando decisiones que ya no sirven para competir.</p><div class="chapter-points"><span>Control vs. impacto</span><span>Ocupación como escudo</span><span>Herencias obsoletas</span></div></article>
-            </div>
-          </div>
-
-          <div class="chapter-panel" id="bloque2" role="tabpanel">
-            <div class="chapter-panel-head">
-              <h3>Bloque II — El impacto que nadie cuantifica</h3>
-              <p>Convierte el problema en costo: financiero, estratégico, humano y competitivo.</p>
-            </div>
-            <div class="chapter-grid">
-              <article class="chapter-card"><span class="chapter-no">Capítulo V</span><h4>El costo oculto de la inacción</h4><p class="teaser">Plantea que no hacer nada también cuesta. Cada tarea inconclusa, decisión postergada y talento subutilizado se convierte en una fuga que la empresa paga sin verla.</p><div class="chapter-points"><span>Inacción costosa</span><span>Tareas sin cierre</span><span>Talento mal usado</span></div></article>
-              <article class="chapter-card"><span class="chapter-no">Capítulo VI</span><h4>Lo que no se mide, sí te cuesta</h4><p class="teaser">Contrasta la nómina pagada con la nómina útil y reta la comodidad de medir solo lo visible. El capítulo invita a construir evidencia operacional.</p><div class="chapter-points"><span>Nómina útil</span><span>Costo de oportunidad</span><span>Evidencia operacional</span></div></article>
-              <article class="chapter-card"><span class="chapter-no">Capítulo VII</span><h4>El costo humano de la Nómina Muerta</h4><p class="teaser">Explora el desgaste emocional que se genera cuando las personas se esfuerzan sin ver impacto: burnout, cinismo, autoestima profesional erosionada y renuncias silenciosas.</p><div class="chapter-points"><span>Burnout</span><span>Deserción emocional</span><span>Renuncias silenciosas</span></div></article>
-              <article class="chapter-card"><span class="chapter-no">Capítulo VIII</span><h4>La economía de la Nómina Muerta</h4><p class="teaser">Eleva el tema a competitividad, sostenibilidad y futuro. No basta crecer si la estructura que sostiene ese crecimiento está llena de desperdicio invisible.</p><div class="chapter-points"><span>Competitividad</span><span>Sostenibilidad</span><span>Futuro organizacional</span></div></article>
-            </div>
-          </div>
-
-          <div class="chapter-panel" id="bloque3" role="tabpanel">
-            <div class="chapter-panel-head">
-              <h3>Bloque III — Transformación y soluciones</h3>
-              <p>Presenta decisiones concretas para pasar de la denuncia del problema al rediseño del trabajo.</p>
-            </div>
-            <div class="chapter-grid">
-              <article class="chapter-card"><span class="chapter-no">Capítulo IX</span><h4>Romper el ciclo</h4><p class="teaser">Propone las primeras decisiones para recuperar control: nombrar el problema, crear visibilidad, cambiar el lenguaje operativo y hacer del cierre un hábito.</p><div class="chapter-points"><span>Visibilidad compartida</span><span>Cultura de cierre</span><span>Foco quirúrgico</span></div></article>
-              <article class="chapter-card"><span class="chapter-no">Capítulo X</span><h4>Trabajo enfocado</h4><p class="teaser">Presenta el enfoque como antídoto contra la dispersión. El trabajo valioso no se mide por cantidad de tareas, sino por impacto y cierre.</p><div class="chapter-points"><span>Menos dispersión</span><span>Más impacto</span><span>Disciplina con intención</span></div></article>
-              <article class="chapter-card"><span class="chapter-no">Capítulo XI</span><h4>Digitaliza tu empresa</h4><p class="teaser">Explica por qué digitalizar no es sumar apps, sino rediseñar la operación para recuperar tiempo, energía y resultados con herramientas bien elegidas.</p><div class="chapter-points"><span>Kanban adecuado</span><span>Automatización simple</span><span>Monitoreo inteligente</span></div></article>
-              <article class="chapter-card"><span class="chapter-no">Capítulo XII</span><h4>Operación esbelta y ejecución ágil</h4><p class="teaser">Traduce principios Lean y Agile a la realidad ejecutiva: limitar trabajo en curso, asignar por capacidad y crear ritmo sin vivir en urgencia.</p><div class="chapter-points"><span>WIP controlado</span><span>Pull, no push</span><span>Cadencias sanas</span></div></article>
-              <article class="chapter-card"><span class="chapter-no">Capítulo XIII</span><h4>Casos de transformación real</h4><p class="teaser">Muestra que la Nómina Muerta no solo se puede detectar: también se puede revertir. Los casos funcionan como prueba de posibilidad y conversación directiva.</p><div class="chapter-points"><span>Casos reales</span><span>Mejora continua</span><span>Transformación medible</span></div></article>
-            </div>
-          </div>
-
-          <div class="chapter-panel" id="bloque4" role="tabpanel">
-            <div class="chapter-panel-head">
-              <h3>Bloque IV — Radiografía</h3>
-              <p>Cierra con medición, diagnóstico y una mirada al sector público, donde la ineficiencia también la paga el ciudadano.</p>
-            </div>
-            <div class="chapter-grid">
-              <article class="chapter-card"><span class="chapter-no">Capítulo XIV</span><h4>El verdadero costo</h4><p class="teaser">Aterriza la cuantificación financiera de la Nómina Muerta. El lector encuentra métricas iniciales para estimar lo que antes parecía imposible de medir.</p><div class="chapter-points"><span>Fórmulas iniciales</span><span>Indicadores</span><span>Diagnóstico económico</span></div></article>
-              <article class="chapter-card"><span class="chapter-no">Capítulo XV</span><h4>Nómina Muerta en el gobierno</h4><p class="teaser">Lleva el concepto al sector público: trámites lentos, burocracia, cuellos de botella y tiempo institucional mal utilizado que termina afectando al ciudadano. Incluye una Autopsia Operativa para diagnosticar dónde se pierde velocidad, trazabilidad y capacidad de gestión.</p><div class="chapter-points"><span>IXEP</span><span>Costo social</span><span>Eficiencia pública</span><span>Autopsia operativa</span></div></article>
-              <article class="chapter-card wide"><span class="chapter-no">Modelos de diagnóstico</span><h4>Autopsia Operativa: indicadores y métricas</h4><p class="teaser">Una caja de herramientas ejecutiva para detectar fricción, lentitud, autorizaciones innecesarias, falta de seguimiento y pérdida de trazabilidad. No revela todo el método, pero muestra el tipo de medición que el lector encontrará para convertir intuiciones en evidencia.</p><div class="chapter-points metric-chips"><span>Índice de Velocidad de Ejecución de Proyectos</span><span>Índice de Cuellos de Botella</span><span>Auditoría de Flujo de Trabajo</span><span>Matriz de Toma de Decisiones</span><span>Matriz de Firmas y Autorizaciones</span><span>Matriz de Automatización Potencial</span><span>Índice de Rastreabilidad Operativa</span><span>Índice de Seguimiento y Supervisión Activa</span><span>Índice de Cumplimiento Global de Minutas</span><span>Índice de Productividad Individual</span><span>Índice de Gestión Operativa por área / individual</span></div></article>
-              <article class="chapter-card"><span class="chapter-no">Epílogo</span><h4>Carta al líder</h4><p class="teaser">Un cierre provocador para quien dirige: la pregunta ya no es si existe pérdida invisible, sino qué tan dispuesto está el líder a dejar de financiarla.</p><div class="chapter-points"><span>Decisión</span><span>Responsabilidad</span><span>Acción</span></div></article>
-            </div>
-          </div>
-        </div>
-        <div class="chapter-cta">
-          <div><strong>CARPE DIEM: OPERA.OPTIMIZA.LIDERA.</strong></div>
-          <a class="btn btn-light" href="https://www.amazon.com.mx/N%C3%B3mina-Muerta-p%C3%A9rdida-capitalizar-sepulte/dp/B0FCC9TLRM/ref=sr_1_1?crid=36Q4FTI8QAIPO&dib=eyJ2IjoiMSJ9.jeZzbPCzxWGI8uNZBU_ScOBux1AnAd-oMfUVvGxOIyNsbIgNNo7Qxjr6Ty346Lm_m95Ih3F7jma0XL8zz_HkUGyzzi-e6tfHa5XA_wxj1K0oNMcRUMmJ3NLf4rdADwD6P-TR8sdVIvs2ybw2XHFzlL4K1QLf3iVrnTveFDbSNGyqxLz_77XfUOBilfozOow0.mISqZCqIAd8oH-NFYLKAfgNlEWUuTWzTaJHuLFG3FQM&dib_tag=se&keywords=nomina+muerta&qid=1780362284&sprefix=nomina+muerta%2Caps%2C177&sr=8-1&ufe=app_do%3Aamzn1.fos.de93fa6a-174c-4df7-be7c-5bc8e9c5a71b" target="_blank" rel="noopener">Comprar el libro</a>
-        </div>
-      </div>
-    </section>
+    
 
     <section id="recomendaciones" class="recommendations">
       <div class="wrap">
@@ -3402,6 +3408,115 @@
 
 
   <main id="singleIndexPages" class="single-index-pages" aria-live="polite">
+
+    <section id="mapa" class="tool-subpage mapa-subpage nm-concept-section" data-page-route="mapa">
+      <div class="wrap">
+        <div class="nm-concept-hero-panel mapa-hero-panel">
+          <div class="nm-definition-card mapa-definition-card">
+            <div class="kicker">Mapa de lectura</div>
+            <h3>Una ruta ejecutiva para leer, entender y conversar Nómina Muerta.</h3>
+            <p>Esta subpágina separa el mapa del concepto principal para que el lector pueda explorar la estructura del libro con claridad: bloques, capítulos, ideas clave y puntos de conversación para líderes.</p>
+            <div class="subpage-nav mapa-quick-nav">
+              <a class="btn btn-outline" href="#bloque1">Bloque I</a>
+              <a class="btn btn-outline" href="#bloque2">Bloque II</a>
+              <a class="btn btn-outline" href="#bloque3">Bloque III</a>
+              <a class="btn btn-outline" href="#bloque4">Bloque IV</a>
+            </div>
+          </div>
+          <div class="nm-proof-card mapa-proof-card">
+            <h3>Lectura con intención, no solo por capítulos.</h3>
+            <p>El mapa está diseñado para provocar interés sin entregar todo el contenido. Funciona como guía de navegación editorial, herramienta comercial y puente hacia conferencias, consultoría o compra del libro.</p>
+            <div class="nm-proof-metrics mapa-proof-metrics">
+              <div class="nm-proof-metric"><strong>4</strong><span>Bloques narrativos</span></div>
+              <div class="nm-proof-metric"><strong>15</strong><span>Capítulos ejecutivos</span></div>
+              <div class="nm-proof-metric"><strong>1</strong><span>Carta final al líder</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="nm-questions-strip mapa-question-strip" aria-label="Usos del mapa de lectura">
+          <div class="nm-question"><small>Para lectores</small>Ubica rápidamente por dónde entrar al libro según el dolor operativo que más les interese.</div>
+          <div class="nm-question"><small>Para líderes</small>Convierte cada bloque en una conversación directiva sobre tiempo, costo, cultura y ejecución.</div>
+          <div class="nm-question"><small>Para venta</small>Sirve como teaser editorial para generar curiosidad sin regalar el contenido completo.</div>
+        </div>
+
+        <div class="chapter-map-panel">
+<div class="section-head mapa-section-head">
+          <div>
+            <div class="kicker">Mapa de lectura</div>
+            <h2>Explora el libro por bloques, capítulos y puntos de conversación.</h2>
+          </div>
+          <p class="lead">Una ruta visual para que el lector entienda la progresión del libro sin revelar demasiado: primero el problema, después el costo, luego la transformación y finalmente la radiografía operativa.</p>
+        </div>
+
+        <div class="chapter-explorer" data-chapter-tabs>
+          <div class="chapter-tabbar" role="tablist" aria-label="Bloques del libro Nómina Muerta">
+            <button class="chapter-tab active" type="button" data-chapter-tab="bloque1">Bloque I · Problema invisible</button>
+            <button class="chapter-tab" type="button" data-chapter-tab="bloque2">Bloque II · Impacto oculto</button>
+            <button class="chapter-tab" type="button" data-chapter-tab="bloque3">Bloque III · Transformación</button>
+            <button class="chapter-tab" type="button" data-chapter-tab="bloque4">Bloque IV · Radiografía</button>
+          </div>
+
+          <div class="chapter-panel active" id="bloque1" role="tabpanel">
+            <div class="chapter-panel-head">
+              <h3>Bloque I — El problema invisible</h3>
+              <p>Presenta el concepto, sus síntomas y las raíces culturales que lo vuelven tan difícil de ver.</p>
+            </div>
+            <div class="chapter-grid">
+              <article class="chapter-card"><span class="chapter-no">Capítulo I</span><h4>¿Qué es la Nómina Muerta?</h4><p class="teaser">Define la pérdida silenciosa que ocurre cuando el tiempo pagado no se convierte en avance real. El capítulo instala la pregunta incómoda: ¿cuánto de tu nómina se mueve, pero no progresa?</p><div class="chapter-points"><span>Ocupación vs. productividad</span><span>Tiempo pagado sin retorno</span><span>No es explotación</span></div></article>
+              <article class="chapter-card"><span class="chapter-no">Capítulo II</span><h4>La epidemia del siglo XXI</h4><p class="teaser">Expone a las empresas llenas de juntas, correos y urgencias que aparentan ritmo, pero no necesariamente generan valor. Una crítica directa a la hiperactividad improductiva.</p><div class="chapter-points"><span>Urgencia permanente</span><span>Actividad vacía</span><span>Foco perdido</span></div></article>
+              <article class="chapter-card"><span class="chapter-no">Capítulo III</span><h4>Raíces de la Nómina Muerta</h4><p class="teaser">Rastrea cómo los sistemas heredados, la fragmentación comunicacional y la falta de accountability crean organizaciones que trabajan mucho, pero cierran poco.</p><div class="chapter-points"><span>Sistemas heredados</span><span>Fragmentación</span><span>Accountability invisible</span></div></article>
+              <article class="chapter-card"><span class="chapter-no">Capítulo IV</span><h4>El enemigo en la cultura</h4><p class="teaser">Muestra cómo la mentalidad de control, el presentismo y ciertas herencias organizacionales siguen dictando decisiones que ya no sirven para competir.</p><div class="chapter-points"><span>Control vs. impacto</span><span>Ocupación como escudo</span><span>Herencias obsoletas</span></div></article>
+            </div>
+          </div>
+
+          <div class="chapter-panel" id="bloque2" role="tabpanel">
+            <div class="chapter-panel-head">
+              <h3>Bloque II — El impacto que nadie cuantifica</h3>
+              <p>Convierte el problema en costo: financiero, estratégico, humano y competitivo.</p>
+            </div>
+            <div class="chapter-grid">
+              <article class="chapter-card"><span class="chapter-no">Capítulo V</span><h4>El costo oculto de la inacción</h4><p class="teaser">Plantea que no hacer nada también cuesta. Cada tarea inconclusa, decisión postergada y talento subutilizado se convierte en una fuga que la empresa paga sin verla.</p><div class="chapter-points"><span>Inacción costosa</span><span>Tareas sin cierre</span><span>Talento mal usado</span></div></article>
+              <article class="chapter-card"><span class="chapter-no">Capítulo VI</span><h4>Lo que no se mide, sí te cuesta</h4><p class="teaser">Contrasta la nómina pagada con la nómina útil y reta la comodidad de medir solo lo visible. El capítulo invita a construir evidencia operacional.</p><div class="chapter-points"><span>Nómina útil</span><span>Costo de oportunidad</span><span>Evidencia operacional</span></div></article>
+              <article class="chapter-card"><span class="chapter-no">Capítulo VII</span><h4>El costo humano de la Nómina Muerta</h4><p class="teaser">Explora el desgaste emocional que se genera cuando las personas se esfuerzan sin ver impacto: burnout, cinismo, autoestima profesional erosionada y renuncias silenciosas.</p><div class="chapter-points"><span>Burnout</span><span>Deserción emocional</span><span>Renuncias silenciosas</span></div></article>
+              <article class="chapter-card"><span class="chapter-no">Capítulo VIII</span><h4>La economía de la Nómina Muerta</h4><p class="teaser">Eleva el tema a competitividad, sostenibilidad y futuro. No basta crecer si la estructura que sostiene ese crecimiento está llena de desperdicio invisible.</p><div class="chapter-points"><span>Competitividad</span><span>Sostenibilidad</span><span>Futuro organizacional</span></div></article>
+            </div>
+          </div>
+
+          <div class="chapter-panel" id="bloque3" role="tabpanel">
+            <div class="chapter-panel-head">
+              <h3>Bloque III — Transformación y soluciones</h3>
+              <p>Presenta decisiones concretas para pasar de la denuncia del problema al rediseño del trabajo.</p>
+            </div>
+            <div class="chapter-grid">
+              <article class="chapter-card"><span class="chapter-no">Capítulo IX</span><h4>Romper el ciclo</h4><p class="teaser">Propone las primeras decisiones para recuperar control: nombrar el problema, crear visibilidad, cambiar el lenguaje operativo y hacer del cierre un hábito.</p><div class="chapter-points"><span>Visibilidad compartida</span><span>Cultura de cierre</span><span>Foco quirúrgico</span></div></article>
+              <article class="chapter-card"><span class="chapter-no">Capítulo X</span><h4>Trabajo enfocado</h4><p class="teaser">Presenta el enfoque como antídoto contra la dispersión. El trabajo valioso no se mide por cantidad de tareas, sino por impacto y cierre.</p><div class="chapter-points"><span>Menos dispersión</span><span>Más impacto</span><span>Disciplina con intención</span></div></article>
+              <article class="chapter-card"><span class="chapter-no">Capítulo XI</span><h4>Digitaliza tu empresa</h4><p class="teaser">Explica por qué digitalizar no es sumar apps, sino rediseñar la operación para recuperar tiempo, energía y resultados con herramientas bien elegidas.</p><div class="chapter-points"><span>Kanban adecuado</span><span>Automatización simple</span><span>Monitoreo inteligente</span></div></article>
+              <article class="chapter-card"><span class="chapter-no">Capítulo XII</span><h4>Operación esbelta y ejecución ágil</h4><p class="teaser">Traduce principios Lean y Agile a la realidad ejecutiva: limitar trabajo en curso, asignar por capacidad y crear ritmo sin vivir en urgencia.</p><div class="chapter-points"><span>WIP controlado</span><span>Pull, no push</span><span>Cadencias sanas</span></div></article>
+              <article class="chapter-card"><span class="chapter-no">Capítulo XIII</span><h4>Casos de transformación real</h4><p class="teaser">Muestra que la Nómina Muerta no solo se puede detectar: también se puede revertir. Los casos funcionan como prueba de posibilidad y conversación directiva.</p><div class="chapter-points"><span>Casos reales</span><span>Mejora continua</span><span>Transformación medible</span></div></article>
+            </div>
+          </div>
+
+          <div class="chapter-panel" id="bloque4" role="tabpanel">
+            <div class="chapter-panel-head">
+              <h3>Bloque IV — Radiografía</h3>
+              <p>Cierra con medición, diagnóstico y una mirada al sector público, donde la ineficiencia también la paga el ciudadano.</p>
+            </div>
+            <div class="chapter-grid">
+              <article class="chapter-card"><span class="chapter-no">Capítulo XIV</span><h4>El verdadero costo</h4><p class="teaser">Aterriza la cuantificación financiera de la Nómina Muerta. El lector encuentra métricas iniciales para estimar lo que antes parecía imposible de medir.</p><div class="chapter-points"><span>Fórmulas iniciales</span><span>Indicadores</span><span>Diagnóstico económico</span></div></article>
+              <article class="chapter-card"><span class="chapter-no">Capítulo XV</span><h4>Nómina Muerta en el gobierno</h4><p class="teaser">Lleva el concepto al sector público: trámites lentos, burocracia, cuellos de botella y tiempo institucional mal utilizado que termina afectando al ciudadano. Incluye una Autopsia Operativa para diagnosticar dónde se pierde velocidad, trazabilidad y capacidad de gestión.</p><div class="chapter-points"><span>IXEP</span><span>Costo social</span><span>Eficiencia pública</span><span>Autopsia operativa</span></div></article>
+              <article class="chapter-card wide"><span class="chapter-no">Modelos de diagnóstico</span><h4>Autopsia Operativa: indicadores y métricas</h4><p class="teaser">Una caja de herramientas ejecutiva para detectar fricción, lentitud, autorizaciones innecesarias, falta de seguimiento y pérdida de trazabilidad. No revela todo el método, pero muestra el tipo de medición que el lector encontrará para convertir intuiciones en evidencia.</p><div class="chapter-points metric-chips"><span>Índice de Velocidad de Ejecución de Proyectos</span><span>Índice de Cuellos de Botella</span><span>Auditoría de Flujo de Trabajo</span><span>Matriz de Toma de Decisiones</span><span>Matriz de Firmas y Autorizaciones</span><span>Matriz de Automatización Potencial</span><span>Índice de Rastreabilidad Operativa</span><span>Índice de Seguimiento y Supervisión Activa</span><span>Índice de Cumplimiento Global de Minutas</span><span>Índice de Productividad Individual</span><span>Índice de Gestión Operativa por área / individual</span></div></article>
+              <article class="chapter-card"><span class="chapter-no">Epílogo</span><h4>Carta al líder</h4><p class="teaser">Un cierre provocador para quien dirige: la pregunta ya no es si existe pérdida invisible, sino qué tan dispuesto está el líder a dejar de financiarla.</p><div class="chapter-points"><span>Decisión</span><span>Responsabilidad</span><span>Acción</span></div></article>
+            </div>
+          </div>
+        </div>
+        <div class="chapter-cta">
+          <div><strong>CARPE DIEM: OPERA.OPTIMIZA.LIDERA.</strong></div>
+          <a class="btn btn-light" href="https://www.amazon.com.mx/N%C3%B3mina-Muerta-p%C3%A9rdida-capitalizar-sepulte/dp/B0FCC9TLRM/ref=sr_1_1?crid=36Q4FTI8QAIPO&dib=eyJ2IjoiMSJ9.jeZzbPCzxWGI8uNZBU_ScOBux1AnAd-oMfUVvGxOIyNsbIgNNo7Qxjr6Ty346Lm_m95Ih3F7jma0XL8zz_HkUGyzzi-e6tfHa5XA_wxj1K0oNMcRUMmJ3NLf4rdADwD6P-TR8sdVIvs2ybw2XHFzlL4K1QLf3iVrnTveFDbSNGyqxLz_77XfUOBilfozOow0.mISqZCqIAd8oH-NFYLKAfgNlEWUuTWzTaJHuLFG3FQM&dib_tag=se&keywords=nomina+muerta&qid=1780362284&sprefix=nomina+muerta%2Caps%2C177&sr=8-1&ufe=app_do%3Aamzn1.fos.de93fa6a-174c-4df7-be7c-5bc8e9c5a71b" target="_blank" rel="noopener">Comprar el libro</a>
+        </div>
+        </div>
+      </div>
+    </section>
     
     <section id="reto-autopsia" class="tool-subpage" data-page-route="reto-autopsia">
       <div class="wrap">
