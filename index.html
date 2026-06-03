@@ -2865,6 +2865,42 @@
       .autopsy-kpi-grid { grid-template-columns: 1fr; }
     }
 
+
+    /* === V16: Riesgo normalizado, explicaciones y navegación a resultados === */
+    .result-callout,
+    .integrated-note,
+    .autopsy-method-note,
+    .autopsy-explanation-box {
+      margin-top: 16px;
+      padding: 15px 17px;
+      border-radius: 18px;
+      background: rgba(31,97,112,.08);
+      border: 1px solid rgba(31,97,112,.14);
+      color: #31444c;
+      font-weight: 700;
+      line-height: 1.5;
+    }
+    .autopsy-explanation-box {
+      background: rgba(214,181,109,.13);
+      border-color: rgba(214,181,109,.30);
+      color: #4b3c16;
+    }
+    .autopsy-muted-note {
+      display: block;
+      margin-top: 8px;
+      color: #64747b;
+      font-size: 13px;
+      line-height: 1.42;
+      font-weight: 750;
+    }
+    #autopsiaRadarResult,
+    #autopsiaDepthResult,
+    #autopsiaCalcResult,
+    #retoResultado,
+    #retoCalculoResultados {
+      scroll-margin-top: 118px;
+    }
+
 </style>
 </head>
 <body>
@@ -4483,7 +4519,147 @@
 
   <script>
     /* === V8: SPA interna para subpáginas, calculadora y diagnósticos === */
-    const NM_RETO_CATEGORIES = [{"title": "Flujo operativo, retrabajo y duplicidad", "questions": ["¿El mismo dato se captura o corrige más de una vez porque el flujo de trabajo quedó abierto o mal cerrado?", "¿Tu equipo repite información constantemente porque los sistemas internos no están integrados?", "¿Se repiten solicitudes entre áreas porque no hay coordinación o visibilidad interna?", "¿Hay personas trabajando en lo mismo sin saber que otros ya lo están haciendo?", "¿Las tareas se trasladan entre áreas sin contexto claro, generando retrabajos o errores?", "¿Se envía el mismo reporte a varios jefes, duplicando tiempo y esfuerzo sin valor agregado?", "¿Reinician tareas porque no quedó registro del previo avance?", "¿Se repiten errores por instrucciones vagas o mal entendidas desde el inicio?"]}, {"title": "Autorizaciones, validaciones y cuellos de botella", "questions": ["¿Hay procesos detenidos solo por una firma que podrías automatizar?", "¿Hay tareas críticas detenidas porque dependen de una persona específica y no del sistema?", "¿Pides autorizaciones urgentes por mensajes y correos que luego nadie encuentra?", "¿Hay procesos sustantivos que se congelan esperando validación sin trazabilidad entre áreas?", "¿Se ha normalizado la espera como parte del proceso “natural” del día a día?"]}, {"title": "Trazabilidad, seguimiento y cierre operativo", "questions": ["¿El seguimiento a tareas o procesos formales depende de correos o llamadas sin dejar trazabilidad?", "¿No existe una plataforma para saber en tiempo real quién tiene una tarea y en qué estado está?", "¿Se cierran tareas sin validar si el problema, interno o externo, fue resuelto de fondo?", "¿Se da seguimiento a tareas por memoria o intuición, sin sistema visible?", "¿Existen proyectos sin responsabilidad clara y definida en todas sus etapas y acciones?", "¿Das seguimiento por correo a temas urgentes que se entierran en la bandeja?"]}, {"title": "Comunicación dispersa y canales informales", "questions": ["¿El equipo manda correos con copia a todos solo para protegerse?", "¿Lo urgente se pierde entre memes y mensajes mezclados en WhatsApp, o cadenas de correos?", "¿Toman decisiones por teléfono que luego nadie documenta ni respalda?", "¿Tu equipo consulta varios medios (correo, chats, notas, agendas…) para priorizar qué debe hacer hoy?", "¿La mayoría de los acuerdos clave se pierden entre conversaciones informales?", "¿Se gestionan temas urgentes por canales informales, sin dejar evidencia operativa?", "¿Constantemente se busca un correo importante durante 10 minutos?"]}, {"title": "Coordinación interáreas y servicio al cliente", "questions": ["¿Se comparte el mismo archivo con varias personas, pero nadie asume el compromiso, provocando retrasos?", "¿Se extravían archivos o documentos digitales porque no hay un registro centralizado?", "¿La colaboración entre áreas ocurre más por relaciones personales que por procesos definidos?", "¿Las entregas o respuestas a clientes se retrasan porque los equipos internos no están alineados?", "¿Tu equipo pierde más tiempo buscando información que resolviendo problemas?", "¿El cliente o el colaborador, deben repetir lo mismo varias veces porque la información no fluye entre áreas?", "¿Confías más en preguntar otra vez que en revisar algún sistema o plataforma?"]}, {"title": "Juntas y acuerdos improductivos", "questions": ["¿Se llevan a cabo reuniones donde no se asignan responsables ni fechas claras a los acuerdos?", "¿Tienes reuniones de “coordinación” que no coordinan nada y hay que repetirlas?", "¿Continuamente revisan lo mismo en cada reunión porque no hay un seguimiento formal?", "¿Los líderes necesitan supervisar con reuniones constantes porque no hay visibilidad de avance?"]}, {"title": "Desalineación estratégica y priorización", "questions": ["¿Hay tareas que se siguen haciendo solo porque “así se ha hecho siempre”?", "¿Las prioridades cambian sin que el equipo se entere hasta que se cometió un error?", "¿Se sigue destinando tiempo a tareas que ya no aportan valor real al proceso, objetivos o metas?", "¿Estás midiendo cosas que no cambian los resultados clave del negocio?", "¿Has hecho cambios que el equipo no entiende ni aplica correctamente?", "¿Tu equipo no sabe cómo su trabajo impacta los objetivos y metas reales del negocio?", "¿Se toman decisiones operativas sin tener clara la información estratégica?"]}, {"title": "Desgaste cognitivo y saturación operativa", "questions": ["¿El equipo pierde tiempo constantemente buscando instrucciones en múltiples canales dispersos cada vez?", "¿Continuamente los equipos saltan de tarea en tarea sin cerrar ni lograr foco?", "¿Se repiten las mismas explicaciones porque no hay un canal unificado?", "¿Tu equipo termina el día agotado pero sin sensación de avance?", "¿Sientes que están ocupados todo el tiempo, pero no sabes si están siendo productivos?"]}];
+    const NM_RETO_CATEGORIES = [
+      {
+            "title": "Flujo operativo, retrabajo y duplicidad",
+            "questions": [
+                  "¿El mismo dato se captura o corrige más de una vez porque el flujo de trabajo quedó abierto o mal cerrado?",
+                  "¿Tu equipo repite información constantemente porque los sistemas internos no están integrados?",
+                  "¿Se repiten solicitudes entre áreas porque no hay coordinación o visibilidad interna?",
+                  "¿Hay personas trabajando en lo mismo sin saber que otros ya lo están haciendo?",
+                  "¿Las tareas se trasladan entre áreas sin contexto claro, generando retrabajos o errores?",
+                  "¿Se envía el mismo reporte a varios jefes, duplicando tiempo y esfuerzo sin valor agregado?",
+                  "¿Reinician tareas porque no quedó registro del previo avance?",
+                  "¿Se repiten errores por instrucciones vagas o mal entendidas desde el inicio?"
+            ]
+      },
+      {
+            "title": "Autorizaciones, validaciones y cuellos de botella",
+            "questions": [
+                  "¿Hay procesos detenidos solo por una firma que podrías automatizar?",
+                  "¿Hay tareas críticas detenidas porque dependen de una persona específica y no del sistema?",
+                  "¿Pides autorizaciones urgentes por mensajes y correos que luego nadie encuentra?",
+                  "¿Hay procesos sustantivos que se congelan esperando validación sin trazabilidad entre áreas?",
+                  "¿Se ha normalizado la espera como parte del proceso “natural” del día a día?"
+            ]
+      },
+      {
+            "title": "Trazabilidad, seguimiento y cierre operativo",
+            "questions": [
+                  "¿El seguimiento a tareas o procesos formales depende de correos o llamadas sin dejar trazabilidad?",
+                  "¿No existe una plataforma para saber en tiempo real quién tiene una tarea y en qué estado está?",
+                  "¿Se cierran tareas sin validar si el problema, interno o externo, fue resuelto de fondo?",
+                  "¿Se da seguimiento a tareas por memoria o intuición, sin sistema visible?",
+                  "¿Existen proyectos sin responsabilidad clara y definida en todas sus etapas y acciones?",
+                  "¿Das seguimiento por correo a temas urgentes que se entierran en la bandeja?"
+            ]
+      },
+      {
+            "title": "Comunicación dispersa y canales informales",
+            "questions": [
+                  "¿El equipo manda correos con copia a todos solo para protegerse?",
+                  "¿Lo urgente se pierde entre memes y mensajes mezclados en WhatsApp, o cadenas de correos?",
+                  "¿Toman decisiones por teléfono que luego nadie documenta ni respalda?",
+                  "¿Tu equipo consulta varios medios (correo, chats, notas, agendas…) para priorizar qué debe hacer hoy?",
+                  "¿La mayoría de los acuerdos clave se pierden entre conversaciones informales?",
+                  "¿Se gestionan temas urgentes por canales informales, sin dejar evidencia operativa?",
+                  "¿Constantemente se busca un correo importante durante 10 minutos?"
+            ]
+      },
+      {
+            "title": "Coordinación interáreas y servicio al cliente",
+            "questions": [
+                  "¿Se comparte el mismo archivo con varias personas, pero nadie asume el compromiso, provocando retrasos?",
+                  "¿Se extravían archivos o documentos digitales porque no hay un registro centralizado?",
+                  "¿La colaboración entre áreas ocurre más por relaciones personales que por procesos definidos?",
+                  "¿Las entregas o respuestas a clientes se retrasan porque los equipos internos no están alineados?",
+                  "¿Tu equipo pierde más tiempo buscando información que resolviendo problemas?",
+                  "¿El cliente o el colaborador, deben repetir lo mismo varias veces porque la información no fluye entre áreas?",
+                  "¿Confías más en preguntar otra vez que en revisar algún sistema o plataforma?"
+            ]
+      },
+      {
+            "title": "Juntas y acuerdos improductivos",
+            "questions": [
+                  "¿Se llevan a cabo reuniones donde no se asignan responsables ni fechas claras a los acuerdos?",
+                  "¿Tienes reuniones de “coordinación” que no coordinan nada y hay que repetirlas?",
+                  "¿Continuamente revisan lo mismo en cada reunión porque no hay un seguimiento formal?",
+                  "¿Los líderes necesitan supervisar con reuniones constantes porque no hay visibilidad de avance?"
+            ]
+      },
+      {
+            "title": "Desalineación estratégica y priorización",
+            "questions": [
+                  "¿Hay tareas que se siguen haciendo solo porque “así se ha hecho siempre”?",
+                  "¿Las prioridades cambian sin que el equipo se entere hasta que se cometió un error?",
+                  "¿Se sigue destinando tiempo a tareas que ya no aportan valor real al proceso, objetivos o metas?",
+                  "¿Estás midiendo cosas que no cambian los resultados clave del negocio?",
+                  "¿Has hecho cambios que el equipo no entiende ni aplica correctamente?",
+                  "¿Tu equipo no sabe cómo su trabajo impacta los objetivos y metas reales del negocio?",
+                  "¿Se toman decisiones operativas sin tener clara la información estratégica?"
+            ]
+      },
+      {
+            "title": "Desgaste cognitivo y saturación operativa",
+            "questions": [
+                  "¿El equipo pierde tiempo constantemente buscando instrucciones en múltiples canales dispersos cada vez?",
+                  "¿Continuamente los equipos saltan de tarea en tarea sin cerrar ni lograr foco?",
+                  "¿Se repiten las mismas explicaciones porque no hay un canal unificado?",
+                  "¿Tu equipo termina el día agotado pero sin sensación de avance?",
+                  "¿Sientes que están ocupados todo el tiempo, pero no sabes si están siendo productivos?"
+            ]
+      },
+      {
+            "title": "Información, datos y toma de decisiones",
+            "questions": [
+                  "¿Se toman decisiones importantes con información incompleta, desactualizada o dispersa?",
+                  "¿Los líderes piden reportes manuales porque no existe visibilidad en tiempo real?",
+                  "¿Se invierte tiempo en preparar información que nadie usa para decidir?",
+                  "¿Existen versiones distintas de la verdad entre áreas o líderes?",
+                  "¿Las decisiones se retrasan porque primero hay que armar, limpiar o reconciliar la información?"
+            ]
+      },
+      {
+            "title": "Tecnología mal usada o subutilizada",
+            "questions": [
+                  "¿Tienen herramientas digitales que el equipo usa solo parcialmente o de forma inconsistente?",
+                  "¿La empresa paga software que no se traduce en mejor seguimiento, trazabilidad o ejecución?",
+                  "¿Los colaboradores siguen usando Excel, WhatsApp o correo para procesos que deberían estar sistematizados?",
+                  "¿La información se captura en un sistema, pero se vuelve a trabajar fuera de él?",
+                  "¿La tecnología actual genera más carga administrativa que claridad operativa?"
+            ]
+      },
+      {
+            "title": "Accountability y cierre real",
+            "questions": [
+                  "¿Las tareas se consideran avanzadas aunque nadie haya validado el cierre real?",
+                  "¿Hay responsables asignados, pero sin consecuencias claras cuando no se cumple?",
+                  "¿Los pendientes cambian de dueño sin que quede claro quién responde al final?",
+                  "¿Se reporta mucha actividad, pero pocos resultados verificables?",
+                  "¿Los líderes tienen que perseguir avances porque el sistema no empuja el cierre?"
+            ]
+      },
+      {
+            "title": "Capacidad instalada y asignación de carga",
+            "questions": [
+                  "¿Hay personas saturadas mientras otras tienen capacidad disponible sin visibilidad clara?",
+                  "¿Se asignan tareas por urgencia y no por capacidad real, prioridad o especialidad?",
+                  "¿El equipo dedica tiempo a actividades de bajo valor porque nadie rediseñó la carga de trabajo?",
+                  "¿La empresa no sabe cuántas horas reales se van en coordinación, espera o retrabajo?",
+                  "¿Se confunde estar ocupado con estar generando valor medible?"
+            ]
+      },
+      {
+            "title": "Impacto en cliente, ventas e ingresos",
+            "questions": [
+                  "¿Se pierden oportunidades comerciales por falta de seguimiento interno?",
+                  "¿El cliente espera más por descoordinación interna que por complejidad real del servicio?",
+                  "¿Hay promesas comerciales que operación no puede cumplir por falta de visibilidad?",
+                  "¿Se retrasan cotizaciones, entregas o respuestas porque dependen de varias áreas sin dueño claro?",
+                  "¿La experiencia del cliente se afecta por problemas internos que nadie mide?"
+            ]
+      }
+];
     const NM_LEADER_QUESTIONS = [{"text": "¿Qué tan frecuente es la sobrecarga operativa por desorganización?", "options": ["Rara vez me siento saturado.", "Algunas veces me abruma el volumen de temas abiertos.", "Muchas veces estoy mentalmente agotado por fragmentación.", "Vivo con estrés operativo constante sin lograr resultados claros."]}, {"text": "¿Con qué frecuencia se repiten tareas o validaciones por doble cadena de mando?", "options": ["Nunca.", "Ocasionalmente.", "Con frecuencia.", "Todo el tiempo."]}, {"text": "¿Qué tan alineadas están las actividades con los objetivos actuales?", "options": ["Totalmente alineadas.", "Alineadas en general, con algunos rezagos.", "Muchas tareas ya no tienen sentido, pero siguen activas.", "Nadie tiene claridad de si lo que hace sigue siendo prioridad."]}, {"text": "¿Cómo es el seguimiento entre áreas en procesos compartidos?", "options": ["Trazabilidad total: usamos tableros o sistemas visibles.", "A veces se actualiza el estatus, pero no siempre.", "Solo se da seguimiento si alguien insiste.", "No hay forma clara de saber qué pasó con lo que se envió."]}, {"text": "¿Cuántos procesos siguen dependiendo de firmas físicas o aprobaciones manuales?", "options": ["Ninguno.", "Algunos casos excepcionales.", "Muchos trámites internos.", "Casi todos los flujos."]}, {"text": "¿Tenemos visibilidad sobre tareas en curso, estancadas o innecesarias?", "options": ["Total: usamos tableros o sistemas que lo muestran en tiempo real.", "Parcial: sabemos lo general, pero no en detalle ni por persona.", "Mínima: solo reaccionamos cuando hay retrasos o problemas.", "Nula: no hay forma clara de saberlo."]}, {"text": "¿Cuántas actividades se hacen solo por inercia o tradición?", "options": ["Casi ninguna: lo cuestionamos constantemente.", "Algunas: las detectamos, pero cuesta eliminarlas.", "Muchas: sabemos que existen, pero nadie las toca.", "La mayoría: no hay revisión crítica real de procesos."]}, {"text": "¿Qué tanto tiempo del equipo se va en tareas urgentes sin impacto?", "options": ["<10%: trabajamos por prioridades reales.", "10-30%: lo reconocemos y lo estamos corrigiendo.", "30-50%: hay demasiada reacción y poca planeación.", ">50%: estamos en modo “apagafuegos” constante."]}, {"text": "¿Cuántas juntas podrían reemplazarse por un mensaje o decisión directa?", "options": ["<10%: nuestras juntas son breves y resolutivas.", "10-30%: algunas se alargan sin sentido.", "30-50%: varias se hacen por costumbre.", ">50%: nos reunimos mucho… pero resolvemos poco."]}, {"text": "¿Qué tanto retrabajo o errores se podrían evitar con procesos claros?", "options": ["Casi nada: nuestros procesos están bien definidos y documentados.", "Algunos: hay ambigüedades que provocan fallas.", "Muchos: falta claridad y se improvisa demasiado.", "La mayoría: no hay procesos claros ni consistentes."]}, {"text": "¿Qué tan claro es lo que se espera de cada persona en términos de impacto?", "options": ["Muy claro: cada quien conoce su aporte estratégico.", "Medianamente claro: sabemos qué hacer, pero no por qué.", "Poco claro: ejecutamos sin saber el impacto real.", "Nada claro: todos hacen lo suyo, pero sin dirección común."]}, {"text": "¿Cuántos proyectos siguen activos aunque ya no generan valor?", "options": ["Ninguno: hacemos revisiones periódicas.", "Pocos: los cuestionamos, pero cuesta cerrarlos.", "Varios: se mantienen por compromiso político o miedo al cambio.", "Muchos: no cerramos nada aunque ya no sirva."]}, {"text": "¿A quién se reconoce más: al que resuelve caos o al que lo previene?", "options": ["Al que previene: valoramos la anticipación y el diseño.", "A ambos por igual: hay equilibrio.", "Al que resuelve: se premia la reacción visible.", "Solo al que apaga fuegos: la prevención pasa desapercibida."]}, {"text": "¿Qué tanto talento de alto nivel está ocupado en tareas operativas de bajo valor?", "options": ["Casi nada: el talento está enfocado en generar valor estratégico.", "Algunas funciones: estamos migrando responsabilidades.", "Muchas personas: el potencial está desperdiciado.", "La mayoría: usamos mal el tiempo del mejor talento."]}, {"text": "¿Tenemos mecanismos mensuales para detectar y reducir Nómina Muerta?", "options": ["Sí: forma parte de nuestra operación continua.", "A veces: lo hacemos si alguien lo propone.", "Rara vez: solo si hay una crisis.", "Nunca: no hay un sistema ni cultura de prevención."]}, {"text": "¿Qué tanto tiempo del equipo se invierte en tareas que no deberían existir?", "options": ["Revisamos y eliminamos tareas sin impacto cada semana", "Se detectan algunas, pero siguen en curso", "Sospechamos de algunas, pero nadie las elimina", "Nunca lo hemos cuestionado"]}, {"text": "¿Qué tan definidos están los entregables antes de ejecutar una tarea?", "options": ["Cada tarea parte con un entregable definido y validable", "Entendemos lo esperado, pero cambia al avanzar", "Hay objetivos, pero no entregables claros", "Casi nunca. Las instrucciones son vagas"]}, {"text": "¿Qué tan común es repetir tareas o procesos que ya se habían hecho?", "options": ["Rara vez sucede, tenemos trazabilidad operativa", "A veces, pero se detecta a tiempo", "Frecuente: por falta de trazabilidad o duplicación", "Todo el tiempo. Nadie sabe qué se ha hecho"]}, {"text": "¿Qué tan visible es el estatus real de una tarea sin necesidad de preguntar?", "options": ["Todo es visible en tableros compartidos con trazabilidad", "Hay formas de verlo, pero no en tiempo real", "Más o menos, si el equipo está disponible", "No es visible. Hay que preguntar a cada persona"]}, {"text": "¿Quién da seguimiento para verificar que lo que pidió… sí se hizo?", "options": ["El sistema exige validación del solicitante", "El líder lo revisa informalmente", "Solo si hay problemas o retrasos", "Nadie. Si no lo mencionan, se asume hecho"]}];
     const NM_COLLAB_QUESTIONS = [{"text": "¿Qué tan frecuente es que las reuniones se repitan sin acciones claras de la anterior?", "options": ["Nunca: siempre se da seguimiento.", "A veces falta claridad.", "Se discute lo mismo con frecuencia.", "Siempre volvemos a empezar desde cero."]}, {"text": "¿Qué tan seguido das seguimiento por email a tareas que se pierden entre cadenas y reenvíos?", "options": ["Casi nunca.", "Algunas veces.", "Frecuente.", "Todo el tiempo."]}, {"text": "¿Con qué frecuencia pierdes tiempo buscando archivos, correos o instrucciones mal organizadas?", "options": ["Rara vez.", "Algunas veces a la semana.", "Casi todos los días.", "Todo el tiempo."]}, {"text": "¿Qué tan fácil es rastrear en qué estatus va algo que ya entregaste a otra área?", "options": ["Muy claro y transparente.", "Regularmente informan.", "Casi nunca hay visibilidad.", "Nunca sabes en qué quedó."]}, {"text": "¿Con qué frecuencia se repite el envío o reporte a varios líderes sin saber quién debe validarlo?", "options": ["Nunca.", "Ocasionalmente.", "Frecuente.", "Todo el tiempo."]}, {"text": "¿Qué tan claro tienes hoy qué tareas son prioritarias y qué impacto generan?", "options": ["Muy claro: sé qué hacer, para qué sirve y a qué meta contribuye.", "Más o menos: tengo tareas asignadas, pero no siempre entiendo su valor.", "Poco claro: hago lo que me piden, sin mucha visibilidad del propósito.", "Nada claro: solo reacciono a lo que llega."]}, {"text": "¿Con qué frecuencia haces tareas que sientes que no sirven de mucho?", "options": ["Casi nunca: casi todo lo que hago tiene sentido y aporta.", "Algunas veces a la semana.", "Casi todos los días.", "Todo el tiempo: muchas cosas parecen perder el tiempo."]}, {"text": "¿Qué tanto tiempo de tu jornada se va en juntas, correos o esperas improductivas?", "options": ["Menos de 1 hora.", "Entre 1 y 2 horas.", "Entre 2 y 4 horas.", "Más de 4 horas al día."]}, {"text": "¿Qué tan seguido haces retrabajo o tienes que corregir cosas por falta de claridad?", "options": ["Muy rara vez: las instrucciones son claras y el trabajo fluye.", "A veces: hay confusión en algunos procesos.", "Frecuente: las tareas cambian o no se explican bien.", "Muy seguido: casi todo implica ajustes, correcciones o volver a empezar."]}, {"text": "¿Te has quedado esperando a alguien, sistema, firma o proceso que frena tu avance?", "options": ["Casi nunca.", "A veces, pero lo resolvemos rápido.", "Frecuente: hay muchas dependencias que traban.", "Todo el tiempo: siempre estoy esperando algo para poder avanzar."]}, {"text": "¿Qué tan seguido entregas algo que nadie te da retroalimentación si sirvió o no?", "options": ["Casi nunca: me dan seguimiento y validación frecuente.", "A veces: recibo comentarios, pero no siempre.", "Frecuente: entrego cosas y nadie las revisa o responde.", "Todo el tiempo: no sé si lo que hago tiene uso real."]}, {"text": "¿Sientes que parte de tu talento o capacidad está subutilizado?", "options": ["No: estoy usando todo mi potencial en tareas de impacto.", "Un poco: hay margen para aportar más.", "Sí, bastante: hago cosas muy por debajo de lo que podría aportar.", "Totalmente: mi tiempo y talento están muy desperdiciados."]}, {"text": "¿Con qué frecuencia cambian las prioridades sin explicación?", "options": ["Rara vez: hay claridad y estabilidad en lo importante.", "A veces: cambian, pero se comunica bien.", "Frecuente: hay giros sin aviso.", "Todo el tiempo: el caos es parte del día a día."]}, {"text": "¿Qué tanto control sientes que tienes sobre el uso de tu tiempo?", "options": ["Mucho: administro bien mi jornada y tengo foco.", "Algo: aunque me interrumpen, logro organizarme.", "Poco: mi agenda depende 100% de lo que llega.", "Nada: mi día se consume en urgencias ajenas."]}, {"text": "¿Te sientes productivo o solo ocupado?", "options": ["Muy productivo: avanzo en cosas que generan resultados.", "Productivo, pero podría ser mejor.", "Más ocupado que productivo: hago mucho, pero no se ve reflejado.", "Solo ocupado: el tiempo se va, pero los avances son pocos."]}, {"text": "¿Qué tan seguido haces tareas urgentes que terminan siendo innecesarias o cambiadas después?", "options": ["Casi nada: los flujos están bien definidos.", "Algunos minutos, pero no siempre.", "Entre 30 minutos y 1 hora al día.", "Más de 1 hora diaria."]}, {"text": "¿Qué tanto tiempo pierdes esperando aprobaciones, datos o respuestas para poder avanzar?", "options": ["Rara vez: el trabajo se aprovecha tal cual está.", "A veces: duplico solo en algunos casos.", "Frecuente: me piden lo mismo con cambios menores.", "Todo el tiempo: lo tengo que hacer varias veces para distintos fines."]}, {"text": "¿Qué tan común es tener que repetir el mismo archivo, reporte o tarea para diferentes personas o plataformas?", "options": ["Muy claro: todo lo que hago tiene propósito y valor.", "Sé qué tareas aportan, pero también hay unas dudosas.", "Algunas cosas sí, pero muchas otras parecen cumplir por cumplir.", "No es claro: hago lo que me toca sin saber el impacto."]}, {"text": "¿Qué tan claro es para ti qué tareas sí aportan valor al área y cuáles solo son “relleno”?", "options": ["Casi nunca: las urgencias son reales y bien planteadas.", "A veces pasa, aunque tratamos de prever.", "Muy frecuente: muchas veces cambian las instrucciones después.", "Todo el tiempo: lo que urgía… ya no era necesario."]}, {"text": "¿Qué tan frecuente haces tareas que ya se habían hecho antes por alguien más?", "options": ["Rara vez: hay trazabilidad y claridad sobre avances previos.", "A veces: sucede, pero lo detectamos a tiempo.", "Muy seguido: nos pasamos el trabajo como si empezara de cero.", "Todo el tiempo: no hay visibilidad de lo que otros ya hicieron."]}];
     const NM_LEADER_FOCUS = {"Flujo operativo ineficiente": [0, 4, 5, 7, 17], "Comunicación dispersa": [8], "Supervisión débil": [6, 9, 13, 15, 18, 19], "Desalineación estratégica": [2, 11, 12, 16], "Desgaste cognitivo": [1, 3, 10]};
@@ -4552,54 +4728,71 @@
       container.innerHTML = NM_RETO_CATEGORIES.map((cat, ci) => `
         <div class="reto-category">
           <h3>${cat.title}</h3>
-          ${cat.questions.map((q, qi) => `
-            <label class="check-item">
-              <input type="checkbox" class="nm-reto-check" value="1" data-category="${ci}" data-question="${qi}">
+          ${cat.questions.map((q, qi) => {
+            const weight = (typeof nmAutopsiaWeight === 'function') ? nmAutopsiaWeight(cat.title, q) : 1;
+            return `<label class="check-item">
+              <input type="checkbox" class="nm-reto-check" value="1" data-category="${ci}" data-question="${qi}" data-focus="${cat.title.replace(/"/g,'&quot;')}" data-weight="${weight}">
               <span>${q}</span>
-            </label>
-          `).join('')}
+            </label>`;
+          }).join('')}
         </div>
       `).join('');
       container.dataset.rendered = '1';
     }
 
     function nmEvaluateReto() {
-      const total = document.querySelectorAll('.nm-reto-check:checked').length;
-      const max = document.querySelectorAll('.nm-reto-check').length || 49;
-      let interpretation = '';
-      if (total <= 5) {
-        interpretation = `🟢 <strong>Nivel Bajo (0–5 síntomas)</strong><br>Tu operación muestra señales de eficiencia y control. Aun así, los síntomas marcados deben atenderse antes de que escalen.`;
-      } else if (total <= 9) {
-        interpretation = `🟡 <strong>Nivel Moderado (6–9 síntomas)</strong><br>La Nómina Muerta comienza a camuflarse como “operación normal”. Rediseñar ahora evita que el problema se convierta en cultura.`;
-      } else if (total <= 19) {
-        interpretation = `🔴 <strong>Nivel Alto (10–19 síntomas)</strong><br>Estás pagando por trabajo que no produce resultados reales. Hay fricción estructural en procesos, roles, comunicación o seguimiento.`;
-      } else {
-        interpretation = `🚨 <strong>Nivel Crítico (20+ síntomas)</strong><br>Esto ya no es solo eficiencia: es liderazgo y sostenibilidad. No necesitas más esfuerzo, necesitas rediseñar el sistema operativo.`;
+      const checks = Array.from(document.querySelectorAll('.nm-reto-check'));
+      const selected = checks.filter(cb => cb.checked);
+      const total = selected.length;
+      const max = checks.length || 1;
+      if (!total) {
+        nmShowResult('retoResultado', '⚠️ Marca al menos un síntoma para evaluar el riesgo.');
+        document.getElementById('retoResultado')?.scrollIntoView({behavior:'smooth', block:'center'});
+        return;
       }
-      const pct = (total / max) * 100;
-      nmShowResult('retoResultado', `<strong>Síntomas detectados:</strong> ${total} de ${max}<br><br>${interpretation}`);
+      let riskScore = (total / max) * 100;
+      let dominantFocus = 'Sin foco dominante';
+      if (typeof nmAutopsiaBuildFocusStats === 'function' && typeof nmAutopsiaRiskFromFocusStats === 'function') {
+        const rows = nmAutopsiaBuildFocusStats(checks, selected);
+        const parts = nmAutopsiaRiskFromFocusStats(rows);
+        riskScore = parts.riskScore;
+        dominantFocus = rows.filter(r => r.selectedCount > 0).sort((a,b) => (b.activation - a.activation) || (b.selectedWeight - a.selectedWeight))[0]?.focus || dominantFocus;
+      }
+      const level = (typeof nmAutopsiaRiskLevel === 'function') ? nmAutopsiaRiskLevel(riskScore) : {icon:'📊', label:'Evaluado', message:'Riesgo calculado'};
+      const pctRange = (typeof nmAutopsiaPctFromRisk === 'function') ? nmAutopsiaPctFromRisk(riskScore) : {center:riskScore};
+      const interpretation = `${level.icon} <strong>Nivel ${level.label}</strong><br>${level.message}<br><br><strong>Foco que más destaca:</strong> ${dominantFocus}<br><span class="autopsy-muted-note">El cálculo ahora está normalizado por foco: un foco no destaca por tener más preguntas, sino por el porcentaje de sus propios síntomas activados.</span>`;
+      nmShowResult('retoResultado', `<strong>Síntomas detectados:</strong> ${total} de ${max}<br><strong>Índice de riesgo normalizado:</strong> ${Math.round(riskScore)} / 100<br><br>${interpretation}`);
       const pctBox = document.getElementById('retoPorcentajeTentativo');
-      if (pctBox) pctBox.innerHTML = `📊 <strong>% tentativo de Nómina Muerta:</strong> ${pct.toFixed(1)}%`;
+      if (pctBox) pctBox.innerHTML = `📊 <strong>% tentativo de Nómina Muerta:</strong> ${pctRange.center.toFixed(1)}%`;
       const box = document.getElementById('retoCalculatorBox');
       if (box) box.style.display = 'block';
+      document.getElementById('retoResultado')?.scrollIntoView({behavior:'smooth', block:'center'});
     }
 
     function nmCalculateRetoMoney() {
       const nomina = nmParseMoney(document.getElementById('retoNominaInput')?.value);
       if (!nomina) {
         nmShowResult('retoCalculoResultados', '⚠️ Ingresa una nómina mensual válida.');
+        document.getElementById('retoCalculoResultados')?.scrollIntoView({behavior:'smooth', block:'center'});
         return;
       }
-      const total = document.querySelectorAll('.nm-reto-check:checked').length;
-      const max = document.querySelectorAll('.nm-reto-check').length || 49;
-      const pct = total / max;
+      const checks = Array.from(document.querySelectorAll('.nm-reto-check'));
+      const selected = checks.filter(cb => cb.checked);
+      let riskScore = checks.length ? (selected.length / checks.length) * 100 : 0;
+      if (typeof nmAutopsiaBuildFocusStats === 'function' && typeof nmAutopsiaRiskFromFocusStats === 'function') {
+        riskScore = nmAutopsiaRiskFromFocusStats(nmAutopsiaBuildFocusStats(checks, selected)).riskScore;
+      }
+      const pctRange = (typeof nmAutopsiaPctFromRisk === 'function') ? nmAutopsiaPctFromRisk(riskScore) : {center:riskScore};
+      const pct = (pctRange.center || 0) / 100;
       const mensual = nomina * pct;
       const anual = mensual * 12;
       nmShowResult('retoCalculoResultados',
         `<strong>Estimación mensual:</strong> ${nmFormatCurrency(mensual)}<br>` +
-        `<strong>Estimación anual:</strong> ${nmFormatCurrency(anual)}<br><br>` +
+        `<strong>Estimación anual:</strong> ${nmFormatCurrency(anual)}<br>` +
+        `<strong>% usado:</strong> ${(pct * 100).toFixed(1)}% de Nómina Muerta tentativa<br><br>` +
         `<strong>Lectura ejecutiva:</strong> este monto no significa necesariamente recorte; representa capacidad pagada que puede rediseñarse, reasignarse y convertirse en avance real.`
       );
+      document.getElementById('retoCalculoResultados')?.scrollIntoView({behavior:'smooth', block:'center'});
     }
 
     function nmRenderDiagnostic(containerId, questions, prefix) {
@@ -4762,23 +4955,144 @@
 
   <script>
     /* === V15.3: Reto de Autopsia integrado === */
-    const NM_AUTOPSIA_STATE_KEY = 'nm_reto_autopsia_v15_3';
+    const NM_AUTOPSIA_STATE_KEY = 'nm_reto_autopsia_v16_0';
     const NM_AUTOPSIA_STATE = {
       radar: null,
       selectedSymptoms: [],
       depth: null
     };
 
-    const NM_AUTOPSIA_WEIGHT_OVERRIDES = {"¿El mismo dato se captura o corrige más de una vez porque el flujo de trabajo quedó abierto o mal cerrado?": 3, "¿Tu equipo repite información constantemente porque los sistemas internos no están integrados?": 3, "¿Se repiten solicitudes entre áreas porque no hay coordinación o visibilidad interna?": 3, "¿Hay personas trabajando en lo mismo sin saber que otros ya lo están haciendo?": 3, "¿Las tareas se trasladan entre áreas sin contexto claro, generando retrabajos o errores?": 3, "¿Se envía el mismo reporte a varios jefes, duplicando tiempo y esfuerzo sin valor agregado?": 2, "¿Reinician tareas porque no quedó registro del previo avance?": 3, "¿Se repiten errores por instrucciones vagas o mal entendidas desde el inicio?": 3, "¿Hay procesos detenidos solo por una firma que podrías automatizar?": 3, "¿Hay tareas críticas detenidas porque dependen de una persona específica y no del sistema?": 4, "¿Pides autorizaciones urgentes por mensajes y correos que luego nadie encuentra?": 3, "¿Hay procesos sustantivos que se congelan esperando validación sin trazabilidad entre áreas?": 4, "¿Se ha normalizado la espera como parte del proceso “natural” del día a día?": 3, "¿El seguimiento a tareas o procesos formales depende de correos o llamadas sin dejar trazabilidad?": 3, "¿No existe una plataforma para saber en tiempo real quién tiene una tarea y en qué estado está?": 4, "¿Se cierran tareas sin validar si el problema, interno o externo, fue resuelto de fondo?": 4, "¿Se da seguimiento a tareas por memoria o intuición, sin sistema visible?": 3, "¿Existen proyectos sin responsabilidad clara y definida en todas sus etapas y acciones?": 4, "¿Das seguimiento por correo a temas urgentes que se entierran en la bandeja?": 3, "¿El equipo manda correos con copia a todos solo para protegerse?": 1, "¿Lo urgente se pierde entre memes y mensajes mezclados en WhatsApp, o cadenas de correos?": 2, "¿Toman decisiones por teléfono que luego nadie documenta ni respalda?": 3, "¿Tu equipo consulta varios medios (correo, chats, notas, agendas…) para priorizar qué debe hacer hoy?": 3, "¿La mayoría de los acuerdos clave se pierden entre conversaciones informales?": 4, "¿Se gestionan temas urgentes por canales informales, sin dejar evidencia operativa?": 3, "¿Constantemente se busca un correo importante durante 10 minutos?": 2, "¿Se comparte el mismo archivo con varias personas, pero nadie asume el compromiso, provocando retrasos?": 3, "¿Se extravían archivos o documentos digitales porque no hay un registro centralizado?": 3, "¿La colaboración entre áreas ocurre más por relaciones personales que por procesos definidos?": 3, "¿Las entregas o respuestas a clientes se retrasan porque los equipos internos no están alineados?": 4, "¿Tu equipo pierde más tiempo buscando información que resolviendo problemas?": 3, "¿El cliente o el colaborador, deben repetir lo mismo varias veces porque la información no fluye entre áreas?": 4, "¿Confías más en preguntar otra vez que en revisar algún sistema o plataforma?": 2, "¿Se llevan a cabo reuniones donde no se asignan responsables ni fechas claras a los acuerdos?": 4, "¿Tienes reuniones de “coordinación” que no coordinan nada y hay que repetirlas?": 3, "¿Continuamente revisan lo mismo en cada reunión porque no hay un seguimiento formal?": 3, "¿Los líderes necesitan supervisar con reuniones constantes porque no hay visibilidad de avance?": 3, "¿Hay tareas que se siguen haciendo solo porque “así se ha hecho siempre”?": 2, "¿Las prioridades cambian sin que el equipo se entere hasta que se cometió un error?": 4, "¿Se sigue destinando tiempo a tareas que ya no aportan valor real al proceso, objetivos o metas?": 4, "¿Estás midiendo cosas que no cambian los resultados clave del negocio?": 3, "¿Has hecho cambios que el equipo no entiende ni aplica correctamente?": 3, "¿Tu equipo no sabe cómo su trabajo impacta los objetivos y metas reales del negocio?": 4, "¿Se toman decisiones operativas sin tener clara la información estratégica?": 4, "¿El equipo pierde tiempo constantemente buscando instrucciones en múltiples canales dispersos cada vez?": 3, "¿Continuamente los equipos saltan de tarea en tarea sin cerrar ni lograr foco?": 3, "¿Se repiten las mismas explicaciones porque no hay un canal unificado?": 2, "¿Tu equipo termina el día agotado pero sin sensación de avance?": 3, "¿Sientes que están ocupados todo el tiempo, pero no sabes si están siendo productivos?": 3};
+    const NM_AUTOPSIA_WEIGHT_OVERRIDES = {
+      "¿El mismo dato se captura o corrige más de una vez porque el flujo de trabajo quedó abierto o mal cerrado?": 3,
+      "¿Tu equipo repite información constantemente porque los sistemas internos no están integrados?": 3,
+      "¿Se repiten solicitudes entre áreas porque no hay coordinación o visibilidad interna?": 3,
+      "¿Hay personas trabajando en lo mismo sin saber que otros ya lo están haciendo?": 3,
+      "¿Las tareas se trasladan entre áreas sin contexto claro, generando retrabajos o errores?": 3,
+      "¿Se envía el mismo reporte a varios jefes, duplicando tiempo y esfuerzo sin valor agregado?": 2,
+      "¿Reinician tareas porque no quedó registro del previo avance?": 3,
+      "¿Se repiten errores por instrucciones vagas o mal entendidas desde el inicio?": 3,
+      "¿Hay procesos detenidos solo por una firma que podrías automatizar?": 3,
+      "¿Hay tareas críticas detenidas porque dependen de una persona específica y no del sistema?": 4,
+      "¿Pides autorizaciones urgentes por mensajes y correos que luego nadie encuentra?": 3,
+      "¿Hay procesos sustantivos que se congelan esperando validación sin trazabilidad entre áreas?": 4,
+      "¿Se ha normalizado la espera como parte del proceso “natural” del día a día?": 3,
+      "¿El seguimiento a tareas o procesos formales depende de correos o llamadas sin dejar trazabilidad?": 3,
+      "¿No existe una plataforma para saber en tiempo real quién tiene una tarea y en qué estado está?": 4,
+      "¿Se cierran tareas sin validar si el problema, interno o externo, fue resuelto de fondo?": 4,
+      "¿Se da seguimiento a tareas por memoria o intuición, sin sistema visible?": 3,
+      "¿Existen proyectos sin responsabilidad clara y definida en todas sus etapas y acciones?": 4,
+      "¿Das seguimiento por correo a temas urgentes que se entierran en la bandeja?": 3,
+      "¿El equipo manda correos con copia a todos solo para protegerse?": 2,
+      "¿Lo urgente se pierde entre memes y mensajes mezclados en WhatsApp, o cadenas de correos?": 2,
+      "¿Toman decisiones por teléfono que luego nadie documenta ni respalda?": 2,
+      "¿Tu equipo consulta varios medios (correo, chats, notas, agendas…) para priorizar qué debe hacer hoy?": 3,
+      "¿La mayoría de los acuerdos clave se pierden entre conversaciones informales?": 4,
+      "¿Se gestionan temas urgentes por canales informales, sin dejar evidencia operativa?": 2,
+      "¿Constantemente se busca un correo importante durante 10 minutos?": 2,
+      "¿Se comparte el mismo archivo con varias personas, pero nadie asume el compromiso, provocando retrasos?": 4,
+      "¿Se extravían archivos o documentos digitales porque no hay un registro centralizado?": 4,
+      "¿La colaboración entre áreas ocurre más por relaciones personales que por procesos definidos?": 4,
+      "¿Las entregas o respuestas a clientes se retrasan porque los equipos internos no están alineados?": 4,
+      "¿Tu equipo pierde más tiempo buscando información que resolviendo problemas?": 4,
+      "¿El cliente o el colaborador, deben repetir lo mismo varias veces porque la información no fluye entre áreas?": 4,
+      "¿Confías más en preguntar otra vez que en revisar algún sistema o plataforma?": 2,
+      "¿Se llevan a cabo reuniones donde no se asignan responsables ni fechas claras a los acuerdos?": 4,
+      "¿Tienes reuniones de “coordinación” que no coordinan nada y hay que repetirlas?": 3,
+      "¿Continuamente revisan lo mismo en cada reunión porque no hay un seguimiento formal?": 3,
+      "¿Los líderes necesitan supervisar con reuniones constantes porque no hay visibilidad de avance?": 2,
+      "¿Hay tareas que se siguen haciendo solo porque “así se ha hecho siempre”?": 2,
+      "¿Las prioridades cambian sin que el equipo se entere hasta que se cometió un error?": 4,
+      "¿Se sigue destinando tiempo a tareas que ya no aportan valor real al proceso, objetivos o metas?": 4,
+      "¿Estás midiendo cosas que no cambian los resultados clave del negocio?": 2,
+      "¿Has hecho cambios que el equipo no entiende ni aplica correctamente?": 2,
+      "¿Tu equipo no sabe cómo su trabajo impacta los objetivos y metas reales del negocio?": 4,
+      "¿Se toman decisiones operativas sin tener clara la información estratégica?": 4,
+      "¿El equipo pierde tiempo constantemente buscando instrucciones en múltiples canales dispersos cada vez?": 2,
+      "¿Continuamente los equipos saltan de tarea en tarea sin cerrar ni lograr foco?": 2,
+      "¿Se repiten las mismas explicaciones porque no hay un canal unificado?": 2,
+      "¿Tu equipo termina el día agotado pero sin sensación de avance?": 2,
+      "¿Sientes que están ocupados todo el tiempo, pero no sabes si están siendo productivos?": 2,
+      "¿Se toman decisiones importantes con información incompleta, desactualizada o dispersa?": 4,
+      "¿Los líderes piden reportes manuales porque no existe visibilidad en tiempo real?": 3,
+      "¿Se invierte tiempo en preparar información que nadie usa para decidir?": 2,
+      "¿Existen versiones distintas de la verdad entre áreas o líderes?": 4,
+      "¿Las decisiones se retrasan porque primero hay que armar, limpiar o reconciliar la información?": 2,
+      "¿Tienen herramientas digitales que el equipo usa solo parcialmente o de forma inconsistente?": 2,
+      "¿La empresa paga software que no se traduce en mejor seguimiento, trazabilidad o ejecución?": 3,
+      "¿Los colaboradores siguen usando Excel, WhatsApp o correo para procesos que deberían estar sistematizados?": 3,
+      "¿La información se captura en un sistema, pero se vuelve a trabajar fuera de él?": 2,
+      "¿La tecnología actual genera más carga administrativa que claridad operativa?": 2,
+      "¿Las tareas se consideran avanzadas aunque nadie haya validado el cierre real?": 4,
+      "¿Hay responsables asignados, pero sin consecuencias claras cuando no se cumple?": 4,
+      "¿Los pendientes cambian de dueño sin que quede claro quién responde al final?": 4,
+      "¿Se reporta mucha actividad, pero pocos resultados verificables?": 4,
+      "¿Los líderes tienen que perseguir avances porque el sistema no empuja el cierre?": 4,
+      "¿Hay personas saturadas mientras otras tienen capacidad disponible sin visibilidad clara?": 3,
+      "¿Se asignan tareas por urgencia y no por capacidad real, prioridad o especialidad?": 4,
+      "¿El equipo dedica tiempo a actividades de bajo valor porque nadie rediseñó la carga de trabajo?": 4,
+      "¿La empresa no sabe cuántas horas reales se van en coordinación, espera o retrabajo?": 3,
+      "¿Se confunde estar ocupado con estar generando valor medible?": 3,
+      "¿Se pierden oportunidades comerciales por falta de seguimiento interno?": 4,
+      "¿El cliente espera más por descoordinación interna que por complejidad real del servicio?": 4,
+      "¿Hay promesas comerciales que operación no puede cumplir por falta de visibilidad?": 4,
+      "¿Se retrasan cotizaciones, entregas o respuestas porque dependen de varias áreas sin dueño claro?": 4,
+      "¿La experiencia del cliente se afecta por problemas internos que nadie mide?": 4
+};
     const NM_AUTOPSIA_RECOVERY_BY_FOCUS = {
-      'Flujo operativo, retrabajo y duplicidad': 0.58,
-      'Autorizaciones, validaciones y cuellos de botella': 0.52,
-      'Trazabilidad, seguimiento y cierre operativo': 0.68,
-      'Comunicación dispersa y canales informales': 0.72,
-      'Coordinación interáreas y servicio al cliente': 0.56,
-      'Juntas y acuerdos improductivos': 0.62,
-      'Desalineación estratégica y priorización': 0.48,
-      'Desgaste cognitivo y saturación operativa': 0.42
+      "Flujo operativo, retrabajo y duplicidad": 0.58,
+      "Autorizaciones, validaciones y cuellos de botella": 0.52,
+      "Trazabilidad, seguimiento y cierre operativo": 0.68,
+      "Comunicación dispersa y canales informales": 0.72,
+      "Coordinación interáreas y servicio al cliente": 0.56,
+      "Juntas y acuerdos improductivos": 0.62,
+      "Desalineación estratégica y priorización": 0.48,
+      "Desgaste cognitivo y saturación operativa": 0.42,
+      "Información, datos y toma de decisiones": 0.55,
+      "Tecnología mal usada o subutilizada": 0.64,
+      "Accountability y cierre real": 0.66,
+      "Capacidad instalada y asignación de carga": 0.54,
+      "Impacto en cliente, ventas e ingresos": 0.5
+};
+
+
+    const NM_AUTOPSIA_MODEL_WEIGHTS = {
+      dominantFocus: 0.45,
+      activeFocusAverage: 0.35,
+      totalCoverage: 0.20,
+      radar: 0.35,
+      depth: 0.65
+    };
+
+    const NM_AUTOPSIA_FOCUS_EXPLANATIONS = {
+      'Flujo operativo, retrabajo y duplicidad': 'Trabajo que se repite, se corrige o se reinicia porque el flujo no queda claro, cerrado o visible.',
+      'Autorizaciones, validaciones y cuellos de botella': 'Procesos detenidos por firmas, validaciones, dependencias personales o esperas que no tienen trazabilidad.',
+      'Trazabilidad, seguimiento y cierre operativo': 'Pendientes que avanzan por memoria, insistencia o persecución, no por un sistema visible de cierre.',
+      'Comunicación dispersa y canales informales': 'Decisiones, acuerdos y urgencias repartidos entre WhatsApp, correo, llamadas, notas y conversaciones sueltas.',
+      'Coordinación interáreas y servicio al cliente': 'Fricción entre áreas que retrasa entregas, respuestas, servicio interno o experiencia del cliente.',
+      'Juntas y acuerdos improductivos': 'Reuniones que sustituyen ejecución, repiten temas o terminan sin responsables, fechas y seguimiento.',
+      'Desalineación estratégica y priorización': 'Tiempo invertido en actividades que no conectan con objetivos actuales, valor real o prioridades claras.',
+      'Desgaste cognitivo y saturación operativa': 'Fragmentación mental, cambios de tarea, cansancio operativo y sensación de estar ocupado sin avance proporcional.',
+      'Información, datos y toma de decisiones': 'Decisiones lentas o inseguras porque la información está incompleta, dispersa, desactualizada o manual.',
+      'Tecnología mal usada o subutilizada': 'Herramientas digitales que existen, pero no ordenan la operación ni reducen retrabajo, carga administrativa o seguimiento manual.',
+      'Accountability y cierre real': 'Responsables difusos, avances sin validación y actividad reportada que no necesariamente termina en resultados cerrados.',
+      'Capacidad instalada y asignación de carga': 'Personas saturadas, capacidad invisible y mala asignación del tiempo disponible entre urgencias, espera y tareas de bajo valor.',
+      'Impacto en cliente, ventas e ingresos': 'Pérdida de oportunidades, retrasos comerciales o deterioro de la experiencia del cliente por fallas internas no medidas.'
+    };
+
+    const NM_AUTOPSIA_FOCUS_ACTIONS = {
+      'Flujo operativo, retrabajo y duplicidad': 'Mapear el flujo real, eliminar duplicidades y definir un punto único de captura, avance y cierre.',
+      'Autorizaciones, validaciones y cuellos de botella': 'Crear rutas visibles de autorización, responsables sustitutos y semáforos de bloqueo por tiempo detenido.',
+      'Trazabilidad, seguimiento y cierre operativo': 'Usar tablero único con responsable, fecha, estatus, evidencia y criterio de cierre validado.',
+      'Comunicación dispersa y canales informales': 'Centralizar acuerdos y decisiones en tarjetas, minutas o registros operativos con trazabilidad.',
+      'Coordinación interáreas y servicio al cliente': 'Definir dueños de proceso, SLA internos y puntos de entrega entre áreas.',
+      'Juntas y acuerdos improductivos': 'Convertir juntas en acuerdos accionables: responsable, fecha, evidencia y seguimiento automático.',
+      'Desalineación estratégica y priorización': 'Depurar tareas sin valor y conectar cada actividad crítica con objetivo, indicador o resultado esperado.',
+      'Desgaste cognitivo y saturación operativa': 'Reducir cambios de contexto, limitar urgencias falsas y proteger bloques de ejecución profunda.',
+      'Información, datos y toma de decisiones': 'Construir una fuente única de verdad con tableros ejecutivos y datos accionables en tiempo real.',
+      'Tecnología mal usada o subutilizada': 'Auditar herramientas, eliminar dobles capturas y cerrar brechas entre sistema, proceso y hábito operativo.',
+      'Accountability y cierre real': 'Separar avance de cierre: ningún pendiente debe cerrarse sin evidencia, validación y dueño final.',
+      'Capacidad instalada y asignación de carga': 'Medir carga real, redistribuir trabajo y liberar capacidad de actividades de bajo valor.',
+      'Impacto en cliente, ventas e ingresos': 'Rastrear oportunidades, promesas y entregas desde origen hasta cierre con responsable único.'
     };
 
 
@@ -4807,11 +5121,11 @@
     }
 
     function nmAutopsiaRiskLevel(score) {
-      if (typeof nmRiskLevel === 'function') return nmRiskLevel(score);
-      if (score <= 15) return {icon:'🟢', label:'Bajo', urgency:'baja', message:'Señales aisladas.'};
-      if (score <= 35) return {icon:'🟡', label:'Moderado', urgency:'media', message:'Fricción visible.'};
-      if (score <= 65) return {icon:'🔴', label:'Alto', urgency:'alta', message:'Fricción estructural.'};
-      return {icon:'🚨', label:'Crítico', urgency:'inmediata', message:'Rediseño inmediato.'};
+      const safe = Math.min(100, Math.max(0, Number(score) || 0));
+      if (safe <= 15) return {icon:'🟢', label:'Bajo', urgency:'baja', message:'Señales aisladas. Conviene atenderlas antes de que se acumulen, pero todavía no parecen dominar la operación.'};
+      if (safe <= 35) return {icon:'🟡', label:'Moderado', urgency:'media', message:'Ya existen focos visibles de fricción. El problema todavía es corregible sin intervención profunda, pero requiere decisión y seguimiento.'};
+      if (safe <= 65) return {icon:'🔴', label:'Alto', urgency:'alta', message:'La fricción ya es estructural. Hay pérdida relevante de capacidad pagada y riesgo de que se normalice como cultura operativa.'};
+      return {icon:'🚨', label:'Crítico', urgency:'inmediata', message:'La operación muestra señales fuertes de Nómina Muerta. El rediseño operativo debe tratarse como prioridad directiva.'};
     }
 
     function nmAutopsiaPctFromRisk(score) {
@@ -4821,35 +5135,35 @@
     }
 
     function nmAutopsiaRecoveryForFocus(focus) {
-      if (typeof nmRecoveryFactorForFocus === 'function') return nmRecoveryFactorForFocus(focus);
       const key = String(focus || '').trim();
-      if (NM_AUTOPSIA_RECOVERY_BY_FOCUS[key]) return NM_AUTOPSIA_RECOVERY_BY_FOCUS[key];
+      if (Object.prototype.hasOwnProperty.call(NM_AUTOPSIA_RECOVERY_BY_FOCUS, key)) return NM_AUTOPSIA_RECOVERY_BY_FOCUS[key];
       const f = key.toLowerCase();
       if (f.includes('comunicación')) return 0.72;
-      if (f.includes('seguimiento') || f.includes('trazabilidad')) return 0.68;
+      if (f.includes('seguimiento') || f.includes('trazabilidad') || f.includes('accountability')) return 0.68;
+      if (f.includes('tecnología') || f.includes('subutilizada')) return 0.64;
       if (f.includes('junta')) return 0.62;
       if (f.includes('retrabajo') || f.includes('duplicidad') || f.includes('flujo')) return 0.58;
       if (f.includes('coordinación') || f.includes('servicio')) return 0.56;
+      if (f.includes('datos') || f.includes('decisiones') || f.includes('información')) return 0.55;
+      if (f.includes('capacidad') || f.includes('carga')) return 0.54;
       if (f.includes('autorización') || f.includes('validación') || f.includes('cuello')) return 0.52;
+      if (f.includes('cliente') || f.includes('ventas') || f.includes('ingresos')) return 0.50;
       if (f.includes('estratégica') || f.includes('priorización')) return 0.48;
       if (f.includes('desgaste') || f.includes('saturación')) return 0.42;
       return 0.60;
     }
 
     function nmAutopsiaFocus(catTitle, question) {
-      if (typeof nmRetoFocus === 'function') return nmRetoFocus(catTitle, question);
       return catTitle || 'Foco operativo';
     }
 
     function nmAutopsiaWeight(catTitle, question) {
-      if (typeof nmRetoWeight === 'function') return nmRetoWeight(catTitle, question);
       const q = String(question || '').trim();
-      if (NM_AUTOPSIA_WEIGHT_OVERRIDES[q]) return NM_AUTOPSIA_WEIGHT_OVERRIDES[q];
-
+      if (Object.prototype.hasOwnProperty.call(NM_AUTOPSIA_WEIGHT_OVERRIDES, q)) return NM_AUTOPSIA_WEIGHT_OVERRIDES[q];
       const text = (String(catTitle || '') + ' ' + q).toLowerCase();
-      if (text.includes('cliente') || text.includes('críticas detenidas') || text.includes('congelan') || text.includes('responsabilidad clara') || text.includes('no sabe cómo su trabajo impacta')) return 4;
-      if (text.includes('firma') || text.includes('trazabilidad') || text.includes('retrabajo') || text.includes('errores') || text.includes('seguimiento') || text.includes('sistemas internos')) return 3;
-      if (text.includes('correo importante') || text.includes('copia a todos') || text.includes('memes') || text.includes('reporte a varios')) return 2;
+      if (text.includes('cliente') || text.includes('ventas') || text.includes('ingresos') || text.includes('críticas') || text.includes('congelan') || text.includes('responsabilidad clara') || text.includes('cierre real') || text.includes('resultados verificables')) return 4;
+      if (text.includes('firma') || text.includes('trazabilidad') || text.includes('retrabajo') || text.includes('errores') || text.includes('seguimiento') || text.includes('sistema') || text.includes('información') || text.includes('capacidad')) return 3;
+      if (text.includes('copia a todos') || text.includes('memes') || text.includes('correo importante') || text.includes('preguntar otra vez')) return 2;
       return 2;
     }
 
@@ -4870,7 +5184,6 @@
     }
 
     function nmAutopsiaShow(id, html) {
-      if (typeof nmShowResult === 'function') return nmShowResult(id, html);
       const el = document.getElementById(id);
       if (!el) return;
       el.innerHTML = html;
@@ -4890,6 +5203,71 @@
         <div class="autopsy-kpi"><strong>${card.value}</strong><span>${card.label}</span></div>
       `).join('')}</div>`;
     }
+
+    function nmAutopsiaClamp(value, min = 0, max = 100) {
+      return Math.min(max, Math.max(min, Number(value) || 0));
+    }
+
+    function nmAutopsiaFocusExplanation(focus) {
+      return NM_AUTOPSIA_FOCUS_EXPLANATIONS[focus] || 'Foco operativo con señales de pérdida de tiempo, energía o capacidad pagada.';
+    }
+
+    function nmAutopsiaFocusAction(focus) {
+      return NM_AUTOPSIA_FOCUS_ACTIONS[focus] || 'Prioriza este foco, identifica responsables y define evidencias de cierre medibles.';
+    }
+
+    function nmAutopsiaScrollToResult(id) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      window.setTimeout(() => el.scrollIntoView({behavior:'smooth', block:'center'}), 80);
+    }
+
+    function nmAutopsiaBuildFocusStats(checks, selected) {
+      const stats = {};
+      checks.forEach(cb => {
+        const focus = cb.dataset.focus || cb.dataset.category || 'Foco operativo';
+        const weight = parseInt(cb.dataset.weight, 10) || 1;
+        if (!stats[focus]) stats[focus] = {focus, totalWeight:0, selectedWeight:0, totalCount:0, selectedCount:0, questions:[]};
+        stats[focus].totalWeight += weight;
+        stats[focus].totalCount += 1;
+      });
+      selected.forEach(cb => {
+        const focus = cb.dataset.focus || cb.dataset.category || 'Foco operativo';
+        const weight = parseInt(cb.dataset.weight, 10) || 1;
+        if (!stats[focus]) stats[focus] = {focus, totalWeight:weight, selectedWeight:0, totalCount:1, selectedCount:0, questions:[]};
+        stats[focus].selectedWeight += weight;
+        stats[focus].selectedCount += 1;
+        stats[focus].questions.push(`${parseInt(cb.dataset.categoryIndex, 10) + 1}.${parseInt(cb.dataset.questionIndex, 10) + 1}`);
+      });
+      return Object.values(stats).map(row => ({
+        ...row,
+        activation: row.totalWeight ? (row.selectedWeight / row.totalWeight) * 100 : 0,
+        recoveryFactor: nmAutopsiaRecoveryForFocus(row.focus),
+        explanation: nmAutopsiaFocusExplanation(row.focus),
+        action: nmAutopsiaFocusAction(row.focus)
+      }));
+    }
+
+    function nmAutopsiaRiskFromFocusStats(focusRows) {
+      const rows = focusRows || [];
+      const activeRows = rows.filter(row => row.selectedCount > 0);
+      const dominantActivation = activeRows.length ? Math.max(...activeRows.map(row => row.activation)) : 0;
+      const activeAverage = activeRows.length ? activeRows.reduce((acc,row) => acc + row.activation, 0) / activeRows.length : 0;
+      const totalWeight = rows.reduce((acc,row) => acc + row.totalWeight, 0) || 1;
+      const selectedWeight = rows.reduce((acc,row) => acc + row.selectedWeight, 0);
+      const totalCoverage = (selectedWeight / totalWeight) * 100;
+      const riskScore = nmAutopsiaClamp(
+        dominantActivation * NM_AUTOPSIA_MODEL_WEIGHTS.dominantFocus +
+        activeAverage * NM_AUTOPSIA_MODEL_WEIGHTS.activeFocusAverage +
+        totalCoverage * NM_AUTOPSIA_MODEL_WEIGHTS.totalCoverage
+      );
+      return {riskScore, dominantActivation, activeAverage, totalCoverage};
+    }
+
+    function nmAutopsiaFormulaNote() {
+      return `<div class="autopsy-explanation-box"><strong>Cómo se calculó:</strong> para que todos los focos puedan destacar de forma justa, cada foco se compara contra su propio máximo posible. El Índice de Riesgo del Radar combina <strong>45% fuga dominante normalizada</strong>, <strong>35% promedio de focos activos</strong> y <strong>20% cobertura total ponderada</strong>. Así, un foco no gana por tener más síntomas, sino por estar proporcionalmente más activado.</div>`;
+    }
+
 
     function nmAutopsiaOptionsForFocus(focus) {
       const f = String(focus || '').toLowerCase();
@@ -4959,15 +5337,24 @@
         container.innerHTML = '<div class="integrated-note">⚠️ No se encontraron las preguntas del Radar. Revisa que el bloque NM_RETO_CATEGORIES esté cargado antes de inicializar el Reto de Autopsia.</div>';
         return;
       }
-      container.innerHTML = categories.map((cat, ci) => `
-        <div class="autopsy-radar-category">
+      container.innerHTML = categories.map((cat, ci) => {
+        const maxWeight = (cat.questions || []).reduce((acc, q) => acc + nmAutopsiaWeight(cat.title, q), 0);
+        return `<div class="autopsy-radar-category">
           <h3>${cat.title}</h3>
+          <span class="autopsy-muted-note">Foco normalizado: ${cat.questions?.length || 0} síntomas · ${maxWeight} puntos máximos. Este foco compite contra su propio máximo, no contra los demás.</span>
           ${(cat.questions || []).map((q, qi) => {
             const weight = nmAutopsiaWeight(cat.title, q);
             const focus = nmAutopsiaFocus(cat.title, q);
             const id = `ra-${ci}-${qi}`;
             return `<label class="autopsy-check">
               <input type="checkbox" class="nm-autopsia-radar-check" id="${id}" data-category-index="${ci}" data-question-index="${qi}" data-category="${cat.title.replace(/"/g,'&quot;')}" data-question="${q.replace(/"/g,'&quot;')}" data-weight="${weight}" data-focus="${focus.replace(/"/g,'&quot;')}">
+              <span>${q}</span>
+            </label>`;
+          }).join('')}
+        </div>`;
+      }).join('');
+      container.dataset.rendered = '1';
+    }" data-question="${q.replace(/"/g,'&quot;')}" data-weight="${weight}" data-focus="${focus.replace(/"/g,'&quot;')}">
               <span>${q}</span>
             </label>`;
           }).join('')}
@@ -4981,13 +5368,23 @@
       const selected = checks.filter(cb => cb.checked);
       if (!selected.length) {
         nmAutopsiaShow('autopsiaRadarResult', '⚠️ Marca al menos un síntoma para generar la señal de alarma.');
+        nmAutopsiaScrollToResult('autopsiaRadarResult');
         return;
       }
 
       const maxScore = checks.reduce((acc, cb) => acc + (parseInt(cb.dataset.weight, 10) || 1), 0) || 1;
       const scoreRaw = selected.reduce((acc, cb) => acc + (parseInt(cb.dataset.weight, 10) || 1), 0);
-      const riskScore = (scoreRaw / maxScore) * 100;
+      const focusRowsAll = nmAutopsiaBuildFocusStats(checks, selected);
+      const riskParts = nmAutopsiaRiskFromFocusStats(focusRowsAll);
+      const riskScore = riskParts.riskScore;
       const level = nmAutopsiaRiskLevel(riskScore);
+
+      const focusRowsData = focusRowsAll
+        .filter(row => row.selectedCount > 0)
+        .sort((a,b) => (b.activation - a.activation) || (b.selectedWeight - a.selectedWeight));
+      const dominantRow = focusRowsData[0] || null;
+      const dominantFocus = dominantRow?.focus || 'Sin foco dominante';
+      const recoveryFactor = nmAutopsiaRecoveryForFocus(dominantFocus);
 
       const selectedSymptoms = selected.map((cb, idx) => ({
         id: `${cb.dataset.categoryIndex}-${cb.dataset.questionIndex}`,
@@ -4998,13 +5395,6 @@
         index: idx
       }));
 
-      const focusScores = {};
-      selectedSymptoms.forEach(item => {
-        focusScores[item.focus] = (focusScores[item.focus] || 0) + item.weight;
-      });
-      const dominantFocus = Object.entries(focusScores).sort((a,b) => b[1] - a[1])[0]?.[0] || 'Sin foco dominante';
-      const recoveryFactor = nmAutopsiaRecoveryForFocus(dominantFocus);
-
       NM_AUTOPSIA_STATE.radar = {
         riskScore,
         scoreRaw,
@@ -5014,29 +5404,46 @@
         focus: dominantFocus,
         recoveryFactor,
         levelLabel: level.label,
-        urgency: level.urgency
+        urgency: level.urgency,
+        dominantActivation: riskParts.dominantActivation,
+        activeFocusAverage: riskParts.activeAverage,
+        totalCoverage: riskParts.totalCoverage,
+        focusRows: focusRowsAll.map(row => ({
+          focus: row.focus,
+          totalWeight: row.totalWeight,
+          selectedWeight: row.selectedWeight,
+          totalCount: row.totalCount,
+          selectedCount: row.selectedCount,
+          activation: row.activation,
+          recoveryFactor: row.recoveryFactor,
+          questions: row.questions
+        }))
       };
       NM_AUTOPSIA_STATE.selectedSymptoms = selectedSymptoms;
       NM_AUTOPSIA_STATE.depth = null;
       nmAutopsiaSave();
 
-      const focusRows = Object.entries(focusScores)
-        .sort((a,b) => b[1] - a[1])
-        .map(([focus, score]) => `<tr><td><strong>${focus}</strong></td><td>${score} puntos ponderados</td><td>${selectedSymptoms.filter(s => s.focus === focus).length} síntomas</td></tr>`)
-        .join('');
+      const focusRows = focusRowsData.map(row => `<tr>
+        <td><strong>${row.focus}</strong><br><span class="autopsy-muted-note">${row.explanation}</span></td>
+        <td>${row.activation.toFixed(0)}% activación<br><span class="autopsy-muted-note">${row.selectedWeight} de ${row.totalWeight} puntos</span></td>
+        <td>${row.selectedCount} de ${row.totalCount}</td>
+        <td>${Math.round(row.recoveryFactor * 100)}%</td>
+      </tr>`).join('');
 
       nmAutopsiaShow('autopsiaRadarResult',
         `<span class="autopsy-badge">Resultado del Radar</span>` +
         nmAutopsiaKpis([
-          {value: `${Math.round(riskScore)} / 100`, label: 'Índice de riesgo inicial'},
+          {value: `${Math.round(riskScore)} / 100`, label: 'Índice de riesgo inicial normalizado'},
           {value: dominantFocus, label: 'Fuga dominante detectada'},
           {value: `${Math.round(recoveryFactor * 100)}%`, label: 'Recuperabilidad base estimada'},
           {value: level.label, label: `Urgencia ${level.urgency}`}
         ]) +
         `<strong>${level.icon} Señal de alarma ${level.label}</strong><br>${level.message}<br><br>` +
         `<strong>Síntomas seleccionados:</strong> ${selectedSymptoms.length} de ${checks.length}<br>` +
-        `<strong>Puntaje ponderado:</strong> ${scoreRaw} de ${maxScore}<br>` +
-        `<div class="autopsy-table-shell"><table class="autopsy-table"><thead><tr><th>Foco</th><th>Peso acumulado</th><th>Síntomas marcados</th></tr></thead><tbody>${focusRows}</tbody></table></div>` +
+        `<strong>Puntaje ponderado bruto:</strong> ${scoreRaw} de ${maxScore}<br>` +
+        `<strong>Lectura de fuga dominante:</strong> ${dominantFocus} destaca porque activó <strong>${dominantRow ? dominantRow.activation.toFixed(0) : 0}%</strong> de su propio riesgo posible, no porque tenga más preguntas que otros focos.<br>` +
+        nmAutopsiaFormulaNote() +
+        `<div class="autopsy-table-shell"><table class="autopsy-table"><thead><tr><th>Foco activo</th><th>Activación normalizada</th><th>Síntomas</th><th>Recuperabilidad</th></tr></thead><tbody>${focusRows}</tbody></table></div>` +
         `<div class="result-callout"><strong>Siguiente paso:</strong> la Autopsia ya fue construida automáticamente solo con estos ${selectedSymptoms.length} síntomas. No repetirás todo el diagnóstico: solo profundizarás donde ya hubo señal.</div>`
       );
 
@@ -5047,7 +5454,7 @@
       nmAutopsiaHide('autopsiaCalcResult');
       const calcPct = document.getElementById('autopsiaCalcPct');
       if (calcPct) calcPct.value = '';
-      document.getElementById('autopsiaDepthStage')?.scrollIntoView({behavior:'smooth', block:'start'});
+      nmAutopsiaScrollToResult('autopsiaRadarResult');
     }
 
     function nmAutopsiaRenderDepthQuestions() {
@@ -5085,13 +5492,13 @@
       const symptoms = NM_AUTOPSIA_STATE.selectedSymptoms || [];
       if (!symptoms.length || !NM_AUTOPSIA_STATE.radar) {
         nmAutopsiaShow('autopsiaDepthResult', '⚠️ Primero completa el Radar para generar las preguntas de autopsia.');
+        nmAutopsiaScrollToResult('autopsiaDepthResult');
         return;
       }
 
       const values = [];
       let answered = 0;
       let weightedScore = 0;
-      let minScore = 0;
       let maxScore = 0;
       const focusData = {};
       const missingQuestions = [];
@@ -5100,7 +5507,6 @@
       symptoms.forEach((item, idx) => {
         const selected = document.querySelector(`input[name="autopsiaDepthQ${idx}"]:checked`);
         const weight = item.weight || 1;
-        minScore += 0;
         maxScore += weight;
 
         if (selected) {
@@ -5111,12 +5517,11 @@
           weightedScore += weight * responseFactor;
 
           if (!focusData[item.focus]) {
-            focusData[item.focus] = {focus:item.focus, selected:0, weight:0, weighted:0, min:0, max:0, questions:[]};
+            focusData[item.focus] = {focus:item.focus, selected:0, weight:0, weighted:0, max:0, questions:[]};
           }
           focusData[item.focus].selected += 1;
           focusData[item.focus].weight += weight;
           focusData[item.focus].weighted += weight * responseFactor;
-          focusData[item.focus].min += 0;
           focusData[item.focus].max += weight;
           focusData[item.focus].questions.push(idx + 1);
         } else {
@@ -5129,22 +5534,28 @@
       if (answered < symptoms.length) {
         const missingText = missingQuestions.length ? ` Preguntas pendientes: <strong>${missingQuestions.join(', ')}</strong>.` : '';
         nmAutopsiaShow('autopsiaDepthResult', `⚠️ Responde los ${symptoms.length} síntomas señalados para calcular el diagnóstico ajustado. Te faltan ${symptoms.length - answered}.${missingText}`);
+        nmAutopsiaScrollToResult('autopsiaDepthResult');
         return;
       }
 
-      const depthRisk = maxScore > minScore ? ((weightedScore - minScore) / (maxScore - minScore)) * 100 : 0;
+      const focusRowsData = Object.values(focusData).map(row => {
+        const intensity = row.max ? (row.weighted / row.max) * 100 : 0;
+        const radarRow = (NM_AUTOPSIA_STATE.radar.focusRows || []).find(item => item.focus === row.focus);
+        const radarActivation = radarRow ? radarRow.activation : 0;
+        const focusRisk = nmAutopsiaClamp((radarActivation * 0.35) + (intensity * 0.65));
+        const focusPct = nmAutopsiaPctFromRisk(focusRisk).center;
+        return {...row, intensity, radarActivation, focusRisk, focusPct, recoveryFactor:nmAutopsiaRecoveryForFocus(row.focus)};
+      }).sort((a,b) => b.focusRisk - a.focusRisk);
+
+      const dominantIntensity = focusRowsData.length ? Math.max(...focusRowsData.map(row => row.intensity)) : 0;
+      const activeAverage = focusRowsData.length ? focusRowsData.reduce((acc,row) => acc + row.intensity, 0) / focusRowsData.length : 0;
+      const selectedCoverage = maxScore ? (weightedScore / maxScore) * 100 : 0;
+      const depthRisk = nmAutopsiaClamp((dominantIntensity * 0.50) + (activeAverage * 0.30) + (selectedCoverage * 0.20));
       const radarRisk = NM_AUTOPSIA_STATE.radar.riskScore || 0;
-      const adjustedRisk = Math.min(100, Math.max(0, (radarRisk * 0.35) + (depthRisk * 0.65)));
+      const adjustedRisk = nmAutopsiaClamp((radarRisk * NM_AUTOPSIA_MODEL_WEIGHTS.radar) + (depthRisk * NM_AUTOPSIA_MODEL_WEIGHTS.depth));
       const pct = nmAutopsiaPctFromRisk(adjustedRisk);
       const adjustedPct = Math.round(pct.center);
       const level = nmAutopsiaRiskLevel(adjustedRisk);
-
-      const focusRowsData = Object.values(focusData).map(row => {
-        const intensity = row.max > row.min ? ((row.weighted - row.min) / (row.max - row.min)) * 100 : 0;
-        const focusRisk = (radarRisk * .25) + (intensity * .75);
-        const focusPct = nmAutopsiaPctFromRisk(focusRisk).center;
-        return {...row, intensity, focusRisk, focusPct};
-      }).sort((a,b) => b.focusRisk - a.focusRisk);
 
       const dominantFocus = focusRowsData[0]?.focus || NM_AUTOPSIA_STATE.radar.focus;
       const recoveryFactor = nmAutopsiaRecoveryForFocus(dominantFocus);
@@ -5160,20 +5571,27 @@
         recoveryFactor,
         levelLabel: level.label,
         urgency: level.urgency,
+        dominantIntensity,
+        activeAverage,
+        selectedCoverage,
         focusRows: focusRowsData.map(row => ({
           focus: row.focus,
           selected: row.selected,
           intensity: row.intensity,
+          radarActivation: row.radarActivation,
+          focusRisk: row.focusRisk,
           focusPct: row.focusPct,
+          recoveryFactor: row.recoveryFactor,
           questions: row.questions
         }))
       };
       nmAutopsiaSave();
 
       const rows = focusRowsData.map(row => `<tr>
-        <td><strong>${row.focus}</strong></td>
-        <td>${row.intensity.toFixed(0)}% intensidad</td>
-        <td>${row.focusPct.toFixed(0)}% NM estimada</td>
+        <td><strong>${row.focus}</strong><br><span class="autopsy-muted-note">${nmAutopsiaFocusAction(row.focus)}</span></td>
+        <td>${row.intensity.toFixed(0)}% gravedad<br><span class="autopsy-muted-note">Autopsia de síntomas marcados</span></td>
+        <td>${row.radarActivation.toFixed(0)}% radar</td>
+        <td>${row.focusPct.toFixed(0)}% NM estimada<br><span class="autopsy-muted-note">No se suma con otros focos</span></td>
         <td>Síntomas ${row.questions.join(', ')}</td>
       </tr>`).join('');
 
@@ -5184,21 +5602,22 @@
       nmAutopsiaShow('autopsiaDepthResult',
         `<span class="autopsy-badge teal">Diagnóstico ajustado</span>` +
         nmAutopsiaKpis([
-          {value: `${Math.round(radarRisk)} / 100`, label: 'Señal de alarma del Radar'},
-          {value: `${Math.round(depthRisk)} / 100`, label: 'Intensidad de síntomas evaluados'},
+          {value: `${Math.round(radarRisk)} / 100`, label: 'Señal normalizada del Radar'},
+          {value: `${Math.round(depthRisk)} / 100`, label: 'Gravedad confirmada en Autopsia'},
           {value: `${adjustedPct}%`, label: 'Nómina Muerta ajustada'},
           {value: level.label, label: `Urgencia ${level.urgency}`}
         ]) +
         `<strong>${level.icon} Urgencia ${level.label}</strong><br>` +
-        `El porcentaje ajustado combina la señal inicial del Radar con la intensidad real de los síntomas seleccionados. Este es el valor que se transfiere automáticamente al cálculo final.<br><br>` +
+        `El porcentaje ajustado combina la señal inicial del Radar con la gravedad real de los síntomas seleccionados. Aquí ya no se mide solo presencia de síntomas; se mide frecuencia, recurrencia e impacto operativo.<br><br>` +
         `<strong>Foco dominante confirmado:</strong> ${dominantFocus}<br>` +
         `<strong>Recuperabilidad base del foco:</strong> ${Math.round(recoveryFactor * 100)}%<br>` +
-        `<strong>Rango estimado:</strong> ${pct.min.toFixed(0)}%–${pct.max.toFixed(0)}%<br>` +
-        `<div class="autopsy-table-shell"><table class="autopsy-table"><thead><tr><th>Foco</th><th>Gravedad</th><th>% NM por foco</th><th>Indicadores</th></tr></thead><tbody>${rows}</tbody></table></div>` +
+        `<strong>Rango estimado de Nómina Muerta:</strong> ${pct.min.toFixed(0)}%–${pct.max.toFixed(0)}%<br>` +
+        `<div class="autopsy-explanation-box"><strong>Diferencia clave:</strong> la <strong>gravedad</strong> indica qué tan intenso es el problema dentro de cada foco. El <strong>% NM por foco</strong> traduce esa gravedad a impacto económico estimado. Los porcentajes por foco sirven para priorizar, <strong>no deben sumarse</strong> porque muchos síntomas se traslapan.</div>` +
+        `<div class="autopsy-table-shell"><table class="autopsy-table"><thead><tr><th>Foco</th><th>Gravedad</th><th>Radar</th><th>% NM por foco</th><th>Indicadores</th></tr></thead><tbody>${rows}</tbody></table></div>` +
         `<div class="result-callout"><strong>Siguiente paso:</strong> revisa el porcentaje prellenado en la calculadora, agrega número de personas y nómina mensual, y ejecuta el cálculo final.</div>`
       );
 
-      document.getElementById('autopsiaCalcStage')?.scrollIntoView({behavior:'smooth', block:'start'});
+      nmAutopsiaScrollToResult('autopsiaDepthResult');
     }
 
     function nmAutopsiaCalculateFinal() {
@@ -5210,39 +5629,49 @@
 
       if (!pct || pct < 1 || !people || !payroll) {
         nmAutopsiaShow('autopsiaCalcResult', '⚠️ Completa porcentaje, número de personas y sueldo promedio o nómina mensual total.');
+        nmAutopsiaScrollToResult('autopsiaCalcResult');
         return;
       }
 
+      const depth = NM_AUTOPSIA_STATE.depth || null;
       const effectiveAvgSalary = avgSalary || Math.round(payroll / people);
       const nmMonthly = Math.round(payroll * (pct / 100));
       const nmAnnual = nmMonthly * 12;
       const equivalentPeople = effectiveAvgSalary ? Math.round(nmMonthly / effectiveAvgSalary) : Math.round(people * (pct / 100));
-
-      const conservative = Math.round(nmMonthly * 0.50);
-      const expected = Math.round(nmMonthly * 0.70);
-      const optimal = Math.round(nmMonthly * 0.85);
+      const dominantFocus = depth?.focus || 'Porcentaje manual';
+      const recoveryFactor = depth?.recoveryFactor || 0.70;
+      const conservativeRate = Math.max(0.25, recoveryFactor - 0.15);
+      const expectedRate = recoveryFactor;
+      const optimalRate = Math.min(0.90, recoveryFactor + 0.15);
+      const conservative = Math.round(nmMonthly * conservativeRate);
+      const expected = Math.round(nmMonthly * expectedRate);
+      const optimal = Math.round(nmMonthly * optimalRate);
       const expectedAnnual = expected * 12;
 
-      const source = NM_AUTOPSIA_STATE.depth
-        ? `${Math.round(NM_AUTOPSIA_STATE.depth.adjustedPct)}% de diagnóstico ajustado`
+      const source = depth
+        ? `${Math.round(depth.adjustedPct)}% de diagnóstico ajustado`
         : `${Math.round(pct)}% manual`;
 
       nmAutopsiaShow('autopsiaCalcResult',
-        `<div class="autopsy-final-grid">
+        `<span class="autopsy-badge teal">Resultado económico final</span>
+        <div class="autopsy-final-grid">
           <div class="autopsy-final-card"><strong>${nmAutopsiaFormatCurrency(nmMonthly)}</strong><span>Nómina Muerta mensual estimada</span></div>
           <div class="autopsy-final-card"><strong>${nmAutopsiaFormatCurrency(nmAnnual)}</strong><span>Nómina Muerta anual estimada</span></div>
           <div class="autopsy-final-card"><strong>${equivalentPeople} personas</strong><span>Equivalente de capacidad no aprovechada</span></div>
         </div>
-        <p>Usando el <strong>${source}</strong> como base. Escenario de recuperación con rediseño operativo: se estima recuperar el <strong>70%</strong> de la Nómina Muerta con cambios en flujos, trazabilidad, seguimiento y priorización.</p>
+        <p>Usando el <strong>${source}</strong> como base. Este porcentaje se aplica sobre la nómina mensual capturada para estimar cuánto dinero se está pagando en tiempo que no se convierte en avance, cierre, servicio o valor real.</p>
+        <div class="autopsy-explanation-box"><strong>Cómo leer este resultado:</strong> no significa que “sobren” ${equivalentPeople} personas. Significa que el equivalente económico de esa capacidad está atrapado en retrabajo, espera, mala coordinación, saturación, tecnología mal usada o falta de cierre. El objetivo es recuperar capacidad, no recortar talento.</div>
         <div class="scenario-card">
-          <h3>Escenarios de recuperación</h3>
-          <div class="scenario-row"><span>Recuperación conservadora (50%)</span><div class="scenario-bar"><span style="width:50%"></span></div><strong>${nmAutopsiaFormatCurrency(conservative)}/mes</strong></div>
-          <div class="scenario-row"><span>Recuperación esperada (70%)</span><div class="scenario-bar expected"><span style="width:70%"></span></div><strong>${nmAutopsiaFormatCurrency(expected)}/mes</strong></div>
-          <div class="scenario-row"><span>Recuperación óptima (85%)</span><div class="scenario-bar optimal"><span style="width:85%"></span></div><strong>${nmAutopsiaFormatCurrency(optimal)}/mes</strong></div>
-          <div class="scenario-row"><span><strong>Anual esperada (70%)</strong></span><div class="scenario-bar annual"><span style="width:70%"></span></div><strong>${nmAutopsiaFormatCurrency(expectedAnnual)}</strong></div>
+          <h3>Escenarios de recuperación ajustados por foco dominante</h3>
+          <p><strong>Foco dominante:</strong> ${dominantFocus}. <strong>Recuperabilidad base:</strong> ${Math.round(recoveryFactor * 100)}%. Esta recuperabilidad modifica los escenarios para no usar siempre el mismo 70% en todos los casos.</p>
+          <div class="scenario-row"><span>Recuperación conservadora (${Math.round(conservativeRate * 100)}%)</span><div class="scenario-bar"><span style="width:${Math.round(conservativeRate * 100)}%"></span></div><strong>${nmAutopsiaFormatCurrency(conservative)}/mes</strong></div>
+          <div class="scenario-row"><span>Recuperación esperada (${Math.round(expectedRate * 100)}%)</span><div class="scenario-bar expected"><span style="width:${Math.round(expectedRate * 100)}%"></span></div><strong>${nmAutopsiaFormatCurrency(expected)}/mes</strong></div>
+          <div class="scenario-row"><span>Recuperación óptima (${Math.round(optimalRate * 100)}%)</span><div class="scenario-bar optimal"><span style="width:${Math.round(optimalRate * 100)}%"></span></div><strong>${nmAutopsiaFormatCurrency(optimal)}/mes</strong></div>
+          <div class="scenario-row"><span><strong>Anual esperada (${Math.round(expectedRate * 100)}%)</strong></span><div class="scenario-bar annual"><span style="width:${Math.round(expectedRate * 100)}%"></span></div><strong>${nmAutopsiaFormatCurrency(expectedAnnual)}</strong></div>
         </div>
-        <div class="autopsy-final-note">Esta estimación no equivale a recorte de personal. Representa tiempo pagado que puede convertirse en ejecución, ventas, servicio, proyectos críticos o liberación de liderazgo estratégico.</div>`
+        <div class="autopsy-final-note">Esta estimación debe usarse como punto de conversación directiva: identifica magnitud, foco dominante, recuperabilidad y prioridad de intervención. La recuperación real dependerá del rediseño de procesos, trazabilidad, accountability, tecnología y disciplina de seguimiento.</div>`
       );
+      nmAutopsiaScrollToResult('autopsiaCalcResult');
     }
 
     function nmAutopsiaClearRadar() {
