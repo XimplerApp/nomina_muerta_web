@@ -4845,12 +4845,13 @@
 
 
   <script>
-    /* === V16.1: Reto de Autopsia integrado, normalizado y explicado === */
-    const NM_AUTOPSIA_STATE_KEY = 'nm_reto_autopsia_v16_1';
+    /* === V18: Reto de Autopsia integrado, normalizado, con reporte PDF === */
+    const NM_AUTOPSIA_STATE_KEY = 'nm_reto_autopsia_v18_1';
     const NM_AUTOPSIA_STATE = {
       radar: null,
       selectedSymptoms: [],
-      depth: null
+      depth: null,
+      final: null
     };
 
     const NM_AUTOPSIA_WEIGHT_OVERRIDES = {"¿El mismo dato se captura o corrige más de una vez porque el flujo de trabajo quedó abierto o mal cerrado?": 3, "¿Tu equipo repite información constantemente porque los sistemas internos no están integrados?": 3, "¿Se repiten solicitudes entre áreas porque no hay coordinación o visibilidad interna?": 3, "¿Hay personas trabajando en lo mismo sin saber que otros ya lo están haciendo?": 3, "¿Las tareas se trasladan entre áreas sin contexto claro, generando retrabajos o errores?": 3, "¿Se envía el mismo reporte a varios jefes, duplicando tiempo y esfuerzo sin valor agregado?": 2, "¿Reinician tareas porque no quedó registro del previo avance?": 3, "¿Se repiten errores por instrucciones vagas o mal entendidas desde el inicio?": 3, "¿Hay procesos detenidos solo por una firma que podrías automatizar?": 3, "¿Hay tareas críticas detenidas porque dependen de una persona específica y no del sistema?": 4, "¿Pides autorizaciones urgentes por mensajes y correos que luego nadie encuentra?": 3, "¿Hay procesos sustantivos que se congelan esperando validación sin trazabilidad entre áreas?": 4, "¿Se ha normalizado la espera como parte del proceso “natural” del día a día?": 3, "¿El seguimiento a tareas o procesos formales depende de correos o llamadas sin dejar trazabilidad?": 3, "¿No existe una plataforma para saber en tiempo real quién tiene una tarea y en qué estado está?": 3, "¿Se cierran tareas sin validar si el problema, interno o externo, fue resuelto de fondo?": 3, "¿Se da seguimiento a tareas por memoria o intuición, sin sistema visible?": 3, "¿Existen proyectos sin responsabilidad clara y definida en todas sus etapas y acciones?": 4, "¿Das seguimiento por correo a temas urgentes que se entierran en la bandeja?": 3, "¿El equipo manda correos con copia a todos solo para protegerse?": 2, "¿Lo urgente se pierde entre memes y mensajes mezclados en WhatsApp, o cadenas de correos?": 2, "¿Toman decisiones por teléfono que luego nadie documenta ni respalda?": 3, "¿Tu equipo consulta varios medios (correo, chats, notas, agendas…) para priorizar qué debe hacer hoy?": 2, "¿La mayoría de los acuerdos clave se pierden entre conversaciones informales?": 3, "¿Se gestionan temas urgentes por canales informales, sin dejar evidencia operativa?": 2, "¿Constantemente se busca un correo importante durante 10 minutos?": 2, "¿Se comparte el mismo archivo con varias personas, pero nadie asume el compromiso, provocando retrasos?": 4, "¿Se extravían archivos o documentos digitales porque no hay un registro centralizado?": 4, "¿La colaboración entre áreas ocurre más por relaciones personales que por procesos definidos?": 4, "¿Las entregas o respuestas a clientes se retrasan porque los equipos internos no están alineados?": 4, "¿Tu equipo pierde más tiempo buscando información que resolviendo problemas?": 4, "¿El cliente o el colaborador, deben repetir lo mismo varias veces porque la información no fluye entre áreas?": 4, "¿Confías más en preguntar otra vez que en revisar algún sistema o plataforma?": 4, "¿Se llevan a cabo reuniones donde no se asignan responsables ni fechas claras a los acuerdos?": 2, "¿Tienes reuniones de “coordinación” que no coordinan nada y hay que repetirlas?": 3, "¿Continuamente revisan lo mismo en cada reunión porque no hay un seguimiento formal?": 3, "¿Los líderes necesitan supervisar con reuniones constantes porque no hay visibilidad de avance?": 2, "¿Hay tareas que se siguen haciendo solo porque “así se ha hecho siempre”?": 2, "¿Las prioridades cambian sin que el equipo se entere hasta que se cometió un error?": 2, "¿Se sigue destinando tiempo a tareas que ya no aportan valor real al proceso, objetivos o metas?": 2, "¿Estás midiendo cosas que no cambian los resultados clave del negocio?": 2, "¿Has hecho cambios que el equipo no entiende ni aplica correctamente?": 2, "¿Tu equipo no sabe cómo su trabajo impacta los objetivos y metas reales del negocio?": 4, "¿Se toman decisiones operativas sin tener clara la información estratégica?": 2, "¿El equipo pierde tiempo constantemente buscando instrucciones en múltiples canales dispersos cada vez?": 2, "¿Continuamente los equipos saltan de tarea en tarea sin cerrar ni lograr foco?": 2, "¿Se repiten las mismas explicaciones porque no hay un canal unificado?": 2, "¿Tu equipo termina el día agotado pero sin sensación de avance?": 2, "¿Sientes que están ocupados todo el tiempo, pero no sabes si están siendo productivos?": 2, "¿Se toman decisiones importantes con información incompleta, desactualizada o dispersa?": 4, "¿Los líderes piden reportes manuales porque no existe visibilidad en tiempo real?": 4, "¿Se invierte tiempo en preparar información que nadie usa para decidir?": 3, "¿Hay versiones distintas de la verdad entre áreas, reportes o archivos?": 4, "¿Las decisiones se retrasan porque primero hay que reconstruir o validar la información?": 2, "¿Tienen herramientas digitales que el equipo usa parcialmente o de forma inconsistente?": 3, "¿La empresa paga software que no se traduce en mejor seguimiento, trazabilidad o ejecución?": 3, "¿Los colaboradores siguen usando Excel, WhatsApp o correo para procesos que ya deberían estar sistematizados?": 3, "¿La información se captura en un sistema, pero se vuelve a trabajar fuera de él?": 3, "¿La tecnología actual genera más carga administrativa que claridad operativa?": 3, "¿Las tareas se consideran avanzadas aunque nadie haya validado el cierre real?": 4, "¿Hay responsables asignados, pero sin consecuencias claras cuando no se cumple?": 4, "¿Los pendientes cambian de dueño sin que quede claro quién responde al final?": 4, "¿Se reporta actividad, pero no resultado verificable?": 4, "¿Los líderes tienen que perseguir avances porque el sistema no empuja el cierre?": 4, "¿Hay personas saturadas mientras otras tienen capacidad disponible?": 4, "¿Se asignan tareas por urgencia y no por capacidad real?": 4, "¿El equipo dedica tiempo a actividades de bajo valor porque nadie rediseñó la carga?": 2, "¿La empresa no sabe cuántas horas reales se van en coordinación, espera o retrabajo?": 4, "¿Se confunde estar ocupado con estar generando valor?": 2, "¿Se pierden oportunidades comerciales por falta de seguimiento interno?": 4, "¿El cliente espera más por descoordinación interna que por complejidad real del servicio?": 4, "¿Hay promesas comerciales que operación no puede cumplir por falta de visibilidad?": 4, "¿Se retrasan cotizaciones, entregas o respuestas por depender de varias áreas sin dueño claro?": 4, "¿La experiencia del cliente se afecta por problemas internos que nadie mide?": 4};
@@ -4906,6 +4907,7 @@
         if (saved.radar) NM_AUTOPSIA_STATE.radar = saved.radar;
         if (Array.isArray(saved.selectedSymptoms)) NM_AUTOPSIA_STATE.selectedSymptoms = saved.selectedSymptoms;
         if (saved.depth) NM_AUTOPSIA_STATE.depth = saved.depth;
+        if (saved.final) NM_AUTOPSIA_STATE.final = saved.final;
       } catch(e) {}
     }
 
@@ -4970,6 +4972,23 @@
       if (typeof nmMoney === 'function') return nmMoney(value);
       const numeric = String(value || '').replace(/[^0-9]/g, '');
       return numeric ? Number(numeric).toLocaleString('es-MX') : '';
+    }
+
+
+    function nmAutopsiaFormatDateTime(value = new Date()) {
+      const date = value instanceof Date ? value : new Date(value);
+      try {
+        return date.toLocaleString('es-MX', {
+          year: 'numeric', month: '2-digit', day: '2-digit',
+          hour: '2-digit', minute: '2-digit', second: '2-digit'
+        });
+      } catch(e) {
+        return date.toLocaleString();
+      }
+    }
+
+    function nmAutopsiaReportValue(value) {
+      return nmAutopsiaEscape(value === undefined || value === null || value === '' ? '—' : value);
     }
 
     function nmAutopsiaShow(id, html) {
@@ -5208,7 +5227,7 @@
         .sort((a,b) => b.activation - a.activation)
         .map(row => `<tr>
           <td><strong>${nmAutopsiaEscape(row.focus)}</strong></td>
-          <td>${row.activation.toFixed(0)}% activación<br><span class="autopsy-muted-note">${row.selectedWeight} de ${row.totalWeight} puntos del foco</span></td>
+          <td>${row.activation.toFixed(0)}% activación</td>
           <td>${row.selectedCount} de ${row.totalQuestions} síntomas</td>
           <td>${Math.round(row.recoveryFactor * 100)}%</td>
         </tr>`).join('');
@@ -5354,8 +5373,8 @@
 
       const rows = focusRowsData.map(row => `<tr>
         <td><strong>${nmAutopsiaEscape(row.focus)}</strong></td>
-        <td>${row.intensity.toFixed(0)}% gravedad<br><span class="autopsy-muted-note">Intensidad de las respuestas de Autopsia.</span></td>
-        <td>${row.focusPct.toFixed(0)}% NM asociada<br><span class="autopsy-muted-note">No se suma con otros focos; sirve para priorizar.</span></td>
+        <td>${row.intensity.toFixed(0)}% gravedad</td>
+        <td>${row.focusPct.toFixed(0)}% NM asociada</td>
         <td>Preguntas ${row.questions.join(', ')}</td>
       </tr>`).join('');
 
@@ -5410,9 +5429,34 @@
       const optimal = Math.round(nmMonthly * optimalRate);
       const expectedAnnual = expected * 12;
       const source = depth ? `${Math.round(depth.adjustedPct)}% de diagnóstico ajustado` : `${Math.round(pct)}% manual`;
+      const generatedAt = new Date();
+      const generatedAtText = nmAutopsiaFormatDateTime(generatedAt);
+
+      NM_AUTOPSIA_STATE.final = {
+        generatedAt: generatedAt.toISOString(),
+        pct,
+        people,
+        avgSalary: effectiveAvgSalary,
+        payroll,
+        nmMonthly,
+        nmAnnual,
+        equivalentPeople,
+        dominantFocus,
+        recoveryFactor,
+        conservativeRate,
+        expectedRate,
+        optimalRate,
+        conservative,
+        expected,
+        optimal,
+        expectedAnnual,
+        source
+      };
+      nmAutopsiaSave();
 
       nmAutopsiaShow('autopsiaCalcResult',
         `<span class="autopsy-badge teal">Resultado económico final</span>` +
+        `<div class="autopsy-final-note"><strong>Reporte generado:</strong> ${generatedAtText}</div>` +
         `<div class="autopsy-final-grid">
           <div class="autopsy-final-card"><strong>${nmAutopsiaFormatCurrency(nmMonthly)}</strong><span>Nómina Muerta mensual estimada</span></div>
           <div class="autopsy-final-card"><strong>${nmAutopsiaFormatCurrency(nmAnnual)}</strong><span>Nómina Muerta anual estimada</span></div>
@@ -5428,16 +5472,170 @@
           <div class="scenario-row"><span>Recuperación óptima (${Math.round(optimalRate * 100)}%)</span><div class="scenario-bar optimal"><span style="width:${Math.round(optimalRate * 100)}%"></span></div><strong>${nmAutopsiaFormatCurrency(optimal)}/mes</strong></div>
           <div class="scenario-row"><span><strong>Anual esperada (${Math.round(expectedRate * 100)}%)</strong></span><div class="scenario-bar annual"><span style="width:${Math.round(expectedRate * 100)}%"></span></div><strong>${nmAutopsiaFormatCurrency(expectedAnnual)}</strong></div>
         </div>` +
-        `<div class="autopsy-final-note">Esta estimación debe usarse como punto de conversación directiva: identifica magnitud, foco dominante, recuperabilidad y prioridad de intervención. La recuperación real dependerá del rediseño de procesos, trazabilidad, accountability, tecnología y disciplina de seguimiento.</div>`
+        `<div class="autopsy-final-note">Esta estimación debe usarse como punto de conversación directiva: identifica magnitud, foco dominante, recuperabilidad y prioridad de intervención. La recuperación real dependerá del rediseño de procesos, trazabilidad, accountability, tecnología y disciplina de seguimiento.</div>` +
+        `<div class="utility-actions"><button class="btn btn-primary" type="button" onclick="nmAutopsiaExportPDF()">Exportar PDF del reporte</button></div>`
       );
       nmAutopsiaScrollToResult('autopsiaCalcResult');
     }
+
+    function nmAutopsiaBuildReportHTML() {
+      const radar = NM_AUTOPSIA_STATE.radar || {};
+      const depth = NM_AUTOPSIA_STATE.depth || {};
+      const final = NM_AUTOPSIA_STATE.final || null;
+      if (!final) return '';
+
+      const generated = nmAutopsiaFormatDateTime(final.generatedAt || new Date());
+      const selected = Array.isArray(NM_AUTOPSIA_STATE.selectedSymptoms) ? NM_AUTOPSIA_STATE.selectedSymptoms : [];
+      const selectedRows = selected.map((item, index) => `
+        <tr>
+          <td>${index + 1}</td>
+          <td>${nmAutopsiaReportValue(item.focus)}</td>
+          <td>${nmAutopsiaReportValue(item.question)}</td>
+          <td>${nmAutopsiaReportValue(item.weight)}</td>
+        </tr>
+      `).join('');
+
+      const focusRows = Array.isArray(depth.focusRows) ? depth.focusRows.map(row => `
+        <tr>
+          <td>${nmAutopsiaReportValue(row.focus)}</td>
+          <td>${Math.round(row.intensity || 0)}%</td>
+          <td>${Math.round(row.focusPct || 0)}%</td>
+          <td>${Math.round((row.recoveryFactor || 0) * 100)}%</td>
+          <td>${Array.isArray(row.questions) ? row.questions.join(', ') : '—'}</td>
+        </tr>
+      `).join('') : '';
+
+      const activeStats = Array.isArray(radar.activeStats) ? radar.activeStats : [];
+      const radarRows = activeStats.map(row => `
+        <tr>
+          <td>${nmAutopsiaReportValue(row.focus)}</td>
+          <td>${Math.round(row.activation || 0)}%</td>
+          <td>${row.selectedCount || 0} de ${row.totalQuestions || 0}</td>
+          <td>${Math.round((row.recoveryFactor || 0) * 100)}%</td>
+        </tr>
+      `).join('');
+
+      return `<!doctype html>
+<html lang="es-MX">
+<head>
+<meta charset="utf-8">
+<title>Reporte Reto de Autopsia - Nómina Muerta</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: Arial, Helvetica, sans-serif; color: #111b21; margin: 0; padding: 28px; background: #fff; line-height: 1.45; }
+  .report { max-width: 980px; margin: 0 auto; }
+  .cover { border-radius: 24px; padding: 28px; color: #f3f0e7; background: linear-gradient(135deg, #102a35, #0b1f28); margin-bottom: 22px; }
+  .cover .eyebrow { color: #d6b56d; font-weight: 800; text-transform: uppercase; letter-spacing: .14em; font-size: 12px; }
+  h1 { margin: 10px 0 8px; font-size: 34px; line-height: 1.05; }
+  h2 { color: #102a35; margin: 26px 0 10px; font-size: 22px; }
+  .meta { color: rgba(243,240,231,.78); font-size: 14px; }
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 14px 0; }
+  .card { border: 1px solid #dce2e4; border-radius: 16px; padding: 14px; background: #fbfaf5; }
+  .card strong { display: block; color: #102a35; font-size: 20px; margin-bottom: 4px; }
+  .card span { color: #526168; font-size: 13px; font-weight: 700; }
+  table { width: 100%; border-collapse: collapse; margin: 12px 0 20px; font-size: 13px; }
+  th, td { border: 1px solid #dce2e4; padding: 9px 10px; text-align: left; vertical-align: top; }
+  th { background: #edf1f2; color: #102a35; font-size: 11px; text-transform: uppercase; letter-spacing: .06em; }
+  .note { border-left: 5px solid #1f6170; background: #f2f6f7; padding: 12px 14px; border-radius: 10px; margin: 16px 0; color: #31444c; }
+  .footer { margin-top: 26px; padding-top: 14px; border-top: 1px solid #dce2e4; color: #62727a; font-size: 12px; }
+  @media print {
+    body { padding: 0; }
+    .report { max-width: none; }
+    .cover, .card, .note { break-inside: avoid; }
+    table { break-inside: auto; }
+    tr { break-inside: avoid; break-after: auto; }
+  }
+</style>
+</head>
+<body>
+  <div class="report">
+    <div class="cover">
+      <div class="eyebrow">Nómina Muerta · Reto de Autopsia</div>
+      <h1>Reporte de Riesgo, Autopsia y Recuperación Económica</h1>
+      <div class="meta">Generado el ${generated}</div>
+    </div>
+
+    <h2>Resumen ejecutivo</h2>
+    <div class="grid">
+      <div class="card"><strong>${nmAutopsiaReportValue(depth.levelLabel || '—')}</strong><span>Nivel de urgencia</span></div>
+      <div class="card"><strong>${Math.round(depth.adjustedPct || final.pct)}%</strong><span>% Nómina Muerta ajustada</span></div>
+      <div class="card"><strong>${nmAutopsiaReportValue(depth.focus || final.dominantFocus)}</strong><span>Foco dominante</span></div>
+      <div class="card"><strong>${nmAutopsiaFormatCurrency(final.nmMonthly)}</strong><span>Nómina Muerta mensual</span></div>
+      <div class="card"><strong>${nmAutopsiaFormatCurrency(final.nmAnnual)}</strong><span>Nómina Muerta anual</span></div>
+      <div class="card"><strong>${final.equivalentPeople} personas</strong><span>Equivalente de capacidad no aprovechada</span></div>
+    </div>
+
+    <div class="note"><strong>Lectura correcta:</strong> el equivalente en personas no significa recorte de talento. Significa capacidad pagada atrapada en retrabajo, espera, mala coordinación, saturación, tecnología mal usada o falta de cierre.</div>
+
+    <h2>Datos económicos usados</h2>
+    <table>
+      <tbody>
+        <tr><th>Fuente del porcentaje</th><td>${nmAutopsiaReportValue(final.source)}</td></tr>
+        <tr><th>Personas evaluadas</th><td>${nmAutopsiaReportValue(final.people)}</td></tr>
+        <tr><th>Nómina mensual base</th><td>${nmAutopsiaFormatCurrency(final.payroll)}</td></tr>
+        <tr><th>Sueldo mensual promedio usado</th><td>${nmAutopsiaFormatCurrency(final.avgSalary)}</td></tr>
+        <tr><th>Recuperabilidad base del foco dominante</th><td>${Math.round((final.recoveryFactor || 0) * 100)}%</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Escenarios de recuperación</h2>
+    <table>
+      <thead><tr><th>Escenario</th><th>Tasa aplicada</th><th>Recuperación mensual estimada</th><th>Recuperación anual estimada</th></tr></thead>
+      <tbody>
+        <tr><td>Conservador</td><td>${Math.round((final.conservativeRate || 0) * 100)}%</td><td>${nmAutopsiaFormatCurrency(final.conservative)}</td><td>${nmAutopsiaFormatCurrency((final.conservative || 0) * 12)}</td></tr>
+        <tr><td>Esperado</td><td>${Math.round((final.expectedRate || 0) * 100)}%</td><td>${nmAutopsiaFormatCurrency(final.expected)}</td><td>${nmAutopsiaFormatCurrency(final.expectedAnnual)}</td></tr>
+        <tr><td>Óptimo</td><td>${Math.round((final.optimalRate || 0) * 100)}%</td><td>${nmAutopsiaFormatCurrency(final.optimal)}</td><td>${nmAutopsiaFormatCurrency((final.optimal || 0) * 12)}</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Radar inicial de riesgo</h2>
+    <div class="grid">
+      <div class="card"><strong>${Math.round(radar.riskScore || 0)} / 100</strong><span>Índice del Radar</span></div>
+      <div class="card"><strong>${nmAutopsiaReportValue(radar.levelLabel || '—')}</strong><span>Nivel inicial</span></div>
+      <div class="card"><strong>${selected.length}</strong><span>Síntomas marcados</span></div>
+    </div>
+    ${radarRows ? `<table><thead><tr><th>Foco activo</th><th>Activación</th><th>Síntomas</th><th>Recuperabilidad</th></tr></thead><tbody>${radarRows}</tbody></table>` : '<p>No hay detalle de radar guardado.</p>'}
+
+    <h2>Autopsia por foco</h2>
+    ${focusRows ? `<table><thead><tr><th>Foco</th><th>Gravedad</th><th>% NM asociado</th><th>Recuperabilidad</th><th>Preguntas evaluadas</th></tr></thead><tbody>${focusRows}</tbody></table>` : '<p>No hay detalle de autopsia guardado.</p>'}
+
+    <h2>Síntomas seleccionados</h2>
+    ${selectedRows ? `<table><thead><tr><th>#</th><th>Foco</th><th>Síntoma</th><th>Peso</th></tr></thead><tbody>${selectedRows}</tbody></table>` : '<p>No hay síntomas seleccionados guardados.</p>'}
+
+    <div class="footer">Reporte generado desde la página oficial de Nómina Muerta. Esta estimación es una herramienta de conversación directiva y priorización; no sustituye una auditoría operativa profunda.</div>
+  </div>
+</body>
+</html>`;
+    }
+
+    function nmAutopsiaExportPDF() {
+      if (!NM_AUTOPSIA_STATE.final) {
+        nmAutopsiaShow('autopsiaCalcResult', '<div class="integrated-note">⚠️ Primero ejecuta el cálculo final para generar el reporte PDF.</div>');
+        nmAutopsiaScrollToResult('autopsiaCalcResult');
+        return;
+      }
+      const reportHTML = nmAutopsiaBuildReportHTML();
+      const printWindow = window.open('', '_blank', 'noopener,noreferrer,width=980,height=720');
+      if (!printWindow) {
+        alert('No se pudo abrir la ventana de exportación. Permite ventanas emergentes para generar el PDF.');
+        return;
+      }
+      printWindow.document.open();
+      printWindow.document.write(reportHTML);
+      printWindow.document.close();
+      printWindow.focus();
+      setTimeout(() => {
+        printWindow.print();
+      }, 450);
+    }
+
 
     function nmAutopsiaClearRadar() {
       document.querySelectorAll('.nm-autopsia-radar-check').forEach(cb => cb.checked = false);
       NM_AUTOPSIA_STATE.radar = null;
       NM_AUTOPSIA_STATE.selectedSymptoms = [];
       NM_AUTOPSIA_STATE.depth = null;
+      NM_AUTOPSIA_STATE.final = null;
       nmAutopsiaSave();
       nmAutopsiaHide('autopsiaRadarResult');
       nmAutopsiaHide('autopsiaDepthResult');
@@ -5451,6 +5649,7 @@
       document.querySelectorAll('input[name^="autopsiaDepthQ"]').forEach(input => input.checked = false);
       document.querySelectorAll('.autopsy-depth-question').forEach(q => q.classList.remove('missing'));
       NM_AUTOPSIA_STATE.depth = null;
+      NM_AUTOPSIA_STATE.final = null;
       nmAutopsiaSave();
       nmAutopsiaHide('autopsiaDepthResult');
       nmAutopsiaHide('autopsiaCalcResult');
@@ -5517,6 +5716,8 @@
           if (people) people.value = '20';
           if (salary) salary.value = '15,000';
           if (total) total.value = '';
+          NM_AUTOPSIA_STATE.final = null;
+          nmAutopsiaSave();
           nmAutopsiaHide('autopsiaCalcResult');
         });
         resetBtn.dataset.autopsyBoundClick = '1';
