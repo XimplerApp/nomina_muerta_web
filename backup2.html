@@ -202,7 +202,7 @@
       min-height: 148px;
       border: 1px solid rgba(255,255,255,.45);
     }
-    .metric strong { display: block; color: var(--navy); font-size: clamp(32px, 4vw, 52px); line-height: 1; letter-spacing: -.04em; }
+    .metric strong { display: block; color: var(--navy); font-size: clamp(28px, 3.1vw, 42px); line-height: .96; letter-spacing: -.055em; white-space: nowrap; }
     .metric span { color: var(--muted); display: block; margin-top: 10px; font-weight: 700; }
 
     section { padding: 92px 0; }
@@ -498,6 +498,7 @@
       .hero-actions { flex-direction: column; }
       section { padding: 64px 0; }
       .metric, .card, .panel-side, .panel-main, .form-card, .review-card { padding: 22px; }
+      .metric strong { font-size: clamp(26px, 8.2vw, 34px); letter-spacing: -.06em; }
       .reto-grid { grid-template-columns: 1fr; }
       .author-box { min-height: 390px; }
       .silhouette { transform: scale(.8); }
@@ -2910,6 +2911,86 @@
       font-weight: 750;
     }
 
+
+
+    /* === V17: Mapa de Lectura como subpágina independiente === */
+    .mapa-subpage {
+      padding-top: 84px;
+      background:
+        radial-gradient(circle at 10% 5%, rgba(31,97,112,.09), transparent 25rem),
+        linear-gradient(180deg, rgba(251,250,245,.98), rgba(243,240,231,.82));
+    }
+    .mapa-hero-panel {
+      margin-bottom: 24px;
+    }
+    .mapa-definition-card::after {
+      content: "MAPA";
+      right: 20px;
+      bottom: -36px;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: clamp(80px, 11vw, 170px);
+      font-weight: 950;
+      letter-spacing: -.08em;
+    }
+    .mapa-definition-card h3 {
+      max-width: 860px;
+    }
+    .mapa-quick-nav {
+      margin-top: 26px;
+    }
+    .mapa-proof-card {
+      min-height: 100%;
+    }
+    .mapa-proof-metrics .nm-proof-metric strong {
+      font-size: clamp(30px, 3.5vw, 48px);
+    }
+    .mapa-question-strip {
+      margin-bottom: 24px;
+    }
+    .chapter-map-panel {
+      border-radius: var(--radius-xl);
+      background:
+        radial-gradient(circle at top right, rgba(214,181,109,.12), transparent 24rem),
+        rgba(251,250,245,.92);
+      border: 1px solid var(--line);
+      box-shadow: 0 26px 70px rgba(16,42,53,.10);
+      padding: clamp(22px, 3vw, 34px);
+      overflow: hidden;
+    }
+    .chapter-map-panel .section-head {
+      margin-bottom: 26px;
+    }
+    .mapa-section-head {
+      align-items: center;
+    }
+    .mapa-subpage .chapter-explorer {
+      background: rgba(255,255,255,.62);
+      box-shadow: none;
+    }
+    .mapa-subpage .chapter-tabbar {
+      background: rgba(16,42,53,.065);
+    }
+    .mapa-subpage .chapter-card {
+      background: rgba(255,255,255,.78);
+    }
+    .mapa-subpage .chapter-cta {
+      margin-top: 22px;
+    }
+    @media (max-width: 980px) {
+      .mapa-subpage {
+        padding-top: 64px;
+      }
+    }
+    @media (max-width: 620px) {
+      .mapa-subpage .subpage-nav .btn {
+        width: 100%;
+      }
+      .chapter-map-panel {
+        border-radius: 24px;
+        padding: 18px;
+      }
+    }
+
 </style>
 </head>
 <body>
@@ -2922,6 +3003,7 @@
       </a>
       <nav class="nav-links" aria-label="Navegación principal">
         <a href="#concepto">Concepto</a>
+        <a href="#/mapa">Mapa</a>
         <a href="#/reto-autopsia">Reto de Autopsia</a>
         <a href="#/viva-la-nomina">Conferencias</a>
         <a href="#/consultoria-copiloto">Consultoría</a>
@@ -2940,9 +3022,6 @@
           <p class="subtitle">La pérdida que debes capitalizar… antes de que esta también te sepulte.</p>
           <p class="hero-copy">Una lectura directa, reveladora y necesaria para líderes que se atreven a mirar lo que otros prefieren ignorar: el tiempo pagado que no se convierte en avance, cierre ni valor real.</p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="https://wa.me/526671450096" target="_blank" rel="noopener">Contacto</a>
-            <a class="btn btn-outline" href="#recomendaciones">Leer recomendaciones</a>
-            <a class="btn btn-outline" href="#/viva-la-nomina">Conferencias para empresas</a>
           </div>
         </div>
         <div class="book-card" aria-label="Portada del libro Nómina Muerta">
@@ -3001,7 +3080,7 @@
         <div class="nm-concept-hero-panel">
           <div class="nm-definition-card">
             <div class="kicker">Definición operativa</div>
-            <h3>No es flojera. No es falta de talento. Es inversión sin retorno real.</h3>
+            <h3>No es flojera. No es falta de talento. Es falla en el diseño operativo.</h3>
             <p>Una empresa puede estar llena de movimiento y vacía de avance: correos que no resuelven, juntas que no cierran, tareas que se duplican, aprobaciones que se atoran, líderes que persiguen pendientes y talento estratégico usado para apagar fuegos. Todo parece trabajo. Pero no todo produce valor.</p>
             <p><strong>Ese tramo invisible entre parecer estar ocupado y realmente avanzar es la Nómina Muerta.</strong></p>
           </div>
@@ -3012,8 +3091,8 @@
               <p>Pagar la nómina es una transferencia bancaria. Capitalizar la nómina es el retorno real de ese tiempo: decisiones tomadas, compromisos cumplidos, proyectos cerrados, clientes atendidos, valor generado, etc.</p>
             </div>
             <div class="nm-proof-metrics">
-              <div class="nm-proof-metric"><strong> 30% a 40%</strong><span>del tiempo no se aprovecha</span></div>
-              <div class="nm-proof-metric"><strong> 2 a 3 horas</strong><span>al día no se avanza</span></div>
+              <div class="nm-proof-metric"><strong> 30 a 40%</strong><span>del tiempo no se aprovecha</span></div>
+              <div class="nm-proof-metric"><strong> 2 a 3 horas</strong><span>al día no sucede nada</span></div>
               <div class="nm-proof-metric"><strong> 4 de 12</strong><span>meses se desperdician al año</span></div>
             </div>
           </div>
@@ -3070,7 +3149,7 @@
             <thead><tr><th>Escenario</th><th>Cada 100 personas</th><th>Lectura ejecutiva</th></tr></thead>
             <tbody>
               <tr><td>Conservador</td><td>$200,000–$300,000 MXN/mes</td><td>Aun con baja improductividad, la fuga anual puede superar siete cifras.</td></tr>
-              <tr><td>Promedio crítico</td><td>≈ $550,000 MXN/mes</td><td>Medio millón mensual puede estar escondido en operación sin cierre.</td></tr>
+              <tr><td>Promedio</td><td>≈ $550,000 MXN/mes</td><td>Medio millón mensual puede estar escondido en operación sin cierre.</td></tr>
               <tr><td>Alto desgaste</td><td>$750,000+ MXN/mes</td><td>Cuando hay burocracia, retrabajo y baja trazabilidad, la pérdida escala rápido.</td></tr>
             </tbody>
           </table>
@@ -3141,82 +3220,7 @@
 
 
 
-    <section id="capitulos" class="chapter-tabs-section">
-      <div class="wrap">
-        <div class="section-head">
-          <div>
-            <div class="kicker">Mapa de lectura</div>
-            <h2>Una mirada breve por capítulo para despertar la conversación.</h2>
-          </div>
-        </div>
-
-        <div class="chapter-explorer" data-chapter-tabs>
-          <div class="chapter-tabbar" role="tablist" aria-label="Bloques del libro Nómina Muerta">
-            <button class="chapter-tab active" type="button" data-chapter-tab="bloque1">Bloque I · Problema invisible</button>
-            <button class="chapter-tab" type="button" data-chapter-tab="bloque2">Bloque II · Impacto oculto</button>
-            <button class="chapter-tab" type="button" data-chapter-tab="bloque3">Bloque III · Transformación</button>
-            <button class="chapter-tab" type="button" data-chapter-tab="bloque4">Bloque IV · Radiografía</button>
-          </div>
-
-          <div class="chapter-panel active" id="bloque1" role="tabpanel">
-            <div class="chapter-panel-head">
-              <h3>Bloque I — El problema invisible</h3>
-              <p>Presenta el concepto, sus síntomas y las raíces culturales que lo vuelven tan difícil de ver.</p>
-            </div>
-            <div class="chapter-grid">
-              <article class="chapter-card"><span class="chapter-no">Capítulo I</span><h4>¿Qué es la Nómina Muerta?</h4><p class="teaser">Define la pérdida silenciosa que ocurre cuando el tiempo pagado no se convierte en avance real. El capítulo instala la pregunta incómoda: ¿cuánto de tu nómina se mueve, pero no progresa?</p><div class="chapter-points"><span>Ocupación vs. productividad</span><span>Tiempo pagado sin retorno</span><span>No es explotación</span></div></article>
-              <article class="chapter-card"><span class="chapter-no">Capítulo II</span><h4>La epidemia del siglo XXI</h4><p class="teaser">Expone a las empresas llenas de juntas, correos y urgencias que aparentan ritmo, pero no necesariamente generan valor. Una crítica directa a la hiperactividad improductiva.</p><div class="chapter-points"><span>Urgencia permanente</span><span>Actividad vacía</span><span>Foco perdido</span></div></article>
-              <article class="chapter-card"><span class="chapter-no">Capítulo III</span><h4>Raíces de la Nómina Muerta</h4><p class="teaser">Rastrea cómo los sistemas heredados, la fragmentación comunicacional y la falta de accountability crean organizaciones que trabajan mucho, pero cierran poco.</p><div class="chapter-points"><span>Sistemas heredados</span><span>Fragmentación</span><span>Accountability invisible</span></div></article>
-              <article class="chapter-card"><span class="chapter-no">Capítulo IV</span><h4>El enemigo en la cultura</h4><p class="teaser">Muestra cómo la mentalidad de control, el presentismo y ciertas herencias organizacionales siguen dictando decisiones que ya no sirven para competir.</p><div class="chapter-points"><span>Control vs. impacto</span><span>Ocupación como escudo</span><span>Herencias obsoletas</span></div></article>
-            </div>
-          </div>
-
-          <div class="chapter-panel" id="bloque2" role="tabpanel">
-            <div class="chapter-panel-head">
-              <h3>Bloque II — El impacto que nadie cuantifica</h3>
-              <p>Convierte el problema en costo: financiero, estratégico, humano y competitivo.</p>
-            </div>
-            <div class="chapter-grid">
-              <article class="chapter-card"><span class="chapter-no">Capítulo V</span><h4>El costo oculto de la inacción</h4><p class="teaser">Plantea que no hacer nada también cuesta. Cada tarea inconclusa, decisión postergada y talento subutilizado se convierte en una fuga que la empresa paga sin verla.</p><div class="chapter-points"><span>Inacción costosa</span><span>Tareas sin cierre</span><span>Talento mal usado</span></div></article>
-              <article class="chapter-card"><span class="chapter-no">Capítulo VI</span><h4>Lo que no se mide, sí te cuesta</h4><p class="teaser">Contrasta la nómina pagada con la nómina útil y reta la comodidad de medir solo lo visible. El capítulo invita a construir evidencia operacional.</p><div class="chapter-points"><span>Nómina útil</span><span>Costo de oportunidad</span><span>Evidencia operacional</span></div></article>
-              <article class="chapter-card"><span class="chapter-no">Capítulo VII</span><h4>El costo humano de la Nómina Muerta</h4><p class="teaser">Explora el desgaste emocional que se genera cuando las personas se esfuerzan sin ver impacto: burnout, cinismo, autoestima profesional erosionada y renuncias silenciosas.</p><div class="chapter-points"><span>Burnout</span><span>Deserción emocional</span><span>Renuncias silenciosas</span></div></article>
-              <article class="chapter-card"><span class="chapter-no">Capítulo VIII</span><h4>La economía de la Nómina Muerta</h4><p class="teaser">Eleva el tema a competitividad, sostenibilidad y futuro. No basta crecer si la estructura que sostiene ese crecimiento está llena de desperdicio invisible.</p><div class="chapter-points"><span>Competitividad</span><span>Sostenibilidad</span><span>Futuro organizacional</span></div></article>
-            </div>
-          </div>
-
-          <div class="chapter-panel" id="bloque3" role="tabpanel">
-            <div class="chapter-panel-head">
-              <h3>Bloque III — Transformación y soluciones</h3>
-              <p>Presenta decisiones concretas para pasar de la denuncia del problema al rediseño del trabajo.</p>
-            </div>
-            <div class="chapter-grid">
-              <article class="chapter-card"><span class="chapter-no">Capítulo IX</span><h4>Romper el ciclo</h4><p class="teaser">Propone las primeras decisiones para recuperar control: nombrar el problema, crear visibilidad, cambiar el lenguaje operativo y hacer del cierre un hábito.</p><div class="chapter-points"><span>Visibilidad compartida</span><span>Cultura de cierre</span><span>Foco quirúrgico</span></div></article>
-              <article class="chapter-card"><span class="chapter-no">Capítulo X</span><h4>Trabajo enfocado</h4><p class="teaser">Presenta el enfoque como antídoto contra la dispersión. El trabajo valioso no se mide por cantidad de tareas, sino por impacto y cierre.</p><div class="chapter-points"><span>Menos dispersión</span><span>Más impacto</span><span>Disciplina con intención</span></div></article>
-              <article class="chapter-card"><span class="chapter-no">Capítulo XI</span><h4>Digitaliza tu empresa</h4><p class="teaser">Explica por qué digitalizar no es sumar apps, sino rediseñar la operación para recuperar tiempo, energía y resultados con herramientas bien elegidas.</p><div class="chapter-points"><span>Kanban adecuado</span><span>Automatización simple</span><span>Monitoreo inteligente</span></div></article>
-              <article class="chapter-card"><span class="chapter-no">Capítulo XII</span><h4>Operación esbelta y ejecución ágil</h4><p class="teaser">Traduce principios Lean y Agile a la realidad ejecutiva: limitar trabajo en curso, asignar por capacidad y crear ritmo sin vivir en urgencia.</p><div class="chapter-points"><span>WIP controlado</span><span>Pull, no push</span><span>Cadencias sanas</span></div></article>
-              <article class="chapter-card"><span class="chapter-no">Capítulo XIII</span><h4>Casos de transformación real</h4><p class="teaser">Muestra que la Nómina Muerta no solo se puede detectar: también se puede revertir. Los casos funcionan como prueba de posibilidad y conversación directiva.</p><div class="chapter-points"><span>Casos reales</span><span>Mejora continua</span><span>Transformación medible</span></div></article>
-            </div>
-          </div>
-
-          <div class="chapter-panel" id="bloque4" role="tabpanel">
-            <div class="chapter-panel-head">
-              <h3>Bloque IV — Radiografía</h3>
-              <p>Cierra con medición, diagnóstico y una mirada al sector público, donde la ineficiencia también la paga el ciudadano.</p>
-            </div>
-            <div class="chapter-grid">
-              <article class="chapter-card"><span class="chapter-no">Capítulo XIV</span><h4>El verdadero costo</h4><p class="teaser">Aterriza la cuantificación financiera de la Nómina Muerta. El lector encuentra métricas iniciales para estimar lo que antes parecía imposible de medir.</p><div class="chapter-points"><span>Fórmulas iniciales</span><span>Indicadores</span><span>Diagnóstico económico</span></div></article>
-              <article class="chapter-card"><span class="chapter-no">Capítulo XV</span><h4>Nómina Muerta en el gobierno</h4><p class="teaser">Lleva el concepto al sector público: trámites lentos, burocracia, cuellos de botella y tiempo institucional mal utilizado que termina afectando al ciudadano. Incluye una Autopsia Operativa para diagnosticar dónde se pierde velocidad, trazabilidad y capacidad de gestión.</p><div class="chapter-points"><span>IXEP</span><span>Costo social</span><span>Eficiencia pública</span><span>Autopsia operativa</span></div></article>
-              <article class="chapter-card wide"><span class="chapter-no">Modelos de diagnóstico</span><h4>Autopsia Operativa: indicadores y métricas</h4><p class="teaser">Una caja de herramientas ejecutiva para detectar fricción, lentitud, autorizaciones innecesarias, falta de seguimiento y pérdida de trazabilidad. No revela todo el método, pero muestra el tipo de medición que el lector encontrará para convertir intuiciones en evidencia.</p><div class="chapter-points metric-chips"><span>Índice de Velocidad de Ejecución de Proyectos</span><span>Índice de Cuellos de Botella</span><span>Auditoría de Flujo de Trabajo</span><span>Matriz de Toma de Decisiones</span><span>Matriz de Firmas y Autorizaciones</span><span>Matriz de Automatización Potencial</span><span>Índice de Rastreabilidad Operativa</span><span>Índice de Seguimiento y Supervisión Activa</span><span>Índice de Cumplimiento Global de Minutas</span><span>Índice de Productividad Individual</span><span>Índice de Gestión Operativa por área / individual</span></div></article>
-              <article class="chapter-card"><span class="chapter-no">Epílogo</span><h4>Carta al líder</h4><p class="teaser">Un cierre provocador para quien dirige: la pregunta ya no es si existe pérdida invisible, sino qué tan dispuesto está el líder a dejar de financiarla.</p><div class="chapter-points"><span>Decisión</span><span>Responsabilidad</span><span>Acción</span></div></article>
-            </div>
-          </div>
-        </div>
-        <div class="chapter-cta">
-          <div><strong>CARPE DIEM: OPERA.OPTIMIZA.LIDERA.</strong></div>
-          <a class="btn btn-light" href="https://www.amazon.com.mx/N%C3%B3mina-Muerta-p%C3%A9rdida-capitalizar-sepulte/dp/B0FCC9TLRM/ref=sr_1_1?crid=36Q4FTI8QAIPO&dib=eyJ2IjoiMSJ9.jeZzbPCzxWGI8uNZBU_ScOBux1AnAd-oMfUVvGxOIyNsbIgNNo7Qxjr6Ty346Lm_m95Ih3F7jma0XL8zz_HkUGyzzi-e6tfHa5XA_wxj1K0oNMcRUMmJ3NLf4rdADwD6P-TR8sdVIvs2ybw2XHFzlL4K1QLf3iVrnTveFDbSNGyqxLz_77XfUOBilfozOow0.mISqZCqIAd8oH-NFYLKAfgNlEWUuTWzTaJHuLFG3FQM&dib_tag=se&keywords=nomina+muerta&qid=1780362284&sprefix=nomina+muerta%2Caps%2C177&sr=8-1&ufe=app_do%3Aamzn1.fos.de93fa6a-174c-4df7-be7c-5bc8e9c5a71b" target="_blank" rel="noopener">Comprar el libro</a>
-        </div>
-      </div>
-    </section>
+    
 
     <section id="recomendaciones" class="recommendations">
       <div class="wrap">
@@ -3404,6 +3408,115 @@
 
 
   <main id="singleIndexPages" class="single-index-pages" aria-live="polite">
+
+    <section id="mapa" class="tool-subpage mapa-subpage nm-concept-section" data-page-route="mapa">
+      <div class="wrap">
+        <div class="nm-concept-hero-panel mapa-hero-panel">
+          <div class="nm-definition-card mapa-definition-card">
+            <div class="kicker">Mapa de lectura</div>
+            <h3>Una ruta ejecutiva para leer, entender y conversar Nómina Muerta.</h3>
+            <p>Esta subpágina separa el mapa del concepto principal para que el lector pueda explorar la estructura del libro con claridad: bloques, capítulos, ideas clave y puntos de conversación para líderes.</p>
+            <div class="subpage-nav mapa-quick-nav">
+              <a class="btn btn-outline" href="#bloque1">Bloque I</a>
+              <a class="btn btn-outline" href="#bloque2">Bloque II</a>
+              <a class="btn btn-outline" href="#bloque3">Bloque III</a>
+              <a class="btn btn-outline" href="#bloque4">Bloque IV</a>
+            </div>
+          </div>
+          <div class="nm-proof-card mapa-proof-card">
+            <h3>Lectura con intención, no solo por capítulos.</h3>
+            <p>El mapa está diseñado para provocar interés sin entregar todo el contenido. Funciona como guía de navegación editorial, herramienta comercial y puente hacia conferencias, consultoría o compra del libro.</p>
+            <div class="nm-proof-metrics mapa-proof-metrics">
+              <div class="nm-proof-metric"><strong>4</strong><span>Bloques narrativos</span></div>
+              <div class="nm-proof-metric"><strong>15</strong><span>Capítulos ejecutivos</span></div>
+              <div class="nm-proof-metric"><strong>1</strong><span>Carta final al líder</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="nm-questions-strip mapa-question-strip" aria-label="Usos del mapa de lectura">
+          <div class="nm-question"><small>Para lectores</small>Ubica rápidamente por dónde entrar al libro según el dolor operativo que más les interese.</div>
+          <div class="nm-question"><small>Para líderes</small>Convierte cada bloque en una conversación directiva sobre tiempo, costo, cultura y ejecución.</div>
+          <div class="nm-question"><small>Para venta</small>Sirve como teaser editorial para generar curiosidad sin regalar el contenido completo.</div>
+        </div>
+
+        <div class="chapter-map-panel">
+<div class="section-head mapa-section-head">
+          <div>
+            <div class="kicker">Mapa de lectura</div>
+            <h2>Explora el libro por bloques, capítulos y puntos de conversación.</h2>
+          </div>
+          <p class="lead">Una ruta visual para que el lector entienda la progresión del libro sin revelar demasiado: primero el problema, después el costo, luego la transformación y finalmente la radiografía operativa.</p>
+        </div>
+
+        <div class="chapter-explorer" data-chapter-tabs>
+          <div class="chapter-tabbar" role="tablist" aria-label="Bloques del libro Nómina Muerta">
+            <button class="chapter-tab active" type="button" data-chapter-tab="bloque1">Bloque I · Problema invisible</button>
+            <button class="chapter-tab" type="button" data-chapter-tab="bloque2">Bloque II · Impacto oculto</button>
+            <button class="chapter-tab" type="button" data-chapter-tab="bloque3">Bloque III · Transformación</button>
+            <button class="chapter-tab" type="button" data-chapter-tab="bloque4">Bloque IV · Radiografía</button>
+          </div>
+
+          <div class="chapter-panel active" id="bloque1" role="tabpanel">
+            <div class="chapter-panel-head">
+              <h3>Bloque I — El problema invisible</h3>
+              <p>Presenta el concepto, sus síntomas y las raíces culturales que lo vuelven tan difícil de ver.</p>
+            </div>
+            <div class="chapter-grid">
+              <article class="chapter-card"><span class="chapter-no">Capítulo I</span><h4>¿Qué es la Nómina Muerta?</h4><p class="teaser">Define la pérdida silenciosa que ocurre cuando el tiempo pagado no se convierte en avance real. El capítulo instala la pregunta incómoda: ¿cuánto de tu nómina se mueve, pero no progresa?</p><div class="chapter-points"><span>Ocupación vs. productividad</span><span>Tiempo pagado sin retorno</span><span>No es explotación</span></div></article>
+              <article class="chapter-card"><span class="chapter-no">Capítulo II</span><h4>La epidemia del siglo XXI</h4><p class="teaser">Expone a las empresas llenas de juntas, correos y urgencias que aparentan ritmo, pero no necesariamente generan valor. Una crítica directa a la hiperactividad improductiva.</p><div class="chapter-points"><span>Urgencia permanente</span><span>Actividad vacía</span><span>Foco perdido</span></div></article>
+              <article class="chapter-card"><span class="chapter-no">Capítulo III</span><h4>Raíces de la Nómina Muerta</h4><p class="teaser">Rastrea cómo los sistemas heredados, la fragmentación comunicacional y la falta de accountability crean organizaciones que trabajan mucho, pero cierran poco.</p><div class="chapter-points"><span>Sistemas heredados</span><span>Fragmentación</span><span>Accountability invisible</span></div></article>
+              <article class="chapter-card"><span class="chapter-no">Capítulo IV</span><h4>El enemigo en la cultura</h4><p class="teaser">Muestra cómo la mentalidad de control, el presentismo y ciertas herencias organizacionales siguen dictando decisiones que ya no sirven para competir.</p><div class="chapter-points"><span>Control vs. impacto</span><span>Ocupación como escudo</span><span>Herencias obsoletas</span></div></article>
+            </div>
+          </div>
+
+          <div class="chapter-panel" id="bloque2" role="tabpanel">
+            <div class="chapter-panel-head">
+              <h3>Bloque II — El impacto que nadie cuantifica</h3>
+              <p>Convierte el problema en costo: financiero, estratégico, humano y competitivo.</p>
+            </div>
+            <div class="chapter-grid">
+              <article class="chapter-card"><span class="chapter-no">Capítulo V</span><h4>El costo oculto de la inacción</h4><p class="teaser">Plantea que no hacer nada también cuesta. Cada tarea inconclusa, decisión postergada y talento subutilizado se convierte en una fuga que la empresa paga sin verla.</p><div class="chapter-points"><span>Inacción costosa</span><span>Tareas sin cierre</span><span>Talento mal usado</span></div></article>
+              <article class="chapter-card"><span class="chapter-no">Capítulo VI</span><h4>Lo que no se mide, sí te cuesta</h4><p class="teaser">Contrasta la nómina pagada con la nómina útil y reta la comodidad de medir solo lo visible. El capítulo invita a construir evidencia operacional.</p><div class="chapter-points"><span>Nómina útil</span><span>Costo de oportunidad</span><span>Evidencia operacional</span></div></article>
+              <article class="chapter-card"><span class="chapter-no">Capítulo VII</span><h4>El costo humano de la Nómina Muerta</h4><p class="teaser">Explora el desgaste emocional que se genera cuando las personas se esfuerzan sin ver impacto: burnout, cinismo, autoestima profesional erosionada y renuncias silenciosas.</p><div class="chapter-points"><span>Burnout</span><span>Deserción emocional</span><span>Renuncias silenciosas</span></div></article>
+              <article class="chapter-card"><span class="chapter-no">Capítulo VIII</span><h4>La economía de la Nómina Muerta</h4><p class="teaser">Eleva el tema a competitividad, sostenibilidad y futuro. No basta crecer si la estructura que sostiene ese crecimiento está llena de desperdicio invisible.</p><div class="chapter-points"><span>Competitividad</span><span>Sostenibilidad</span><span>Futuro organizacional</span></div></article>
+            </div>
+          </div>
+
+          <div class="chapter-panel" id="bloque3" role="tabpanel">
+            <div class="chapter-panel-head">
+              <h3>Bloque III — Transformación y soluciones</h3>
+              <p>Presenta decisiones concretas para pasar de la denuncia del problema al rediseño del trabajo.</p>
+            </div>
+            <div class="chapter-grid">
+              <article class="chapter-card"><span class="chapter-no">Capítulo IX</span><h4>Romper el ciclo</h4><p class="teaser">Propone las primeras decisiones para recuperar control: nombrar el problema, crear visibilidad, cambiar el lenguaje operativo y hacer del cierre un hábito.</p><div class="chapter-points"><span>Visibilidad compartida</span><span>Cultura de cierre</span><span>Foco quirúrgico</span></div></article>
+              <article class="chapter-card"><span class="chapter-no">Capítulo X</span><h4>Trabajo enfocado</h4><p class="teaser">Presenta el enfoque como antídoto contra la dispersión. El trabajo valioso no se mide por cantidad de tareas, sino por impacto y cierre.</p><div class="chapter-points"><span>Menos dispersión</span><span>Más impacto</span><span>Disciplina con intención</span></div></article>
+              <article class="chapter-card"><span class="chapter-no">Capítulo XI</span><h4>Digitaliza tu empresa</h4><p class="teaser">Explica por qué digitalizar no es sumar apps, sino rediseñar la operación para recuperar tiempo, energía y resultados con herramientas bien elegidas.</p><div class="chapter-points"><span>Kanban adecuado</span><span>Automatización simple</span><span>Monitoreo inteligente</span></div></article>
+              <article class="chapter-card"><span class="chapter-no">Capítulo XII</span><h4>Operación esbelta y ejecución ágil</h4><p class="teaser">Traduce principios Lean y Agile a la realidad ejecutiva: limitar trabajo en curso, asignar por capacidad y crear ritmo sin vivir en urgencia.</p><div class="chapter-points"><span>WIP controlado</span><span>Pull, no push</span><span>Cadencias sanas</span></div></article>
+              <article class="chapter-card"><span class="chapter-no">Capítulo XIII</span><h4>Casos de transformación real</h4><p class="teaser">Muestra que la Nómina Muerta no solo se puede detectar: también se puede revertir. Los casos funcionan como prueba de posibilidad y conversación directiva.</p><div class="chapter-points"><span>Casos reales</span><span>Mejora continua</span><span>Transformación medible</span></div></article>
+            </div>
+          </div>
+
+          <div class="chapter-panel" id="bloque4" role="tabpanel">
+            <div class="chapter-panel-head">
+              <h3>Bloque IV — Radiografía</h3>
+              <p>Cierra con medición, diagnóstico y una mirada al sector público, donde la ineficiencia también la paga el ciudadano.</p>
+            </div>
+            <div class="chapter-grid">
+              <article class="chapter-card"><span class="chapter-no">Capítulo XIV</span><h4>El verdadero costo</h4><p class="teaser">Aterriza la cuantificación financiera de la Nómina Muerta. El lector encuentra métricas iniciales para estimar lo que antes parecía imposible de medir.</p><div class="chapter-points"><span>Fórmulas iniciales</span><span>Indicadores</span><span>Diagnóstico económico</span></div></article>
+              <article class="chapter-card"><span class="chapter-no">Capítulo XV</span><h4>Nómina Muerta en el gobierno</h4><p class="teaser">Lleva el concepto al sector público: trámites lentos, burocracia, cuellos de botella y tiempo institucional mal utilizado que termina afectando al ciudadano. Incluye una Autopsia Operativa para diagnosticar dónde se pierde velocidad, trazabilidad y capacidad de gestión.</p><div class="chapter-points"><span>IXEP</span><span>Costo social</span><span>Eficiencia pública</span><span>Autopsia operativa</span></div></article>
+              <article class="chapter-card wide"><span class="chapter-no">Modelos de diagnóstico</span><h4>Autopsia Operativa: indicadores y métricas</h4><p class="teaser">Una caja de herramientas ejecutiva para detectar fricción, lentitud, autorizaciones innecesarias, falta de seguimiento y pérdida de trazabilidad. No revela todo el método, pero muestra el tipo de medición que el lector encontrará para convertir intuiciones en evidencia.</p><div class="chapter-points metric-chips"><span>Índice de Velocidad de Ejecución de Proyectos</span><span>Índice de Cuellos de Botella</span><span>Auditoría de Flujo de Trabajo</span><span>Matriz de Toma de Decisiones</span><span>Matriz de Firmas y Autorizaciones</span><span>Matriz de Automatización Potencial</span><span>Índice de Rastreabilidad Operativa</span><span>Índice de Seguimiento y Supervisión Activa</span><span>Índice de Cumplimiento Global de Minutas</span><span>Índice de Productividad Individual</span><span>Índice de Gestión Operativa por área / individual</span></div></article>
+              <article class="chapter-card"><span class="chapter-no">Epílogo</span><h4>Carta al líder</h4><p class="teaser">Un cierre provocador para quien dirige: la pregunta ya no es si existe pérdida invisible, sino qué tan dispuesto está el líder a dejar de financiarla.</p><div class="chapter-points"><span>Decisión</span><span>Responsabilidad</span><span>Acción</span></div></article>
+            </div>
+          </div>
+        </div>
+        <div class="chapter-cta">
+          <div><strong>CARPE DIEM: OPERA.OPTIMIZA.LIDERA.</strong></div>
+          <a class="btn btn-light" href="https://www.amazon.com.mx/N%C3%B3mina-Muerta-p%C3%A9rdida-capitalizar-sepulte/dp/B0FCC9TLRM/ref=sr_1_1?crid=36Q4FTI8QAIPO&dib=eyJ2IjoiMSJ9.jeZzbPCzxWGI8uNZBU_ScOBux1AnAd-oMfUVvGxOIyNsbIgNNo7Qxjr6Ty346Lm_m95Ih3F7jma0XL8zz_HkUGyzzi-e6tfHa5XA_wxj1K0oNMcRUMmJ3NLf4rdADwD6P-TR8sdVIvs2ybw2XHFzlL4K1QLf3iVrnTveFDbSNGyqxLz_77XfUOBilfozOow0.mISqZCqIAd8oH-NFYLKAfgNlEWUuTWzTaJHuLFG3FQM&dib_tag=se&keywords=nomina+muerta&qid=1780362284&sprefix=nomina+muerta%2Caps%2C177&sr=8-1&ufe=app_do%3Aamzn1.fos.de93fa6a-174c-4df7-be7c-5bc8e9c5a71b" target="_blank" rel="noopener">Comprar el libro</a>
+        </div>
+        </div>
+      </div>
+    </section>
     
     <section id="reto-autopsia" class="tool-subpage" data-page-route="reto-autopsia">
       <div class="wrap">
@@ -4845,12 +4958,13 @@
 
 
   <script>
-    /* === V16.1: Reto de Autopsia integrado, normalizado y explicado === */
-    const NM_AUTOPSIA_STATE_KEY = 'nm_reto_autopsia_v16_1';
+    /* === V18: Reto de Autopsia integrado, normalizado, con reporte PDF === */
+    const NM_AUTOPSIA_STATE_KEY = 'nm_reto_autopsia_v18_1';
     const NM_AUTOPSIA_STATE = {
       radar: null,
       selectedSymptoms: [],
-      depth: null
+      depth: null,
+      final: null
     };
 
     const NM_AUTOPSIA_WEIGHT_OVERRIDES = {"¿El mismo dato se captura o corrige más de una vez porque el flujo de trabajo quedó abierto o mal cerrado?": 3, "¿Tu equipo repite información constantemente porque los sistemas internos no están integrados?": 3, "¿Se repiten solicitudes entre áreas porque no hay coordinación o visibilidad interna?": 3, "¿Hay personas trabajando en lo mismo sin saber que otros ya lo están haciendo?": 3, "¿Las tareas se trasladan entre áreas sin contexto claro, generando retrabajos o errores?": 3, "¿Se envía el mismo reporte a varios jefes, duplicando tiempo y esfuerzo sin valor agregado?": 2, "¿Reinician tareas porque no quedó registro del previo avance?": 3, "¿Se repiten errores por instrucciones vagas o mal entendidas desde el inicio?": 3, "¿Hay procesos detenidos solo por una firma que podrías automatizar?": 3, "¿Hay tareas críticas detenidas porque dependen de una persona específica y no del sistema?": 4, "¿Pides autorizaciones urgentes por mensajes y correos que luego nadie encuentra?": 3, "¿Hay procesos sustantivos que se congelan esperando validación sin trazabilidad entre áreas?": 4, "¿Se ha normalizado la espera como parte del proceso “natural” del día a día?": 3, "¿El seguimiento a tareas o procesos formales depende de correos o llamadas sin dejar trazabilidad?": 3, "¿No existe una plataforma para saber en tiempo real quién tiene una tarea y en qué estado está?": 3, "¿Se cierran tareas sin validar si el problema, interno o externo, fue resuelto de fondo?": 3, "¿Se da seguimiento a tareas por memoria o intuición, sin sistema visible?": 3, "¿Existen proyectos sin responsabilidad clara y definida en todas sus etapas y acciones?": 4, "¿Das seguimiento por correo a temas urgentes que se entierran en la bandeja?": 3, "¿El equipo manda correos con copia a todos solo para protegerse?": 2, "¿Lo urgente se pierde entre memes y mensajes mezclados en WhatsApp, o cadenas de correos?": 2, "¿Toman decisiones por teléfono que luego nadie documenta ni respalda?": 3, "¿Tu equipo consulta varios medios (correo, chats, notas, agendas…) para priorizar qué debe hacer hoy?": 2, "¿La mayoría de los acuerdos clave se pierden entre conversaciones informales?": 3, "¿Se gestionan temas urgentes por canales informales, sin dejar evidencia operativa?": 2, "¿Constantemente se busca un correo importante durante 10 minutos?": 2, "¿Se comparte el mismo archivo con varias personas, pero nadie asume el compromiso, provocando retrasos?": 4, "¿Se extravían archivos o documentos digitales porque no hay un registro centralizado?": 4, "¿La colaboración entre áreas ocurre más por relaciones personales que por procesos definidos?": 4, "¿Las entregas o respuestas a clientes se retrasan porque los equipos internos no están alineados?": 4, "¿Tu equipo pierde más tiempo buscando información que resolviendo problemas?": 4, "¿El cliente o el colaborador, deben repetir lo mismo varias veces porque la información no fluye entre áreas?": 4, "¿Confías más en preguntar otra vez que en revisar algún sistema o plataforma?": 4, "¿Se llevan a cabo reuniones donde no se asignan responsables ni fechas claras a los acuerdos?": 2, "¿Tienes reuniones de “coordinación” que no coordinan nada y hay que repetirlas?": 3, "¿Continuamente revisan lo mismo en cada reunión porque no hay un seguimiento formal?": 3, "¿Los líderes necesitan supervisar con reuniones constantes porque no hay visibilidad de avance?": 2, "¿Hay tareas que se siguen haciendo solo porque “así se ha hecho siempre”?": 2, "¿Las prioridades cambian sin que el equipo se entere hasta que se cometió un error?": 2, "¿Se sigue destinando tiempo a tareas que ya no aportan valor real al proceso, objetivos o metas?": 2, "¿Estás midiendo cosas que no cambian los resultados clave del negocio?": 2, "¿Has hecho cambios que el equipo no entiende ni aplica correctamente?": 2, "¿Tu equipo no sabe cómo su trabajo impacta los objetivos y metas reales del negocio?": 4, "¿Se toman decisiones operativas sin tener clara la información estratégica?": 2, "¿El equipo pierde tiempo constantemente buscando instrucciones en múltiples canales dispersos cada vez?": 2, "¿Continuamente los equipos saltan de tarea en tarea sin cerrar ni lograr foco?": 2, "¿Se repiten las mismas explicaciones porque no hay un canal unificado?": 2, "¿Tu equipo termina el día agotado pero sin sensación de avance?": 2, "¿Sientes que están ocupados todo el tiempo, pero no sabes si están siendo productivos?": 2, "¿Se toman decisiones importantes con información incompleta, desactualizada o dispersa?": 4, "¿Los líderes piden reportes manuales porque no existe visibilidad en tiempo real?": 4, "¿Se invierte tiempo en preparar información que nadie usa para decidir?": 3, "¿Hay versiones distintas de la verdad entre áreas, reportes o archivos?": 4, "¿Las decisiones se retrasan porque primero hay que reconstruir o validar la información?": 2, "¿Tienen herramientas digitales que el equipo usa parcialmente o de forma inconsistente?": 3, "¿La empresa paga software que no se traduce en mejor seguimiento, trazabilidad o ejecución?": 3, "¿Los colaboradores siguen usando Excel, WhatsApp o correo para procesos que ya deberían estar sistematizados?": 3, "¿La información se captura en un sistema, pero se vuelve a trabajar fuera de él?": 3, "¿La tecnología actual genera más carga administrativa que claridad operativa?": 3, "¿Las tareas se consideran avanzadas aunque nadie haya validado el cierre real?": 4, "¿Hay responsables asignados, pero sin consecuencias claras cuando no se cumple?": 4, "¿Los pendientes cambian de dueño sin que quede claro quién responde al final?": 4, "¿Se reporta actividad, pero no resultado verificable?": 4, "¿Los líderes tienen que perseguir avances porque el sistema no empuja el cierre?": 4, "¿Hay personas saturadas mientras otras tienen capacidad disponible?": 4, "¿Se asignan tareas por urgencia y no por capacidad real?": 4, "¿El equipo dedica tiempo a actividades de bajo valor porque nadie rediseñó la carga?": 2, "¿La empresa no sabe cuántas horas reales se van en coordinación, espera o retrabajo?": 4, "¿Se confunde estar ocupado con estar generando valor?": 2, "¿Se pierden oportunidades comerciales por falta de seguimiento interno?": 4, "¿El cliente espera más por descoordinación interna que por complejidad real del servicio?": 4, "¿Hay promesas comerciales que operación no puede cumplir por falta de visibilidad?": 4, "¿Se retrasan cotizaciones, entregas o respuestas por depender de varias áreas sin dueño claro?": 4, "¿La experiencia del cliente se afecta por problemas internos que nadie mide?": 4};
@@ -4906,6 +5020,7 @@
         if (saved.radar) NM_AUTOPSIA_STATE.radar = saved.radar;
         if (Array.isArray(saved.selectedSymptoms)) NM_AUTOPSIA_STATE.selectedSymptoms = saved.selectedSymptoms;
         if (saved.depth) NM_AUTOPSIA_STATE.depth = saved.depth;
+        if (saved.final) NM_AUTOPSIA_STATE.final = saved.final;
       } catch(e) {}
     }
 
@@ -4970,6 +5085,23 @@
       if (typeof nmMoney === 'function') return nmMoney(value);
       const numeric = String(value || '').replace(/[^0-9]/g, '');
       return numeric ? Number(numeric).toLocaleString('es-MX') : '';
+    }
+
+
+    function nmAutopsiaFormatDateTime(value = new Date()) {
+      const date = value instanceof Date ? value : new Date(value);
+      try {
+        return date.toLocaleString('es-MX', {
+          year: 'numeric', month: '2-digit', day: '2-digit',
+          hour: '2-digit', minute: '2-digit', second: '2-digit'
+        });
+      } catch(e) {
+        return date.toLocaleString();
+      }
+    }
+
+    function nmAutopsiaReportValue(value) {
+      return nmAutopsiaEscape(value === undefined || value === null || value === '' ? '—' : value);
     }
 
     function nmAutopsiaShow(id, html) {
@@ -5208,7 +5340,7 @@
         .sort((a,b) => b.activation - a.activation)
         .map(row => `<tr>
           <td><strong>${nmAutopsiaEscape(row.focus)}</strong></td>
-          <td>${row.activation.toFixed(0)}% activación<br><span class="autopsy-muted-note">${row.selectedWeight} de ${row.totalWeight} puntos del foco</span></td>
+          <td>${row.activation.toFixed(0)}% activación</td>
           <td>${row.selectedCount} de ${row.totalQuestions} síntomas</td>
           <td>${Math.round(row.recoveryFactor * 100)}%</td>
         </tr>`).join('');
@@ -5354,8 +5486,8 @@
 
       const rows = focusRowsData.map(row => `<tr>
         <td><strong>${nmAutopsiaEscape(row.focus)}</strong></td>
-        <td>${row.intensity.toFixed(0)}% gravedad<br><span class="autopsy-muted-note">Intensidad de las respuestas de Autopsia.</span></td>
-        <td>${row.focusPct.toFixed(0)}% NM asociada<br><span class="autopsy-muted-note">No se suma con otros focos; sirve para priorizar.</span></td>
+        <td>${row.intensity.toFixed(0)}% gravedad</td>
+        <td>${row.focusPct.toFixed(0)}% NM asociada</td>
         <td>Preguntas ${row.questions.join(', ')}</td>
       </tr>`).join('');
 
@@ -5410,9 +5542,34 @@
       const optimal = Math.round(nmMonthly * optimalRate);
       const expectedAnnual = expected * 12;
       const source = depth ? `${Math.round(depth.adjustedPct)}% de diagnóstico ajustado` : `${Math.round(pct)}% manual`;
+      const generatedAt = new Date();
+      const generatedAtText = nmAutopsiaFormatDateTime(generatedAt);
+
+      NM_AUTOPSIA_STATE.final = {
+        generatedAt: generatedAt.toISOString(),
+        pct,
+        people,
+        avgSalary: effectiveAvgSalary,
+        payroll,
+        nmMonthly,
+        nmAnnual,
+        equivalentPeople,
+        dominantFocus,
+        recoveryFactor,
+        conservativeRate,
+        expectedRate,
+        optimalRate,
+        conservative,
+        expected,
+        optimal,
+        expectedAnnual,
+        source
+      };
+      nmAutopsiaSave();
 
       nmAutopsiaShow('autopsiaCalcResult',
         `<span class="autopsy-badge teal">Resultado económico final</span>` +
+        `<div class="autopsy-final-note"><strong>Reporte generado:</strong> ${generatedAtText}</div>` +
         `<div class="autopsy-final-grid">
           <div class="autopsy-final-card"><strong>${nmAutopsiaFormatCurrency(nmMonthly)}</strong><span>Nómina Muerta mensual estimada</span></div>
           <div class="autopsy-final-card"><strong>${nmAutopsiaFormatCurrency(nmAnnual)}</strong><span>Nómina Muerta anual estimada</span></div>
@@ -5428,16 +5585,225 @@
           <div class="scenario-row"><span>Recuperación óptima (${Math.round(optimalRate * 100)}%)</span><div class="scenario-bar optimal"><span style="width:${Math.round(optimalRate * 100)}%"></span></div><strong>${nmAutopsiaFormatCurrency(optimal)}/mes</strong></div>
           <div class="scenario-row"><span><strong>Anual esperada (${Math.round(expectedRate * 100)}%)</strong></span><div class="scenario-bar annual"><span style="width:${Math.round(expectedRate * 100)}%"></span></div><strong>${nmAutopsiaFormatCurrency(expectedAnnual)}</strong></div>
         </div>` +
-        `<div class="autopsy-final-note">Esta estimación debe usarse como punto de conversación directiva: identifica magnitud, foco dominante, recuperabilidad y prioridad de intervención. La recuperación real dependerá del rediseño de procesos, trazabilidad, accountability, tecnología y disciplina de seguimiento.</div>`
+        `<div class="autopsy-final-note">Esta estimación debe usarse como punto de conversación directiva: identifica magnitud, foco dominante, recuperabilidad y prioridad de intervención. La recuperación real dependerá del rediseño de procesos, trazabilidad, accountability, tecnología y disciplina de seguimiento.</div>` +
+        `<div class="utility-actions"><button class="btn btn-primary" type="button" onclick="nmAutopsiaExportPDF()">Exportar PDF del reporte</button></div>`
       );
       nmAutopsiaScrollToResult('autopsiaCalcResult');
     }
+
+    function nmAutopsiaBuildReportHTML() {
+      const radar = NM_AUTOPSIA_STATE.radar || {};
+      const depth = NM_AUTOPSIA_STATE.depth || {};
+      const final = NM_AUTOPSIA_STATE.final || null;
+      if (!final) return '';
+
+      const generated = nmAutopsiaFormatDateTime(final.generatedAt || new Date());
+      const selected = Array.isArray(NM_AUTOPSIA_STATE.selectedSymptoms) ? NM_AUTOPSIA_STATE.selectedSymptoms : [];
+      const selectedRows = selected.map((item, index) => `
+        <tr>
+          <td>${index + 1}</td>
+          <td>${nmAutopsiaReportValue(item.focus)}</td>
+          <td>${nmAutopsiaReportValue(item.question)}</td>
+          <td>${nmAutopsiaReportValue(item.weight)}</td>
+        </tr>
+      `).join('');
+
+      const focusRows = Array.isArray(depth.focusRows) ? depth.focusRows.map(row => `
+        <tr>
+          <td>${nmAutopsiaReportValue(row.focus)}</td>
+          <td>${Math.round(row.intensity || 0)}%</td>
+          <td>${Math.round(row.focusPct || 0)}%</td>
+          <td>${Math.round((row.recoveryFactor || 0) * 100)}%</td>
+          <td>${Array.isArray(row.questions) ? row.questions.join(', ') : '—'}</td>
+        </tr>
+      `).join('') : '';
+
+      const activeStats = Array.isArray(radar.activeStats) ? radar.activeStats : [];
+      const radarRows = activeStats.map(row => `
+        <tr>
+          <td>${nmAutopsiaReportValue(row.focus)}</td>
+          <td>${Math.round(row.activation || 0)}%</td>
+          <td>${row.selectedCount || 0} de ${row.totalQuestions || 0}</td>
+          <td>${Math.round((row.recoveryFactor || 0) * 100)}%</td>
+        </tr>
+      `).join('');
+
+      return `<!doctype html>
+<html lang="es-MX">
+<head>
+<meta charset="utf-8">
+<title>Reporte Reto de Autopsia - Nómina Muerta</title>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: Arial, Helvetica, sans-serif; color: #111b21; margin: 0; padding: 28px; background: #fff; line-height: 1.45; }
+  .report { max-width: 980px; margin: 0 auto; }
+  .cover { border-radius: 24px; padding: 28px; color: #f3f0e7; background: linear-gradient(135deg, #102a35, #0b1f28); margin-bottom: 22px; }
+  .cover .eyebrow { color: #d6b56d; font-weight: 800; text-transform: uppercase; letter-spacing: .14em; font-size: 12px; }
+  h1 { margin: 10px 0 8px; font-size: 34px; line-height: 1.05; }
+  h2 { color: #102a35; margin: 26px 0 10px; font-size: 22px; }
+  .meta { color: rgba(243,240,231,.78); font-size: 14px; }
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 14px 0; }
+  .card { border: 1px solid #dce2e4; border-radius: 16px; padding: 14px; background: #fbfaf5; }
+  .card strong { display: block; color: #102a35; font-size: 20px; margin-bottom: 4px; }
+  .card span { color: #526168; font-size: 13px; font-weight: 700; }
+  table { width: 100%; border-collapse: collapse; margin: 12px 0 20px; font-size: 13px; }
+  th, td { border: 1px solid #dce2e4; padding: 9px 10px; text-align: left; vertical-align: top; }
+  th { background: #edf1f2; color: #102a35; font-size: 11px; text-transform: uppercase; letter-spacing: .06em; }
+  .note { border-left: 5px solid #1f6170; background: #f2f6f7; padding: 12px 14px; border-radius: 10px; margin: 16px 0; color: #31444c; }
+  .footer { margin-top: 26px; padding-top: 14px; border-top: 1px solid #dce2e4; color: #62727a; font-size: 12px; }
+  @media print {
+    body { padding: 0; }
+    .report { max-width: none; }
+    .cover, .card, .note { break-inside: avoid; }
+    table { break-inside: auto; }
+    tr { break-inside: avoid; break-after: auto; }
+  }
+</style>
+</head>
+<body>
+  <div class="report">
+    <div class="cover">
+      <div class="eyebrow">Nómina Muerta · Reto de Autopsia</div>
+      <h1>Reporte de Riesgo, Autopsia y Recuperación Económica</h1>
+      <div class="meta">Generado el ${generated}</div>
+    </div>
+
+    <h2>Resumen ejecutivo</h2>
+    <div class="grid">
+      <div class="card"><strong>${nmAutopsiaReportValue(depth.levelLabel || '—')}</strong><span>Nivel de urgencia</span></div>
+      <div class="card"><strong>${Math.round(depth.adjustedPct || final.pct)}%</strong><span>% Nómina Muerta ajustada</span></div>
+      <div class="card"><strong>${nmAutopsiaReportValue(depth.focus || final.dominantFocus)}</strong><span>Foco dominante</span></div>
+      <div class="card"><strong>${nmAutopsiaFormatCurrency(final.nmMonthly)}</strong><span>Nómina Muerta mensual</span></div>
+      <div class="card"><strong>${nmAutopsiaFormatCurrency(final.nmAnnual)}</strong><span>Nómina Muerta anual</span></div>
+      <div class="card"><strong>${final.equivalentPeople} personas</strong><span>Equivalente de capacidad no aprovechada</span></div>
+    </div>
+
+    <div class="note"><strong>Lectura correcta:</strong> el equivalente en personas no significa recorte de talento. Significa capacidad pagada atrapada en retrabajo, espera, mala coordinación, saturación, tecnología mal usada o falta de cierre.</div>
+
+    <h2>Datos económicos usados</h2>
+    <table>
+      <tbody>
+        <tr><th>Fuente del porcentaje</th><td>${nmAutopsiaReportValue(final.source)}</td></tr>
+        <tr><th>Personas evaluadas</th><td>${nmAutopsiaReportValue(final.people)}</td></tr>
+        <tr><th>Nómina mensual base</th><td>${nmAutopsiaFormatCurrency(final.payroll)}</td></tr>
+        <tr><th>Sueldo mensual promedio usado</th><td>${nmAutopsiaFormatCurrency(final.avgSalary)}</td></tr>
+        <tr><th>Recuperabilidad base del foco dominante</th><td>${Math.round((final.recoveryFactor || 0) * 100)}%</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Escenarios de recuperación</h2>
+    <table>
+      <thead><tr><th>Escenario</th><th>Tasa aplicada</th><th>Recuperación mensual estimada</th><th>Recuperación anual estimada</th></tr></thead>
+      <tbody>
+        <tr><td>Conservador</td><td>${Math.round((final.conservativeRate || 0) * 100)}%</td><td>${nmAutopsiaFormatCurrency(final.conservative)}</td><td>${nmAutopsiaFormatCurrency((final.conservative || 0) * 12)}</td></tr>
+        <tr><td>Esperado</td><td>${Math.round((final.expectedRate || 0) * 100)}%</td><td>${nmAutopsiaFormatCurrency(final.expected)}</td><td>${nmAutopsiaFormatCurrency(final.expectedAnnual)}</td></tr>
+        <tr><td>Óptimo</td><td>${Math.round((final.optimalRate || 0) * 100)}%</td><td>${nmAutopsiaFormatCurrency(final.optimal)}</td><td>${nmAutopsiaFormatCurrency((final.optimal || 0) * 12)}</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Radar inicial de riesgo</h2>
+    <div class="grid">
+      <div class="card"><strong>${Math.round(radar.riskScore || 0)} / 100</strong><span>Índice del Radar</span></div>
+      <div class="card"><strong>${nmAutopsiaReportValue(radar.levelLabel || '—')}</strong><span>Nivel inicial</span></div>
+      <div class="card"><strong>${selected.length}</strong><span>Síntomas marcados</span></div>
+    </div>
+    ${radarRows ? `<table><thead><tr><th>Foco activo</th><th>Activación</th><th>Síntomas</th><th>Recuperabilidad</th></tr></thead><tbody>${radarRows}</tbody></table>` : '<p>No hay detalle de radar guardado.</p>'}
+
+    <h2>Autopsia por foco</h2>
+    ${focusRows ? `<table><thead><tr><th>Foco</th><th>Gravedad</th><th>% NM asociado</th><th>Recuperabilidad</th><th>Preguntas evaluadas</th></tr></thead><tbody>${focusRows}</tbody></table>` : '<p>No hay detalle de autopsia guardado.</p>'}
+
+    <h2>Síntomas seleccionados</h2>
+    ${selectedRows ? `<table><thead><tr><th>#</th><th>Foco</th><th>Síntoma</th><th>Peso</th></tr></thead><tbody>${selectedRows}</tbody></table>` : '<p>No hay síntomas seleccionados guardados.</p>'}
+
+    <div class="footer">Reporte generado desde la página oficial de Nómina Muerta. Esta estimación es una herramienta de conversación directiva y priorización; no sustituye una auditoría operativa profunda.</div>
+  </div>
+</body>
+</html>`;
+    }
+
+    function nmAutopsiaExportPDF() {
+      if (!NM_AUTOPSIA_STATE.final) {
+        nmAutopsiaShow('autopsiaCalcResult', '<div class="integrated-note">⚠️ Primero ejecuta el cálculo final para generar el reporte PDF.</div>');
+        nmAutopsiaScrollToResult('autopsiaCalcResult');
+        return;
+      }
+
+      const reportHTML = nmAutopsiaBuildReportHTML();
+      if (!reportHTML) {
+        nmAutopsiaShow('autopsiaCalcResult', '<div class="integrated-note">⚠️ No se pudo generar el contenido del reporte. Ejecuta nuevamente el cálculo final.</div>');
+        nmAutopsiaScrollToResult('autopsiaCalcResult');
+        return;
+      }
+
+      const styleMatch = reportHTML.match(/<style[^>]*>([\s\S]*?)<\/style>/i);
+      const bodyMatch = reportHTML.match(/<body[^>]*>([\s\S]*?)<\/body>/i);
+      const reportCSS = styleMatch ? styleMatch[1] : '';
+      const reportBody = bodyMatch ? bodyMatch[1] : reportHTML;
+
+      let printStyle = document.getElementById('nmAutopsiaPrintStyle');
+      if (!printStyle) {
+        printStyle = document.createElement('style');
+        printStyle.id = 'nmAutopsiaPrintStyle';
+        document.head.appendChild(printStyle);
+      }
+
+      const scopedReportCSS = reportCSS
+        .replace(/(^|\})\s*body\s*\{/g, '$1 #nmAutopsiaPrintReport {')
+        .replace(/@media\s+print\s*\{\s*#nmAutopsiaPrintReport\s*\{/g, '@media print { #nmAutopsiaPrintReport {');
+
+      printStyle.textContent = `
+        #nmAutopsiaPrintReport { display: none; }
+        @media screen {
+          #nmAutopsiaPrintReport { display: none !important; }
+        }
+        @media print {
+          body.nm-autopsia-printing > *:not(#nmAutopsiaPrintReport) { display: none !important; }
+          body.nm-autopsia-printing #nmAutopsiaPrintReport { display: block !important; position: static !important; width: auto !important; height: auto !important; overflow: visible !important; }
+          body.nm-autopsia-printing { background: #fff !important; }
+          body.nm-autopsia-printing #nmAutopsiaPrintReport .report { max-width: none !important; }
+        }
+      ` + scopedReportCSS;
+
+      let printContainer = document.getElementById('nmAutopsiaPrintReport');
+      if (!printContainer) {
+        printContainer = document.createElement('div');
+        printContainer.id = 'nmAutopsiaPrintReport';
+        document.body.appendChild(printContainer);
+      }
+      printContainer.innerHTML = reportBody;
+
+      const cleanupPrint = () => {
+        document.body.classList.remove('nm-autopsia-printing');
+        window.removeEventListener('afterprint', cleanupPrint);
+      };
+
+      window.addEventListener('afterprint', cleanupPrint);
+      document.body.classList.add('nm-autopsia-printing');
+
+      // No usamos window.open para evitar bloqueos de ventanas emergentes en GitHub Pages, Safari o Chrome.
+      // El navegador abrirá el cuadro de impresión sobre esta misma página; ahí se elige "Guardar como PDF".
+      setTimeout(() => {
+        try {
+          window.print();
+        } catch (error) {
+          cleanupPrint();
+          nmAutopsiaShow('autopsiaCalcResult', '<div class="integrated-note">⚠️ No se pudo abrir el cuadro de impresión. Usa Cmd/Ctrl + P y selecciona “Guardar como PDF”.</div>');
+          nmAutopsiaScrollToResult('autopsiaCalcResult');
+        }
+      }, 120);
+
+      setTimeout(() => {
+        if (document.body.classList.contains('nm-autopsia-printing')) cleanupPrint();
+      }, 8000);
+    }
+
 
     function nmAutopsiaClearRadar() {
       document.querySelectorAll('.nm-autopsia-radar-check').forEach(cb => cb.checked = false);
       NM_AUTOPSIA_STATE.radar = null;
       NM_AUTOPSIA_STATE.selectedSymptoms = [];
       NM_AUTOPSIA_STATE.depth = null;
+      NM_AUTOPSIA_STATE.final = null;
       nmAutopsiaSave();
       nmAutopsiaHide('autopsiaRadarResult');
       nmAutopsiaHide('autopsiaDepthResult');
@@ -5451,6 +5817,7 @@
       document.querySelectorAll('input[name^="autopsiaDepthQ"]').forEach(input => input.checked = false);
       document.querySelectorAll('.autopsy-depth-question').forEach(q => q.classList.remove('missing'));
       NM_AUTOPSIA_STATE.depth = null;
+      NM_AUTOPSIA_STATE.final = null;
       nmAutopsiaSave();
       nmAutopsiaHide('autopsiaDepthResult');
       nmAutopsiaHide('autopsiaCalcResult');
@@ -5517,6 +5884,8 @@
           if (people) people.value = '20';
           if (salary) salary.value = '15,000';
           if (total) total.value = '';
+          NM_AUTOPSIA_STATE.final = null;
+          nmAutopsiaSave();
           nmAutopsiaHide('autopsiaCalcResult');
         });
         resetBtn.dataset.autopsyBoundClick = '1';
