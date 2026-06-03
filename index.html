@@ -2539,14 +2539,143 @@
     }
 
 
-    /* === V14: Sistema integrado Reto + Diagnóstico + Recuperación === */
-    .flow-summary-grid {
+    /* === V15: Reto de Autopsia integrado en una sola subpágina === */
+    .autopsy-flow-section {
+      display: grid;
+      gap: 22px;
+      margin-top: 24px;
+    }
+    .autopsy-stage {
+      background: rgba(251,250,245,.94);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      padding: clamp(22px, 3.2vw, 36px);
+      box-shadow: 0 24px 70px rgba(16,42,53,.10);
+      position: relative;
+      overflow: hidden;
+    }
+    .autopsy-stage::before {
+      content: attr(data-stage);
+      position: absolute;
+      right: 18px;
+      bottom: -18px;
+      color: rgba(16,42,53,.045);
+      font-size: clamp(72px, 12vw, 150px);
+      font-weight: 950;
+      line-height: 1;
+      letter-spacing: -.08em;
+      pointer-events: none;
+    }
+    .autopsy-stage h2 {
+      font-size: clamp(28px, 3.6vw, 48px);
+      margin-bottom: 10px;
+      position: relative;
+      z-index: 1;
+    }
+    .autopsy-stage .lead {
+      position: relative;
+      z-index: 1;
+    }
+    .autopsy-progress {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin: 24px 0;
+    }
+    .autopsy-progress-card {
+      border-radius: 22px;
+      padding: 18px;
+      background: rgba(255,255,255,.78);
+      border: 1px solid rgba(16,42,53,.10);
+      min-height: 145px;
+      box-shadow: 0 14px 34px rgba(16,42,53,.06);
+    }
+    .autopsy-progress-card strong {
+      display: block;
+      color: var(--navy);
+      font-size: 20px;
+      line-height: 1.1;
+      margin: 8px 0;
+    }
+    .autopsy-progress-card span {
+      color: #516269;
+      font-size: 14px;
+      line-height: 1.38;
+      display: block;
+    }
+    .autopsy-badge {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      border-radius: 999px;
+      padding: 7px 11px;
+      background: rgba(214,181,109,.16);
+      color: #735a19;
+      font-size: 11px;
+      font-weight: 950;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+    }
+    .autopsy-badge.teal {
+      background: rgba(31,97,112,.10);
+      color: var(--teal);
+    }
+    .autopsy-radar-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 22px;
+    }
+    .autopsy-radar-category {
+      border-radius: 24px;
+      padding: 20px;
+      background: rgba(255,255,255,.78);
+      border: 1px solid rgba(16,42,53,.10);
+      box-shadow: 0 14px 34px rgba(16,42,53,.06);
+    }
+    .autopsy-radar-category h3 {
+      margin: 0 0 14px;
+      color: var(--navy);
+      font-size: 20px;
+      line-height: 1.1;
+      letter-spacing: -.02em;
+    }
+    .autopsy-check {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      padding: 9px 0;
+      color: #35474f;
+      font-weight: 650;
+      line-height: 1.35;
+    }
+    .autopsy-check input {
+      width: 18px;
+      height: 18px;
+      flex: 0 0 auto;
+      margin-top: 2px;
+    }
+    .weight-chip {
+      display: inline-flex;
+      align-items: center;
+      margin-left: 7px;
+      border-radius: 999px;
+      padding: 4px 8px;
+      background: rgba(31,97,112,.10);
+      color: var(--teal);
+      font-size: 10px;
+      font-weight: 950;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .autopsy-kpi-grid {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 12px;
-      margin: 18px 0 22px;
+      margin: 18px 0;
     }
-    .flow-metric {
+    .autopsy-kpi {
       border-radius: 20px;
       padding: 16px;
       background: rgba(16,42,53,.055);
@@ -2555,7 +2684,7 @@
       font-weight: 800;
       min-height: 112px;
     }
-    .flow-metric strong {
+    .autopsy-kpi strong {
       display: block;
       color: var(--navy);
       font-size: clamp(24px, 3vw, 38px);
@@ -2563,73 +2692,169 @@
       letter-spacing: -.045em;
       margin-bottom: 8px;
     }
-    .flow-metric span { display: block; font-size: 13px; line-height: 1.3; }
-    .source-badge, .risk-weight {
-      display: inline-flex;
-      align-items: center;
-      width: fit-content;
-      border-radius: 999px;
-      padding: 6px 10px;
-      margin: 0 0 10px;
-      background: rgba(214,181,109,.16);
-      color: #735a19;
-      font-size: 11px;
-      font-weight: 950;
-      letter-spacing: .09em;
-      text-transform: uppercase;
+    .autopsy-kpi span {
+      display: block;
+      font-size: 13px;
+      line-height: 1.3;
     }
-    .risk-weight {
-      margin: 0 0 0 8px;
-      background: rgba(31,97,112,.10);
-      color: var(--teal);
-      letter-spacing: .04em;
+    .autopsy-depth-list {
+      display: grid;
+      gap: 14px;
+      margin-top: 20px;
     }
-    .integrated-note {
-      margin: 18px 0;
-      border-radius: 22px;
+    .autopsy-depth-question {
+      border: 1px solid rgba(16,42,53,.10);
+      background: rgba(255,255,255,.76);
+      border-radius: 24px;
       padding: 18px;
-      background: linear-gradient(135deg, rgba(31,97,112,.08), rgba(214,181,109,.10));
-      border: 1px solid rgba(31,97,112,.14);
-      color: #33464e;
-      font-weight: 750;
+      box-shadow: 0 12px 30px rgba(16,42,53,.05);
     }
-    .funnel-steps {
+    .autopsy-depth-question p {
+      margin: 0 0 12px;
+      color: var(--navy);
+      font-weight: 900;
+      line-height: 1.25;
+    }
+    .autopsy-depth-question small {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--muted);
+      font-weight: 800;
+    }
+    .autopsy-depth-question label {
+      text-transform: none;
+      letter-spacing: normal;
+      color: #40525a;
+      font-weight: 650;
+      margin: 9px 0;
+      display: flex;
+      gap: 9px;
+      align-items: flex-start;
+    }
+    .autopsy-depth-question input[type="radio"] {
+      width: 17px;
+      height: 17px;
+      flex: 0 0 auto;
+      margin-top: 2px;
+    }
+    .autopsy-table-shell {
+      overflow-x: auto;
+      border-radius: 22px;
+      border: 1px solid rgba(16,42,53,.10);
+      background: rgba(255,255,255,.76);
+      margin-top: 16px;
+    }
+    .autopsy-table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 720px;
+    }
+    .autopsy-table th,
+    .autopsy-table td {
+      border-bottom: 1px solid rgba(16,42,53,.09);
+      padding: 13px 14px;
+      text-align: left;
+      vertical-align: top;
+    }
+    .autopsy-table th {
+      background: rgba(16,42,53,.07);
+      color: var(--navy);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+    .autopsy-table td { color: #40525a; }
+    .autopsy-table td strong { color: var(--navy); }
+    .autopsy-final-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 14px;
-      margin: 24px 0;
+      gap: 12px;
+      margin: 20px 0 16px;
     }
-    .funnel-step {
-      border-radius: 24px;
-      padding: 22px;
-      background: rgba(255,255,255,.78);
-      border: 1px solid rgba(16,42,53,.10);
-      box-shadow: 0 14px 34px rgba(16,42,53,.06);
-      position: relative;
-      overflow: hidden;
-      min-height: 190px;
+    .autopsy-final-card {
+      border-radius: 20px;
+      padding: 16px;
+      background: rgba(243,240,231,.72);
+      border: 1px solid rgba(16,42,53,.08);
     }
-    .funnel-step::after {
-      content: attr(data-step);
-      position: absolute;
-      right: 12px;
-      bottom: -12px;
-      color: rgba(16,42,53,.055);
-      font-size: 74px;
-      font-weight: 950;
+    .autopsy-final-card strong {
+      display: block;
+      color: #111;
+      font-size: clamp(22px, 2.6vw, 30px);
       line-height: 1;
+      letter-spacing: -.04em;
+      margin-bottom: 8px;
     }
-    .funnel-step h3 { margin: 0 0 10px; color: var(--navy); font-size: 23px; line-height: 1.08; }
-    .funnel-step p { margin: 0; color: #46585f; position: relative; z-index: 1; }
-    .result-callout {
-      margin-top: 18px;
+    .autopsy-final-card span {
+      color: #2f3d43;
+      font-size: 14px;
+      line-height: 1.28;
+      display: block;
+    }
+    .scenario-card {
       border-radius: 22px;
       padding: 18px;
       background: rgba(255,255,255,.72);
       border: 1px solid rgba(16,42,53,.10);
+      margin-top: 16px;
     }
-    @media (max-width: 980px) {
-      .flow-summary-grid, .funnel-steps { grid-template-columns: 1fr; }
+    .scenario-card h3 {
+      margin: 0 0 14px;
+      color: var(--navy);
+      font-size: 17px;
+    }
+    .scenario-row {
+      display: grid;
+      grid-template-columns: 210px 1fr 150px;
+      gap: 10px;
+      align-items: center;
+      padding: 9px 0;
+      border-bottom: 1px solid rgba(16,42,53,.08);
+      color: #111;
+      font-size: 14px;
+    }
+    .scenario-row:last-child { border-bottom: 0; }
+    .scenario-bar {
+      height: 6px;
+      border-radius: 999px;
+      background: rgba(16,42,53,.08);
+      overflow: hidden;
+    }
+    .scenario-bar span {
+      display: block;
+      height: 100%;
+      border-radius: 999px;
+      background: var(--teal);
+    }
+    .scenario-bar.expected span,
+    .scenario-bar.annual span { background: #786bdd; }
+    .scenario-bar.optimal span { background: #ee9d22; }
+    .autopsy-final-note {
+      margin-top: 18px;
+      padding: 16px 18px;
+      border-radius: 18px;
+      background: rgba(243,240,231,.76);
+      border: 1px solid rgba(16,42,53,.12);
+      color: #333;
+      font-size: 15px;
+      line-height: 1.55;
+    }
+    .autopsy-locked {
+      opacity: .72;
+      background: rgba(255,255,255,.58);
+    }
+    @media (max-width: 1050px) {
+      .autopsy-kpi-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .autopsy-radar-grid, .autopsy-progress, .autopsy-final-grid { grid-template-columns: 1fr; }
+      .scenario-row { grid-template-columns: 1fr; gap: 6px; }
+    }
+    @media (max-width: 620px) {
+      .autopsy-stage,
+      .autopsy-progress-card,
+      .autopsy-radar-category,
+      .autopsy-depth-question,
+      .scenario-card { border-radius: 22px; }
+      .autopsy-kpi-grid { grid-template-columns: 1fr; }
     }
 
 </style>
@@ -2644,9 +2869,9 @@
       </a>
       <nav class="nav-links" aria-label="Navegación principal">
         <a href="#concepto">Concepto</a>
-        <a href="#/reto-nomina-muerta">Radar de Riesgo</a>
-        <a href="#/recupera-nomina-muerta">Calculadora</a>
-        <a href="#/autodiagnostico-lideres">Autopsia Operativa</a>
+        <a href="#/reto-autopsia">Reto</a>
+        <a href="#/reto-autopsia">Recupera</a>
+        <a href="#/reto-autopsia">Diagnóstico</a>
         <a href="#/viva-la-nomina">Conferencias</a>
         <a href="#/consultoria-copiloto">Consultoría</a>
         <a href="https://wa.me/526671450096" target="_blank" rel="noopener">Contacto</a>
@@ -3128,50 +3353,123 @@
 
 
   <main id="singleIndexPages" class="single-index-pages" aria-live="polite">
-    <section id="recupera-nomina-muerta" class="tool-subpage" data-page-route="recupera-nomina-muerta">
+    
+    <section id="reto-autopsia" class="tool-subpage" data-page-route="reto-autopsia">
       <div class="wrap">
         <div class="subpage-hero">
-          <div class="kicker">Calculadora de Recuperación</div>
-          <h1>Convierte el riesgo operativo en dinero recuperable.</h1>
-          <p>Esta calculadora ya no funciona como una herramienta aislada: puede usar el porcentaje manual, el Radar de Riesgo o la Autopsia Operativa para estimar la Nómina Muerta mensual, anual y la recuperación potencial según el tipo dominante de fuga.</p>
+          <div class="kicker">Reto de Autopsia · Sistema integrado</div>
+          <h1>Detecta la señal, profundiza solo en lo que duele y calcula la Nómina Muerta recuperable.</h1>
+          <p>Una sola ruta: primero identifica síntomas visibles; después evalúa a profundidad únicamente los síntomas señalados; finalmente usa el porcentaje ajustado para calcular impacto económico y escenarios de recuperación.</p>
           <div class="subpage-nav">
-            <a class="btn btn-outline" href="#/reto-nomina-muerta">1. Iniciar con Radar de Riesgo</a>
-            <a class="btn btn-outline" href="#/autodiagnostico-lideres">2. Profundizar con Autopsia Operativa</a>
+            <a class="btn btn-outline" href="#autopsiaRadarStage">1. Señal de riesgo</a>
+            <a class="btn btn-outline" href="#autopsiaDepthStage">2. Autopsia de síntomas</a>
+            <a class="btn btn-outline" href="#autopsiaCalcStage">3. Cálculo final</a>
           </div>
         </div>
 
-        <div class="funnel-steps">
-          <div class="funnel-step" data-step="01"><span class="source-badge">Radar</span><h3>Detecta exposición</h3><p>El Reto ahora mide síntomas ponderados. No todos los síntomas valen igual: una molestia operativa no pesa lo mismo que una falla estructural.</p></div>
-          <div class="funnel-step" data-step="02"><span class="source-badge">Autopsia</span><h3>Encuentra la causa</h3><p>El diagnóstico identifica dónde se origina la pérdida: seguimiento, trazabilidad, comunicación, retrabajo, prioridades o desgaste.</p></div>
-          <div class="funnel-step" data-step="03"><span class="source-badge">ROI</span><h3>Monetiza recuperación</h3><p>El cálculo usa el porcentaje estimado y un factor de recuperabilidad ajustado al tipo de problema dominante.</p></div>
+        <div class="autopsy-progress">
+          <div class="autopsy-progress-card"><span class="autopsy-badge">Paso 1</span><strong>Radar de alarma</strong><span>Marca síntomas visibles. Se calcula índice de riesgo, fuga dominante, recuperabilidad base y urgencia inicial.</span></div>
+          <div class="autopsy-progress-card"><span class="autopsy-badge teal">Paso 2</span><strong>Autopsia dinámica</strong><span>Solo se profundiza en los síntomas marcados. Cada uno se evalúa por frecuencia, intensidad e impacto operativo.</span></div>
+          <div class="autopsy-progress-card"><span class="autopsy-badge">Paso 3</span><strong>Recuperación económica</strong><span>El porcentaje ajustado se transfiere automáticamente a la calculadora, pero puede editarse para simular escenarios.</span></div>
+        </div>
+
+        <div class="autopsy-flow-section">
+          <section class="autopsy-stage" id="autopsiaRadarStage" data-stage="01">
+            <span class="autopsy-badge">Radar de Riesgo</span>
+            <h2>Señal de alarma inicial</h2>
+            <p class="lead">Marca solamente los síntomas que hoy existen en la operación. Aquí no se diagnostica todo: se detecta la señal y se eligen los síntomas que pasarán a autopsia.</p>
+            <div id="autopsiaRadarChecklist" class="autopsy-radar-grid"></div>
+            <div class="utility-actions">
+              <button class="btn btn-primary" type="button" id="autopsiaRadarBtn">Calcular señal de riesgo</button>
+              <button class="btn btn-light" type="button" id="autopsiaRadarClearBtn">Limpiar selección</button>
+            </div>
+            <div id="autopsiaRadarResult" class="tool-result"></div>
+          </section>
+
+          <section class="autopsy-stage autopsy-locked" id="autopsiaDepthStage" data-stage="02">
+            <span class="autopsy-badge teal">Autopsia de síntomas</span>
+            <h2>Profundiza solo en los síntomas señalados</h2>
+            <p class="lead" id="autopsiaDepthIntro">Primero completa el Radar. Después aparecerán aquí únicamente los síntomas marcados, con alternativas específicas para evaluar frecuencia, intensidad e impacto.</p>
+            <div id="autopsiaDepthQuestions" class="autopsy-depth-list"></div>
+            <div class="utility-actions">
+              <button class="btn btn-primary" type="button" id="autopsiaDepthBtn">Calcular diagnóstico ajustado</button>
+              <button class="btn btn-light" type="button" id="autopsiaDepthClearBtn">Limpiar autopsia</button>
+            </div>
+            <div id="autopsiaDepthResult" class="tool-result"></div>
+          </section>
+
+          <section class="autopsy-stage autopsy-locked" id="autopsiaCalcStage" data-stage="03">
+            <span class="autopsy-badge">Cálculo final</span>
+            <h2>Calcula la Nómina Muerta y la recuperación potencial</h2>
+            <p class="lead">El porcentaje ajustado de la Autopsia se transfiere automáticamente. Puedes editarlo manualmente para simular un caso conservador, esperado o crítico.</p>
+            <div class="mini-grid">
+              <div>
+                <label for="autopsiaCalcPct">Porcentaje de Nómina Muerta ajustado</label>
+                <input id="autopsiaCalcPct" type="number" min="1" max="70" step="1" value="25">
+              </div>
+              <div>
+                <label for="autopsiaCalcPersonas">Número de personas evaluadas</label>
+                <input id="autopsiaCalcPersonas" type="number" min="1" value="20">
+              </div>
+              <div>
+                <label for="autopsiaCalcSueldo">Sueldo mensual promedio por persona</label>
+                <input id="autopsiaCalcSueldo" type="text" value="15,000" inputmode="numeric">
+              </div>
+              <div>
+                <label for="autopsiaCalcNominaTotal">Nómina mensual total si ya la conoces</label>
+                <input id="autopsiaCalcNominaTotal" type="text" placeholder="Opcional. Ej. 700,000" inputmode="numeric">
+              </div>
+            </div>
+            <div class="utility-actions">
+              <button class="btn btn-primary" type="button" id="autopsiaCalcBtn">Ejecutar cálculo final</button>
+              <button class="btn btn-light" type="button" id="autopsiaCalcResetBtn">Restablecer cálculo</button>
+            </div>
+            <div id="autopsiaCalcResult" class="tool-result"></div>
+          </section>
+        </div>
+      </div>
+    </section>
+
+<section id="recupera-nomina-muerta" class="tool-subpage" data-page-route="recupera-nomina-muerta">
+      <div class="wrap">
+        <div class="subpage-hero">
+          <div class="kicker">Recupera tu Nómina Muerta</div>
+          <h1>Monetiza el tiempo operativo que ya estás pagando.</h1>
+          <p>Esta subpágina integra el diagnóstico económico base para estimar cuánto dinero puede estar atrapado en desorganización, retrabajo, falta de seguimiento, comunicación dispersa y procesos sin trazabilidad.</p>
+        </div>
+
+        <div class="tool-grid">
+          <div class="tool-card">
+            <h3>1. Detecta la pérdida</h3>
+            <p>Identifica el porcentaje de tiempo muerto generado por fricción operativa, juntas improductivas, esperas, reprocesos y falta de claridad.</p>
+          </div>
+          <div class="tool-card">
+            <h3>2. Cuantifica el impacto</h3>
+            <p>Convierte ese porcentaje en dinero mensual y anual para hacerlo visible ante dirección, socios o responsables de área.</p>
+          </div>
+          <div class="tool-card">
+            <h3>3. Recupera capacidad</h3>
+            <p>El objetivo no es trabajar más: es rediseñar el sistema para que la nómina pagada genere más avance, cierre y valor real.</p>
+          </div>
         </div>
 
         <div class="tool-form-card">
-          <h2>Calculadora ejecutiva de recuperación</h2>
-          <p class="lead">Elige la fuente del porcentaje. Puedes usar un cálculo manual o tomar automáticamente el resultado del Radar de Riesgo o de la Autopsia Operativa si ya los respondiste.</p>
+          <h2>Calculadora rápida de recuperación</h2>
+          <p class="lead">Usa datos estimados. La calculadora te dará una lectura ejecutiva de la Nómina Muerta mensual, anual y la capacidad recuperable con un ajuste operativo del 70%.</p>
           <div class="mini-grid">
-            <div>
-              <label for="calcFuente">Fuente del cálculo</label>
-              <select id="calcFuente">
-                <option value="manual" selected>Manual — usar porcentaje seleccionado abajo</option>
-                <option value="reto">Radar de Riesgo — resultado del Reto</option>
-                <option value="lider">Autopsia Operativa — líder</option>
-                <option value="colab">Autopsia Operativa — colaboradores</option>
-              </select>
-            </div>
-            <div>
-              <label for="calcTiempo">Porcentaje manual de Nómina Muerta</label>
-              <select id="calcTiempo">
-                <option value="12">12% — Riesgo bajo controlable</option>
-                <option value="18">18% — Oportunidad visible de mejora</option>
-                <option value="25" selected>25% — Fricción operativa recurrente</option>
-                <option value="32">32% — Falla estructural de seguimiento</option>
-                <option value="40">40% — Riesgo crítico de ejecución</option>
-              </select>
-            </div>
             <div>
               <label for="calcEmpleados">Número de personal staff y ejecutivo</label>
               <input type="number" id="calcEmpleados" min="1" value="20">
+            </div>
+            <div>
+              <label for="calcTiempo">Estatus actual de tiempos muertos</label>
+              <select id="calcTiempo">
+                <option value="15">15% — Procesos con posibilidades de mejora</option>
+                <option value="20" selected>20% — Oportunidad de mejora en ejecución y seguimiento</option>
+                <option value="25">25% — Desorganización operativa y fallas de colaboración</option>
+                <option value="30">30% — Procesos sustantivos sin control</option>
+                <option value="35">35% — Fallas entre dirección, mandos medios y operación</option>
+              </select>
             </div>
             <div>
               <label for="calcSueldo">Sueldo mensual promedio por persona</label>
@@ -3182,7 +3480,6 @@
               <input type="text" id="calcSueldoTotal" placeholder="Opcional" inputmode="numeric">
             </div>
           </div>
-          <div class="integrated-note">Lectura recomendada: primero usa el Radar para generar urgencia; después la Autopsia para ubicar causa; finalmente esta calculadora para convertir el problema en una oportunidad económica defendible.</div>
           <div class="utility-actions">
             <button class="btn btn-primary" type="button" id="calcBtn">Calcular recuperación</button>
             <button class="btn btn-light" type="button" id="calcResetBtn">Limpiar</button>
@@ -3191,16 +3488,16 @@
         </div>
 
         <div class="tool-form-card" id="solucion-ximpler">
-          <h2>De diagnóstico a intervención: Ximpler.App</h2>
-          <p class="lead">Cuando el sistema detecta que la fuga dominante está en coordinación, seguimiento, trazabilidad o retrabajo, la conversación deja de ser “comprar software” y se convierte en recuperar capacidad laboral ya pagada.</p>
+          <h2>La solución operativa: Ximpler.App</h2>
+          <p class="lead">Ximpler.App concentra ejecución, seguimiento, comunicación, coordinación, supervisión y trazabilidad para que el trabajo diario deje de depender de memoria, correos sueltos, WhatsApp o reuniones repetidas.</p>
           <div class="tool-grid">
-            <div class="tool-card"><h3>Centraliza el trabajo</h3><p>Un solo tablero para tareas, responsables, fechas, acuerdos, comentarios, archivos, autorizaciones y evidencia.</p></div>
-            <div class="tool-card"><h3>Reduce la coordinación eterna</h3><p>Menos juntas de seguimiento, menos correos perdidos, menos WhatsApp operativo y más ejecución visible.</p></div>
-            <div class="tool-card"><h3>Convierte tiempo en avance</h3><p>La recuperación se expresa en dinero, pero se captura como capacidad de ejecución, servicio, ventas, mejora y cierre.</p></div>
+            <div class="tool-card"><h3>Visualiza y prioriza</h3><p>Tableros visuales para cargas de trabajo, avances, retrasos, acuerdos, autorizaciones y cuellos de botella.</p></div>
+            <div class="tool-card"><h3>Coordina y ejecuta</h3><p>Tarjetas de acción con responsable, plazo, comentarios, involucrados, checklist, etiquetas, historial y estatus.</p></div>
+            <div class="tool-card"><h3>Supervisa y mejora</h3><p>Seguimiento activo de compromisos, procesos, proyectos, minutas, productividad y desempeño.</p></div>
           </div>
           <div class="utility-actions">
             <a class="btn btn-primary" href="https://wa.me/526671450096" target="_blank" rel="noopener">Más Información</a>
-            <a class="btn btn-light" href="#/reto-nomina-muerta">Medir riesgo operativo</a>
+            <a class="btn btn-light" href="#/reto-autopsia">Medir síntomas con el Reto</a>
           </div>
         </div>
       </div>
@@ -3209,18 +3506,14 @@
     <section id="reto-nomina-muerta" class="tool-subpage" data-page-route="reto-nomina-muerta">
       <div class="wrap">
         <div class="subpage-hero">
-          <div class="kicker">Radar de Riesgo de Nómina Muerta</div>
-          <h1>Detecta qué tan expuesta está tu empresa a perder tiempo pagado.</h1>
-          <p>Este Reto ya no es otro diagnóstico. Es una prueba rápida de exposición: pondera síntomas, identifica la fuga dominante y genera un rango tentativo que puede alimentar la calculadora de recuperación.</p>
-          <div class="subpage-nav">
-            <a class="btn btn-outline" href="#/autodiagnostico-lideres">Profundizar con Autopsia</a>
-            <a class="btn btn-outline" href="#/recupera-nomina-muerta">Ir a Calculadora</a>
-          </div>
+          <div class="kicker">Reto Nómina Muerta</div>
+          <h1>Identificar, medir y reducir la pérdida operativa ya pagada.</h1>
+          <p>Selecciona con honestidad los síntomas que reflejan la realidad actual de tu empresa o equipo. Al final, el sistema estima el nivel de riesgo y permite calcular el impacto económico tentativo.</p>
         </div>
 
         <div class="tool-form-card">
-          <h2>Checklist ponderado del Radar</h2>
-          <p class="lead">Marca solo los síntomas que existen hoy. El sistema asigna peso según severidad: molestia operativa, fricción recurrente, falla estructural o alerta crítica.</p>
+          <h2>Checklist del Reto</h2>
+          <p class="lead">Marca todos los síntomas que claramente existen hoy. No es una encuesta de opinión: es una radiografía operativa de señales críticas.</p>
           <div id="retoChecklist"></div>
           <div class="utility-actions">
             <button class="btn btn-primary" type="button" id="retoBtn">Evaluar riesgo</button>
@@ -3234,7 +3527,6 @@
             <input id="retoNominaInput" type="text" placeholder="Ej. 350,000" inputmode="numeric">
             <div class="utility-actions">
               <button class="btn btn-primary" type="button" id="retoCalcMoneyBtn">Calcular impacto económico</button>
-              <a class="btn btn-light" href="#/recupera-nomina-muerta">Usar este resultado en la Calculadora</a>
             </div>
             <div id="retoCalculoResultados" class="tool-result"></div>
           </div>
@@ -3245,16 +3537,12 @@
     <section id="autodiagnostico-lideres" class="tool-subpage" data-page-route="autodiagnostico-lideres">
       <div class="wrap">
         <div class="subpage-hero">
-          <div class="kicker">Autopsia Operativa · Líderes</div>
-          <h1>Encuentra la causa real de la Nómina Muerta.</h1>
-          <p>Este diagnóstico complementa el Radar: no solo confirma si hay riesgo, sino que identifica dónde nace la pérdida y qué foco debe atenderse primero.</p>
-          <div class="subpage-nav">
-            <a class="btn btn-outline" href="#/reto-nomina-muerta">Hacer Radar primero</a>
-            <a class="btn btn-outline" href="#/autodiagnostico-colaboradores">Comparar con colaboradores</a>
-          </div>
+          <div class="kicker">Autodiagnóstico para líderes</div>
+          <h1>Evalúa la calidad de ejecución, supervisión y alineación de tu equipo.</h1>
+          <p>Diseñado para directores, gerentes, coordinadores y responsables de área que necesitan detectar riesgos operativos antes de que se conviertan en cultura.</p>
         </div>
         <div class="tool-form-card">
-          <h2>Información de la Autopsia Operativa</h2>
+          <h2>Información del diagnóstico</h2>
           <div class="mini-grid">
             <div><label for="liderNombre">Nombre</label><input id="liderNombre" type="text"></div>
             <div><label for="liderArea">Área o departamento</label><input id="liderArea" type="text"></div>
@@ -3262,12 +3550,11 @@
             <div><label for="liderCorreo">Correo electrónico</label><input id="liderCorreo" type="email"></div>
           </div>
           <div class="inline-note">Fecha y hora del diagnóstico: <strong id="liderFecha"></strong></div>
-          <p class="lead">Selecciona una opción por cada pregunta según la realidad de tu equipo. El resultado alimenta la calculadora y muestra los focos de intervención.</p>
+          <p class="lead">Selecciona una opción por cada pregunta según la realidad de tu equipo.</p>
           <div id="liderQuestions"></div>
           <div class="utility-actions">
-            <button class="btn btn-primary" type="button" id="liderBtn">Calcular Autopsia</button>
+            <button class="btn btn-primary" type="button" id="liderBtn">Calcular puntaje</button>
             <button class="btn btn-light" type="button" id="liderClearBtn">Limpiar respuestas</button>
-            <a class="btn btn-light" href="#/recupera-nomina-muerta">Usar resultado en Calculadora</a>
           </div>
           <div id="liderResultado" class="tool-result"></div>
           <div id="liderFocus" class="tool-result"></div>
@@ -3278,35 +3565,31 @@
     <section id="autodiagnostico-colaboradores" class="tool-subpage" data-page-route="autodiagnostico-colaboradores">
       <div class="wrap">
         <div class="subpage-hero">
-          <div class="kicker">Autopsia Operativa · Colaboradores</div>
-          <h1>Contrasta la percepción directiva contra la experiencia real de operación.</h1>
-          <p>Esta versión captura fricción diaria, retrabajo, esperas, interrupciones y desgaste desde quien vive el flujo operativo todos los días.</p>
-          <div class="subpage-nav">
-            <a class="btn btn-outline" href="#/autodiagnostico-lideres">Ver versión líderes</a>
-            <a class="btn btn-outline" href="#/recupera-nomina-muerta">Ir a Calculadora</a>
-          </div>
+          <div class="kicker">Autodiagnóstico para colaboradores</div>
+          <h1>Detecta fricción diaria, retrabajo, esperas y desgaste operativo desde la experiencia real.</h1>
+          <p>Esta versión permite capturar lo que muchas veces no aparece en los reportes: interrupciones, tareas repetidas, falta de claridad, dependencia de otros y sensación de estar ocupado sin avanzar.</p>
         </div>
         <div class="tool-form-card">
           <h2>Información del diagnóstico</h2>
           <div class="mini-grid">
             <div><label for="colabNombre">Nombre</label><input id="colabNombre" type="text"></div>
             <div><label for="colabArea">Área o departamento</label><input id="colabArea" type="text"></div>
-            <div><label for="colabPuesto">Puesto</label><input id="colabPuesto" type="text"></div>
+            <div><label for="colabPlaza">Plaza o ubicación</label><input id="colabPlaza" type="text"></div>
             <div><label for="colabCorreo">Correo electrónico</label><input id="colabCorreo" type="email"></div>
           </div>
           <div class="inline-note">Fecha y hora del diagnóstico: <strong id="colabFecha"></strong></div>
-          <p class="lead">Responde con honestidad. Este resultado ayuda a detectar brechas entre lo que la dirección cree que ocurre y lo que realmente vive el equipo.</p>
+          <p class="lead">Selecciona la opción que más se acerque a tu experiencia laboral real. No hay respuestas buenas o malas, solo verdades útiles.</p>
           <div id="colabQuestions"></div>
           <div class="utility-actions">
-            <button class="btn btn-primary" type="button" id="colabBtn">Calcular Autopsia</button>
+            <button class="btn btn-primary" type="button" id="colabBtn">Calcular puntaje</button>
             <button class="btn btn-light" type="button" id="colabClearBtn">Limpiar respuestas</button>
-            <a class="btn btn-light" href="#/recupera-nomina-muerta">Usar resultado en Calculadora</a>
           </div>
           <div id="colabResultado" class="tool-result"></div>
           <div id="colabFocus" class="tool-result"></div>
         </div>
       </div>
     </section>
+
 
     <section id="viva-la-nomina" class="tool-subpage" data-page-route="viva-la-nomina">
       <div class="wrap">
@@ -4240,7 +4523,7 @@
           if (active) found = true;
         });
         if (!found) {
-          window.location.hash = '#/recupera-nomina-muerta';
+          window.location.hash = '#/reto-autopsia';
           return;
         }
         window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -4257,182 +4540,59 @@
       }
     }
 
-    const NM_FLOW_STATE = {
-      reto: null,
-      lider: null,
-      colab: null
-    };
-
-    function nmClamp(value, min, max) {
-      return Math.min(max, Math.max(min, value));
-    }
-
-    function nmPctRangeFromRisk(score) {
-      const center = nmClamp(6 + (score * 0.40), 6, 46);
-      return {
-        min: nmClamp(center - 5, 5, 42),
-        center,
-        max: nmClamp(center + 5, 10, 50)
-      };
-    }
-
-    function nmRiskLevel(score) {
-      if (score <= 15) return {icon:'🟢', label:'Bajo', urgency:'baja', message:'Hay señales aisladas. El reto es prevenir que se normalicen.'};
-      if (score <= 35) return {icon:'🟡', label:'Moderado', urgency:'media', message:'La Nómina Muerta empieza a camuflarse como operación normal.'};
-      if (score <= 65) return {icon:'🔴', label:'Alto', urgency:'alta', message:'Ya existe fricción estructural que consume capacidad pagada.'};
-      return {icon:'🚨', label:'Crítico', urgency:'inmediata', message:'Esto ya no es solo eficiencia: es rediseño del sistema operativo.'};
-    }
-
-    function nmRecoveryFactorForFocus(focus) {
-      const f = String(focus || '').toLowerCase();
-      if (f.includes('comunicación')) return 0.70;
-      if (f.includes('seguimiento') || f.includes('supervisión') || f.includes('accountability')) return 0.65;
-      if (f.includes('junta') || f.includes('coordinación')) return 0.60;
-      if (f.includes('retrabajo') || f.includes('flujo') || f.includes('proceso')) return 0.55;
-      if (f.includes('trazabilidad') || f.includes('autorización') || f.includes('cuello')) return 0.50;
-      if (f.includes('desgaste') || f.includes('cognitivo') || f.includes('cultura')) return 0.42;
-      return 0.58;
-    }
-
-    function nmRetoFocus(catTitle, question) {
-      const t = `${catTitle} ${question}`.toLowerCase();
-      if (t.includes('firma') || t.includes('autoriz') || t.includes('validación') || t.includes('congelan')) return 'Autorizaciones y trazabilidad';
-      if (t.includes('junta') || t.includes('reun')) return 'Juntas y coordinación improductiva';
-      if (t.includes('whatsapp') || t.includes('correo') || t.includes('mensaje') || t.includes('comunicación')) return 'Comunicación dispersa';
-      if (t.includes('seguimiento') || t.includes('responsable') || t.includes('supervis')) return 'Seguimiento y accountability';
-      if (t.includes('retrabajo') || t.includes('repite') || t.includes('duplic') || t.includes('corrige')) return 'Retrabajo y duplicidad';
-      if (t.includes('valor') || t.includes('objetivo') || t.includes('prioridad')) return 'Prioridades y valor estratégico';
-      if (t.includes('agotado') || t.includes('ocupados') || t.includes('buscar') || t.includes('cognitivo')) return 'Carga cognitiva y desgaste';
-      if (catTitle.includes('Coordinación')) return 'Trazabilidad interáreas';
-      if (catTitle.includes('Flujo')) return 'Flujo operativo ineficiente';
-      return catTitle;
-    }
-
-    function nmRetoWeight(catTitle, question) {
-      const t = `${catTitle} ${question}`.toLowerCase();
-      let weight = 1;
-      if (t.includes('constantemente') || t.includes('continuamente') || t.includes('más tiempo') || t.includes('urgente')) weight = 2;
-      if (t.includes('tareas críticas') || t.includes('procesos sustantivos') || t.includes('sin trazabilidad') || t.includes('no existe una plataforma') || t.includes('responsabilidad clara')) weight = 3;
-      if (t.includes('congelan') || t.includes('no hay forma clara') || t.includes('la mayoría') || t.includes('todo el tiempo')) weight = 4;
-      return weight;
-    }
-
-    function nmSourceLabel(source) {
-      if (source === 'reto') return 'Radar de Riesgo';
-      if (source === 'lider') return 'Autopsia Operativa · Líder';
-      if (source === 'colab') return 'Autopsia Operativa · Colaboradores';
-      return 'Manual';
-    }
-
-    function nmStoreSourceResult(source, data) {
-      NM_FLOW_STATE[source] = data;
-      try { localStorage.setItem('nmFlowState', JSON.stringify(NM_FLOW_STATE)); } catch(e) {}
-    }
-
-    function nmLoadStoredFlowState() {
-      try {
-        const saved = JSON.parse(localStorage.getItem('nmFlowState') || '{}');
-        ['reto','lider','colab'].forEach(k => { if (saved[k]) NM_FLOW_STATE[k] = saved[k]; });
-      } catch(e) {}
-    }
-
-    function nmBuildSummaryCards(data) {
-      return `<div class="flow-summary-grid">
-        <div class="flow-metric"><strong>${Math.round(data.riskScore)} / 100</strong><span>Índice de riesgo</span></div>
-        <div class="flow-metric"><strong>${data.pctMin.toFixed(0)}%–${data.pctMax.toFixed(0)}%</strong><span>Rango tentativo de Nómina Muerta</span></div>
-        <div class="flow-metric"><strong>${Math.round(data.recoveryFactor * 100)}%</strong><span>Recuperabilidad estimada</span></div>
-        <div class="flow-metric"><strong>${data.levelLabel}</strong><span>Urgencia ${data.urgency}</span></div>
-      </div>`;
-    }
-
     function nmRenderReto() {
       const container = document.getElementById('retoChecklist');
       if (!container || container.dataset.rendered === '1') return;
       container.innerHTML = NM_RETO_CATEGORIES.map((cat, ci) => `
         <div class="reto-category">
           <h3>${cat.title}</h3>
-          ${cat.questions.map((q, qi) => {
-            const weight = nmRetoWeight(cat.title, q);
-            const focus = nmRetoFocus(cat.title, q);
-            return `
+          ${cat.questions.map((q, qi) => `
             <label class="check-item">
-              <input type="checkbox" class="nm-reto-check" value="${weight}" data-category="${ci}" data-question="${qi}" data-weight="${weight}" data-focus="${focus}">
-              <span>${q}<span class="risk-weight">Peso ${weight}</span></span>
-            </label>`;
-          }).join('')}
+              <input type="checkbox" class="nm-reto-check" value="1" data-category="${ci}" data-question="${qi}">
+              <span>${q}</span>
+            </label>
+          `).join('')}
         </div>
       `).join('');
       container.dataset.rendered = '1';
     }
 
     function nmEvaluateReto() {
-      const checks = Array.from(document.querySelectorAll('.nm-reto-check'));
-      const selected = checks.filter(cb => cb.checked);
-      const maxScore = checks.reduce((acc, cb) => acc + (parseInt(cb.dataset.weight, 10) || 1), 0) || 1;
-      const scoreRaw = selected.reduce((acc, cb) => acc + (parseInt(cb.dataset.weight, 10) || 1), 0);
-      const riskScore = (scoreRaw / maxScore) * 100;
-      const level = nmRiskLevel(riskScore);
-      const pct = nmPctRangeFromRisk(riskScore);
-
-      const focusScores = {};
-      selected.forEach(cb => {
-        const focus = cb.dataset.focus || 'Otros síntomas';
-        focusScores[focus] = (focusScores[focus] || 0) + (parseInt(cb.dataset.weight, 10) || 1);
-      });
-      const dominantFocus = Object.entries(focusScores).sort((a,b) => b[1] - a[1])[0]?.[0] || 'Sin foco dominante';
-      const recoveryFactor = nmRecoveryFactorForFocus(dominantFocus);
-      const data = {
-        source: 'reto',
-        riskScore,
-        pctMin: pct.min,
-        pctCenter: pct.center,
-        pctMax: pct.max,
-        focus: dominantFocus,
-        recoveryFactor,
-        levelLabel: level.label,
-        urgency: level.urgency
-      };
-      nmStoreSourceResult('reto', data);
-
-      const focusRows = Object.entries(focusScores).sort((a,b) => b[1]-a[1]).slice(0,5).map(([focus, score]) => `<tr><td><strong>${focus}</strong></td><td>${score} puntos ponderados</td></tr>`).join('') || '<tr><td colspan="2">Sin síntomas seleccionados.</td></tr>';
-
-      nmShowResult('retoResultado',
-        `<span class="source-badge">Radar de Riesgo</span>` +
-        nmBuildSummaryCards(data) +
-        `<strong>${level.icon} Nivel ${level.label}</strong><br>${level.message}<br><br>` +
-        `<strong>Fuga dominante:</strong> ${dominantFocus}<br>` +
-        `<strong>Síntomas marcados:</strong> ${selected.length} de ${checks.length}<br>` +
-        `<strong>Puntaje ponderado:</strong> ${scoreRaw} de ${maxScore}<br><br>` +
-        `<table class="focus-table"><thead><tr><th>Foco detectado</th><th>Peso acumulado</th></tr></thead><tbody>${focusRows}</tbody></table>` +
-        `<div class="result-callout"><strong>Siguiente paso recomendado:</strong> usa la Autopsia Operativa para validar la causa raíz o pasa directo a la Calculadora para monetizar el rango estimado.</div>`
-      );
+      const total = document.querySelectorAll('.nm-reto-check:checked').length;
+      const max = document.querySelectorAll('.nm-reto-check').length || 49;
+      let interpretation = '';
+      if (total <= 5) {
+        interpretation = `🟢 <strong>Nivel Bajo (0–5 síntomas)</strong><br>Tu operación muestra señales de eficiencia y control. Aun así, los síntomas marcados deben atenderse antes de que escalen.`;
+      } else if (total <= 9) {
+        interpretation = `🟡 <strong>Nivel Moderado (6–9 síntomas)</strong><br>La Nómina Muerta comienza a camuflarse como “operación normal”. Rediseñar ahora evita que el problema se convierta en cultura.`;
+      } else if (total <= 19) {
+        interpretation = `🔴 <strong>Nivel Alto (10–19 síntomas)</strong><br>Estás pagando por trabajo que no produce resultados reales. Hay fricción estructural en procesos, roles, comunicación o seguimiento.`;
+      } else {
+        interpretation = `🚨 <strong>Nivel Crítico (20+ síntomas)</strong><br>Esto ya no es solo eficiencia: es liderazgo y sostenibilidad. No necesitas más esfuerzo, necesitas rediseñar el sistema operativo.`;
+      }
+      const pct = (total / max) * 100;
+      nmShowResult('retoResultado', `<strong>Síntomas detectados:</strong> ${total} de ${max}<br><br>${interpretation}`);
       const pctBox = document.getElementById('retoPorcentajeTentativo');
-      if (pctBox) pctBox.innerHTML = `📊 <strong>Rango tentativo de Nómina Muerta:</strong> ${pct.min.toFixed(0)}%–${pct.max.toFixed(0)}% · <strong>Fuga dominante:</strong> ${dominantFocus}`;
+      if (pctBox) pctBox.innerHTML = `📊 <strong>% tentativo de Nómina Muerta:</strong> ${pct.toFixed(1)}%`;
       const box = document.getElementById('retoCalculatorBox');
       if (box) box.style.display = 'block';
-      const fuente = document.getElementById('calcFuente');
-      if (fuente) fuente.value = 'reto';
     }
 
     function nmCalculateRetoMoney() {
-      if (!NM_FLOW_STATE.reto) nmEvaluateReto();
-      const data = NM_FLOW_STATE.reto;
       const nomina = nmParseMoney(document.getElementById('retoNominaInput')?.value);
       if (!nomina) {
         nmShowResult('retoCalculoResultados', '⚠️ Ingresa una nómina mensual válida.');
         return;
       }
-      const mensualMin = nomina * (data.pctMin / 100);
-      const mensualMax = nomina * (data.pctMax / 100);
-      const mensualCentro = nomina * (data.pctCenter / 100);
-      const recuperacionMensual = mensualCentro * data.recoveryFactor;
-      const recuperacionAnual = recuperacionMensual * 12;
+      const total = document.querySelectorAll('.nm-reto-check:checked').length;
+      const max = document.querySelectorAll('.nm-reto-check').length || 49;
+      const pct = total / max;
+      const mensual = nomina * pct;
+      const anual = mensual * 12;
       nmShowResult('retoCalculoResultados',
-        `<span class="source-badge">Impacto económico preliminar</span>` +
-        `<strong>Nómina Muerta mensual estimada:</strong> ${nmFormatCurrency(mensualMin)} – ${nmFormatCurrency(mensualMax)}<br>` +
-        `<strong>Recuperación mensual razonable:</strong> ${nmFormatCurrency(recuperacionMensual)}<br>` +
-        `<strong>Recuperación anual razonable:</strong> ${nmFormatCurrency(recuperacionAnual)}<br><br>` +
-        `<strong>Lectura ejecutiva:</strong> este monto no significa recorte; representa capacidad pagada que puede rediseñarse, reasignarse y convertirse en avance real.`
+        `<strong>Estimación mensual:</strong> ${nmFormatCurrency(mensual)}<br>` +
+        `<strong>Estimación anual:</strong> ${nmFormatCurrency(anual)}<br><br>` +
+        `<strong>Lectura ejecutiva:</strong> este monto no significa necesariamente recorte; representa capacidad pagada que puede rediseñarse, reasignarse y convertirse en avance real.`
       );
     }
 
@@ -4453,17 +4613,12 @@
       container.dataset.rendered = '1';
     }
 
-    function nmDiagnosticModel(avg, typeLabel) {
-      const riskScore = nmClamp(((avg - 1) / 3) * 100, 0, 100);
-      const pct = nmPctRangeFromRisk(riskScore);
-      const level = nmRiskLevel(riskScore);
-      let message = '';
-      if (avg <= 1.5) message = `${typeLabel} muestra alto aprovechamiento del tiempo y baja presencia de Nómina Muerta.`;
-      else if (avg <= 2.1) message = `Hay funcionamiento razonable, pero ya existen oportunidades visibles de mejora.`;
-      else if (avg <= 2.7) message = `Se detectan focos claros de fricción operativa que deben priorizarse.`;
-      else if (avg <= 3.3) message = `Existen síntomas estructurales de ineficiencia, retrabajo, desgaste o falta de seguimiento.`;
-      else message = `Hay alta presencia de Nómina Muerta. Se recomienda intervención, rediseño de flujos y claridad inmediata de prioridades.`;
-      return {riskScore, pctMin:pct.min, pctCenter:pct.center, pctMax:pct.max, levelLabel:level.label, urgency:level.urgency, icon:level.icon, message};
+    function nmDiagnosticInterpretation(avg, typeLabel) {
+      if (avg <= 1.5) return `Nivel Excelente: ${typeLabel} muestra alto aprovechamiento del tiempo y baja presencia de Nómina Muerta. Estimación: <10%.`;
+      if (avg <= 2.1) return `Nivel Bueno: hay funcionamiento razonable, aunque existen oportunidades de mejora. Estimación de Nómina Muerta: 10–20%.`;
+      if (avg <= 2.7) return `Nivel Moderado: se detectan focos visibles de fricción operativa. Estimación de Nómina Muerta: 20–30%.`;
+      if (avg <= 3.3) return `Nivel Crítico: existen síntomas estructurales de ineficiencia, retrabajo, desgaste o falta de seguimiento. Estimación: 30–40%.`;
+      return `Nivel Muy Alto: hay alta presencia de Nómina Muerta. Se recomienda intervención, rediseño de flujos y claridad inmediata de prioridades. Estimación: >40%.`;
     }
 
     function nmCalcDiagnostic(prefix, questions, focusMap, resultId, focusId, typeLabel) {
@@ -4487,50 +4642,25 @@
         return;
       }
       const avg = total / questions.length;
-      const model = nmDiagnosticModel(avg, typeLabel);
-
-      const focusRowsData = Object.entries(focusMap).map(([focus, indexes]) => {
-        const score = indexes.reduce((acc, idx) => acc + (values[idx] || 0), 0);
-        const min = indexes.length;
-        const max = indexes.length * 4;
-        const focusPct = max > min ? ((score - min) / (max - min)) * 100 : 0;
-        const indicators = indexes.map(idx => `${idx + 1}`).join(', ');
-        return {focus, score, max, focusPct, indicators};
-      }).sort((a,b) => b.focusPct - a.focusPct);
-
-      const dominant = focusRowsData[0]?.focus || 'Sin foco dominante';
-      const recoveryFactor = nmRecoveryFactorForFocus(dominant);
-      const data = {
-        source: prefix,
-        riskScore: model.riskScore,
-        pctMin: model.pctMin,
-        pctCenter: model.pctCenter,
-        pctMax: model.pctMax,
-        focus: dominant,
-        recoveryFactor,
-        levelLabel: model.levelLabel,
-        urgency: model.urgency
-      };
-      nmStoreSourceResult(prefix, data);
-
+      const pct = ((avg - 1) / 3) * 100;
+      const interpretation = nmDiagnosticInterpretation(avg, typeLabel);
       nmShowResult(resultId,
-        `<span class="source-badge">${nmSourceLabel(prefix)}</span>` +
-        nmBuildSummaryCards(data) +
-        `<strong>${model.icon} Nivel ${model.levelLabel}</strong><br>${model.message}<br><br>` +
         `<strong>Puntaje total:</strong> ${total} de ${questions.length * 4}<br>` +
         `<strong>Promedio de riesgo:</strong> ${avg.toFixed(2)} / 4<br>` +
-        `<strong>Foco dominante:</strong> ${dominant}<br>` +
-        `<strong>Rango tentativo de Nómina Muerta:</strong> ${model.pctMin.toFixed(0)}%–${model.pctMax.toFixed(0)}%`
+        `<strong>% tentativo de Nómina Muerta:</strong> ${pct.toFixed(1)}%<br><br>${interpretation}`
       );
 
-      const rows = focusRowsData.map(row => `<tr><td><strong>${row.focus}</strong></td><td>${row.score} / ${row.max} (${row.focusPct.toFixed(0)}% riesgo)</td><td>Preguntas ${row.indicators}</td></tr>`).join('');
+      const rows = Object.entries(focusMap).map(([focus, indexes]) => {
+        const score = indexes.reduce((acc, idx) => acc + (values[idx] || 0), 0);
+        const max = indexes.length * 4;
+        const focusPct = max ? (score / max) * 100 : 0;
+        const indicators = indexes.map(idx => `${idx + 1}`).join(', ');
+        return `<tr><td><strong>${focus}</strong></td><td>${score} / ${max} (${focusPct.toFixed(0)}%)</td><td>Preguntas ${indicators}</td></tr>`;
+      }).join('');
       nmShowResult(focusId,
         `<strong>Resumen de focos de intervención</strong>` +
-        `<table class="focus-table"><thead><tr><th>Foco</th><th>Riesgo relativo</th><th>Indicadores</th></tr></thead><tbody>${rows}</tbody></table>` +
-        `<div class="result-callout"><strong>Lectura:</strong> este diagnóstico no duplica el Radar; explica la causa raíz y alimenta una estimación más defendible en la Calculadora de Recuperación.</div>`
+        `<table class="focus-table"><thead><tr><th>Foco</th><th>Puntaje</th><th>Indicadores</th></tr></thead><tbody>${rows}</tbody></table>`
       );
-      const fuente = document.getElementById('calcFuente');
-      if (fuente) fuente.value = prefix;
     }
 
     function nmClearDiagnostic(prefix, resultId, focusId) {
@@ -4540,70 +4670,32 @@
     }
 
     function nmCalculateRecovery() {
-      nmLoadStoredFlowState();
       const empleados = parseInt(document.getElementById('calcEmpleados')?.value, 10) || 0;
-      const fuente = document.getElementById('calcFuente')?.value || 'manual';
-      const manualPct = parseInt(document.getElementById('calcTiempo')?.value, 10) || 0;
+      const tiempo = (parseInt(document.getElementById('calcTiempo')?.value, 10) || 0) / 100;
       const sueldo = nmParseMoney(document.getElementById('calcSueldo')?.value);
       const sueldoTotalInput = nmParseMoney(document.getElementById('calcSueldoTotal')?.value);
-      if (!empleados || (!sueldo && !sueldoTotalInput)) {
-        nmShowResult('calcResultado', '⚠️ Completa el número de personas y al menos una referencia de sueldo o nómina total.');
+      if (!empleados || !tiempo || (!sueldo && !sueldoTotalInput)) {
+        nmShowResult('calcResultado', '⚠️ Completa el número de personas, el porcentaje de tiempo muerto y al menos una referencia de sueldo.');
         return;
       }
-
-      let data;
-      if (fuente === 'manual') {
-        const pct = manualPct || 25;
-        const riskScore = nmClamp(((pct - 6) / 0.40), 0, 100);
-        data = {
-          source: 'manual',
-          riskScore,
-          pctMin: Math.max(5, pct - 4),
-          pctCenter: pct,
-          pctMax: Math.min(50, pct + 4),
-          focus: 'Estimación manual',
-          recoveryFactor: 0.60,
-          levelLabel: nmRiskLevel(riskScore).label,
-          urgency: nmRiskLevel(riskScore).urgency
-        };
-      } else {
-        data = NM_FLOW_STATE[fuente];
-        if (!data) {
-          nmShowResult('calcResultado', `⚠️ Todavía no existe un resultado de ${nmSourceLabel(fuente)}. Responde esa herramienta primero o cambia la fuente a Manual.`);
-          return;
-        }
-      }
-
       const sueldoTotal = sueldoTotalInput || (empleados * sueldo);
-      const pctCenter = data.pctCenter / 100;
-      const pctMin = data.pctMin / 100;
-      const pctMax = data.pctMax / 100;
-      const personalOptimizable = Math.round(empleados * pctCenter);
-      const nominaMuertaMensual = Math.round(sueldoTotal * pctCenter);
-      const nominaMuertaMin = Math.round(sueldoTotal * pctMin);
-      const nominaMuertaMax = Math.round(sueldoTotal * pctMax);
+      const personalOptimizable = Math.round(empleados * tiempo);
+      const nominaMuertaMensual = Math.round(sueldoTotal * tiempo);
       const nominaMuertaAnual = nominaMuertaMensual * 12;
-      const recuperacionMensual = Math.round(nominaMuertaMensual * data.recoveryFactor);
+      const recuperacionMensual = Math.round(nominaMuertaMensual * 0.7);
       const recuperacionAnual = recuperacionMensual * 12;
-
       nmShowResult('calcResultado',
-        `<span class="source-badge">Fuente: ${nmSourceLabel(fuente)}</span>` +
-        nmBuildSummaryCards(data) +
-        `<strong>Nómina mensual analizada:</strong> ${nmFormatCurrency(sueldoTotal)}<br>` +
         `<strong>Personal equivalente optimizable:</strong> ${personalOptimizable} personas<br>` +
-        `<strong>Nómina Muerta mensual estimada:</strong> ${nmFormatCurrency(nominaMuertaMin)} – ${nmFormatCurrency(nominaMuertaMax)}<br>` +
-        `<strong>Nómina Muerta mensual central:</strong> ${nmFormatCurrency(nominaMuertaMensual)}<br>` +
-        `<strong>Nómina Muerta anual central:</strong> ${nmFormatCurrency(nominaMuertaAnual)}<br><br>` +
-        `<strong>Recuperación potencial razonable:</strong><br>` +
+        `<strong>Nómina Muerta mensual actual promedio:</strong> ${nmFormatCurrency(nominaMuertaMensual)}<br>` +
+        `<strong>Nómina Muerta anual actual promedio:</strong> ${nmFormatCurrency(nominaMuertaAnual)}<br><br>` +
+        `<strong>Recuperación por optimización de la capacidad laboral instalada:</strong><br>` +
         `Mensual: ${nmFormatCurrency(recuperacionMensual)}<br>` +
         `Anual: ${nmFormatCurrency(recuperacionAnual)}<br><br>` +
-        `<strong>Fuga dominante:</strong> ${data.focus}<br>` +
-        `<strong>Lectura ejecutiva:</strong> este cálculo no propone recorte de personal; muestra capacidad laboral instalada que puede convertirse en ejecución, servicio, ventas, seguimiento, innovación o proyectos críticos.`
+        `<span>Este cálculo estima el valor económico del tiempo recuperable. No equivale necesariamente a recorte de personal; puede convertirse en capacidad de ejecución, servicio, ventas, seguimiento o proyectos críticos.</span>`
       );
     }
 
     function nmInitTools() {
-      nmLoadStoredFlowState();
       nmRenderReto();
       nmRenderDiagnostic('liderQuestions', NM_LEADER_QUESTIONS, 'lider');
       nmRenderDiagnostic('colabQuestions', NM_COLLAB_QUESTIONS, 'colab');
@@ -4632,17 +4724,13 @@
           else el.value = '';
         });
         const tiempo = document.getElementById('calcTiempo');
-        if (tiempo) tiempo.value = '25';
-        const fuente = document.getElementById('calcFuente');
-        if (fuente) fuente.value = 'manual';
+        if (tiempo) tiempo.value = '20';
         nmHideResult('calcResultado');
       });
 
       document.getElementById('retoBtn')?.addEventListener('click', nmEvaluateReto);
       document.getElementById('retoClearBtn')?.addEventListener('click', () => {
         document.querySelectorAll('.nm-reto-check').forEach(cb => cb.checked = false);
-        NM_FLOW_STATE.reto = null;
-        try { localStorage.setItem('nmFlowState', JSON.stringify(NM_FLOW_STATE)); } catch(e) {}
         nmHideResult('retoResultado');
         nmHideResult('retoCalculoResultados');
         const box = document.getElementById('retoCalculatorBox');
@@ -4653,9 +4741,9 @@
       document.getElementById('retoCalcMoneyBtn')?.addEventListener('click', nmCalculateRetoMoney);
 
       document.getElementById('liderBtn')?.addEventListener('click', () => nmCalcDiagnostic('lider', NM_LEADER_QUESTIONS, NM_LEADER_FOCUS, 'liderResultado', 'liderFocus', 'El equipo'));
-      document.getElementById('liderClearBtn')?.addEventListener('click', () => { NM_FLOW_STATE.lider = null; try { localStorage.setItem('nmFlowState', JSON.stringify(NM_FLOW_STATE)); } catch(e) {} nmClearDiagnostic('lider', 'liderResultado', 'liderFocus'); });
+      document.getElementById('liderClearBtn')?.addEventListener('click', () => nmClearDiagnostic('lider', 'liderResultado', 'liderFocus'));
       document.getElementById('colabBtn')?.addEventListener('click', () => nmCalcDiagnostic('colab', NM_COLLAB_QUESTIONS, NM_COLLAB_FOCUS, 'colabResultado', 'colabFocus', 'Tu jornada'));
-      document.getElementById('colabClearBtn')?.addEventListener('click', () => { NM_FLOW_STATE.colab = null; try { localStorage.setItem('nmFlowState', JSON.stringify(NM_FLOW_STATE)); } catch(e) {} nmClearDiagnostic('colab', 'colabResultado', 'colabFocus'); });
+      document.getElementById('colabClearBtn')?.addEventListener('click', () => nmClearDiagnostic('colab', 'colabResultado', 'colabFocus'));
     }
 
     document.addEventListener('DOMContentLoaded', () => {
@@ -4663,6 +4751,516 @@
       nmRoute();
     });
     window.addEventListener('hashchange', nmRoute);
+  </script>
+
+
+  <script>
+    /* === V15: Reto de Autopsia integrado === */
+    const NM_AUTOPSIA_STATE_KEY = 'nm_reto_autopsia_v15';
+    const NM_AUTOPSIA_STATE = {
+      radar: null,
+      selectedSymptoms: [],
+      depth: null
+    };
+
+    function nmAutopsiaSave() {
+      try { localStorage.setItem(NM_AUTOPSIA_STATE_KEY, JSON.stringify(NM_AUTOPSIA_STATE)); } catch(e) {}
+    }
+
+    function nmAutopsiaLoad() {
+      try {
+        const saved = JSON.parse(localStorage.getItem(NM_AUTOPSIA_STATE_KEY) || '{}');
+        if (saved.radar) NM_AUTOPSIA_STATE.radar = saved.radar;
+        if (Array.isArray(saved.selectedSymptoms)) NM_AUTOPSIA_STATE.selectedSymptoms = saved.selectedSymptoms;
+        if (saved.depth) NM_AUTOPSIA_STATE.depth = saved.depth;
+      } catch(e) {}
+    }
+
+    function nmAutopsiaRiskLevel(score) {
+      if (typeof nmRiskLevel === 'function') return nmRiskLevel(score);
+      if (score <= 15) return {icon:'🟢', label:'Bajo', urgency:'baja', message:'Señales aisladas.'};
+      if (score <= 35) return {icon:'🟡', label:'Moderado', urgency:'media', message:'Fricción visible.'};
+      if (score <= 65) return {icon:'🔴', label:'Alto', urgency:'alta', message:'Fricción estructural.'};
+      return {icon:'🚨', label:'Crítico', urgency:'inmediata', message:'Rediseño inmediato.'};
+    }
+
+    function nmAutopsiaPctFromRisk(score) {
+      if (typeof nmPctRangeFromRisk === 'function') return nmPctRangeFromRisk(score);
+      const center = Math.min(46, Math.max(6, 6 + score * .40));
+      return {min: Math.max(5, center - 5), center, max: Math.min(50, center + 5)};
+    }
+
+    function nmAutopsiaRecoveryForFocus(focus) {
+      if (typeof nmRecoveryFactorForFocus === 'function') return nmRecoveryFactorForFocus(focus);
+      return 0.60;
+    }
+
+    function nmAutopsiaFocus(catTitle, question) {
+      if (typeof nmRetoFocus === 'function') return nmRetoFocus(catTitle, question);
+      return catTitle || 'Foco operativo';
+    }
+
+    function nmAutopsiaWeight(catTitle, question) {
+      if (typeof nmRetoWeight === 'function') return nmRetoWeight(catTitle, question);
+      return 1;
+    }
+
+    function nmAutopsiaFormatCurrency(value) {
+      if (typeof nmFormatCurrency === 'function') return nmFormatCurrency(value);
+      return '$' + Math.round(value || 0).toLocaleString('es-MX') + ' MXN';
+    }
+
+    function nmAutopsiaParseMoney(value) {
+      if (typeof nmParseMoney === 'function') return nmParseMoney(value);
+      return parseInt(String(value || '').replace(/[^0-9]/g, ''), 10) || 0;
+    }
+
+    function nmAutopsiaMoney(value) {
+      if (typeof nmMoney === 'function') return nmMoney(value);
+      const numeric = String(value || '').replace(/[^0-9]/g, '');
+      return numeric ? Number(numeric).toLocaleString('es-MX') : '';
+    }
+
+    function nmAutopsiaShow(id, html) {
+      if (typeof nmShowResult === 'function') return nmShowResult(id, html);
+      const el = document.getElementById(id);
+      if (!el) return;
+      el.innerHTML = html;
+      el.classList.add('active');
+    }
+
+    function nmAutopsiaHide(id) {
+      if (typeof nmHideResult === 'function') return nmHideResult(id);
+      const el = document.getElementById(id);
+      if (!el) return;
+      el.innerHTML = '';
+      el.classList.remove('active');
+    }
+
+    function nmAutopsiaKpis(cards) {
+      return `<div class="autopsy-kpi-grid">${cards.map(card => `
+        <div class="autopsy-kpi"><strong>${card.value}</strong><span>${card.label}</span></div>
+      `).join('')}</div>`;
+    }
+
+    function nmAutopsiaOptionsForFocus(focus) {
+      const f = String(focus || '').toLowerCase();
+
+      if (f.includes('comunicación')) return [
+        'Rara vez: aparece en casos aislados y se resuelve sin frenar el avance.',
+        'A veces: ocurre algunas veces por semana y obliga a buscar contexto.',
+        'Frecuente: sucede casi todos los días y dispersa la atención del equipo.',
+        'Crítico: ocurre varias veces al día y obliga a operar entre WhatsApp, correo, llamadas y pendientes sueltos.'
+      ];
+
+      if (f.includes('seguimiento') || f.includes('supervisión') || f.includes('accountability')) return [
+        'Rara vez: casi siempre hay responsable, fecha y cierre visible.',
+        'A veces: se pierde seguimiento en temas no prioritarios o entre áreas.',
+        'Frecuente: muchos pendientes avanzan solo si alguien insiste.',
+        'Crítico: nadie sabe con certeza quién debe cerrar, validar o destrabar el asunto.'
+      ];
+
+      if (f.includes('retrabajo') || f.includes('duplicidad')) return [
+        'Rara vez: el trabajo rara vez se repite y casi siempre queda registro útil.',
+        'A veces: algunas tareas se rehacen por falta de claridad o versión correcta.',
+        'Frecuente: el equipo corrige, reenvía o rehace trabajo todas las semanas.',
+        'Crítico: el retrabajo está normalizado y consume tiempo relevante todos los días.'
+      ];
+
+      if (f.includes('autorización') || f.includes('trazabilidad') || f.includes('cuello')) return [
+        'Rara vez: las aprobaciones tienen ruta clara y trazable.',
+        'A veces: algunos temas se detienen esperando validación.',
+        'Frecuente: las autorizaciones atrasan entregas o decisiones cada semana.',
+        'Crítico: procesos completos se congelan porque nadie ve dónde está el bloqueo.'
+      ];
+
+      if (f.includes('junta') || f.includes('coordinación')) return [
+        'Rara vez: las reuniones terminan con acuerdos, responsables y fechas.',
+        'A veces: algunas reuniones cierran sin claridad total.',
+        'Frecuente: se repiten temas porque no hubo seguimiento del acuerdo anterior.',
+        'Crítico: la coordinación se volvió sustituto de la ejecución.'
+      ];
+
+      if (f.includes('desgaste') || f.includes('cognitiva') || f.includes('cultura')) return [
+        'Rara vez: el equipo puede concentrarse y cerrar trabajo sin interrupciones constantes.',
+        'A veces: hay saturación en ciertos días o temporadas.',
+        'Frecuente: la fragmentación mental afecta calidad, energía y cierre.',
+        'Crítico: el equipo vive ocupado, cansado y reactivo, pero sin avance proporcional.'
+      ];
+
+      if (f.includes('prioridad') || f.includes('valor')) return [
+        'Rara vez: casi todo lo que se hace está conectado con prioridades claras.',
+        'A veces: algunas tareas pierden sentido o se mantienen por costumbre.',
+        'Frecuente: muchas actividades siguen activas aunque ya no generan valor.',
+        'Crítico: el equipo trabaja mucho, pero no sabe qué impacto real genera.'
+      ];
+
+      return [
+        'Rara vez: sucede poco y no afecta de forma relevante la operación.',
+        'A veces: ocurre de manera ocasional y genera fricción controlable.',
+        'Frecuente: ocurre con regularidad y consume capacidad del equipo.',
+        'Crítico: ocurre de forma constante y ya afecta resultados, servicio o ejecución.'
+      ];
+    }
+
+    function nmAutopsiaRenderRadar() {
+      const container = document.getElementById('autopsiaRadarChecklist');
+      if (!container || container.dataset.rendered === '1') return;
+      const categories = window.NM_RETO_CATEGORIES || [];
+      container.innerHTML = categories.map((cat, ci) => `
+        <div class="autopsy-radar-category">
+          <h3>${cat.title}</h3>
+          ${(cat.questions || []).map((q, qi) => {
+            const weight = nmAutopsiaWeight(cat.title, q);
+            const focus = nmAutopsiaFocus(cat.title, q);
+            const id = `ra-${ci}-${qi}`;
+            return `<label class="autopsy-check">
+              <input type="checkbox" class="nm-autopsia-radar-check" id="${id}" data-category-index="${ci}" data-question-index="${qi}" data-category="${cat.title.replace(/"/g,'&quot;')}" data-question="${q.replace(/"/g,'&quot;')}" data-weight="${weight}" data-focus="${focus.replace(/"/g,'&quot;')}">
+              <span>${q}<span class="weight-chip">Peso ${weight}</span></span>
+            </label>`;
+          }).join('')}
+        </div>
+      `).join('');
+      container.dataset.rendered = '1';
+    }
+
+    function nmAutopsiaEvaluateRadar() {
+      const checks = Array.from(document.querySelectorAll('.nm-autopsia-radar-check'));
+      const selected = checks.filter(cb => cb.checked);
+      if (!selected.length) {
+        nmAutopsiaShow('autopsiaRadarResult', '⚠️ Marca al menos un síntoma para generar la señal de alarma.');
+        return;
+      }
+
+      const maxScore = checks.reduce((acc, cb) => acc + (parseInt(cb.dataset.weight, 10) || 1), 0) || 1;
+      const scoreRaw = selected.reduce((acc, cb) => acc + (parseInt(cb.dataset.weight, 10) || 1), 0);
+      const riskScore = (scoreRaw / maxScore) * 100;
+      const level = nmAutopsiaRiskLevel(riskScore);
+
+      const selectedSymptoms = selected.map((cb, idx) => ({
+        id: `${cb.dataset.categoryIndex}-${cb.dataset.questionIndex}`,
+        category: cb.dataset.category,
+        question: cb.dataset.question,
+        weight: parseInt(cb.dataset.weight, 10) || 1,
+        focus: cb.dataset.focus || 'Foco operativo',
+        index: idx
+      }));
+
+      const focusScores = {};
+      selectedSymptoms.forEach(item => {
+        focusScores[item.focus] = (focusScores[item.focus] || 0) + item.weight;
+      });
+      const dominantFocus = Object.entries(focusScores).sort((a,b) => b[1] - a[1])[0]?.[0] || 'Sin foco dominante';
+      const recoveryFactor = nmAutopsiaRecoveryForFocus(dominantFocus);
+
+      NM_AUTOPSIA_STATE.radar = {
+        riskScore,
+        scoreRaw,
+        maxScore,
+        selectedCount: selectedSymptoms.length,
+        totalCount: checks.length,
+        focus: dominantFocus,
+        recoveryFactor,
+        levelLabel: level.label,
+        urgency: level.urgency
+      };
+      NM_AUTOPSIA_STATE.selectedSymptoms = selectedSymptoms;
+      NM_AUTOPSIA_STATE.depth = null;
+      nmAutopsiaSave();
+
+      const focusRows = Object.entries(focusScores)
+        .sort((a,b) => b[1] - a[1])
+        .map(([focus, score]) => `<tr><td><strong>${focus}</strong></td><td>${score} puntos ponderados</td><td>${selectedSymptoms.filter(s => s.focus === focus).length} síntomas</td></tr>`)
+        .join('');
+
+      nmAutopsiaShow('autopsiaRadarResult',
+        `<span class="autopsy-badge">Resultado del Radar</span>` +
+        nmAutopsiaKpis([
+          {value: `${Math.round(riskScore)} / 100`, label: 'Índice de riesgo inicial'},
+          {value: dominantFocus, label: 'Fuga dominante detectada'},
+          {value: `${Math.round(recoveryFactor * 100)}%`, label: 'Recuperabilidad base estimada'},
+          {value: level.label, label: `Urgencia ${level.urgency}`}
+        ]) +
+        `<strong>${level.icon} Señal de alarma ${level.label}</strong><br>${level.message}<br><br>` +
+        `<strong>Síntomas seleccionados:</strong> ${selectedSymptoms.length} de ${checks.length}<br>` +
+        `<strong>Puntaje ponderado:</strong> ${scoreRaw} de ${maxScore}<br>` +
+        `<div class="autopsy-table-shell"><table class="autopsy-table"><thead><tr><th>Foco</th><th>Peso acumulado</th><th>Síntomas marcados</th></tr></thead><tbody>${focusRows}</tbody></table></div>` +
+        `<div class="result-callout"><strong>Siguiente paso:</strong> la Autopsia ya fue construida automáticamente solo con estos ${selectedSymptoms.length} síntomas. No repetirás todo el diagnóstico: solo profundizarás donde ya hubo señal.</div>`
+      );
+
+      nmAutopsiaRenderDepthQuestions();
+      document.getElementById('autopsiaDepthStage')?.classList.remove('autopsy-locked');
+      document.getElementById('autopsiaCalcStage')?.classList.add('autopsy-locked');
+      nmAutopsiaHide('autopsiaDepthResult');
+      nmAutopsiaHide('autopsiaCalcResult');
+      const calcPct = document.getElementById('autopsiaCalcPct');
+      if (calcPct) calcPct.value = '';
+      document.getElementById('autopsiaDepthStage')?.scrollIntoView({behavior:'smooth', block:'start'});
+    }
+
+    function nmAutopsiaRenderDepthQuestions() {
+      const container = document.getElementById('autopsiaDepthQuestions');
+      const intro = document.getElementById('autopsiaDepthIntro');
+      if (!container) return;
+      const symptoms = NM_AUTOPSIA_STATE.selectedSymptoms || [];
+
+      if (!symptoms.length) {
+        container.innerHTML = '';
+        if (intro) intro.textContent = 'Primero completa el Radar. Después aparecerán aquí únicamente los síntomas marcados, con alternativas específicas para evaluar frecuencia, intensidad e impacto.';
+        return;
+      }
+
+      if (intro) {
+        const radarScore = NM_AUTOPSIA_STATE.radar ? Math.round(NM_AUTOPSIA_STATE.radar.riskScore) : 0;
+        intro.innerHTML = `Del Radar obtuvimos una señal de alarma de <strong>${radarScore}/100</strong>. Ahora evalúa con qué frecuencia e intensidad ocurre cada síntoma marcado para obtener un porcentaje ajustado y más preciso de Nómina Muerta.`;
+      }
+
+      container.innerHTML = symptoms.map((item, idx) => {
+        const options = nmAutopsiaOptionsForFocus(item.focus);
+        return `<div class="autopsy-depth-question">
+          <span class="autopsy-badge teal">${item.focus}</span>
+          <p>${idx + 1}. ${item.question}</p>
+          <small>Peso original del Radar: ${item.weight} · Evalúa frecuencia, intensidad y recurrencia real.</small>
+          ${options.map((opt, oi) => `<label>
+            <input type="radio" name="autopsiaDepthQ${idx}" value="${oi + 1}" data-weight="${item.weight}" data-focus="${item.focus.replace(/"/g,'&quot;')}">
+            <span>${opt}</span>
+          </label>`).join('')}
+        </div>`;
+      }).join('');
+    }
+
+    function nmAutopsiaCalculateDepth() {
+      const symptoms = NM_AUTOPSIA_STATE.selectedSymptoms || [];
+      if (!symptoms.length || !NM_AUTOPSIA_STATE.radar) {
+        nmAutopsiaShow('autopsiaDepthResult', '⚠️ Primero completa el Radar para generar las preguntas de autopsia.');
+        return;
+      }
+
+      const values = [];
+      let answered = 0;
+      let weightedScore = 0;
+      let minScore = 0;
+      let maxScore = 0;
+      const focusData = {};
+
+      symptoms.forEach((item, idx) => {
+        const selected = document.querySelector(`input[name="autopsiaDepthQ${idx}"]:checked`);
+        const weight = item.weight || 1;
+        minScore += weight;
+        maxScore += weight * 4;
+
+        if (selected) {
+          const value = parseInt(selected.value, 10) || 1;
+          answered++;
+          values[idx] = value;
+          weightedScore += weight * value;
+
+          if (!focusData[item.focus]) {
+            focusData[item.focus] = {focus:item.focus, selected:0, weight:0, weighted:0, min:0, max:0, questions:[]};
+          }
+          focusData[item.focus].selected += 1;
+          focusData[item.focus].weight += weight;
+          focusData[item.focus].weighted += weight * value;
+          focusData[item.focus].min += weight;
+          focusData[item.focus].max += weight * 4;
+          focusData[item.focus].questions.push(idx + 1);
+        } else {
+          values[idx] = 0;
+        }
+      });
+
+      if (answered < symptoms.length) {
+        nmAutopsiaShow('autopsiaDepthResult', `⚠️ Responde los ${symptoms.length} síntomas señalados para calcular el diagnóstico ajustado. Te faltan ${symptoms.length - answered}.`);
+        return;
+      }
+
+      const depthRisk = maxScore > minScore ? ((weightedScore - minScore) / (maxScore - minScore)) * 100 : 0;
+      const radarRisk = NM_AUTOPSIA_STATE.radar.riskScore || 0;
+      const adjustedRisk = Math.min(100, Math.max(0, (radarRisk * 0.35) + (depthRisk * 0.65)));
+      const pct = nmAutopsiaPctFromRisk(adjustedRisk);
+      const adjustedPct = Math.round(pct.center);
+      const level = nmAutopsiaRiskLevel(adjustedRisk);
+
+      const focusRowsData = Object.values(focusData).map(row => {
+        const intensity = row.max > row.min ? ((row.weighted - row.min) / (row.max - row.min)) * 100 : 0;
+        const focusRisk = (radarRisk * .25) + (intensity * .75);
+        const focusPct = nmAutopsiaPctFromRisk(focusRisk).center;
+        return {...row, intensity, focusRisk, focusPct};
+      }).sort((a,b) => b.focusRisk - a.focusRisk);
+
+      const dominantFocus = focusRowsData[0]?.focus || NM_AUTOPSIA_STATE.radar.focus;
+      const recoveryFactor = nmAutopsiaRecoveryForFocus(dominantFocus);
+
+      NM_AUTOPSIA_STATE.depth = {
+        radarRisk,
+        depthRisk,
+        adjustedRisk,
+        adjustedPct,
+        pctMin: pct.min,
+        pctMax: pct.max,
+        focus: dominantFocus,
+        recoveryFactor,
+        levelLabel: level.label,
+        urgency: level.urgency,
+        focusRows: focusRowsData.map(row => ({
+          focus: row.focus,
+          selected: row.selected,
+          intensity: row.intensity,
+          focusPct: row.focusPct,
+          questions: row.questions
+        }))
+      };
+      nmAutopsiaSave();
+
+      const rows = focusRowsData.map(row => `<tr>
+        <td><strong>${row.focus}</strong></td>
+        <td>${row.intensity.toFixed(0)}% intensidad</td>
+        <td>${row.focusPct.toFixed(0)}% NM estimada</td>
+        <td>Síntomas ${row.questions.join(', ')}</td>
+      </tr>`).join('');
+
+      const pctInput = document.getElementById('autopsiaCalcPct');
+      if (pctInput) pctInput.value = adjustedPct;
+      document.getElementById('autopsiaCalcStage')?.classList.remove('autopsy-locked');
+
+      nmAutopsiaShow('autopsiaDepthResult',
+        `<span class="autopsy-badge teal">Diagnóstico ajustado</span>` +
+        nmAutopsiaKpis([
+          {value: `${Math.round(radarRisk)} / 100`, label: 'Señal de alarma del Radar'},
+          {value: `${Math.round(depthRisk)} / 100`, label: 'Intensidad de síntomas evaluados'},
+          {value: `${adjustedPct}%`, label: 'Nómina Muerta ajustada'},
+          {value: level.label, label: `Urgencia ${level.urgency}`}
+        ]) +
+        `<strong>${level.icon} Urgencia ${level.label}</strong><br>` +
+        `El porcentaje ajustado combina la señal inicial del Radar con la intensidad real de los síntomas seleccionados. Este es el valor que se transfiere automáticamente al cálculo final.<br><br>` +
+        `<strong>Foco dominante confirmado:</strong> ${dominantFocus}<br>` +
+        `<strong>Recuperabilidad base del foco:</strong> ${Math.round(recoveryFactor * 100)}%<br>` +
+        `<strong>Rango estimado:</strong> ${pct.min.toFixed(0)}%–${pct.max.toFixed(0)}%<br>` +
+        `<div class="autopsy-table-shell"><table class="autopsy-table"><thead><tr><th>Foco</th><th>Gravedad</th><th>% NM por foco</th><th>Indicadores</th></tr></thead><tbody>${rows}</tbody></table></div>` +
+        `<div class="result-callout"><strong>Siguiente paso:</strong> revisa el porcentaje prellenado en la calculadora, agrega número de personas y nómina mensual, y ejecuta el cálculo final.</div>`
+      );
+
+      document.getElementById('autopsiaCalcStage')?.scrollIntoView({behavior:'smooth', block:'start'});
+    }
+
+    function nmAutopsiaCalculateFinal() {
+      const pct = parseFloat(document.getElementById('autopsiaCalcPct')?.value) || 0;
+      const people = parseInt(document.getElementById('autopsiaCalcPersonas')?.value, 10) || 0;
+      const avgSalary = nmAutopsiaParseMoney(document.getElementById('autopsiaCalcSueldo')?.value);
+      const payrollInput = nmAutopsiaParseMoney(document.getElementById('autopsiaCalcNominaTotal')?.value);
+      const payroll = payrollInput || (people * avgSalary);
+
+      if (!pct || pct < 1 || !people || !payroll) {
+        nmAutopsiaShow('autopsiaCalcResult', '⚠️ Completa porcentaje, número de personas y sueldo promedio o nómina mensual total.');
+        return;
+      }
+
+      const effectiveAvgSalary = avgSalary || Math.round(payroll / people);
+      const nmMonthly = Math.round(payroll * (pct / 100));
+      const nmAnnual = nmMonthly * 12;
+      const equivalentPeople = effectiveAvgSalary ? Math.round(nmMonthly / effectiveAvgSalary) : Math.round(people * (pct / 100));
+
+      const conservative = Math.round(nmMonthly * 0.50);
+      const expected = Math.round(nmMonthly * 0.70);
+      const optimal = Math.round(nmMonthly * 0.85);
+      const expectedAnnual = expected * 12;
+
+      const source = NM_AUTOPSIA_STATE.depth
+        ? `${Math.round(NM_AUTOPSIA_STATE.depth.adjustedPct)}% de diagnóstico ajustado`
+        : `${Math.round(pct)}% manual`;
+
+      nmAutopsiaShow('autopsiaCalcResult',
+        `<div class="autopsy-final-grid">
+          <div class="autopsy-final-card"><strong>${nmAutopsiaFormatCurrency(nmMonthly)}</strong><span>Nómina Muerta mensual estimada</span></div>
+          <div class="autopsy-final-card"><strong>${nmAutopsiaFormatCurrency(nmAnnual)}</strong><span>Nómina Muerta anual estimada</span></div>
+          <div class="autopsy-final-card"><strong>${equivalentPeople} personas</strong><span>Equivalente de capacidad no aprovechada</span></div>
+        </div>
+        <p>Usando el <strong>${source}</strong> como base. Escenario de recuperación con rediseño operativo: se estima recuperar el <strong>70%</strong> de la Nómina Muerta con cambios en flujos, trazabilidad, seguimiento y priorización.</p>
+        <div class="scenario-card">
+          <h3>Escenarios de recuperación</h3>
+          <div class="scenario-row"><span>Recuperación conservadora (50%)</span><div class="scenario-bar"><span style="width:50%"></span></div><strong>${nmAutopsiaFormatCurrency(conservative)}/mes</strong></div>
+          <div class="scenario-row"><span>Recuperación esperada (70%)</span><div class="scenario-bar expected"><span style="width:70%"></span></div><strong>${nmAutopsiaFormatCurrency(expected)}/mes</strong></div>
+          <div class="scenario-row"><span>Recuperación óptima (85%)</span><div class="scenario-bar optimal"><span style="width:85%"></span></div><strong>${nmAutopsiaFormatCurrency(optimal)}/mes</strong></div>
+          <div class="scenario-row"><span><strong>Anual esperada (70%)</strong></span><div class="scenario-bar annual"><span style="width:70%"></span></div><strong>${nmAutopsiaFormatCurrency(expectedAnnual)}</strong></div>
+        </div>
+        <div class="autopsy-final-note">Esta estimación no equivale a recorte de personal. Representa tiempo pagado que puede convertirse en ejecución, ventas, servicio, proyectos críticos o liberación de liderazgo estratégico.</div>`
+      );
+    }
+
+    function nmAutopsiaClearRadar() {
+      document.querySelectorAll('.nm-autopsia-radar-check').forEach(cb => cb.checked = false);
+      NM_AUTOPSIA_STATE.radar = null;
+      NM_AUTOPSIA_STATE.selectedSymptoms = [];
+      NM_AUTOPSIA_STATE.depth = null;
+      nmAutopsiaSave();
+      nmAutopsiaHide('autopsiaRadarResult');
+      nmAutopsiaHide('autopsiaDepthResult');
+      nmAutopsiaHide('autopsiaCalcResult');
+      nmAutopsiaRenderDepthQuestions();
+      document.getElementById('autopsiaDepthStage')?.classList.add('autopsy-locked');
+      document.getElementById('autopsiaCalcStage')?.classList.add('autopsy-locked');
+    }
+
+    function nmAutopsiaClearDepth() {
+      document.querySelectorAll('input[name^="autopsiaDepthQ"]').forEach(input => input.checked = false);
+      NM_AUTOPSIA_STATE.depth = null;
+      nmAutopsiaSave();
+      nmAutopsiaHide('autopsiaDepthResult');
+      nmAutopsiaHide('autopsiaCalcResult');
+      const pctInput = document.getElementById('autopsiaCalcPct');
+      if (pctInput) pctInput.value = '';
+      document.getElementById('autopsiaCalcStage')?.classList.add('autopsy-locked');
+    }
+
+    function nmAutopsiaRestoreState() {
+      if (NM_AUTOPSIA_STATE.selectedSymptoms?.length) {
+        const checks = document.querySelectorAll('.nm-autopsia-radar-check');
+        checks.forEach(cb => {
+          const id = `${cb.dataset.categoryIndex}-${cb.dataset.questionIndex}`;
+          cb.checked = NM_AUTOPSIA_STATE.selectedSymptoms.some(item => item.id === id);
+        });
+        nmAutopsiaRenderDepthQuestions();
+        document.getElementById('autopsiaDepthStage')?.classList.remove('autopsy-locked');
+      }
+      if (NM_AUTOPSIA_STATE.depth) {
+        const pctInput = document.getElementById('autopsiaCalcPct');
+        if (pctInput) pctInput.value = Math.round(NM_AUTOPSIA_STATE.depth.adjustedPct);
+        document.getElementById('autopsiaCalcStage')?.classList.remove('autopsy-locked');
+      }
+    }
+
+    function nmAutopsiaInit() {
+      nmAutopsiaLoad();
+      nmAutopsiaRenderRadar();
+      nmAutopsiaRestoreState();
+
+      ['autopsiaCalcSueldo','autopsiaCalcNominaTotal'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el && !el.dataset.autopsyBound) {
+          el.addEventListener('input', () => { el.value = nmAutopsiaMoney(el.value); });
+          el.dataset.autopsyBound = '1';
+        }
+      });
+
+      document.getElementById('autopsiaRadarBtn')?.addEventListener('click', nmAutopsiaEvaluateRadar);
+      document.getElementById('autopsiaRadarClearBtn')?.addEventListener('click', nmAutopsiaClearRadar);
+      document.getElementById('autopsiaDepthBtn')?.addEventListener('click', nmAutopsiaCalculateDepth);
+      document.getElementById('autopsiaDepthClearBtn')?.addEventListener('click', nmAutopsiaClearDepth);
+      document.getElementById('autopsiaCalcBtn')?.addEventListener('click', nmAutopsiaCalculateFinal);
+      document.getElementById('autopsiaCalcResetBtn')?.addEventListener('click', () => {
+        const pct = document.getElementById('autopsiaCalcPct');
+        const people = document.getElementById('autopsiaCalcPersonas');
+        const salary = document.getElementById('autopsiaCalcSueldo');
+        const total = document.getElementById('autopsiaCalcNominaTotal');
+        if (pct) pct.value = NM_AUTOPSIA_STATE.depth ? Math.round(NM_AUTOPSIA_STATE.depth.adjustedPct) : '25';
+        if (people) people.value = '20';
+        if (salary) salary.value = '15,000';
+        if (total) total.value = '';
+        nmAutopsiaHide('autopsiaCalcResult');
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', nmAutopsiaInit);
   </script>
 
 </body>
