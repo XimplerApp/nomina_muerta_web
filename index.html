@@ -4761,8 +4761,8 @@
 
 
   <script>
-    /* === V15.2: Reto de Autopsia integrado === */
-    const NM_AUTOPSIA_STATE_KEY = 'nm_reto_autopsia_v15_2';
+    /* === V15.3: Reto de Autopsia integrado === */
+    const NM_AUTOPSIA_STATE_KEY = 'nm_reto_autopsia_v15_3';
     const NM_AUTOPSIA_STATE = {
       radar: null,
       selectedSymptoms: [],
@@ -4780,6 +4780,18 @@
       'Desalineación estratégica y priorización': 0.48,
       'Desgaste cognitivo y saturación operativa': 0.42
     };
+
+
+    const NM_AUTOPSIA_RESPONSE_FACTORS = {
+      1: 0.15, // Rara vez: señal baja, pero no se ignora.
+      2: 0.45, // A veces: fricción ocasional con costo operativo acumulable.
+      3: 0.75, // Frecuente: pérdida recurrente de capacidad pagada.
+      4: 1.00  // Crítico: bloqueo estructural o impacto directo en ejecución/resultados.
+    };
+
+    function nmAutopsiaResponseFactor(value) {
+      return NM_AUTOPSIA_RESPONSE_FACTORS[value] ?? Math.min(1, Math.max(0, value / 4));
+    }
 
     function nmAutopsiaSave() {
       try { localStorage.setItem(NM_AUTOPSIA_STATE_KEY, JSON.stringify(NM_AUTOPSIA_STATE)); } catch(e) {}
@@ -4956,7 +4968,7 @@
             const id = `ra-${ci}-${qi}`;
             return `<label class="autopsy-check">
               <input type="checkbox" class="nm-autopsia-radar-check" id="${id}" data-category-index="${ci}" data-question-index="${qi}" data-category="${cat.title.replace(/"/g,'&quot;')}" data-question="${q.replace(/"/g,'&quot;')}" data-weight="${weight}" data-focus="${focus.replace(/"/g,'&quot;')}">
-              <span>${q}<span class="weight-chip">Impacto ${weight}/4</span></span>
+              <span>${q}</span>
             </label>`;
           }).join('')}
         </div>
@@ -5060,7 +5072,7 @@
         return `<div class="autopsy-depth-question" data-autopsy-depth-index="${idx}">
           <span class="autopsy-badge teal">${item.focus}</span>
           <p>${idx + 1}. ${item.question}</p>
-          <small>Impacto base del Radar: ${item.weight}/4 · Evalúa frecuencia, intensidad y recurrencia real.</small>
+          <small>Síntoma seleccionado por el Radar. Evalúa frecuencia, intensidad, recurrencia e impacto operativo real.</small>
           ${options.map((opt, oi) => `<label>
             <input type="radio" name="autopsiaDepthQ${idx}" value="${oi + 1}" data-weight="${item.weight}" data-focus="${item.focus.replace(/"/g,'&quot;')}">
             <span>${opt}</span>
@@ -5088,23 +5100,24 @@
       symptoms.forEach((item, idx) => {
         const selected = document.querySelector(`input[name="autopsiaDepthQ${idx}"]:checked`);
         const weight = item.weight || 1;
-        minScore += weight;
-        maxScore += weight * 4;
+        minScore += 0;
+        maxScore += weight;
 
         if (selected) {
           const value = parseInt(selected.value, 10) || 1;
+          const responseFactor = nmAutopsiaResponseFactor(value);
           answered++;
           values[idx] = value;
-          weightedScore += weight * value;
+          weightedScore += weight * responseFactor;
 
           if (!focusData[item.focus]) {
             focusData[item.focus] = {focus:item.focus, selected:0, weight:0, weighted:0, min:0, max:0, questions:[]};
           }
           focusData[item.focus].selected += 1;
           focusData[item.focus].weight += weight;
-          focusData[item.focus].weighted += weight * value;
-          focusData[item.focus].min += weight;
-          focusData[item.focus].max += weight * 4;
+          focusData[item.focus].weighted += weight * responseFactor;
+          focusData[item.focus].min += 0;
+          focusData[item.focus].max += weight;
           focusData[item.focus].questions.push(idx + 1);
         } else {
           values[idx] = 0;
