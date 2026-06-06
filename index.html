@@ -3013,7 +3013,7 @@
 
 
 
-    /* === V20: Modal de contacto seguro en la página principal === */
+    /* === V19: Modal de contacto seguro sin WhatsApp personal === */
     body.nm-modal-open { overflow: hidden; }
     .contact-modal {
       position: fixed;
@@ -3154,7 +3154,7 @@
 </style>
 </head>
 <body>
-  <!-- versión recomendaciones fijas 2026-06-02: testimonios visibles sin depender de JavaScript -->
+  <!-- BUILD NM-20260606-EMAIL-RAWJS-FINAL: usar este index.html en public_html -->
   <header class="topbar" id="top">
     <div class="wrap nav">
       <a class="brand js-top-link" href="#top" aria-label="Inicio Nómina Muerta">
@@ -4226,9 +4226,8 @@
         <p>Déjame tus datos y te responderé por correo. Así evitamos exponer WhatsApp personal y mantenemos una comunicación más profesional y segura.</p>
       </div>
       <div class="contact-modal-body">
-        <form id="contactForm" method="POST" action="enviar-contacto.php" novalidate>
+        <form id="contactForm" method="POST" action="/enviar-contacto.php" novalidate>
           <input type="hidden" name="tipo" value="contacto" />
-          <input type="hidden" name="pagina" id="contactPagina" value="" />
           <div class="contact-modal-grid">
             <div>
               <label for="contactNombre">Nombre completo *</label>
@@ -4251,9 +4250,10 @@
           <label for="contactInteres">Me interesa *</label>
           <select id="contactInteres" name="interes" required>
             <option value="">Selecciona una opción</option>
+            <option value="Libro Nómina Muerta">Libro Nómina Muerta</option>
             <option value="Conferencia Viva la Nómina">Conferencia Viva la Nómina</option>
             <option value="Consultoría Nómina Muerta">Consultoría Nómina Muerta</option>
-            <option value="Diagnóstico / Reto de Autopsia">Diagnóstico/Autopsia a la Medida</option>
+            <option value="Diagnóstico / Reto de Autopsia">Diagnóstico / Reto de Autopsia</option>
             <option value="Alianza o colaboración">Alianza o colaboración</option>
             <option value="Otro">Otro</option>
           </select>
@@ -4593,41 +4593,41 @@
       renderReviews();
     }
 
-    function notifyAdminReview(review, action = 'nuevo') {
+
+
+    function nmSendRecommendationNotice(review, actionType) {
       try {
-        if (!review) return;
         const data = new FormData();
-        data.append('tipo', 'review_notification');
-        data.append('accion', action);
-        data.append('pagina', window.location.href);
+        data.append('tipo', 'comentario');
+        data.append('accion', actionType || 'nuevo');
         data.append('id', review.id || '');
         data.append('nombre', review.name || '');
-        data.append('cargo', review.role || '');
+        data.append('cargoEmpresa', review.role || '');
         data.append('rating', review.rating || '');
         data.append('mensaje', review.message || '');
         data.append('estatus', review.status || '');
-        data.append('marcado_lenguaje', review.flagged ? 'Sí' : 'No');
-        data.append('solicita_destacada', review.requestedFeature ? 'Sí' : 'No');
+        data.append('requiereRevision', review.status === 'pending' ? 'Sí' : 'No');
+        data.append('solicitaDestacada', review.requestedFeature ? 'Sí' : 'No');
         data.append('verificado', review.verified ? 'Sí' : 'No');
-        data.append('destacada', review.featured ? 'Sí' : 'No');
-        data.append('fecha', review.date || '');
+        data.append('destacado', review.featured ? 'Sí' : 'No');
         data.append('correo', review.contact?.email || '');
         data.append('telefono', review.contact?.phone || '');
-        data.append('perfil', review.contact?.publicLink || '');
-        data.append('metodo', review.contact?.method || '');
+        data.append('perfilPublico', review.contact?.publicLink || '');
+        data.append('metodoVerificacion', review.contact?.method || '');
+        data.append('origen', window.location.href);
         fetch('enviar-contacto.php', {
           method: 'POST',
           body: data,
           headers: { 'Accept': 'application/json' },
           keepalive: true
-        }).catch(error => console.warn('No se pudo notificar por correo la recomendación:', error));
-      } catch (error) {
-        console.warn('No se pudo preparar la notificación por correo:', error);
-      }
+        }).catch(() => {});
+      } catch (_) {}
     }
 
     form.addEventListener('submit', (event) => {
       event.preventDefault();
+      let savedNoticeReview = null;
+      const noticeAction = editingId ? 'editado' : 'nuevo';
       const wantsFeature = Boolean(requestFeature.checked);
       const contact = {
         email: form.email.value.trim(),
@@ -4655,19 +4655,16 @@
       if (!payload.name || !payload.message || !document.getElementById('permission').checked) return;
 
       const reviews = getUserReviews();
-      let savedReview = null;
-      let notificationAction = 'nuevo';
       if (editingId) {
         const index = reviews.findIndex(r => r.id === editingId && r.ownerId === ownerId());
         if (index >= 0) {
           const stillVerified = Boolean(reviews[index].verified) && wantsFeature;
           reviews[index] = { ...reviews[index], ...payload, date: reviews[index].date, createdAt: reviews[index].createdAt || Date.now(), verified: stillVerified, featured: reviews[index].featured && !flagged && wantsFeature && stillVerified };
-          savedReview = reviews[index];
-          notificationAction = 'edición';
+          savedNoticeReview = reviews[index];
           saveUserReviews(reviews);
         }
       } else {
-        savedReview = {
+        const newReview = {
           id: uid(),
           ownerId: ownerId(),
           date: new Date().toLocaleDateString('es-MX', { year: 'numeric', month: 'short', day: 'numeric' }),
@@ -4677,10 +4674,11 @@
           fixed: false,
           ...payload
         };
-        reviews.unshift(savedReview);
+        reviews.unshift(newReview);
+        savedNoticeReview = newReview;
         saveUserReviews(reviews);
       }
-      if (savedReview) notifyAdminReview(savedReview, notificationAction);
+      if (savedNoticeReview) nmSendRecommendationNotice(savedNoticeReview, noticeAction);
       const msg = flagged
         ? 'Tu recomendación fue recibida y quedó pendiente de revisión por el filtro de lenguaje.'
         : wantsFeature
@@ -5883,275 +5881,6 @@
       nmAutopsiaScrollToResult('autopsiaCalcResult');
     }
 
-    function nmAutopsiaBuildReportHTML() {
-      const radar = NM_AUTOPSIA_STATE.radar || {};
-      const depth = NM_AUTOPSIA_STATE.depth || {};
-      const final = NM_AUTOPSIA_STATE.final || null;
-      if (!final) return '';
-
-      const generated = nmAutopsiaFormatDateTime(final.generatedAt || new Date());
-      const selected = Array.isArray(NM_AUTOPSIA_STATE.selectedSymptoms) ? NM_AUTOPSIA_STATE.selectedSymptoms : [];
-      const selectedRows = selected.map((item, index) => `
-        <tr>
-          <td>${index + 1}</td>
-          <td>${nmAutopsiaReportValue(item.focus)}</td>
-          <td>${nmAutopsiaReportValue(item.question)}</td>
-          <td>${nmAutopsiaReportValue(item.weight)}</td>
-        </tr>
-      `).join('');
-
-      const focusRows = Array.isArray(depth.focusRows) ? depth.focusRows.map(row => `
-        <tr>
-          <td>${nmAutopsiaReportValue(row.focus)}</td>
-          <td>${Math.round(row.intensity || 0)}%</td>
-          <td>${Math.round(row.focusPct || 0)}%</td>
-          <td>${Math.round((row.recoveryFactor || 0) * 100)}%</td>
-          <td>${Array.isArray(row.questions) ? row.questions.join(', ') : '—'}</td>
-        </tr>
-      `).join('') : '';
-
-      const activeStats = Array.isArray(radar.activeStats) ? radar.activeStats : [];
-      const radarRows = activeStats.map(row => `
-        <tr>
-          <td>${nmAutopsiaReportValue(row.focus)}</td>
-          <td>${Math.round(row.activation || 0)}%</td>
-          <td>${row.selectedCount || 0} de ${row.totalQuestions || 0}</td>
-          <td>${Math.round((row.recoveryFactor || 0) * 100)}%</td>
-        </tr>
-      `).join('');
-
-      return `<!doctype html>
-<html lang="es-MX">
-<head>
-<meta charset="utf-8">
-<title>Reporte Reto de Autopsia - Nómina Muerta</title>
-<style>
-  * { box-sizing: border-box; }
-  body { font-family: Arial, Helvetica, sans-serif; color: #111b21; margin: 0; padding: 28px; background: #fff; line-height: 1.45; }
-  .report { max-width: 980px; margin: 0 auto; }
-  .cover { border-radius: 24px; padding: 28px; color: #f3f0e7; background: linear-gradient(135deg, #102a35, #0b1f28); margin-bottom: 22px; }
-  .cover .eyebrow { color: #d6b56d; font-weight: 800; text-transform: uppercase; letter-spacing: .14em; font-size: 12px; }
-  h1 { margin: 10px 0 8px; font-size: 34px; line-height: 1.05; }
-  h2 { color: #102a35; margin: 26px 0 10px; font-size: 22px; }
-  .meta { color: rgba(243,240,231,.78); font-size: 14px; }
-  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 14px 0; }
-  .card { border: 1px solid #dce2e4; border-radius: 16px; padding: 14px; background: #fbfaf5; }
-  .card strong { display: block; color: #102a35; font-size: 20px; margin-bottom: 4px; }
-  .card span { color: #526168; font-size: 13px; font-weight: 700; }
-  table { width: 100%; border-collapse: collapse; margin: 12px 0 20px; font-size: 13px; }
-  th, td { border: 1px solid #dce2e4; padding: 9px 10px; text-align: left; vertical-align: top; }
-  th { background: #edf1f2; color: #102a35; font-size: 11px; text-transform: uppercase; letter-spacing: .06em; }
-  .note { border-left: 5px solid #1f6170; background: #f2f6f7; padding: 12px 14px; border-radius: 10px; margin: 16px 0; color: #31444c; }
-  .footer { margin-top: 26px; padding-top: 14px; border-top: 1px solid #dce2e4; color: #62727a; font-size: 12px; }
-  @media print {
-    body { padding: 0; }
-    .report { max-width: none; }
-    .cover, .card, .note { break-inside: avoid; }
-    table { break-inside: auto; }
-    tr { break-inside: avoid; break-after: auto; }
-  }
-
-    /* === V19: Modal de contacto seguro sin WhatsApp personal === */
-    body.nm-modal-open { overflow: hidden; }
-    .contact-modal {
-      position: fixed;
-      inset: 0;
-      z-index: 9999;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 22px;
-      background: rgba(7, 22, 28, .72);
-      backdrop-filter: blur(14px);
-    }
-    .contact-modal.active { display: flex; }
-    .contact-modal-dialog {
-      width: min(100%, 820px);
-      max-height: min(92vh, 980px);
-      overflow: auto;
-      border-radius: var(--radius-xl);
-      background:
-        radial-gradient(circle at 90% 8%, rgba(214,181,109,.16), transparent 22rem),
-        linear-gradient(180deg, rgba(251,250,245,.98), rgba(243,240,231,.96));
-      box-shadow: 0 36px 120px rgba(0,0,0,.42);
-      border: 1px solid rgba(243,240,231,.46);
-      position: relative;
-    }
-    .contact-modal-head {
-      padding: clamp(24px, 4vw, 38px);
-      color: var(--cream);
-      background:
-        radial-gradient(circle at 86% 18%, rgba(214,181,109,.18), transparent 18rem),
-        linear-gradient(135deg, var(--navy), #07161c 76%);
-      border-radius: var(--radius-xl) var(--radius-xl) 0 0;
-      position: relative;
-      overflow: hidden;
-    }
-    .contact-modal-head::after {
-      content: "CONTACTO";
-      position: absolute;
-      right: 18px;
-      bottom: -20px;
-      color: rgba(243,240,231,.055);
-      font-size: clamp(56px, 11vw, 120px);
-      font-weight: 950;
-      letter-spacing: -.08em;
-      line-height: 1;
-      pointer-events: none;
-    }
-    .contact-modal-head .kicker { color: var(--gold); }
-    .contact-modal-head h2 {
-      color: var(--cream);
-      margin: 0 44px 12px 0;
-      font-size: clamp(30px, 4.4vw, 56px);
-      line-height: .96;
-      letter-spacing: -.05em;
-      position: relative;
-      z-index: 1;
-    }
-    .contact-modal-head p {
-      margin: 0;
-      color: rgba(243,240,231,.76);
-      max-width: 650px;
-      font-size: 17px;
-      position: relative;
-      z-index: 1;
-    }
-    .contact-modal-close {
-      position: absolute;
-      top: 18px;
-      right: 18px;
-      width: 42px;
-      height: 42px;
-      border-radius: 999px;
-      border: 1px solid rgba(243,240,231,.24);
-      background: rgba(255,255,255,.08);
-      color: var(--cream);
-      font-size: 24px;
-      line-height: 1;
-      cursor: pointer;
-      display: grid;
-      place-items: center;
-      z-index: 2;
-    }
-    .contact-modal-close:hover { background: rgba(255,255,255,.14); }
-    .contact-modal-body { padding: clamp(22px, 3.2vw, 34px); }
-    .contact-modal-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
-    }
-    .contact-modal-body label { margin-top: 12px; }
-    .contact-modal-body textarea { min-height: 120px; }
-    .contact-privacy {
-      margin: 16px 0 18px;
-      padding: 14px 16px;
-      border-radius: 18px;
-      background: rgba(31,97,112,.08);
-      border: 1px solid rgba(31,97,112,.13);
-      color: #31444c;
-      font-size: 14px;
-      font-weight: 750;
-      line-height: 1.45;
-    }
-    .contact-result {
-      display: none;
-      margin-top: 16px;
-      padding: 14px 16px;
-      border-radius: 18px;
-      background: rgba(31,97,112,.08);
-      border: 1px solid rgba(31,97,112,.18);
-      color: var(--navy);
-      font-weight: 850;
-    }
-    .contact-result.active { display: block; }
-    .contact-result.error {
-      background: rgba(140,42,42,.10);
-      border-color: rgba(140,42,42,.22);
-      color: #7d2525;
-    }
-    .contact-result.success {
-      background: rgba(27,111,85,.11);
-      border-color: rgba(27,111,85,.20);
-      color: #176346;
-    }
-    .contact-honeypot {
-      position: absolute !important;
-      left: -9999px !important;
-      opacity: 0 !important;
-      pointer-events: none !important;
-    }
-    @media (max-width: 720px) {
-      .contact-modal { padding: 12px; align-items: flex-start; }
-      .contact-modal-dialog { max-height: calc(100vh - 24px); border-radius: 24px; }
-      .contact-modal-head { border-radius: 24px 24px 0 0; }
-      .contact-modal-grid { grid-template-columns: 1fr; }
-      .contact-modal-body .btn { width: 100%; }
-    }
-
-</style>
-</head>
-<body>
-  <div class="report">
-    <div class="cover">
-      <div class="eyebrow">Nómina Muerta · Reto de Autopsia</div>
-      <h1>Reporte de Riesgo, Autopsia y Recuperación Económica</h1>
-      <div class="meta">Generado el ${generated}</div>
-    </div>
-
-    <h2>Resumen ejecutivo</h2>
-    <div class="grid">
-      <div class="card"><strong>${nmAutopsiaReportValue(depth.levelLabel || '—')}</strong><span>Nivel de urgencia</span></div>
-      <div class="card"><strong>${Math.round(depth.adjustedPct || final.pct)}%</strong><span>% Nómina Muerta ajustada</span></div>
-      <div class="card"><strong>${nmAutopsiaReportValue(depth.focus || final.dominantFocus)}</strong><span>Foco dominante</span></div>
-      <div class="card"><strong>${nmAutopsiaFormatCurrency(final.nmMonthly)}</strong><span>Nómina Muerta mensual</span></div>
-      <div class="card"><strong>${nmAutopsiaFormatCurrency(final.nmAnnual)}</strong><span>Nómina Muerta anual</span></div>
-      <div class="card"><strong>${final.equivalentPeople} personas</strong><span>Equivalente de capacidad no aprovechada</span></div>
-    </div>
-
-    <div class="note"><strong>Lectura correcta:</strong> el equivalente en personas no significa recorte de talento. Significa capacidad pagada atrapada en retrabajo, espera, mala coordinación, saturación, tecnología mal usada o falta de cierre.</div>
-
-    <h2>Datos económicos usados</h2>
-    <table>
-      <tbody>
-        <tr><th>Fuente del porcentaje</th><td>${nmAutopsiaReportValue(final.source)}</td></tr>
-        <tr><th>Personas evaluadas</th><td>${nmAutopsiaReportValue(final.people)}</td></tr>
-        <tr><th>Nómina mensual base</th><td>${nmAutopsiaFormatCurrency(final.payroll)}</td></tr>
-        <tr><th>Sueldo mensual promedio usado</th><td>${nmAutopsiaFormatCurrency(final.avgSalary)}</td></tr>
-        <tr><th>Recuperabilidad base del foco dominante</th><td>${Math.round((final.recoveryFactor || 0) * 100)}%</td></tr>
-      </tbody>
-    </table>
-
-    <h2>Escenarios de recuperación</h2>
-    <table>
-      <thead><tr><th>Escenario</th><th>Tasa aplicada</th><th>Recuperación mensual estimada</th><th>Recuperación anual estimada</th></tr></thead>
-      <tbody>
-        <tr><td>Conservador</td><td>${Math.round((final.conservativeRate || 0) * 100)}%</td><td>${nmAutopsiaFormatCurrency(final.conservative)}</td><td>${nmAutopsiaFormatCurrency((final.conservative || 0) * 12)}</td></tr>
-        <tr><td>Esperado</td><td>${Math.round((final.expectedRate || 0) * 100)}%</td><td>${nmAutopsiaFormatCurrency(final.expected)}</td><td>${nmAutopsiaFormatCurrency(final.expectedAnnual)}</td></tr>
-        <tr><td>Óptimo</td><td>${Math.round((final.optimalRate || 0) * 100)}%</td><td>${nmAutopsiaFormatCurrency(final.optimal)}</td><td>${nmAutopsiaFormatCurrency((final.optimal || 0) * 12)}</td></tr>
-      </tbody>
-    </table>
-
-    <h2>Radar inicial de riesgo</h2>
-    <div class="grid">
-      <div class="card"><strong>${Math.round(radar.riskScore || 0)} / 100</strong><span>Índice del Radar</span></div>
-      <div class="card"><strong>${nmAutopsiaReportValue(radar.levelLabel || '—')}</strong><span>Nivel inicial</span></div>
-      <div class="card"><strong>${selected.length}</strong><span>Síntomas marcados</span></div>
-    </div>
-    ${radarRows ? `<table><thead><tr><th>Foco activo</th><th>Activación</th><th>Síntomas</th><th>Recuperabilidad</th></tr></thead><tbody>${radarRows}</tbody></table>` : '<p>No hay detalle de radar guardado.</p>'}
-
-    <h2>Autopsia por foco</h2>
-    ${focusRows ? `<table><thead><tr><th>Foco</th><th>Gravedad</th><th>% NM asociado</th><th>Recuperabilidad</th><th>Preguntas evaluadas</th></tr></thead><tbody>${focusRows}</tbody></table>` : '<p>No hay detalle de autopsia guardado.</p>'}
-
-    <h2>Síntomas seleccionados</h2>
-    ${selectedRows ? `<table><thead><tr><th>#</th><th>Foco</th><th>Síntoma</th><th>Peso</th></tr></thead><tbody>${selectedRows}</tbody></table>` : '<p>No hay síntomas seleccionados guardados.</p>'}
-
-    <div class="footer">Reporte generado desde la página oficial de Nómina Muerta. Esta estimación es una herramienta de conversación directiva y priorización; no sustituye una auditoría operativa profunda.</div>
-  </div>
-</body>
-</html>`;
-    }
-
     function nmAutopsiaExportPDF() {
       if (!NM_AUTOPSIA_STATE.final) {
         nmAutopsiaShow('autopsiaCalcResult', '<div class="integrated-note">⚠️ Primero ejecuta el cálculo final para generar el reporte PDF.</div>');
@@ -6159,73 +5888,14 @@
         return;
       }
 
-      const reportHTML = nmAutopsiaBuildReportHTML();
-      if (!reportHTML) {
-        nmAutopsiaShow('autopsiaCalcResult', '<div class="integrated-note">⚠️ No se pudo generar el contenido del reporte. Ejecuta nuevamente el cálculo final.</div>');
+      // Exportación segura: imprime la página actual y evita insertar HTML largo dentro del script.
+      // En el cuadro de impresión el usuario puede elegir "Guardar como PDF".
+      try {
+        window.print();
+      } catch (error) {
+        nmAutopsiaShow('autopsiaCalcResult', '<div class="integrated-note">⚠️ No se pudo abrir el cuadro de impresión. Usa Cmd/Ctrl + P y selecciona “Guardar como PDF”.</div>');
         nmAutopsiaScrollToResult('autopsiaCalcResult');
-        return;
       }
-
-      const styleMatch = reportHTML.match(/<style[^>]*>([\s\S]*?)<\/style>/i);
-      const bodyMatch = reportHTML.match(/<body[^>]*>([\s\S]*?)<\/body>/i);
-      const reportCSS = styleMatch ? styleMatch[1] : '';
-      const reportBody = bodyMatch ? bodyMatch[1] : reportHTML;
-
-      let printStyle = document.getElementById('nmAutopsiaPrintStyle');
-      if (!printStyle) {
-        printStyle = document.createElement('style');
-        printStyle.id = 'nmAutopsiaPrintStyle';
-        document.head.appendChild(printStyle);
-      }
-
-      const scopedReportCSS = reportCSS
-        .replace(/(^|\})\s*body\s*\{/g, '$1 #nmAutopsiaPrintReport {')
-        .replace(/@media\s+print\s*\{\s*#nmAutopsiaPrintReport\s*\{/g, '@media print { #nmAutopsiaPrintReport {');
-
-      printStyle.textContent = `
-        #nmAutopsiaPrintReport { display: none; }
-        @media screen {
-          #nmAutopsiaPrintReport { display: none !important; }
-        }
-        @media print {
-          body.nm-autopsia-printing > *:not(#nmAutopsiaPrintReport) { display: none !important; }
-          body.nm-autopsia-printing #nmAutopsiaPrintReport { display: block !important; position: static !important; width: auto !important; height: auto !important; overflow: visible !important; }
-          body.nm-autopsia-printing { background: #fff !important; }
-          body.nm-autopsia-printing #nmAutopsiaPrintReport .report { max-width: none !important; }
-        }
-      ` + scopedReportCSS;
-
-      let printContainer = document.getElementById('nmAutopsiaPrintReport');
-      if (!printContainer) {
-        printContainer = document.createElement('div');
-        printContainer.id = 'nmAutopsiaPrintReport';
-        document.body.appendChild(printContainer);
-      }
-      printContainer.innerHTML = reportBody;
-
-      const cleanupPrint = () => {
-        document.body.classList.remove('nm-autopsia-printing');
-        window.removeEventListener('afterprint', cleanupPrint);
-      };
-
-      window.addEventListener('afterprint', cleanupPrint);
-      document.body.classList.add('nm-autopsia-printing');
-
-      // No usamos window.open para evitar bloqueos de ventanas emergentes en GitHub Pages, Safari o Chrome.
-      // El navegador abrirá el cuadro de impresión sobre esta misma página; ahí se elige "Guardar como PDF".
-      setTimeout(() => {
-        try {
-          window.print();
-        } catch (error) {
-          cleanupPrint();
-          nmAutopsiaShow('autopsiaCalcResult', '<div class="integrated-note">⚠️ No se pudo abrir el cuadro de impresión. Usa Cmd/Ctrl + P y selecciona “Guardar como PDF”.</div>');
-          nmAutopsiaScrollToResult('autopsiaCalcResult');
-        }
-      }, 120);
-
-      setTimeout(() => {
-        if (document.body.classList.contains('nm-autopsia-printing')) cleanupPrint();
-      }, 8000);
     }
 
 
@@ -6406,9 +6076,8 @@
         }
 
         try {
-          const pageInput = document.getElementById('contactPagina');
-          if (pageInput) pageInput.value = window.location.href;
-          const response = await fetch(form.action, {
+          const endpoint = new URL('/enviar-contacto.php', window.location.origin).toString();
+          const response = await fetch(endpoint, {
             method: 'POST',
             body: new FormData(form),
             headers: { 'Accept': 'application/json' }
@@ -6422,7 +6091,7 @@
           form.reset();
         } catch (error) {
           result.className = 'contact-result active error';
-          result.textContent = error.message || 'No se pudo enviar el mensaje. Revisa que enviar-contacto.php esté subido al hosting.';
+          result.textContent = error.message || 'No se pudo enviar el mensaje. Revisa enviar-contacto.php, Email Routing y Track Delivery en cPanel.';
         } finally {
           if (submitBtn) {
             submitBtn.disabled = false;
