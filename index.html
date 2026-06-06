@@ -3017,17 +3017,17 @@
   <!-- versión recomendaciones fijas 2026-06-02: testimonios visibles sin depender de JavaScript -->
   <header class="topbar" id="top">
     <div class="wrap nav">
-      <a class="brand" href="#top" aria-label="Inicio Nómina Muerta">
+      <a class="brand js-top-link" href="#top" aria-label="Inicio Nómina Muerta">
         <span class="brand-mark">NM</span>
         <span>NÓMINA MUERTA<small>Melchor Iván Angulo Zamorán</small></span>
       </a>
       <nav class="nav-links" aria-label="Navegación principal">
-        <a href="#concepto">Concepto</a>
+        <a class="js-top-link" href="#top">Concepto</a>
         <a href="#/mapa">Mapa</a>
         <a href="#/reto-autopsia">Reto de Autopsia</a>
         <a href="#/viva-la-nomina">Conferencias</a>
         <a href="#/consultoria-copiloto">Consultoría</a>
-        <a href="https://wa.me/526671450096" target="_blank" rel="noopener">Contacto</a>
+        <a class="js-open-contact" href="#contacto" data-contact-interest="Contacto general">Contacto</a>
         <a class="btn btn-primary" href="https://www.amazon.com.mx/N%C3%B3mina-Muerta-p%C3%A9rdida-capitalizar-sepulte/dp/B0FCC9TLRM/ref=sr_1_1?crid=36Q4FTI8QAIPO&dib=eyJ2IjoiMSJ9.jeZzbPCzxWGI8uNZBU_ScOBux1AnAd-oMfUVvGxOIyNsbIgNNo7Qxjr6Ty346Lm_m95Ih3F7jma0XL8zz_HkUGyzzi-e6tfHa5XA_wxj1K0oNMcRUMmJ3NLf4rdADwD6P-TR8sdVIvs2ybw2XHFzlL4K1QLf3iVrnTveFDbSNGyqxLz_77XfUOBilfozOow0.mISqZCqIAd8oH-NFYLKAfgNlEWUuTWzTaJHuLFG3FQM&dib_tag=se&keywords=nomina+muerta&qid=1780362284&sprefix=nomina+muerta%2Caps%2C177&sr=8-1&ufe=app_do%3Aamzn1.fos.de93fa6a-174c-4df7-be7c-5bc8e9c5a71b" target="_blank" rel="noopener">Comprar en Amazon</a>
       </nav>
     </div>
@@ -3386,8 +3386,6 @@
             <input id="adminPassword" type="password" placeholder="Clave de administrador" autocomplete="current-password" />
             <button class="btn btn-primary" type="button" id="adminLoginBtn">Entrar</button>
           </div>
-          <p class="tiny-note" id="adminHint">Clave demo para probar: <strong>NMADMIN2026</strong>. En producción esta clave no debe vivir dentro del HTML.</p>
-
           <div id="adminWorkspace" hidden>
             <div class="admin-explainer">
               <strong>Flujo recomendado:</strong> revisa el comentario → aprueba si es publicable → verifica el correo/celular/perfil si la persona pidió aparecer como destacada → marca destacada solo si ya está aprobada y verificada. Los pendientes se revisan aquí mismo usando el filtro “Pendientes”.
@@ -3666,7 +3664,7 @@
             <div class="tool-card"><h3>Supervisa y mejora</h3><p>Seguimiento activo de compromisos, procesos, proyectos, minutas, productividad y desempeño.</p></div>
           </div>
           <div class="utility-actions">
-            <a class="btn btn-primary" href="https://wa.me/526671450096" target="_blank" rel="noopener">Más Información</a>
+            <a class="btn btn-primary js-open-contact" href="#contacto" data-contact-interest="Información">Más Información</a>
             <a class="btn btn-light" href="#/reto-autopsia">Medir síntomas con el Reto</a>
           </div>
         </div>
@@ -3768,7 +3766,7 @@
           <h1>Conferencias Viva la Nómina: convierte el tiempo en ejecución, foco y resultados.</h1>
           <p>Ofrezco conferencias para empresas, consejos directivos, convenciones, universidades corporativas y equipos de liderazgo que necesitan despertar una conversación incómoda pero necesaria: ¿cuánto tiempo está pagando la organización que no se aprovecha?</p>
           <div class="subpage-nav">
-            <a class="btn btn-light" href="https://wa.me/526671450096" target="_blank" rel="noopener">Solicitar Información</a>
+            <a class="btn btn-light js-open-contact" href="#contacto" data-contact-interest="Información">Solicitar Información</a>
           </div>
           <div class="conference-hero-metrics" aria-label="Datos provocadores de la conferencia">
             <div class="conference-hero-metric"><strong>25–40%</strong><span>del tiempo laboral puede estar atrapado en tareas no esenciales, redundantes o mal priorizadas.</span></div>
@@ -3949,7 +3947,7 @@
           <h2>Lleva Viva la Nómina a tu empresa, convención, comité directivo o evento de liderazgo.</h2>
           <p>Una conferencia diseñada para incomodar con respeto, despertar conciencia ejecutiva y abrir una conversación que puede transformar la forma en que tu organización usa su activo más caro: el tiempo.</p>
           <div class="utility-actions">
-            <a class="btn btn-light" href="https://wa.me/526671450096" target="_blank" rel="noopener">Solicitar información</a>
+            <a class="btn btn-light js-open-contact" href="#contacto" data-contact-interest="Información">Solicitar información</a>
           </div>
         </div>
       </div>
@@ -4061,7 +4059,7 @@
           <h2>El Copiloto de Eficiencia Operativa le da a la Alta Dirección una ventaja: ver el trabajo como realmente ocurre.</h2>
           <p>Cuando el trabajo se vuelve visible, el desperdicio deja de esconderse. Cuando el desperdicio se mide, se puede reducir. Y cuando se reduce, la empresa recupera tiempo, capacidad, margen, velocidad y tranquilidad directiva.</p>
           <div class="utility-actions">
-            <a class="btn btn-light" href="https://wa.me/526671450096" target="_blank" rel="noopener">Solicitar información</a>
+            <a class="btn btn-light js-open-contact" href="#contacto" data-contact-interest="Información">Solicitar información</a>
           </div>
         </div>
       </div>
@@ -4072,9 +4070,71 @@
   <footer>
     <div class="wrap footer-grid">
       <div><strong>Nómina Muerta</strong> · Melchor Iván Angulo Zamorán</div>
-      <a class="backtop" href="#top">Volver arriba</a>
+      <a class="backtop js-top-link" href="#top">Volver arriba</a>
     </div>
   </footer>
+
+
+
+  <!-- Modal de contacto seguro: envía a enviar-contacto.php -->
+  <div class="contact-modal" id="contactModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="contactModalTitle">
+    <div class="contact-modal-dialog" role="document">
+      <div class="contact-modal-head">
+        <button class="contact-modal-close" type="button" id="contactModalClose" aria-label="Cerrar formulario de contacto">×</button>
+        <div class="kicker">Contacto seguro</div>
+        <h2 id="contactModalTitle">Hablemos de Nómina Muerta</h2>
+        <p>Déjame tus datos y te responderé por correo. Así evitamos exponer WhatsApp personal y mantenemos una comunicación más profesional y segura.</p>
+      </div>
+      <div class="contact-modal-body">
+        <form id="contactForm" method="POST" action="enviar-contacto.php" novalidate>
+          <div class="contact-modal-grid">
+            <div>
+              <label for="contactNombre">Nombre completo *</label>
+              <input id="contactNombre" name="nombre" type="text" autocomplete="name" required />
+            </div>
+            <div>
+              <label for="contactCorreo">Correo electrónico *</label>
+              <input id="contactCorreo" name="correo" type="email" autocomplete="email" required />
+            </div>
+            <div>
+              <label for="contactEmpresa">Empresa u organización</label>
+              <input id="contactEmpresa" name="empresa" type="text" autocomplete="organization" />
+            </div>
+            <div>
+              <label for="contactTelefono">Teléfono opcional</label>
+              <input id="contactTelefono" name="telefono" type="tel" autocomplete="tel" />
+            </div>
+          </div>
+
+          <label for="contactInteres">Me interesa *</label>
+          <select id="contactInteres" name="interes" required>
+            <option value="">Selecciona una opción</option>
+            <option value="Libro Nómina Muerta">Libro Nómina Muerta</option>
+            <option value="Conferencia Viva la Nómina">Conferencia Viva la Nómina</option>
+            <option value="Consultoría Nómina Muerta">Consultoría Nómina Muerta</option>
+            <option value="Diagnóstico / Reto de Autopsia">Diagnóstico / Reto de Autopsia</option>
+            <option value="Alianza o colaboración">Alianza o colaboración</option>
+            <option value="Otro">Otro</option>
+          </select>
+
+          <label for="contactMensaje">Mensaje *</label>
+          <textarea id="contactMensaje" name="mensaje" required placeholder="Cuéntame brevemente qué necesitas, para qué empresa u organización y cómo puedo ayudarte."></textarea>
+
+          <div class="contact-honeypot" aria-hidden="true">
+            <label for="contactWebsite">Sitio web</label>
+            <input id="contactWebsite" name="website" type="text" tabindex="-1" autocomplete="off" />
+          </div>
+
+          <div class="contact-privacy">
+            Al enviar este formulario aceptas que tus datos se utilicen únicamente para responder esta solicitud. No se publican en la página ni se comparten con terceros.
+          </div>
+
+          <button class="btn btn-primary" type="submit" id="contactSubmitBtn">Enviar mensaje</button>
+          <div id="contactResult" class="contact-result" role="status" aria-live="polite"></div>
+        </form>
+      </div>
+    </div>
+  </div>
 
   <script type="application/ld+json">
     {
@@ -4100,6 +4160,9 @@
     }
   </script>
   <script>
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
 
     document.querySelectorAll('[data-chapter-tabs]').forEach(explorer => {
       const tabs = explorer.querySelectorAll('.chapter-tab');
@@ -4115,7 +4178,7 @@
 
     const KEY = 'nomina_muerta_recomendaciones_v5';
     const OWNER_KEY = 'nomina_muerta_owner_id_v1';
-    const ADMIN_PASSWORD = 'NMADMIN2026'; // Solo demo estática. En producción debe vivir en el servidor.
+    const ADMIN_PASSWORD = 'NoMiNadmon26*'; // Solo demo estática. En producción debe vivir en el servidor.
 
     const form = document.getElementById('recommendationForm');
     const reviewList = document.getElementById('reviewList');
@@ -4465,7 +4528,8 @@
       if (adminPassword.value === ADMIN_PASSWORD) {
         isAdmin = true;
         adminLogin.hidden = true;
-        document.getElementById('adminHint').hidden = true;
+        const adminHint = document.getElementById('adminHint');
+        if (adminHint) adminHint.hidden = true;
         adminWorkspace.hidden = false;
         adminFilter.value = 'all';
         renderAdminList();
@@ -4665,8 +4729,25 @@
       el.classList.remove('active');
     }
 
+    function nmHardScrollTop(behavior = 'auto') {
+      const doScroll = () => {
+        window.scrollTo({ top: 0, left: 0, behavior });
+        document.documentElement.scrollTop = 0;
+        document.body.scrollTop = 0;
+      };
+      doScroll();
+      requestAnimationFrame(doScroll);
+      setTimeout(doScroll, 60);
+      setTimeout(doScroll, 180);
+    }
+
     function nmRoute() {
-      const hash = window.location.hash || '#top';
+      const rawHash = window.location.hash || '#top';
+      const hash = rawHash === '#concepto' ? '#top' : rawHash;
+      if (rawHash === '#concepto') {
+        history.replaceState(null, '', window.location.pathname + window.location.search + '#top');
+      }
+
       const route = hash.startsWith('#/') ? hash.slice(2) : '';
       const home = document.getElementById('homePage');
       const pages = document.getElementById('singleIndexPages');
@@ -4682,21 +4763,51 @@
           if (active) found = true;
         });
         if (!found) {
-          window.location.hash = '#/reto-autopsia';
+          history.replaceState(null, '', window.location.pathname + window.location.search + '#top');
+          nmRoute();
           return;
         }
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      } else {
-        if (home) home.classList.remove('is-hidden');
-        if (pages) pages.classList.remove('active');
-        subpages.forEach(page => page.classList.remove('active'));
-        if (hash && hash !== '#top') {
-          setTimeout(() => {
-            const anchor = document.querySelector(hash);
-            if (anchor) anchor.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          }, 20);
-        }
+        nmHardScrollTop('auto');
+        return;
       }
+
+      if (home) home.classList.remove('is-hidden');
+      if (pages) pages.classList.remove('active');
+      subpages.forEach(page => page.classList.remove('active'));
+
+      if (!hash || hash === '#top') {
+        nmHardScrollTop('auto');
+        return;
+      }
+
+      if (hash === '#contacto') {
+        history.replaceState(null, '', window.location.pathname + window.location.search + '#top');
+        nmHardScrollTop('auto');
+        if (typeof nmOpenContactModal === 'function') nmOpenContactModal();
+        return;
+      }
+
+      setTimeout(() => {
+        const anchor = document.querySelector(hash);
+        if (anchor) anchor.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 20);
+    }
+
+    function nmBindNavigationFixes() {
+      document.querySelectorAll('.js-top-link, a[href="#top"], a[href="#concepto"]').forEach(link => {
+        if (link.dataset.topBound === '1') return;
+        link.addEventListener('click', (event) => {
+          event.preventDefault();
+          const targetUrl = window.location.pathname + window.location.search + '#top';
+          if (window.location.hash !== '#top') {
+            history.pushState(null, '', targetUrl);
+          } else {
+            history.replaceState(null, '', targetUrl);
+          }
+          nmRoute();
+        });
+        link.dataset.topBound = '1';
+      });
     }
 
     function nmRenderReto() {
@@ -4945,9 +5056,16 @@
 
     document.addEventListener('DOMContentLoaded', () => {
       nmInitTools();
+      nmBindNavigationFixes();
       nmRoute();
     });
     window.addEventListener('hashchange', nmRoute);
+    window.addEventListener('popstate', nmRoute);
+    window.addEventListener('pageshow', () => {
+      if (!window.location.hash || window.location.hash === '#top' || window.location.hash === '#concepto' || window.location.hash.startsWith('#/')) {
+        nmHardScrollTop('auto');
+      }
+    });
   </script>
 
 
@@ -5652,6 +5770,145 @@
     table { break-inside: auto; }
     tr { break-inside: avoid; break-after: auto; }
   }
+
+    /* === V19: Modal de contacto seguro sin WhatsApp personal === */
+    body.nm-modal-open { overflow: hidden; }
+    .contact-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 22px;
+      background: rgba(7, 22, 28, .72);
+      backdrop-filter: blur(14px);
+    }
+    .contact-modal.active { display: flex; }
+    .contact-modal-dialog {
+      width: min(100%, 820px);
+      max-height: min(92vh, 980px);
+      overflow: auto;
+      border-radius: var(--radius-xl);
+      background:
+        radial-gradient(circle at 90% 8%, rgba(214,181,109,.16), transparent 22rem),
+        linear-gradient(180deg, rgba(251,250,245,.98), rgba(243,240,231,.96));
+      box-shadow: 0 36px 120px rgba(0,0,0,.42);
+      border: 1px solid rgba(243,240,231,.46);
+      position: relative;
+    }
+    .contact-modal-head {
+      padding: clamp(24px, 4vw, 38px);
+      color: var(--cream);
+      background:
+        radial-gradient(circle at 86% 18%, rgba(214,181,109,.18), transparent 18rem),
+        linear-gradient(135deg, var(--navy), #07161c 76%);
+      border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .contact-modal-head::after {
+      content: "CONTACTO";
+      position: absolute;
+      right: 18px;
+      bottom: -20px;
+      color: rgba(243,240,231,.055);
+      font-size: clamp(56px, 11vw, 120px);
+      font-weight: 950;
+      letter-spacing: -.08em;
+      line-height: 1;
+      pointer-events: none;
+    }
+    .contact-modal-head .kicker { color: var(--gold); }
+    .contact-modal-head h2 {
+      color: var(--cream);
+      margin: 0 44px 12px 0;
+      font-size: clamp(30px, 4.4vw, 56px);
+      line-height: .96;
+      letter-spacing: -.05em;
+      position: relative;
+      z-index: 1;
+    }
+    .contact-modal-head p {
+      margin: 0;
+      color: rgba(243,240,231,.76);
+      max-width: 650px;
+      font-size: 17px;
+      position: relative;
+      z-index: 1;
+    }
+    .contact-modal-close {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      width: 42px;
+      height: 42px;
+      border-radius: 999px;
+      border: 1px solid rgba(243,240,231,.24);
+      background: rgba(255,255,255,.08);
+      color: var(--cream);
+      font-size: 24px;
+      line-height: 1;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      z-index: 2;
+    }
+    .contact-modal-close:hover { background: rgba(255,255,255,.14); }
+    .contact-modal-body { padding: clamp(22px, 3.2vw, 34px); }
+    .contact-modal-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .contact-modal-body label { margin-top: 12px; }
+    .contact-modal-body textarea { min-height: 120px; }
+    .contact-privacy {
+      margin: 16px 0 18px;
+      padding: 14px 16px;
+      border-radius: 18px;
+      background: rgba(31,97,112,.08);
+      border: 1px solid rgba(31,97,112,.13);
+      color: #31444c;
+      font-size: 14px;
+      font-weight: 750;
+      line-height: 1.45;
+    }
+    .contact-result {
+      display: none;
+      margin-top: 16px;
+      padding: 14px 16px;
+      border-radius: 18px;
+      background: rgba(31,97,112,.08);
+      border: 1px solid rgba(31,97,112,.18);
+      color: var(--navy);
+      font-weight: 850;
+    }
+    .contact-result.active { display: block; }
+    .contact-result.error {
+      background: rgba(140,42,42,.10);
+      border-color: rgba(140,42,42,.22);
+      color: #7d2525;
+    }
+    .contact-result.success {
+      background: rgba(27,111,85,.11);
+      border-color: rgba(27,111,85,.20);
+      color: #176346;
+    }
+    .contact-honeypot {
+      position: absolute !important;
+      left: -9999px !important;
+      opacity: 0 !important;
+      pointer-events: none !important;
+    }
+    @media (max-width: 720px) {
+      .contact-modal { padding: 12px; align-items: flex-start; }
+      .contact-modal-dialog { max-height: calc(100vh - 24px); border-radius: 24px; }
+      .contact-modal-head { border-radius: 24px 24px 0 0; }
+      .contact-modal-grid { grid-template-columns: 1fr; }
+      .contact-modal-body .btn { width: 100%; }
+    }
+
 </style>
 </head>
 <body>
@@ -5887,6 +6144,111 @@
     }
 
     document.addEventListener('DOMContentLoaded', nmAutopsiaInit);
+  </script>
+
+
+  <script>
+    /* === V19: comportamiento del modal de contacto y envío por correo === */
+    function nmOpenContactModal(defaultInterest = '') {
+      const modal = document.getElementById('contactModal');
+      const interest = document.getElementById('contactInteres');
+      const result = document.getElementById('contactResult');
+      if (!modal) return;
+      if (result) {
+        result.textContent = '';
+        result.className = 'contact-result';
+      }
+      if (defaultInterest && interest) {
+        const normalized = defaultInterest.toLowerCase();
+        const match = Array.from(interest.options).find(opt => opt.value.toLowerCase().includes(normalized));
+        if (match) interest.value = match.value;
+      }
+      modal.classList.add('active');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('nm-modal-open');
+      setTimeout(() => document.getElementById('contactNombre')?.focus(), 80);
+    }
+
+    function nmCloseContactModal() {
+      const modal = document.getElementById('contactModal');
+      if (!modal) return;
+      modal.classList.remove('active');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('nm-modal-open');
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const modal = document.getElementById('contactModal');
+      const closeBtn = document.getElementById('contactModalClose');
+      const form = document.getElementById('contactForm');
+      const result = document.getElementById('contactResult');
+      const submitBtn = document.getElementById('contactSubmitBtn');
+
+      document.querySelectorAll('.js-open-contact, a[href="#contacto"]').forEach(link => {
+        if (link.dataset.contactBound === '1') return;
+        link.addEventListener('click', (event) => {
+          event.preventDefault();
+          const interest = link.dataset.contactInterest || link.textContent || '';
+          nmOpenContactModal(interest);
+        });
+        link.dataset.contactBound = '1';
+      });
+
+      closeBtn?.addEventListener('click', nmCloseContactModal);
+      modal?.addEventListener('click', (event) => {
+        if (event.target === modal) nmCloseContactModal();
+      });
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && modal?.classList.contains('active')) nmCloseContactModal();
+      });
+
+      if (window.location.hash === '#contacto') {
+        history.replaceState(null, '', window.location.pathname + window.location.search + '#top');
+        nmOpenContactModal();
+      }
+
+      form?.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        if (!result) return;
+
+        if (!form.checkValidity()) {
+          result.className = 'contact-result active error';
+          result.textContent = 'Por favor completa los campos obligatorios antes de enviar.';
+          form.reportValidity();
+          return;
+        }
+
+        result.className = 'contact-result active';
+        result.textContent = 'Enviando mensaje...';
+        if (submitBtn) {
+          submitBtn.disabled = true;
+          submitBtn.textContent = 'Enviando...';
+        }
+
+        try {
+          const response = await fetch(form.action, {
+            method: 'POST',
+            body: new FormData(form),
+            headers: { 'Accept': 'application/json' }
+          });
+          const data = await response.json().catch(() => ({}));
+          if (!response.ok || data.ok === false) {
+            throw new Error(data.message || 'No se pudo enviar el mensaje.');
+          }
+          result.className = 'contact-result active success';
+          result.textContent = data.message || 'Mensaje enviado correctamente. Te responderé pronto.';
+          form.reset();
+        } catch (error) {
+          result.className = 'contact-result active error';
+          result.textContent = error.message || 'No se pudo enviar el mensaje. Revisa que enviar-contacto.php esté subido al hosting.';
+        } finally {
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Enviar mensaje';
+          }
+        }
+      });
+    });
   </script>
 
 </body>
