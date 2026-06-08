@@ -3011,23 +3011,163 @@
       }
     }
 
+
+
+    /* === V19: Modal de contacto seguro sin WhatsApp personal === */
+    body.nm-modal-open { overflow: hidden; }
+    .contact-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 22px;
+      background: rgba(7, 22, 28, .72);
+      backdrop-filter: blur(14px);
+    }
+    .contact-modal.active { display: flex; }
+    .contact-modal-dialog {
+      width: min(100%, 820px);
+      max-height: min(92vh, 980px);
+      overflow: auto;
+      border-radius: var(--radius-xl);
+      background:
+        radial-gradient(circle at 90% 8%, rgba(214,181,109,.16), transparent 22rem),
+        linear-gradient(180deg, rgba(251,250,245,.98), rgba(243,240,231,.96));
+      box-shadow: 0 36px 120px rgba(0,0,0,.42);
+      border: 1px solid rgba(243,240,231,.46);
+      position: relative;
+    }
+    .contact-modal-head {
+      padding: clamp(24px, 4vw, 38px);
+      color: var(--cream);
+      background:
+        radial-gradient(circle at 86% 18%, rgba(214,181,109,.18), transparent 18rem),
+        linear-gradient(135deg, var(--navy), #07161c 76%);
+      border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .contact-modal-head::after {
+      content: "CONTACTO";
+      position: absolute;
+      right: 18px;
+      bottom: -20px;
+      color: rgba(243,240,231,.055);
+      font-size: clamp(56px, 11vw, 120px);
+      font-weight: 950;
+      letter-spacing: -.08em;
+      line-height: 1;
+      pointer-events: none;
+    }
+    .contact-modal-head .kicker { color: var(--gold); }
+    .contact-modal-head h2 {
+      color: var(--cream);
+      margin: 0 44px 12px 0;
+      font-size: clamp(30px, 4.4vw, 56px);
+      line-height: .96;
+      letter-spacing: -.05em;
+      position: relative;
+      z-index: 1;
+    }
+    .contact-modal-head p {
+      margin: 0;
+      color: rgba(243,240,231,.76);
+      max-width: 650px;
+      font-size: 17px;
+      position: relative;
+      z-index: 1;
+    }
+    .contact-modal-close {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      width: 42px;
+      height: 42px;
+      border-radius: 999px;
+      border: 1px solid rgba(243,240,231,.24);
+      background: rgba(255,255,255,.08);
+      color: var(--cream);
+      font-size: 24px;
+      line-height: 1;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      z-index: 2;
+    }
+    .contact-modal-close:hover { background: rgba(255,255,255,.14); }
+    .contact-modal-body { padding: clamp(22px, 3.2vw, 34px); }
+    .contact-modal-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .contact-modal-body label { margin-top: 12px; }
+    .contact-modal-body textarea { min-height: 120px; }
+    .contact-privacy {
+      margin: 16px 0 18px;
+      padding: 14px 16px;
+      border-radius: 18px;
+      background: rgba(31,97,112,.08);
+      border: 1px solid rgba(31,97,112,.13);
+      color: #31444c;
+      font-size: 14px;
+      font-weight: 750;
+      line-height: 1.45;
+    }
+    .contact-result {
+      display: none;
+      margin-top: 16px;
+      padding: 14px 16px;
+      border-radius: 18px;
+      background: rgba(31,97,112,.08);
+      border: 1px solid rgba(31,97,112,.18);
+      color: var(--navy);
+      font-weight: 850;
+    }
+    .contact-result.active { display: block; }
+    .contact-result.error {
+      background: rgba(140,42,42,.10);
+      border-color: rgba(140,42,42,.22);
+      color: #7d2525;
+    }
+    .contact-result.success {
+      background: rgba(27,111,85,.11);
+      border-color: rgba(27,111,85,.20);
+      color: #176346;
+    }
+    .contact-honeypot {
+      position: absolute !important;
+      left: -9999px !important;
+      opacity: 0 !important;
+      pointer-events: none !important;
+    }
+    @media (max-width: 720px) {
+      .contact-modal { padding: 12px; align-items: flex-start; }
+      .contact-modal-dialog { max-height: calc(100vh - 24px); border-radius: 24px; }
+      .contact-modal-head { border-radius: 24px 24px 0 0; }
+      .contact-modal-grid { grid-template-columns: 1fr; }
+      .contact-modal-body .btn { width: 100%; }
+    }
+
 </style>
 </head>
 <body>
-  <!-- versión recomendaciones fijas 2026-06-02: testimonios visibles sin depender de JavaScript -->
+  <!-- BUILD NM-20260606-COMMENTS-OWNER-FIX: corrige edición pública y solicitud de destacada; usar este index.html en public_html -->
   <header class="topbar" id="top">
     <div class="wrap nav">
-      <a class="brand" href="#top" aria-label="Inicio Nómina Muerta">
+      <a class="brand js-top-link" href="#top" aria-label="Inicio Nómina Muerta">
         <span class="brand-mark">NM</span>
         <span>NÓMINA MUERTA<small>Melchor Iván Angulo Zamorán</small></span>
       </a>
       <nav class="nav-links" aria-label="Navegación principal">
-        <a href="#concepto">Concepto</a>
+        <a class="js-top-link" href="#top">Concepto</a>
         <a href="#/mapa">Mapa</a>
         <a href="#/reto-autopsia">Reto de Autopsia</a>
         <a href="#/viva-la-nomina">Conferencias</a>
         <a href="#/consultoria-copiloto">Consultoría</a>
-        <a href="https://wa.me/526671450096" target="_blank" rel="noopener">Contacto</a>
+        <a class="js-open-contact" href="#contacto" data-contact-interest="Contacto general">Contacto</a>
         <a class="btn btn-primary" href="https://www.amazon.com.mx/N%C3%B3mina-Muerta-p%C3%A9rdida-capitalizar-sepulte/dp/B0FCC9TLRM/ref=sr_1_1?crid=36Q4FTI8QAIPO&dib=eyJ2IjoiMSJ9.jeZzbPCzxWGI8uNZBU_ScOBux1AnAd-oMfUVvGxOIyNsbIgNNo7Qxjr6Ty346Lm_m95Ih3F7jma0XL8zz_HkUGyzzi-e6tfHa5XA_wxj1K0oNMcRUMmJ3NLf4rdADwD6P-TR8sdVIvs2ybw2XHFzlL4K1QLf3iVrnTveFDbSNGyqxLz_77XfUOBilfozOow0.mISqZCqIAd8oH-NFYLKAfgNlEWUuTWzTaJHuLFG3FQM&dib_tag=se&keywords=nomina+muerta&qid=1780362284&sprefix=nomina+muerta%2Caps%2C177&sr=8-1&ufe=app_do%3Aamzn1.fos.de93fa6a-174c-4df7-be7c-5bc8e9c5a71b" target="_blank" rel="noopener">Comprar en Amazon</a>
       </nav>
     </div>
@@ -3327,10 +3467,10 @@
             </label>
 
             <div class="form-actions">
-              <button class="btn btn-primary" type="submit" id="submitBtn">Publicar recomendación</button>
+              <button class="btn btn-primary" type="submit" id="submitBtn">Enviar recomendación a revisión</button>
               <button class="btn btn-light" type="button" id="cancelEditBtn" style="display:none;">Cancelar edición</button>
             </div>
-            <p class="tiny-note">Versión estática/prototipo: las recomendaciones se guardan en este navegador. En publicación real conviene conectarlo a una base de datos con cuentas de usuario, verificación real y permisos de administrador.</p>
+            <p class="tiny-note">Las recomendaciones se guardan en la base de datos del sitio. No aparecen públicamente hasta que sean aprobadas desde el panel de administración.</p>
           </form>
 
           <div class="review-card">
@@ -3381,16 +3521,14 @@
 
         <div class="admin-panel" id="adminPanel" hidden>
           <h3>Panel de moderación</h3>
-          <p>Aquí se revisan las recomendaciones recibidas. <strong>Pendiente</strong> significa que no aparece públicamente; <strong>Aprobar</strong> la publica; <strong>Ocultar</strong> la retira; <strong>Verificar</strong> confirma el dato de contacto de quien pidió ser considerado como destacado.</p>
+          <p>Aquí se revisan las recomendaciones recibidas desde la base de datos. <strong>Pendiente</strong> significa que no aparece públicamente; <strong>Publicar</strong> la muestra en la página; <strong>Aprobar y destacar</strong> la publica, verifica el contacto y la manda a destacadas; <strong>Ocultar</strong> la retira sin borrarla.</p>
           <div class="admin-login" id="adminLogin">
             <input id="adminPassword" type="password" placeholder="Clave de administrador" autocomplete="current-password" />
             <button class="btn btn-primary" type="button" id="adminLoginBtn">Entrar</button>
           </div>
-          <p class="tiny-note" id="adminHint">Clave demo para probar: <strong>NMADMIN2026</strong>. En producción esta clave no debe vivir dentro del HTML.</p>
-
           <div id="adminWorkspace" hidden>
             <div class="admin-explainer">
-              <strong>Flujo recomendado:</strong> revisa el comentario → aprueba si es publicable → verifica el correo/celular/perfil si la persona pidió aparecer como destacada → marca destacada solo si ya está aprobada y verificada. Los pendientes se revisan aquí mismo usando el filtro “Pendientes”.
+              <strong>Flujo recomendado:</strong> revisa el comentario → publica normal si solo quieres mostrarlo → usa “Aprobar y destacar” cuando la persona pidió destacada y dejó dato de verificación → oculta o elimina lo que no proceda.
             </div>
             <div class="admin-feedback" id="adminFeedback"></div>
             <div class="admin-stats" id="adminStats"></div>
@@ -3399,10 +3537,7 @@
               <select class="admin-select" id="adminFilter" aria-label="Filtrar comentarios">
                 <option value="all">Todos</option>
                 <option value="pending">Pendientes</option>
-                <option value="flagged">Marcados por lenguaje</option>
-                <option value="requested">Solicitan destacada</option>
-                <option value="verified">Verificados</option>
-                <option value="approved">Aprobados</option>
+                <option value="published">Publicados</option>
                 <option value="featured">Destacados</option>
                 <option value="hidden">Ocultos</option>
               </select>
@@ -3666,7 +3801,7 @@
             <div class="tool-card"><h3>Supervisa y mejora</h3><p>Seguimiento activo de compromisos, procesos, proyectos, minutas, productividad y desempeño.</p></div>
           </div>
           <div class="utility-actions">
-            <a class="btn btn-primary" href="https://wa.me/526671450096" target="_blank" rel="noopener">Más Información</a>
+            <a class="btn btn-primary js-open-contact" href="#contacto" data-contact-interest="Información">Más Información</a>
             <a class="btn btn-light" href="#/reto-autopsia">Medir síntomas con el Reto</a>
           </div>
         </div>
@@ -3768,7 +3903,7 @@
           <h1>Conferencias Viva la Nómina: convierte el tiempo en ejecución, foco y resultados.</h1>
           <p>Ofrezco conferencias para empresas, consejos directivos, convenciones, universidades corporativas y equipos de liderazgo que necesitan despertar una conversación incómoda pero necesaria: ¿cuánto tiempo está pagando la organización que no se aprovecha?</p>
           <div class="subpage-nav">
-            <a class="btn btn-light" href="https://wa.me/526671450096" target="_blank" rel="noopener">Solicitar Información</a>
+            <a class="btn btn-light js-open-contact" href="#contacto" data-contact-interest="Información">Solicitar Información</a>
           </div>
           <div class="conference-hero-metrics" aria-label="Datos provocadores de la conferencia">
             <div class="conference-hero-metric"><strong>25–40%</strong><span>del tiempo laboral puede estar atrapado en tareas no esenciales, redundantes o mal priorizadas.</span></div>
@@ -3949,7 +4084,7 @@
           <h2>Lleva Viva la Nómina a tu empresa, convención, comité directivo o evento de liderazgo.</h2>
           <p>Una conferencia diseñada para incomodar con respeto, despertar conciencia ejecutiva y abrir una conversación que puede transformar la forma en que tu organización usa su activo más caro: el tiempo.</p>
           <div class="utility-actions">
-            <a class="btn btn-light" href="https://wa.me/526671450096" target="_blank" rel="noopener">Solicitar información</a>
+            <a class="btn btn-light js-open-contact" href="#contacto" data-contact-interest="Información">Solicitar información</a>
           </div>
         </div>
       </div>
@@ -4061,7 +4196,7 @@
           <h2>El Copiloto de Eficiencia Operativa le da a la Alta Dirección una ventaja: ver el trabajo como realmente ocurre.</h2>
           <p>Cuando el trabajo se vuelve visible, el desperdicio deja de esconderse. Cuando el desperdicio se mide, se puede reducir. Y cuando se reduce, la empresa recupera tiempo, capacidad, margen, velocidad y tranquilidad directiva.</p>
           <div class="utility-actions">
-            <a class="btn btn-light" href="https://wa.me/526671450096" target="_blank" rel="noopener">Solicitar información</a>
+            <a class="btn btn-light js-open-contact" href="#contacto" data-contact-interest="Información">Solicitar información</a>
           </div>
         </div>
       </div>
@@ -4072,9 +4207,72 @@
   <footer>
     <div class="wrap footer-grid">
       <div><strong>Nómina Muerta</strong> · Melchor Iván Angulo Zamorán</div>
-      <a class="backtop" href="#top">Volver arriba</a>
+      <a class="backtop js-top-link" href="#top">Volver arriba</a>
     </div>
   </footer>
+
+
+
+  <!-- Modal de contacto seguro: envía a enviar-contacto.php -->
+  <div class="contact-modal" id="contactModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="contactModalTitle">
+    <div class="contact-modal-dialog" role="document">
+      <div class="contact-modal-head">
+        <button class="contact-modal-close" type="button" id="contactModalClose" aria-label="Cerrar formulario de contacto">×</button>
+        <div class="kicker">Contacto seguro</div>
+        <h2 id="contactModalTitle">Hablemos de Nómina Muerta</h2>
+        <p>Déjame tus datos y te responderé por correo. Así evitamos exponer WhatsApp personal y mantenemos una comunicación más profesional y segura.</p>
+      </div>
+      <div class="contact-modal-body">
+        <form id="contactForm" method="POST" action="/enviar-contacto.php" novalidate>
+          <input type="hidden" name="tipo" value="contacto" />
+          <div class="contact-modal-grid">
+            <div>
+              <label for="contactNombre">Nombre completo *</label>
+              <input id="contactNombre" name="nombre" type="text" autocomplete="name" required />
+            </div>
+            <div>
+              <label for="contactCorreo">Correo electrónico *</label>
+              <input id="contactCorreo" name="correo" type="email" autocomplete="email" required />
+            </div>
+            <div>
+              <label for="contactEmpresa">Empresa u organización</label>
+              <input id="contactEmpresa" name="empresa" type="text" autocomplete="organization" />
+            </div>
+            <div>
+              <label for="contactTelefono">Teléfono opcional</label>
+              <input id="contactTelefono" name="telefono" type="tel" autocomplete="tel" />
+            </div>
+          </div>
+
+          <label for="contactInteres">Me interesa *</label>
+          <select id="contactInteres" name="interes" required>
+            <option value="">Selecciona una opción</option>
+            <option value="Libro Nómina Muerta">Libro Nómina Muerta</option>
+            <option value="Conferencia Viva la Nómina">Conferencia Viva la Nómina</option>
+            <option value="Consultoría Nómina Muerta">Consultoría Nómina Muerta</option>
+            <option value="Diagnóstico / Reto de Autopsia">Diagnóstico / Reto de Autopsia</option>
+            <option value="Alianza o colaboración">Alianza o colaboración</option>
+            <option value="Otro">Otro</option>
+          </select>
+
+          <label for="contactMensaje">Mensaje *</label>
+          <textarea id="contactMensaje" name="mensaje" required placeholder="Cuéntame brevemente qué necesitas, para qué empresa u organización y cómo puedo ayudarte."></textarea>
+
+          <div class="contact-honeypot" aria-hidden="true">
+            <label for="contactWebsite">Sitio web</label>
+            <input id="contactWebsite" name="website" type="text" tabindex="-1" autocomplete="off" />
+          </div>
+
+          <div class="contact-privacy">
+            Al enviar este formulario aceptas que tus datos se utilicen únicamente para responder esta solicitud. No se publican en la página ni se comparten con terceros.
+          </div>
+
+          <button class="btn btn-primary" type="submit" id="contactSubmitBtn">Enviar mensaje</button>
+          <div id="contactResult" class="contact-result" role="status" aria-live="polite"></div>
+        </form>
+      </div>
+    </div>
+  </div>
 
   <script type="application/ld+json">
     {
@@ -4100,6 +4298,9 @@
     }
   </script>
   <script>
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
 
     document.querySelectorAll('[data-chapter-tabs]').forEach(explorer => {
       const tabs = explorer.querySelectorAll('.chapter-tab');
@@ -4113,9 +4314,13 @@
       });
     });
 
-    const KEY = 'nomina_muerta_recomendaciones_v5';
-    const OWNER_KEY = 'nomina_muerta_owner_id_v1';
-    const ADMIN_PASSWORD = 'NMADMIN2026'; // Solo demo estática. En producción debe vivir en el servidor.
+    // === Comentarios conectados a MySQL vía PHP API ===
+    // Para evitar el problema detectado con www, dejamos el dominio sin www como versión canónica.
+    if (window.location.hostname === 'www.nominamuerta.com') {
+      window.location.replace('https://nominamuerta.com' + window.location.pathname + window.location.search + window.location.hash);
+    }
+
+    const API_BASE = '/api';
 
     const form = document.getElementById('recommendationForm');
     const reviewList = document.getElementById('reviewList');
@@ -4140,8 +4345,32 @@
     const adminStats = document.getElementById('adminStats');
     const adminFeedback = document.getElementById('adminFeedback');
 
-    let editingId = null;
     let isAdmin = false;
+    let publicReviewsCache = [];
+    let adminReviewsCache = [];
+    const NM_LOCAL_PENDING_KEY = 'nm_mysql_pending_reviews_v1';
+
+    function getLocalPendingReviews() {
+      try {
+        const rows = JSON.parse(localStorage.getItem(NM_LOCAL_PENDING_KEY) || '[]');
+        return Array.isArray(rows) ? rows.filter(r => r && r.id && r.status === 'pending') : [];
+      } catch (_) {
+        return [];
+      }
+    }
+
+    function saveLocalPendingReview(review) {
+      try {
+        const current = getLocalPendingReviews().filter(r => r.id !== review.id);
+        current.unshift(review);
+        localStorage.setItem(NM_LOCAL_PENDING_KEY, JSON.stringify(current.slice(0, 20)));
+      } catch (_) {}
+    }
+
+    function visibleLocalPendingReviews(publicReviews) {
+      const publicIds = new Set((publicReviews || []).map(r => r.id));
+      return getLocalPendingReviews().filter(r => !publicIds.has(r.id));
+    }
 
     const defaultReviews = [
       {
@@ -4152,7 +4381,7 @@
         date: 'Recomendación verificada',
         message: 'Nómina Muerta es un libro que supera las expectativas: más profundo, práctico y revelador que muchos bestsellers de negocios. Una lectura indispensable para quienes buscan transformar sus organizaciones.',
         featured: true,
-        status: 'approved',
+        status: 'published',
         fixed: true,
         requestedFeature: true,
         verified: true,
@@ -4167,7 +4396,7 @@
         date: 'Recomendación verificada',
         message: 'Es un libro claro, directo y muy práctico para entender uno de los grandes problemas silenciosos de las empresas: la ineficiencia en la nómina. Me gustó especialmente porque va más allá de la teoría y aterriza conceptos que se viven todos los días en las organizaciones actuales. El autor explica con ejemplos reales cómo la falta de medición, accountability y cultura de desempeño impacta directamente la rentabilidad. Los conceptos son totalmente aplicables a la empresa de hoy, sin importar el tamaño o la industria. Es una lectura recomendable para directivos que buscan ordenar, profesionalizar y hacer más productivos a sus equipos.',
         featured: true,
-        status: 'approved',
+        status: 'published',
         fixed: true,
         requestedFeature: true,
         verified: true,
@@ -4184,55 +4413,60 @@
       '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;'
     }[char]));
 
-    function ownerId() {
-      let id = localStorage.getItem(OWNER_KEY);
-      if (!id) {
-        id = 'owner-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 9);
-        localStorage.setItem(OWNER_KEY, id);
-      }
-      return id;
-    }
-
-    function uid() {
-      return 'rev-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 9);
-    }
-
     function hasImproperLanguage(text) {
       const normalized = String(text || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
       return blockedWords.some(word => normalized.includes(word.normalize('NFD').replace(/[\u0300-\u036f]/g, '')));
     }
 
-    function getUserReviews() {
-      try {
-        const parsed = JSON.parse(localStorage.getItem(KEY)) || [];
-        return parsed.map(r => ({
-          id: r.id || uid(),
-          ownerId: r.ownerId || ownerId(),
-          name: r.name || 'Lector',
-          role: r.role || '',
-          rating: r.rating || '5',
-          message: r.message || '',
-          date: r.date || new Date().toLocaleDateString('es-MX'),
-          createdAt: Number(r.createdAt || 0),
-          featured: Boolean(r.featured),
-          requestedFeature: Boolean(r.requestedFeature),
-          verified: Boolean(r.verified),
-          contact: r.contact || { email: r.email || '', phone: r.phone || '', publicLink: r.publicLink || '', method: r.verificationMethod || 'Correo' },
-          status: r.status || 'approved',
-          flagged: Boolean(r.flagged || hasImproperLanguage((r.name || '') + ' ' + (r.role || '') + ' ' + (r.message || ''))),
-          fixed: false
-        }));
-      } catch {
-        return [];
+    async function apiJSON(path, options = {}) {
+      const response = await fetch(`${API_BASE}/${path}`, {
+        credentials: 'same-origin',
+        cache: 'no-store',
+        headers: {
+          'Accept': 'application/json',
+          ...(options.body ? { 'Content-Type': 'application/json' } : {}),
+          ...(options.headers || {})
+        },
+        ...options
+      });
+      const data = await response.json().catch(() => null);
+      if (!response.ok || !data || data.ok === false) {
+        throw new Error((data && data.error) ? data.error : 'No se pudo completar la solicitud.');
       }
+      return data;
     }
 
-    function saveUserReviews(reviews) {
-      localStorage.setItem(KEY, JSON.stringify(reviews));
+    function formatDate(value) {
+      if (!value) return '';
+      const d = new Date(String(value).replace(' ', 'T'));
+      if (Number.isNaN(d.getTime())) return String(value);
+      return d.toLocaleDateString('es-MX', { year: 'numeric', month: 'short', day: 'numeric' });
     }
 
-    function allReviews() {
-      return uniqueById([...defaultReviews, ...getUserReviews()]);
+    function mapReview(row) {
+      const createdAt = row.created_at ? Date.parse(String(row.created_at).replace(' ', 'T')) : 0;
+      const status = row.status === 'approved' ? 'published' : (row.status || 'pending');
+      return {
+        id: row.public_id || String(row.id || ''),
+        dbId: row.id || null,
+        name: row.nombre || row.name || 'Lector',
+        role: row.cargo || row.role || '',
+        rating: String(row.rating || 5),
+        message: row.mensaje || row.message || '',
+        date: formatDate(row.created_at) || 'Fecha no disponible',
+        createdAt: Number.isNaN(createdAt) ? 0 : createdAt,
+        featured: Number(row.destacada || row.featured || 0) === 1 || row.destacada === true,
+        requestedFeature: Number(row.solicita_destacada || 0) === 1 || row.solicita_destacada === true,
+        verified: Number(row.contacto_verificado || 0) === 1 || row.contacto_verificado === true,
+        contact: {
+          email: row.email || '',
+          phone: row.celular || row.phone || '',
+          publicLink: row.perfil || row.publicLink || '',
+          method: row.metodo_verificacion || row.verificationMethod || 'Correo'
+        },
+        status,
+        fixed: false
+      };
     }
 
     function uniqueById(list) {
@@ -4269,7 +4503,6 @@
       const badges = [];
       if (review.requestedFeature) badges.push('<span class="status-pill status-requested">Solicita destacada</span>');
       if (review.verified) badges.push('<span class="status-pill status-verified">Contacto verificado</span>');
-      if (review.requestedFeature && review.verified && !review.featured) badges.push('<span class="status-pill status-not-featured">Elegible</span>');
       return badges.join('');
     }
 
@@ -4279,17 +4512,14 @@
     }
 
     function statusLabel(review) {
-      if (review.flagged && review.status !== 'approved') return '<span class="status-pill status-flagged">Revisión por lenguaje</span>';
       if (review.status === 'pending') return '<span class="status-pill status-pending">Pendiente</span>';
       if (review.status === 'hidden') return '<span class="status-pill status-hidden">Oculto</span>';
       return '<span class="status-pill status-approved">Publicado</span>';
     }
 
-    function reviewArticle(review, options = {}) {
-      const mine = review.ownerId === ownerId() && !review.fixed;
-      const isPrivatePending = options.privatePending;
+    function reviewArticle(review) {
       return `
-        <article class="review-item${review.featured ? ' featured-review' : ''}${mine ? ' owner-only' : ''}">
+        <article class="review-item${review.featured ? ' featured-review' : ''}">
           <div class="review-meta">
             <span class="stars" aria-label="${escapeHTML(review.rating)} de 5 estrellas">${starText(review.rating)}</span>
             <span>${escapeHTML(review.date)}</span>
@@ -4298,17 +4528,26 @@
           ${review.role ? `<div class="review-meta" style="justify-content:flex-start; margin:2px 0 10px;">${escapeHTML(review.role)}</div>` : ''}
           <p>“${escapeHTML(review.message)}”</p>
           <div class="review-badges">
+            ${review.status === 'pending' ? '<span class="status-pill status-pending">Pendiente</span>' : ''}
             ${review.featured ? '<span class="status-pill">Destacada</span>' : ''}
             ${verificationBadges(review)}
-            ${isPrivatePending ? statusLabel(review) : ''}
           </div>
-          ${isPrivatePending ? '<div class="private-note">Esta recomendación solo es visible para ti hasta que sea aprobada.</div>' : ''}
-          ${mine ? `<div class="review-tools"><button class="mini-btn" type="button" data-edit="${review.id}">Editar mi comentario</button><button class="mini-btn" type="button" data-delete="${review.id}">Eliminar mi comentario</button></div>` : ''}
+          ${review.status === 'pending' ? '<div class="private-note">Esta recomendación solo es visible para ti en este navegador hasta que sea aprobada.</div>' : ''}
         </article>`;
     }
 
+    async function loadPublicReviews() {
+      const data = await apiJSON('listar-recomendaciones.php?filter=published&_=' + Date.now());
+      publicReviewsCache = (data.items || []).map(mapReview);
+      return publicReviewsCache;
+    }
+
+    function getAllPublicReviews() {
+      return uniqueById([...defaultReviews, ...publicReviewsCache]);
+    }
+
     function renderFeatured() {
-      const featured = sortReviewList(allReviews().filter(r => r.status === 'approved' && r.featured), 'featured').slice(0, 4);
+      const featured = sortReviewList(getAllPublicReviews().filter(r => r.status === 'published' && r.featured), 'featured').slice(0, 4);
       featuredList.innerHTML = featured.map(r => `
         <article class="featured-card-live">
           <div class="badge">Recomendación destacada · ${starText(r.rating)} ${r.verified ? '<small>Verificada</small>' : ''}</div>
@@ -4318,78 +4557,68 @@
         </article>`).join('') || '<div class="empty">Aún no hay publicaciones destacadas.</div>';
     }
 
-    function renderReviews() {
-      const userReviews = uniqueById(getUserReviews());
-      const mode = publicSort ? publicSort.value : 'best';
-      const approvedAll = sortReviewList(allReviews().filter(r => r.status === 'approved' && !r.hidden), mode);
-      const publicReviews = approvedAll;
-      const approvedIds = new Set(approvedAll.map(r => r.id));
-      const pendingMine = userReviews.filter(r =>
-        r.ownerId === ownerId() &&
-        r.status !== 'approved' &&
-        r.status !== 'hidden' &&
-        !approvedIds.has(r.id)
-      );
-      if (reviewCounter) {
-        const top = approvedAll.filter(r => Number(r.rating) === 5).length;
-        reviewCounter.textContent = `${approvedAll.length} recomendaciones publicadas · ${top} con 5 estrellas · scroll para ver más`;
+    async function renderReviews() {
+      if (!reviewList) return;
+      reviewList.innerHTML = '<div class="empty">Cargando recomendaciones...</div>';
+      try {
+        await loadPublicReviews();
+        const mode = publicSort ? publicSort.value : 'best';
+        const publicReviews = sortReviewList(getAllPublicReviews().filter(r => r.status === 'published'), mode);
+        const localPending = visibleLocalPendingReviews(publicReviews);
+        const visibleReviews = [...localPending, ...publicReviews];
+        if (reviewCounter) {
+          const top = publicReviews.filter(r => Number(r.rating) === 5).length;
+          const pendingText = localPending.length ? ` · ${localPending.length} pendiente solo visible para ti` : '';
+          reviewCounter.textContent = `${publicReviews.length} recomendaciones publicadas · ${top} con 5 estrellas${pendingText} · scroll para ver más`;
+        }
+        reviewList.innerHTML = visibleReviews.length
+          ? visibleReviews.map(r => reviewArticle(r)).join('')
+          : '<div class="empty">Aún no hay recomendaciones publicadas. Cuando se aprueben, aparecerán aquí ordenadas por puntuación.</div>';
+        renderFeatured();
+      } catch (error) {
+        reviewList.innerHTML = `<div class="empty">No se pudieron cargar las recomendaciones. ${escapeHTML(error.message)}</div>`;
       }
-
-      if (!publicReviews.length && !pendingMine.length) {
-        reviewList.innerHTML = '<div class="empty">Aún no hay recomendaciones publicadas. Cuando se aprueben, aparecerán aquí ordenadas por puntuación.</div>';
-      } else {
-        reviewList.innerHTML = [
-          ...publicReviews.map(r => reviewArticle(r)),
-          ...pendingMine.map(r => reviewArticle(r, { privatePending: true }))
-        ].join('');
-      }
-
-      reviewList.querySelectorAll('[data-edit]').forEach(btn => btn.addEventListener('click', () => beginEdit(btn.dataset.edit)));
-      reviewList.querySelectorAll('[data-delete]').forEach(btn => btn.addEventListener('click', () => deleteOwn(btn.dataset.delete)));
-      renderFeatured();
-      renderAdminList();
-    }
-
-    function beginEdit(id) {
-      const review = getUserReviews().find(r => r.id === id && r.ownerId === ownerId());
-      if (!review) return;
-      editingId = id;
-      form.name.value = review.name;
-      form.role.value = review.role;
-      form.rating.value = review.rating;
-      form.message.value = review.message;
-      requestFeature.checked = Boolean(review.requestedFeature);
-      featureRequestBox.hidden = !requestFeature.checked;
-      form.email.value = review.contact?.email || '';
-      form.phone.value = review.contact?.phone || '';
-      form.publicLink.value = review.contact?.publicLink || '';
-      form.verificationMethod.value = review.contact?.method || 'Correo';
-      document.getElementById('permission').checked = true;
-      submitBtn.textContent = 'Guardar cambios';
-      cancelEditBtn.style.display = 'inline-flex';
-      editBanner.classList.add('active');
-      form.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
 
     function cancelEdit() {
-      editingId = null;
       form.reset();
       form.rating.value = '5';
       featureRequestBox.hidden = true;
-      submitBtn.textContent = 'Publicar recomendación';
+      submitBtn.textContent = 'Enviar recomendación a revisión';
       cancelEditBtn.style.display = 'none';
       editBanner.classList.remove('active');
     }
 
-    function deleteOwn(id) {
-      if (!confirm('¿Eliminar tu recomendación?')) return;
-      const updated = getUserReviews().filter(r => !(r.id === id && r.ownerId === ownerId()));
-      saveUserReviews(updated);
-      cancelEdit();
-      renderReviews();
+    function nmSendRecommendationNotice(review, actionType) {
+      try {
+        const data = new FormData();
+        data.append('tipo', 'comentario');
+        data.append('accion', actionType || 'nuevo');
+        data.append('id', review.id || '');
+        data.append('nombre', review.name || '');
+        data.append('cargoEmpresa', review.role || '');
+        data.append('rating', review.rating || '');
+        data.append('mensaje', review.message || '');
+        data.append('estatus', review.status || '');
+        data.append('requiereRevision', 'Sí');
+        data.append('solicitaDestacada', review.requestedFeature ? 'Sí' : 'No');
+        data.append('verificado', review.verified ? 'Sí' : 'No');
+        data.append('destacado', review.featured ? 'Sí' : 'No');
+        data.append('correo', review.contact?.email || '');
+        data.append('telefono', review.contact?.phone || '');
+        data.append('perfilPublico', review.contact?.publicLink || '');
+        data.append('metodoVerificacion', review.contact?.method || '');
+        data.append('origen', window.location.href);
+        fetch('enviar-contacto.php', {
+          method: 'POST',
+          body: data,
+          headers: { 'Accept': 'application/json' },
+          keepalive: true
+        }).catch(() => {});
+      } catch (_) {}
     }
 
-    form.addEventListener('submit', (event) => {
+    form.addEventListener('submit', async (event) => {
       event.preventDefault();
       const wantsFeature = Boolean(requestFeature.checked);
       const contact = {
@@ -4403,49 +4632,59 @@
         featureRequestBox.hidden = false;
         return;
       }
-      const textForModeration = `${form.name.value} ${form.role.value} ${form.message.value}`;
-      const flagged = hasImproperLanguage(textForModeration);
       const payload = {
-        name: form.name.value.trim(),
-        role: form.role.value.trim(),
+        nombre: form.name.value.trim(),
+        cargo: form.role.value.trim(),
         rating: form.rating.value,
-        message: form.message.value.trim(),
-        requestedFeature: wantsFeature,
-        contact,
-        flagged,
-        status: flagged ? 'pending' : 'approved'
+        mensaje: form.message.value.trim(),
+        solicita_destacada: wantsFeature ? 1 : 0,
+        email: contact.email,
+        celular: contact.phone,
+        perfil: contact.publicLink,
+        metodo_verificacion: contact.method,
+        website: form.website ? form.website.value : ''
       };
-      if (!payload.name || !payload.message || !document.getElementById('permission').checked) return;
+      if (!payload.nombre || !payload.mensaje || !document.getElementById('permission').checked) return;
 
-      const reviews = getUserReviews();
-      if (editingId) {
-        const index = reviews.findIndex(r => r.id === editingId && r.ownerId === ownerId());
-        if (index >= 0) {
-          const stillVerified = Boolean(reviews[index].verified) && wantsFeature;
-          reviews[index] = { ...reviews[index], ...payload, date: reviews[index].date, createdAt: reviews[index].createdAt || Date.now(), verified: stillVerified, featured: reviews[index].featured && !flagged && wantsFeature && stillVerified };
-          saveUserReviews(reviews);
-        }
-      } else {
-        reviews.unshift({
-          id: uid(),
-          ownerId: ownerId(),
-          date: new Date().toLocaleDateString('es-MX', { year: 'numeric', month: 'short', day: 'numeric' }),
-          createdAt: Date.now(),
-          featured: false,
-          verified: false,
-          fixed: false,
-          ...payload
+      const flagged = hasImproperLanguage(`${payload.nombre} ${payload.cargo} ${payload.mensaje}`);
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Enviando...';
+      try {
+        const data = await apiJSON('guardar-recomendacion.php', {
+          method: 'POST',
+          body: JSON.stringify(payload)
         });
-        saveUserReviews(reviews);
+        const savedNoticeReview = {
+          id: data.public_id || '',
+          name: payload.nombre,
+          role: payload.cargo,
+          rating: payload.rating,
+          message: payload.mensaje,
+          status: 'pending',
+          requestedFeature: wantsFeature || Boolean(contact.email || contact.phone || contact.publicLink),
+          verified: false,
+          featured: false,
+          contact,
+          date: new Date().toLocaleDateString('es-MX', { year: 'numeric', month: 'short', day: 'numeric' }),
+          createdAt: Date.now()
+        };
+        if (savedNoticeReview.id) saveLocalPendingReview(savedNoticeReview);
+        nmSendRecommendationNotice(savedNoticeReview, 'nuevo');
+        const msg = flagged
+          ? 'Tu recomendación fue recibida y quedó pendiente de revisión por el filtro de lenguaje. No aparecerá públicamente hasta que sea aprobada.'
+          : wantsFeature
+            ? 'Tu recomendación fue recibida. Queda pendiente de aprobación y de selección como destacada por el administrador.'
+            : 'Tu recomendación fue recibida. Queda pendiente de aprobación antes de publicarse.';
+        alert(msg);
+        cancelEdit();
+        await renderReviews();
+        if (isAdmin) await renderAdminList();
+      } catch (error) {
+        alert(error.message || 'No se pudo guardar la recomendación.');
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Enviar recomendación a revisión';
       }
-      const msg = flagged
-        ? 'Tu recomendación fue recibida y quedó pendiente de revisión por el filtro de lenguaje.'
-        : wantsFeature
-          ? 'Tu recomendación fue publicada y quedó marcada como candidata a destacada. Falta verificar tu contacto y que el administrador la seleccione.'
-          : 'Tu recomendación fue publicada en este navegador.';
-      alert(msg);
-      cancelEdit();
-      renderReviews();
     });
 
     cancelEditBtn.addEventListener('click', cancelEdit);
@@ -4461,16 +4700,23 @@
       if (!adminPanel.hidden) adminPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
 
-    adminLoginBtn.addEventListener('click', () => {
-      if (adminPassword.value === ADMIN_PASSWORD) {
-        isAdmin = true;
-        adminLogin.hidden = true;
-        document.getElementById('adminHint').hidden = true;
-        adminWorkspace.hidden = false;
-        adminFilter.value = 'all';
-        renderAdminList();
-      } else {
-        alert('Clave incorrecta.');
+    adminLoginBtn.addEventListener('click', async () => {
+      try {
+        const data = await apiJSON('moderar-recomendacion.php', {
+          method: 'POST',
+          body: JSON.stringify({ action: 'login', password: adminPassword.value })
+        });
+        if (data.admin) {
+          isAdmin = true;
+          adminLogin.hidden = true;
+          const adminHint = document.getElementById('adminHint');
+          if (adminHint) adminHint.hidden = true;
+          adminWorkspace.hidden = false;
+          adminFilter.value = 'all';
+          await renderAdminList();
+        }
+      } catch (error) {
+        alert(error.message || 'Clave incorrecta.');
       }
     });
 
@@ -4480,66 +4726,79 @@
 
     adminFilter.addEventListener('change', renderAdminList);
 
-    function filterAdminReview(review) {
-      const filter = adminFilter.value;
-      if (filter === 'all') return true;
-      if (filter === 'flagged') return review.flagged;
-      if (filter === 'featured') return review.featured;
-      if (filter === 'requested') return review.requestedFeature;
-      if (filter === 'verified') return review.verified;
-      return review.status === filter;
-    }
-
-    function renderAdminStats(reviews) {
+    function renderAdminStatsFromAPI(stats) {
       if (!adminStats) return;
-      const stats = [
-        ['Total', reviews.length],
-        ['Pendientes', reviews.filter(r => r.status === 'pending').length],
-        ['Aprobadas', reviews.filter(r => r.status === 'approved').length],
-        ['Solicitan destacada', reviews.filter(r => r.requestedFeature).length],
-        ['Verificadas', reviews.filter(r => r.verified).length]
+      const safe = stats || {};
+      const rows = [
+        ['Total', safe.total || 0],
+        ['Pendientes', safe.pendientes || 0],
+        ['Publicadas', safe.publicados || 0],
+        ['Destacadas', safe.destacados || 0],
+        ['Ocultas', safe.ocultos || 0]
       ];
-      adminStats.innerHTML = stats.map(([label, value]) => `<div class="admin-stat"><strong>${value}</strong>${label}</div>`).join('');
+      adminStats.innerHTML = rows.map(([label, value]) => `<div class="admin-stat"><strong>${Number(value || 0)}</strong>${label}</div>`).join('');
     }
 
-    function renderAdminList() {
+    async function renderAdminList() {
       if (!adminList || !isAdmin) return;
-      const allUserReviews = sortReviewList(getUserReviews(), 'recent');
-      renderAdminStats(allUserReviews);
-      const userReviews = allUserReviews.filter(filterAdminReview);
-      if (!userReviews.length) {
-        adminList.innerHTML = '<div class="admin-item"><strong>No hay recomendaciones de usuarios con este filtro.</strong><p>Cambia el filtro a “Todos” para ver todos los comentarios guardados en este navegador. Las recomendaciones fijas de Enrique Campoy y Salomon Sabag son testimonios editoriales base y se mantienen publicadas.</p></div>';
-        return;
-      }
-      adminList.innerHTML = userReviews.map(r => {
-        const canFeature = r.status === 'approved' && r.requestedFeature && r.verified;
-        const contact = r.contact || {};
-        return `
-        <div class="admin-item">
-          <div style="display:flex; gap:8px; flex-wrap:wrap; align-items:center; margin-bottom:6px;">
-            ${statusLabel(r)}
-            ${r.featured ? '<span class="status-pill">Destacada</span>' : ''}
-            ${verificationBadges(r)}
-            <span class="stars">${starText(r.rating)}</span>
-          </div>
-          <strong>${escapeHTML(r.name)}</strong>${r.role ? ` · ${escapeHTML(r.role)}` : ''}
-          <p>“${escapeHTML(r.message)}”</p>
-          <small>${escapeHTML(r.date)} · ID: ${escapeHTML(r.id)}</small>
-          ${r.requestedFeature ? `<div class="admin-contact"><strong>Solicita ser destacada.</strong><br>Verificación preferida: ${escapeHTML(contact.method || 'No indicada')}<br>Correo: ${escapeHTML(contact.email || '—')}<br>Celular: ${escapeHTML(contact.phone || '—')}<br>Perfil/referencia: ${contact.publicLink ? `<a href="${escapeHTML(contact.publicLink)}" target="_blank" rel="noopener" style="color:var(--cream);text-decoration:underline;">abrir liga</a>` : '—'}</div>` : '<div class="admin-contact">No solicitó aparecer como destacada. Puede publicarse normal, pero no debería destacarse sin consentimiento.</div>'}
-          <div class="admin-actions">
-            <button class="mini-btn" type="button" data-admin-action="approve" data-id="${r.id}">Publicar / aprobar</button>
-            <button class="mini-btn" type="button" data-admin-action="pending" data-id="${r.id}">Poner pendiente</button>
-            <button class="mini-btn" type="button" data-admin-action="verify" data-id="${r.id}">${r.verified ? 'Quitar verificación' : 'Marcar verificado'}</button>
-            <button class="mini-btn" type="button" data-admin-action="hide" data-id="${r.id}">Ocultar</button>
-            <button class="mini-btn" type="button" data-admin-action="feature" data-id="${r.id}" ${canFeature || r.featured ? '' : 'disabled title="Debe solicitar destacada, estar aprobada y tener contacto verificado"'}>${r.featured ? 'Quitar destacada' : 'Marcar destacada'}</button>
-            <button class="mini-btn danger-btn" type="button" data-admin-action="delete" data-id="${r.id}">Eliminar</button>
-          </div>
-        </div>`;
-      }).join('');
+      adminList.innerHTML = '<div class="admin-item"><strong>Cargando recomendaciones...</strong></div>';
+      try {
+        const filter = adminFilter.value || 'all';
+        const data = await apiJSON('listar-recomendaciones.php?filter=' + encodeURIComponent(filter) + '&_=' + Date.now());
+        adminReviewsCache = (data.items || []).map(mapReview);
+        renderAdminStatsFromAPI(data.stats);
+        if (!adminReviewsCache.length) {
+          adminList.innerHTML = '<div class="admin-item"><strong>No hay recomendaciones con este filtro.</strong><p>Cambia el filtro a “Todos” para ver todos los comentarios guardados en la base de datos.</p></div>';
+          return;
+        }
+        adminList.innerHTML = adminReviewsCache.map(r => {
+          const contact = r.contact || {};
+          const hasContact = Boolean(contact.email || contact.phone || contact.publicLink);
+          const canFeature = Boolean(r.requestedFeature && hasContact);
+          const actions = [];
 
-      adminList.querySelectorAll('[data-admin-action]').forEach(btn => {
-        btn.addEventListener('click', () => adminAction(btn.dataset.id, btn.dataset.adminAction));
-      });
+          if (r.status !== 'published') {
+            actions.push(`<button class="mini-btn" type="button" data-admin-action="publish" data-id="${escapeHTML(r.id)}">Publicar normal</button>`);
+          }
+          if (r.status === 'published') {
+            actions.push(`<button class="mini-btn" type="button" data-admin-action="pending" data-id="${escapeHTML(r.id)}">Quitar de publicados</button>`);
+          }
+          if (r.featured) {
+            actions.push(`<button class="mini-btn" type="button" data-admin-action="unfeature" data-id="${escapeHTML(r.id)}">Quitar destacada</button>`);
+          } else if (r.requestedFeature) {
+            const featureAction = r.status === 'published' ? 'feature' : 'approve_feature';
+            const featureText = r.status === 'published' ? 'Marcar destacada' : 'Aprobar y destacar';
+            actions.push(`<button class="mini-btn" type="button" data-admin-action="${featureAction}" data-id="${escapeHTML(r.id)}" ${canFeature ? '' : 'disabled title="Debe tener correo, celular o perfil de verificación"'}>${featureText}</button>`);
+          }
+          if (r.status !== 'hidden') {
+            actions.push(`<button class="mini-btn" type="button" data-admin-action="hide" data-id="${escapeHTML(r.id)}">Ocultar</button>`);
+          }
+          actions.push(`<button class="mini-btn danger-btn" type="button" data-admin-action="delete" data-id="${escapeHTML(r.id)}">Eliminar</button>`);
+
+          return `
+          <div class="admin-item">
+            <div style="display:flex; gap:8px; flex-wrap:wrap; align-items:center; margin-bottom:6px;">
+              ${statusLabel(r)}
+              ${r.featured ? '<span class="status-pill">Destacada</span>' : ''}
+              ${verificationBadges(r)}
+              <span class="stars">${starText(r.rating)}</span>
+            </div>
+            <strong>${escapeHTML(r.name)}</strong>${r.role ? ` · ${escapeHTML(r.role)}` : ''}
+            <p>“${escapeHTML(r.message)}”</p>
+            <small>${escapeHTML(r.date)} · ID: ${escapeHTML(r.id)}</small>
+            ${r.requestedFeature ? `<div class="admin-contact"><strong>Solicita ser destacada.</strong><br>Verificación preferida: ${escapeHTML(contact.method || 'No indicada')}<br>Correo: ${escapeHTML(contact.email || '—')}<br>Celular: ${escapeHTML(contact.phone || '—')}<br>Perfil/referencia: ${contact.publicLink ? `<a href="${escapeHTML(contact.publicLink)}" target="_blank" rel="noopener" style="color:var(--cream);text-decoration:underline;">abrir liga</a>` : '—'}</div>` : '<div class="admin-contact">No solicitó aparecer como destacada. Puede publicarse normal, pero no debería destacarse sin consentimiento.</div>'}
+            <div class="admin-actions">
+              ${actions.join('')}
+            </div>
+          </div>`;
+        }).join('');
+
+        adminList.querySelectorAll('[data-admin-action]').forEach(btn => {
+          btn.addEventListener('click', () => adminAction(btn.dataset.id, btn.dataset.adminAction));
+        });
+      } catch (error) {
+        adminList.innerHTML = `<div class="admin-item"><strong>No se pudo cargar el panel.</strong><p>${escapeHTML(error.message)}</p></div>`;
+      }
     }
 
     function setAdminFeedback(message) {
@@ -4550,84 +4809,49 @@
       setAdminFeedback.timer = setTimeout(() => adminFeedback.classList.remove('active'), 4200);
     }
 
-    function adminAction(id, action) {
-      let reviews = uniqueById(getUserReviews());
-      const idx = reviews.findIndex(r => r.id === id);
-      if (idx < 0) return;
-      let feedback = '';
-
-      if (action === 'delete') {
-        if (!confirm('¿Eliminar definitivamente esta recomendación de este navegador?')) return;
-        reviews = reviews.filter(r => r.id !== id);
-        feedback = 'Recomendación eliminada.';
-      } else if (action === 'approve') {
-        reviews[idx].status = 'approved';
-        reviews[idx].hidden = false;
-        reviews[idx].flagged = false;
-        feedback = 'Recomendación aprobada y publicada.';
-      } else if (action === 'pending') {
-        reviews[idx].status = 'pending';
-        reviews[idx].featured = false;
-        feedback = 'Recomendación puesta en pendiente. No aparece públicamente; se revisa aquí con el filtro “Pendientes”.';
-      } else if (action === 'verify') {
-        if (!reviews[idx].requestedFeature) {
-          alert('Esta persona no pidió ser considerada como destacada. Para destacarla, primero debe solicitarlo o autorizarte por otro medio.');
-          return;
-        }
-        const c = reviews[idx].contact || {};
-        if (!c.email && !c.phone && !c.publicLink) {
-          alert('No hay correo, celular ni perfil público para verificar.');
-          return;
-        }
-        reviews[idx].verified = !reviews[idx].verified;
-        if (!reviews[idx].verified) {
-          reviews[idx].featured = false;
-          feedback = 'Verificación retirada. Si estaba destacada, se quitó de destacadas.';
-        } else {
-          feedback = 'Contacto marcado como verificado. Ahora puede destacarse si también está aprobada.';
-        }
-      } else if (action === 'hide') {
-        reviews[idx].status = 'hidden';
-        reviews[idx].featured = false;
-        feedback = 'Recomendación ocultada. Ya no aparece públicamente.';
-      } else if (action === 'feature') {
-        if (reviews[idx].featured) {
-          reviews[idx].featured = false;
-          feedback = 'Recomendación retirada de Publicaciones destacadas.';
-        } else {
-          if (reviews[idx].status !== 'approved') {
-            alert('Solo puedes destacar recomendaciones aprobadas. Primero usa “Publicar / aprobar”.');
-            return;
-          }
-          if (!reviews[idx].requestedFeature) {
-            alert('No conviene destacar este comentario porque la persona no solicitó aparecer como destacada.');
-            return;
-          }
-          if (!reviews[idx].verified) {
-            alert('Primero marca el contacto como verificado.');
-            return;
-          }
-          reviews[idx].featured = true;
-          feedback = 'Recomendación agregada a Publicaciones destacadas.';
-        }
+    async function adminAction(id, action) {
+      if (action === 'delete' && !confirm('¿Eliminar definitivamente esta recomendación de la base de datos?')) return;
+      try {
+        await apiJSON('moderar-recomendacion.php', {
+          method: 'POST',
+          body: JSON.stringify({ action, public_id: id })
+        });
+        const messages = {
+          publish: 'Recomendación publicada.',
+          approve_feature: 'Recomendación aprobada, verificada y destacada.',
+          feature: 'Recomendación marcada como destacada.',
+          unfeature: 'Recomendación retirada de destacadas.',
+          pending: 'Recomendación regresada a pendientes.',
+          hide: 'Recomendación ocultada.',
+          delete: 'Recomendación eliminada.'
+        };
+        setAdminFeedback(messages[action] || 'Acción aplicada.');
+        await renderAdminList();
+        await renderReviews();
+      } catch (error) {
+        alert(error.message || 'No se pudo aplicar la acción.');
       }
-      saveUserReviews(reviews);
-      renderReviews();
-      setAdminFeedback(feedback);
     }
 
-    exportBtn.addEventListener('click', () => {
-      const reviews = allReviews();
-      const header = ['ID','Nombre','Cargo/Empresa','Calificación','Fecha','Estatus','Solicita destacada','Contacto verificado','Destacada','Lenguaje marcado','Correo','Celular','Perfil','Método','Recomendación'];
-      const rows = reviews.map(r => [r.id, r.name, r.role, r.rating, r.date, r.status, r.requestedFeature ? 'Sí' : 'No', r.verified ? 'Sí' : 'No', r.featured ? 'Sí' : 'No', r.flagged ? 'Sí' : 'No', r.contact?.email || '', r.contact?.phone || '', r.contact?.publicLink || '', r.contact?.method || '', r.message]);
-      const csv = [header, ...rows].map(row => row.map(cell => '"' + String(cell || '').replace(/"/g, '""') + '"').join(',')).join('\n');
-      const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = 'recomendaciones_nomina_muerta.csv';
-      a.click();
-      URL.revokeObjectURL(url);
+    exportBtn.addEventListener('click', async () => {
+      try {
+        if (!adminReviewsCache.length) {
+          const data = await apiJSON('listar-recomendaciones.php?filter=all&_=' + Date.now());
+          adminReviewsCache = (data.items || []).map(mapReview);
+        }
+        const header = ['ID','Nombre','Cargo/Empresa','Calificación','Fecha','Estatus','Solicita destacada','Contacto verificado','Destacada','Correo','Celular','Perfil','Método','Recomendación'];
+        const rows = adminReviewsCache.map(r => [r.id, r.name, r.role, r.rating, r.date, r.status, r.requestedFeature ? 'Sí' : 'No', r.verified ? 'Sí' : 'No', r.featured ? 'Sí' : 'No', r.contact?.email || '', r.contact?.phone || '', r.contact?.publicLink || '', r.contact?.method || '', r.message]);
+        const csv = [header, ...rows].map(row => row.map(cell => '"' + String(cell || '').replace(/"/g, '""') + '"').join(',')).join('\n');
+        const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'recomendaciones_nomina_muerta.csv';
+        a.click();
+        URL.revokeObjectURL(url);
+      } catch (error) {
+        alert(error.message || 'No se pudo exportar.');
+      }
     });
 
     renderReviews();
@@ -4665,8 +4889,25 @@
       el.classList.remove('active');
     }
 
+    function nmHardScrollTop(behavior = 'auto') {
+      const doScroll = () => {
+        window.scrollTo({ top: 0, left: 0, behavior });
+        document.documentElement.scrollTop = 0;
+        document.body.scrollTop = 0;
+      };
+      doScroll();
+      requestAnimationFrame(doScroll);
+      setTimeout(doScroll, 60);
+      setTimeout(doScroll, 180);
+    }
+
     function nmRoute() {
-      const hash = window.location.hash || '#top';
+      const rawHash = window.location.hash || '#top';
+      const hash = rawHash === '#concepto' ? '#top' : rawHash;
+      if (rawHash === '#concepto') {
+        history.replaceState(null, '', window.location.pathname + window.location.search + '#top');
+      }
+
       const route = hash.startsWith('#/') ? hash.slice(2) : '';
       const home = document.getElementById('homePage');
       const pages = document.getElementById('singleIndexPages');
@@ -4682,21 +4923,51 @@
           if (active) found = true;
         });
         if (!found) {
-          window.location.hash = '#/reto-autopsia';
+          history.replaceState(null, '', window.location.pathname + window.location.search + '#top');
+          nmRoute();
           return;
         }
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      } else {
-        if (home) home.classList.remove('is-hidden');
-        if (pages) pages.classList.remove('active');
-        subpages.forEach(page => page.classList.remove('active'));
-        if (hash && hash !== '#top') {
-          setTimeout(() => {
-            const anchor = document.querySelector(hash);
-            if (anchor) anchor.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          }, 20);
-        }
+        nmHardScrollTop('auto');
+        return;
       }
+
+      if (home) home.classList.remove('is-hidden');
+      if (pages) pages.classList.remove('active');
+      subpages.forEach(page => page.classList.remove('active'));
+
+      if (!hash || hash === '#top') {
+        nmHardScrollTop('auto');
+        return;
+      }
+
+      if (hash === '#contacto') {
+        history.replaceState(null, '', window.location.pathname + window.location.search + '#top');
+        nmHardScrollTop('auto');
+        if (typeof nmOpenContactModal === 'function') nmOpenContactModal();
+        return;
+      }
+
+      setTimeout(() => {
+        const anchor = document.querySelector(hash);
+        if (anchor) anchor.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 20);
+    }
+
+    function nmBindNavigationFixes() {
+      document.querySelectorAll('.js-top-link, a[href="#top"], a[href="#concepto"]').forEach(link => {
+        if (link.dataset.topBound === '1') return;
+        link.addEventListener('click', (event) => {
+          event.preventDefault();
+          const targetUrl = window.location.pathname + window.location.search + '#top';
+          if (window.location.hash !== '#top') {
+            history.pushState(null, '', targetUrl);
+          } else {
+            history.replaceState(null, '', targetUrl);
+          }
+          nmRoute();
+        });
+        link.dataset.topBound = '1';
+      });
     }
 
     function nmRenderReto() {
@@ -4945,9 +5216,16 @@
 
     document.addEventListener('DOMContentLoaded', () => {
       nmInitTools();
+      nmBindNavigationFixes();
       nmRoute();
     });
     window.addEventListener('hashchange', nmRoute);
+    window.addEventListener('popstate', nmRoute);
+    window.addEventListener('pageshow', () => {
+      if (!window.location.hash || window.location.hash === '#top' || window.location.hash === '#concepto' || window.location.hash.startsWith('#/')) {
+        nmHardScrollTop('auto');
+      }
+    });
   </script>
 
 
@@ -5585,136 +5863,6 @@
       nmAutopsiaScrollToResult('autopsiaCalcResult');
     }
 
-    function nmAutopsiaBuildReportHTML() {
-      const radar = NM_AUTOPSIA_STATE.radar || {};
-      const depth = NM_AUTOPSIA_STATE.depth || {};
-      const final = NM_AUTOPSIA_STATE.final || null;
-      if (!final) return '';
-
-      const generated = nmAutopsiaFormatDateTime(final.generatedAt || new Date());
-      const selected = Array.isArray(NM_AUTOPSIA_STATE.selectedSymptoms) ? NM_AUTOPSIA_STATE.selectedSymptoms : [];
-      const selectedRows = selected.map((item, index) => `
-        <tr>
-          <td>${index + 1}</td>
-          <td>${nmAutopsiaReportValue(item.focus)}</td>
-          <td>${nmAutopsiaReportValue(item.question)}</td>
-          <td>${nmAutopsiaReportValue(item.weight)}</td>
-        </tr>
-      `).join('');
-
-      const focusRows = Array.isArray(depth.focusRows) ? depth.focusRows.map(row => `
-        <tr>
-          <td>${nmAutopsiaReportValue(row.focus)}</td>
-          <td>${Math.round(row.intensity || 0)}%</td>
-          <td>${Math.round(row.focusPct || 0)}%</td>
-          <td>${Math.round((row.recoveryFactor || 0) * 100)}%</td>
-          <td>${Array.isArray(row.questions) ? row.questions.join(', ') : '—'}</td>
-        </tr>
-      `).join('') : '';
-
-      const activeStats = Array.isArray(radar.activeStats) ? radar.activeStats : [];
-      const radarRows = activeStats.map(row => `
-        <tr>
-          <td>${nmAutopsiaReportValue(row.focus)}</td>
-          <td>${Math.round(row.activation || 0)}%</td>
-          <td>${row.selectedCount || 0} de ${row.totalQuestions || 0}</td>
-          <td>${Math.round((row.recoveryFactor || 0) * 100)}%</td>
-        </tr>
-      `).join('');
-
-      return `<!doctype html>
-<html lang="es-MX">
-<head>
-<meta charset="utf-8">
-<title>Reporte Reto de Autopsia - Nómina Muerta</title>
-<style>
-  * { box-sizing: border-box; }
-  body { font-family: Arial, Helvetica, sans-serif; color: #111b21; margin: 0; padding: 28px; background: #fff; line-height: 1.45; }
-  .report { max-width: 980px; margin: 0 auto; }
-  .cover { border-radius: 24px; padding: 28px; color: #f3f0e7; background: linear-gradient(135deg, #102a35, #0b1f28); margin-bottom: 22px; }
-  .cover .eyebrow { color: #d6b56d; font-weight: 800; text-transform: uppercase; letter-spacing: .14em; font-size: 12px; }
-  h1 { margin: 10px 0 8px; font-size: 34px; line-height: 1.05; }
-  h2 { color: #102a35; margin: 26px 0 10px; font-size: 22px; }
-  .meta { color: rgba(243,240,231,.78); font-size: 14px; }
-  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 14px 0; }
-  .card { border: 1px solid #dce2e4; border-radius: 16px; padding: 14px; background: #fbfaf5; }
-  .card strong { display: block; color: #102a35; font-size: 20px; margin-bottom: 4px; }
-  .card span { color: #526168; font-size: 13px; font-weight: 700; }
-  table { width: 100%; border-collapse: collapse; margin: 12px 0 20px; font-size: 13px; }
-  th, td { border: 1px solid #dce2e4; padding: 9px 10px; text-align: left; vertical-align: top; }
-  th { background: #edf1f2; color: #102a35; font-size: 11px; text-transform: uppercase; letter-spacing: .06em; }
-  .note { border-left: 5px solid #1f6170; background: #f2f6f7; padding: 12px 14px; border-radius: 10px; margin: 16px 0; color: #31444c; }
-  .footer { margin-top: 26px; padding-top: 14px; border-top: 1px solid #dce2e4; color: #62727a; font-size: 12px; }
-  @media print {
-    body { padding: 0; }
-    .report { max-width: none; }
-    .cover, .card, .note { break-inside: avoid; }
-    table { break-inside: auto; }
-    tr { break-inside: avoid; break-after: auto; }
-  }
-</style>
-</head>
-<body>
-  <div class="report">
-    <div class="cover">
-      <div class="eyebrow">Nómina Muerta · Reto de Autopsia</div>
-      <h1>Reporte de Riesgo, Autopsia y Recuperación Económica</h1>
-      <div class="meta">Generado el ${generated}</div>
-    </div>
-
-    <h2>Resumen ejecutivo</h2>
-    <div class="grid">
-      <div class="card"><strong>${nmAutopsiaReportValue(depth.levelLabel || '—')}</strong><span>Nivel de urgencia</span></div>
-      <div class="card"><strong>${Math.round(depth.adjustedPct || final.pct)}%</strong><span>% Nómina Muerta ajustada</span></div>
-      <div class="card"><strong>${nmAutopsiaReportValue(depth.focus || final.dominantFocus)}</strong><span>Foco dominante</span></div>
-      <div class="card"><strong>${nmAutopsiaFormatCurrency(final.nmMonthly)}</strong><span>Nómina Muerta mensual</span></div>
-      <div class="card"><strong>${nmAutopsiaFormatCurrency(final.nmAnnual)}</strong><span>Nómina Muerta anual</span></div>
-      <div class="card"><strong>${final.equivalentPeople} personas</strong><span>Equivalente de capacidad no aprovechada</span></div>
-    </div>
-
-    <div class="note"><strong>Lectura correcta:</strong> el equivalente en personas no significa recorte de talento. Significa capacidad pagada atrapada en retrabajo, espera, mala coordinación, saturación, tecnología mal usada o falta de cierre.</div>
-
-    <h2>Datos económicos usados</h2>
-    <table>
-      <tbody>
-        <tr><th>Fuente del porcentaje</th><td>${nmAutopsiaReportValue(final.source)}</td></tr>
-        <tr><th>Personas evaluadas</th><td>${nmAutopsiaReportValue(final.people)}</td></tr>
-        <tr><th>Nómina mensual base</th><td>${nmAutopsiaFormatCurrency(final.payroll)}</td></tr>
-        <tr><th>Sueldo mensual promedio usado</th><td>${nmAutopsiaFormatCurrency(final.avgSalary)}</td></tr>
-        <tr><th>Recuperabilidad base del foco dominante</th><td>${Math.round((final.recoveryFactor || 0) * 100)}%</td></tr>
-      </tbody>
-    </table>
-
-    <h2>Escenarios de recuperación</h2>
-    <table>
-      <thead><tr><th>Escenario</th><th>Tasa aplicada</th><th>Recuperación mensual estimada</th><th>Recuperación anual estimada</th></tr></thead>
-      <tbody>
-        <tr><td>Conservador</td><td>${Math.round((final.conservativeRate || 0) * 100)}%</td><td>${nmAutopsiaFormatCurrency(final.conservative)}</td><td>${nmAutopsiaFormatCurrency((final.conservative || 0) * 12)}</td></tr>
-        <tr><td>Esperado</td><td>${Math.round((final.expectedRate || 0) * 100)}%</td><td>${nmAutopsiaFormatCurrency(final.expected)}</td><td>${nmAutopsiaFormatCurrency(final.expectedAnnual)}</td></tr>
-        <tr><td>Óptimo</td><td>${Math.round((final.optimalRate || 0) * 100)}%</td><td>${nmAutopsiaFormatCurrency(final.optimal)}</td><td>${nmAutopsiaFormatCurrency((final.optimal || 0) * 12)}</td></tr>
-      </tbody>
-    </table>
-
-    <h2>Radar inicial de riesgo</h2>
-    <div class="grid">
-      <div class="card"><strong>${Math.round(radar.riskScore || 0)} / 100</strong><span>Índice del Radar</span></div>
-      <div class="card"><strong>${nmAutopsiaReportValue(radar.levelLabel || '—')}</strong><span>Nivel inicial</span></div>
-      <div class="card"><strong>${selected.length}</strong><span>Síntomas marcados</span></div>
-    </div>
-    ${radarRows ? `<table><thead><tr><th>Foco activo</th><th>Activación</th><th>Síntomas</th><th>Recuperabilidad</th></tr></thead><tbody>${radarRows}</tbody></table>` : '<p>No hay detalle de radar guardado.</p>'}
-
-    <h2>Autopsia por foco</h2>
-    ${focusRows ? `<table><thead><tr><th>Foco</th><th>Gravedad</th><th>% NM asociado</th><th>Recuperabilidad</th><th>Preguntas evaluadas</th></tr></thead><tbody>${focusRows}</tbody></table>` : '<p>No hay detalle de autopsia guardado.</p>'}
-
-    <h2>Síntomas seleccionados</h2>
-    ${selectedRows ? `<table><thead><tr><th>#</th><th>Foco</th><th>Síntoma</th><th>Peso</th></tr></thead><tbody>${selectedRows}</tbody></table>` : '<p>No hay síntomas seleccionados guardados.</p>'}
-
-    <div class="footer">Reporte generado desde la página oficial de Nómina Muerta. Esta estimación es una herramienta de conversación directiva y priorización; no sustituye una auditoría operativa profunda.</div>
-  </div>
-</body>
-</html>`;
-    }
-
     function nmAutopsiaExportPDF() {
       if (!NM_AUTOPSIA_STATE.final) {
         nmAutopsiaShow('autopsiaCalcResult', '<div class="integrated-note">⚠️ Primero ejecuta el cálculo final para generar el reporte PDF.</div>');
@@ -5722,73 +5870,14 @@
         return;
       }
 
-      const reportHTML = nmAutopsiaBuildReportHTML();
-      if (!reportHTML) {
-        nmAutopsiaShow('autopsiaCalcResult', '<div class="integrated-note">⚠️ No se pudo generar el contenido del reporte. Ejecuta nuevamente el cálculo final.</div>');
+      // Exportación segura: imprime la página actual y evita insertar HTML largo dentro del script.
+      // En el cuadro de impresión el usuario puede elegir "Guardar como PDF".
+      try {
+        window.print();
+      } catch (error) {
+        nmAutopsiaShow('autopsiaCalcResult', '<div class="integrated-note">⚠️ No se pudo abrir el cuadro de impresión. Usa Cmd/Ctrl + P y selecciona “Guardar como PDF”.</div>');
         nmAutopsiaScrollToResult('autopsiaCalcResult');
-        return;
       }
-
-      const styleMatch = reportHTML.match(/<style[^>]*>([\s\S]*?)<\/style>/i);
-      const bodyMatch = reportHTML.match(/<body[^>]*>([\s\S]*?)<\/body>/i);
-      const reportCSS = styleMatch ? styleMatch[1] : '';
-      const reportBody = bodyMatch ? bodyMatch[1] : reportHTML;
-
-      let printStyle = document.getElementById('nmAutopsiaPrintStyle');
-      if (!printStyle) {
-        printStyle = document.createElement('style');
-        printStyle.id = 'nmAutopsiaPrintStyle';
-        document.head.appendChild(printStyle);
-      }
-
-      const scopedReportCSS = reportCSS
-        .replace(/(^|\})\s*body\s*\{/g, '$1 #nmAutopsiaPrintReport {')
-        .replace(/@media\s+print\s*\{\s*#nmAutopsiaPrintReport\s*\{/g, '@media print { #nmAutopsiaPrintReport {');
-
-      printStyle.textContent = `
-        #nmAutopsiaPrintReport { display: none; }
-        @media screen {
-          #nmAutopsiaPrintReport { display: none !important; }
-        }
-        @media print {
-          body.nm-autopsia-printing > *:not(#nmAutopsiaPrintReport) { display: none !important; }
-          body.nm-autopsia-printing #nmAutopsiaPrintReport { display: block !important; position: static !important; width: auto !important; height: auto !important; overflow: visible !important; }
-          body.nm-autopsia-printing { background: #fff !important; }
-          body.nm-autopsia-printing #nmAutopsiaPrintReport .report { max-width: none !important; }
-        }
-      ` + scopedReportCSS;
-
-      let printContainer = document.getElementById('nmAutopsiaPrintReport');
-      if (!printContainer) {
-        printContainer = document.createElement('div');
-        printContainer.id = 'nmAutopsiaPrintReport';
-        document.body.appendChild(printContainer);
-      }
-      printContainer.innerHTML = reportBody;
-
-      const cleanupPrint = () => {
-        document.body.classList.remove('nm-autopsia-printing');
-        window.removeEventListener('afterprint', cleanupPrint);
-      };
-
-      window.addEventListener('afterprint', cleanupPrint);
-      document.body.classList.add('nm-autopsia-printing');
-
-      // No usamos window.open para evitar bloqueos de ventanas emergentes en GitHub Pages, Safari o Chrome.
-      // El navegador abrirá el cuadro de impresión sobre esta misma página; ahí se elige "Guardar como PDF".
-      setTimeout(() => {
-        try {
-          window.print();
-        } catch (error) {
-          cleanupPrint();
-          nmAutopsiaShow('autopsiaCalcResult', '<div class="integrated-note">⚠️ No se pudo abrir el cuadro de impresión. Usa Cmd/Ctrl + P y selecciona “Guardar como PDF”.</div>');
-          nmAutopsiaScrollToResult('autopsiaCalcResult');
-        }
-      }, 120);
-
-      setTimeout(() => {
-        if (document.body.classList.contains('nm-autopsia-printing')) cleanupPrint();
-      }, 8000);
     }
 
 
@@ -5887,6 +5976,112 @@
     }
 
     document.addEventListener('DOMContentLoaded', nmAutopsiaInit);
+  </script>
+
+
+  <script>
+    /* === V19: comportamiento del modal de contacto y envío por correo === */
+    function nmOpenContactModal(defaultInterest = '') {
+      const modal = document.getElementById('contactModal');
+      const interest = document.getElementById('contactInteres');
+      const result = document.getElementById('contactResult');
+      if (!modal) return;
+      if (result) {
+        result.textContent = '';
+        result.className = 'contact-result';
+      }
+      if (defaultInterest && interest) {
+        const normalized = defaultInterest.toLowerCase();
+        const match = Array.from(interest.options).find(opt => opt.value.toLowerCase().includes(normalized));
+        if (match) interest.value = match.value;
+      }
+      modal.classList.add('active');
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('nm-modal-open');
+      setTimeout(() => document.getElementById('contactNombre')?.focus(), 80);
+    }
+
+    function nmCloseContactModal() {
+      const modal = document.getElementById('contactModal');
+      if (!modal) return;
+      modal.classList.remove('active');
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('nm-modal-open');
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const modal = document.getElementById('contactModal');
+      const closeBtn = document.getElementById('contactModalClose');
+      const form = document.getElementById('contactForm');
+      const result = document.getElementById('contactResult');
+      const submitBtn = document.getElementById('contactSubmitBtn');
+
+      document.querySelectorAll('.js-open-contact, a[href="#contacto"]').forEach(link => {
+        if (link.dataset.contactBound === '1') return;
+        link.addEventListener('click', (event) => {
+          event.preventDefault();
+          const interest = link.dataset.contactInterest || link.textContent || '';
+          nmOpenContactModal(interest);
+        });
+        link.dataset.contactBound = '1';
+      });
+
+      closeBtn?.addEventListener('click', nmCloseContactModal);
+      modal?.addEventListener('click', (event) => {
+        if (event.target === modal) nmCloseContactModal();
+      });
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && modal?.classList.contains('active')) nmCloseContactModal();
+      });
+
+      if (window.location.hash === '#contacto') {
+        history.replaceState(null, '', window.location.pathname + window.location.search + '#top');
+        nmOpenContactModal();
+      }
+
+      form?.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        if (!result) return;
+
+        if (!form.checkValidity()) {
+          result.className = 'contact-result active error';
+          result.textContent = 'Por favor completa los campos obligatorios antes de enviar.';
+          form.reportValidity();
+          return;
+        }
+
+        result.className = 'contact-result active';
+        result.textContent = 'Enviando mensaje...';
+        if (submitBtn) {
+          submitBtn.disabled = true;
+          submitBtn.textContent = 'Enviando...';
+        }
+
+        try {
+          const endpoint = new URL('/enviar-contacto.php', window.location.origin).toString();
+          const response = await fetch(endpoint, {
+            method: 'POST',
+            body: new FormData(form),
+            headers: { 'Accept': 'application/json' }
+          });
+          const data = await response.json().catch(() => ({}));
+          if (!response.ok || data.ok === false) {
+            throw new Error(data.message || 'No se pudo enviar el mensaje.');
+          }
+          result.className = 'contact-result active success';
+          result.textContent = data.message || 'Mensaje enviado correctamente. Te responderé pronto.';
+          form.reset();
+        } catch (error) {
+          result.className = 'contact-result active error';
+          result.textContent = error.message || 'No se pudo enviar el mensaje. Revisa enviar-contacto.php, Email Routing y Track Delivery en cPanel.';
+        } finally {
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Enviar mensaje';
+          }
+        }
+      });
+    });
   </script>
 
 </body>
