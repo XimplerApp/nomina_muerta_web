@@ -3,7 +3,7 @@
 <head>
 
   <!-- ============================================================
-       CHAROLITO DIGITAL v2.5.0 · BASE ORDENADA 1:1
+       CHAROLITO DIGITAL v2.6.0 · CONSOLIDADO
        Propósito: conservar el comportamiento funcional de v2.4.2,
        pero dejar el archivo documentado por capas para ajustes limpios.
 
@@ -14,14 +14,14 @@
        04. Core JS: estado, catálogos, permisos, auditoría y renders base.
        05. Capas funcionales heredadas estabilizadas: agente, folios, PEPS,
            compras, finanzas, cartera, inventario, cierre, scanner y recepción.
-       06. Capa final v2.5.0: versión, compatibilidad, etiquetas y mapa técnico.
- 
+       06. Capa final v2.6.0: versión, compatibilidad, etiquetas y mapa técnico.
+
        Regla de esta versión: NO agregar comportamiento nuevo.
        ============================================================ -->
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Charolito Digital v2.5.0 | Base ordenada 1:1</title>
-  <meta name="description" content="Charolito Digital v2.5.0: Base ordenada 1:1 con comportamiento funcional conservado, render estable, CxP oficial e inventario trazable."/>
+  <title>Charolito Digital v2.6.0 | Consolidado</title>
+  <meta name="description" content="Charolito Digital v2.6.0: consolidado y estabilizado sobre la base ordenada 1:1, comportamiento funcional conservado, render estable, CxP oficial e inventario trazable."/>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
@@ -365,11 +365,7 @@
 
 
   <style id="charolito-for-dummies-css">
-    /* ============================================================
-       Charolito Digital v2.4.0 · Frontend "Charolito For Dummies"
-       Capa visual/UX únicamente: no cambia fórmulas, validaciones,
-       catálogos, localStorage, bitácora, permisos ni backend-ready.
-       ============================================================ */
+    /* Charolito Digital v2.4.0 · Frontend "Charolito For Dummies" Capa visual/UX únicamente: no cambia fórmulas, validaciones, catálogos, localStorage, bitácora, permisos ni backend-ready. */
     :root{
       --dummy-yellow:#ffd84d;
       --dummy-yellow-soft:#fff7d1;
@@ -470,11 +466,7 @@
   </style>
 
 <style id="charolito-v3-inspired-polish-css">
-    /* ============================================================
-       v2.4.0 · Diseño cálido inspirado en v3 Para Dummies
-       Capa de interfaz solamente. No toca backend, datos, fórmulas,
-       validaciones, permisos, reportes, auditoría ni localStorage.
-       ============================================================ */
+    /* v2.4.0 · Diseño cálido inspirado en v3 Para Dummies Capa de interfaz solamente. No toca backend, datos, fórmulas, validaciones, permisos, reportes, auditoría ni localStorage. */
     @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
 
     body.for-dummies{
@@ -614,11 +606,7 @@
 
 
   <style id="charolito-login-alignment-fix-css">
-    /* ============================================================
-       v2.4.0 · Fix login usuarios descuadrados
-       Capa visual solamente: no modifica datos, permisos, backend,
-       localStorage, auditoría, fórmulas ni validaciones.
-       ============================================================ */
+    /* v2.4.0 · Fix login usuarios descuadrados Capa visual solamente: no modifica datos, permisos, backend, localStorage, auditoría, fórmulas ni validaciones. */
     .login{
       padding:24px;
       overflow-x:hidden;
@@ -824,7 +812,7 @@
         <div class="logo" style="background:var(--brand2)">CH</div>
         <div class="brand-text">
           <h1>Charolito Digital</h1>
-          <small>v2.5.0 · Base ordenada 1:1</small>
+          <small>v2.6.0 · Consolidado</small>
         </div>
       </div>
       <p>Selecciona tu perfil para iniciar sesión. Esta versión es un prototipo funcional en navegador con almacenamiento local, bitácora y exportación.</p>
@@ -840,7 +828,7 @@
       <div class="sidebar-inner">
         <div class="brand">
           <div class="logo">CH</div>
-          <div class="brand-text"><h1>Charolito Digital</h1><small>v2.5.0 · Base ordenada 1:1</small></div>
+          <div class="brand-text"><h1>Charolito Digital</h1><small>v2.6.0 · Consolidado</small></div>
         </div>
         <div class="session-pill">
           <div class="avatar" id="sessionAvatar">A</div>
@@ -906,8 +894,8 @@
   <!-- BLOQUE 04 · CORE JS: estado, catálogos, permisos, auditoría, renders base -->
   <script>
   'use strict';
-  const APP_KEY='charolito_digital_v2_5_0_base_ordenada_1a1_2026';
-  const LEGACY_APP_KEYS=['charolito_digital_v2_4_2_recepcion_estable_2026','charolito_digital_v2_4_0_estabilizacion_login_ok_compras_stable_2026','charolito_digital_v2_3_7_cierre_gaps_v236_2026','charolito_digital_v2_3_6_auditoria_integral_v235_2026','charolito_digital_v2_3_5_unidades_reportes_consolidados_2026','charolito_digital_v2_2_3_compras_visibles_anticipos_cpp_peps_2026','charolito_digital_v2_2_2_compras_anticipos_cpp_peps_2026','charolito_digital_v2_1_0_compras_cpp_peps_2026','charolito_digital_v2_2_1_compras_cpp_peps_2026','charolito_digital_v2_0_3_rentabilidad_real_2026','charolito_digital_v2_0_2_stable_cadena_valor_2026','charolito_digital_v1_3_validadores_flexibles_2026','charolito_digital_v2_0_1_FIX_LOGIN_DASHBOARD','charolito_digital_v2_0_1_stable'];
+  const APP_KEY='charolito_digital_v2_6_0_consolidado_2026';
+  const LEGACY_APP_KEYS=['charolito_digital_v2_5_0_base_ordenada_1a1_2026','charolito_digital_v2_4_2_recepcion_estable_2026','charolito_digital_v2_4_0_estabilizacion_login_ok_compras_stable_2026','charolito_digital_v2_3_7_cierre_gaps_v236_2026','charolito_digital_v2_3_6_auditoria_integral_v235_2026','charolito_digital_v2_3_5_unidades_reportes_consolidados_2026','charolito_digital_v2_2_3_compras_visibles_anticipos_cpp_peps_2026','charolito_digital_v2_2_2_compras_anticipos_cpp_peps_2026','charolito_digital_v2_1_0_compras_cpp_peps_2026','charolito_digital_v2_2_1_compras_cpp_peps_2026','charolito_digital_v2_0_3_rentabilidad_real_2026','charolito_digital_v2_0_2_stable_cadena_valor_2026','charolito_digital_v1_3_validadores_flexibles_2026','charolito_digital_v2_0_1_FIX_LOGIN_DASHBOARD','charolito_digital_v2_0_1_stable'];
   const today=()=>new Date().toISOString().slice(0,10);
   const now=()=>new Date().toISOString();
   const money=n=>(Number(n)||0).toLocaleString('es-MX',{style:'currency',currency:'MXN'});
@@ -915,6 +903,30 @@
   const esc=v=>String(v??'').replace(/[&<>'"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[m]));
   const nval=v=>Number(String(v??'').replace(/[^0-9.-]/g,''))||0;
   const uid=(p='ID')=>`${p}-${Date.now().toString(36).toUpperCase()}-${Math.random().toString(36).slice(2,6).toUpperCase()}`;
+  // Regla de negocio confirmada (2026-07, aclarada tras considerar Reempaque):
+  // - charolitoItemWeight = CUÁNTO peso contar en una operación puntual (venta/entrega): prioriza el
+  //   peso efectivamente entregado/vendido (deliveredKg/soldKg); si aún no se entrega, usa el peso
+  //   disponible/actual como referencia provisional.
+  // - charolitoItemCostKg = A QUÉ TARIFA por kg se cuenta ese peso: se basa en el costo total entre el
+  //   peso ORIGINAL recibido (i.weight), NO en lo entregado/vendido. Motivo: una caja de 10kg pagada en
+  //   $500 ($50/kg) puede venderse parcial (6kg) y el resto reempacarse (4kg) para venta posterior; la
+  //   tarifa de $50/kg debe mantenerse igual en ambas porciones. Si se recalculara con el peso entregado,
+  //   el costo por kg se inflaría justo cuando se vende solo una parte (500/6=$83.33/kg, incorrecto) y el
+  //   reempaque heredaría una base de costo equivocada.
+  function charolitoItemWeight(item){
+    const i=item||{};
+    return nval(i.deliveredKg||i.soldKg||i.currentWeight||i.availableWeight||i.weight||i.kg||0);
+  }
+  function charolitoItemCostKg(item){
+    const i=item||{};
+    const direct=nval(i.costKg||i.cost);
+    if(direct) return direct;
+    const w=nval(i.weight||i.currentWeight||i.availableWeight||i.kg||1);
+    const total=nval(i.costTotal);
+    return (total&&w)? total/w : 0;
+  }
+  window.itemWeight=window.itemWeight||charolitoItemWeight;
+  window.itemCostKg=window.itemCostKg||charolitoItemCostKg;
 
   const modules={
     dashboard:'Dashboard',compras:'Compras',recepcion:'Recepción',inventario:'Inventario',pedidos:'Pedidos',surtido:'Surtido',rutas:'Rutas',cartera:'Cartera',caja:'Caja',gastos:'Gastos',estados:'Estados resultados',flujo:'Flujo caja/bancos',ajustes:'Ajustes',papel:'Captura papel',validaciones:'Validaciones',cierre:'Cierre diario',formatos:'Formatos',agente:'Agente Charolito',reportes:'Reportes',auditoria:'Auditoría',catalogos:'Catálogos',permisos:'Usuarios/permisos',ayuda:'Manual'
@@ -924,14 +936,14 @@
     Direccion:'Master / Ariel',Administracion:'Administración supervisora / Mamá',Gerencia:'Gerencia operativa',Asistente:'Asistente administrativa',Pedidos:'Encargado de pedidos',Bodega:'Bodega / captura comunitaria',Reparto:'Reparto / entrega',Lectura:'Consulta / contador'
   };
   const roles={
-    Direccion:{label:'Master / Ariel',can:['*']},
-    Administracion:{label:'Administración supervisora / Mamá',can:[]},
-    Gerencia:{label:'Gerencia Operativa',can:[]},
-    Asistente:{label:'Asistente Administrativa',can:[]},
-    Pedidos:{label:'Encargado de pedidos',can:[]},
-    Bodega:{label:'Bodega / captura comunitaria',can:[]},
-    Reparto:{label:'Reparto / entrega',can:[]},
-    Lectura:{label:'Consulta',can:[]}
+    Direccion:{label:'Master / Ariel'},
+    Administracion:{label:'Administración supervisora / Mamá'},
+    Gerencia:{label:'Gerencia Operativa'},
+    Asistente:{label:'Asistente Administrativa'},
+    Pedidos:{label:'Encargado de pedidos'},
+    Bodega:{label:'Bodega / captura comunitaria'},
+    Reparto:{label:'Reparto / entrega'},
+    Lectura:{label:'Consulta'}
   };
   const navItems=[
     ['dashboard','Dashboard','Control diario'],['compras','Compras','Pedidos proveedor / anticipos'],['recepcion','Recepción','Entrada física de unidades'],['inventario','Inventario','Unidad por unidad'],['pedidos','Pedidos','Venta y crédito'],['surtido','Surtido','Apartado y salida'],['rutas','Rutas','Entrega y evidencias'],['cartera','Cartera','Cobranza'],['caja','Caja','Corte diario'],['gastos','Gastos','Egresos'],['estados','Estados resultados','P&L operativo'],['flujo','Flujo/Bancos','Conciliación bancaria'],['ajustes','Ajustes','Devoluciones/merma'],['papel','Captura papel','Formatos físicos'],['validaciones','Validaciones','Supervisión administrativa'],['cierre','Cierre','Conciliación'],['formatos','Formatos','Impresión'],['agente','Agente Charolito','Análisis total'],['reportes','Reportes','KPIs y exportación'],['auditoria','Auditoría','Bitácora'],['catalogos','Catálogos','Maestros'],['permisos','Usuarios/permisos','Accesos flexibles'],['ayuda','Manual','Reglas de uso']
@@ -1670,9 +1682,7 @@
 
 
 
-  /* ===============================
-     v1.6 · Corrección / edición / eliminación / exportables / autovalidación
-     =============================== */
+  /* v1.6 · Corrección / edición / eliminación / exportables / autovalidación */
   const collectionConfig={
     purchases:{module:'recepcion',entity:'Compra',label:'Recepciones / compras'},
     boxes:{module:'inventario',entity:'Caja',label:'Inventario caja por caja'},
@@ -1974,9 +1984,7 @@
 
 
 
-  /* ===============================
-     v2.4.01 · Usuarios activos/inactivos y eliminación lógica
-     =============================== */
+  /* v2.4.01 · Usuarios activos/inactivos y eliminación lógica */
   function v111Migrate(){
     state.meta=state.meta||{};
     state.meta.version='1.11-usuarios-desactivacion-eliminacion-logica';
@@ -2082,11 +2090,7 @@
   }
 
 
-  /* =========================================================
-     v2.4.02 · Cartera y Crédito Charolito
-     Enfoque: CxC + scoring + convenios + bloqueos/desbloqueos.
-     No incorpora política financiera formal; solo gobierno operativo.
-  ========================================================= */
+  /* v2.4.02 · Cartera y Crédito Charolito Enfoque: CxC + scoring + convenios + bloqueos/desbloqueos. No incorpora política financiera formal; solo gobierno operativo. */
   function ymdToDate(str){const p=String(str||today()).split('-').map(Number);return new Date(p[0]||new Date().getFullYear(),(p[1]||1)-1,p[2]||1);}
   function dateToYmd(d){return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;}
   function addDaysYmd(str,days){const d=ymdToDate(str);d.setDate(d.getDate()+Number(days||0));return dateToYmd(d);}
@@ -2293,9 +2297,7 @@
   v112Migrate();
 
 
-  /* ===============================
-     v2.4.03 · Gobierno de cartera: scoring editable, convenios autorizados y validación posterior
-     =============================== */
+  /* v2.4.03 · Gobierno de cartera: scoring editable, convenios autorizados y validación posterior */
   function defaultCreditScoringCriteria(){
     return {
       version:'1.13',
@@ -2699,7 +2701,7 @@
 
 
 
-  /* ===== v2.4.05 Conciliación Digital de Inventario: detectar + resolver ===== */
+  /*  */
   const RECON_STATUS={open:'Abierta',investigation:'En investigación',resolved:'Resuelta'};
   function ensureReconciliationStructures(){
     state.inventoryReconciliations=state.inventoryReconciliations||[];
@@ -2911,10 +2913,7 @@
 
 
 
-  /* =========================================================
-     v2.4.0 · Motor estable de coherencia y cadena de valor
-     Mantiene front/back visual v2.4.0; corrige reglas v2.4.05.
-     ========================================================= */
+  /* v2.4.0 · Motor estable de coherencia y cadena de valor Mantiene front/back visual v2.4.0; corrige reglas v2.4.05. */
   const CHAROLITO_VERSION='2.0.2-cadena-valor-estable';
 
   function safeClone(obj){try{return JSON.parse(JSON.stringify(obj||{}));}catch(e){return {...(obj||{})};}}
@@ -3118,10 +3117,7 @@
   factoryReset=function(){if(confirm('Esto restaurará la demo local de este navegador. No borra datos productivos de servidor. ¿Continuar?')){localStorage.removeItem(APP_KEY); for(const k of (typeof LEGACY_APP_KEYS!=='undefined'?LEGACY_APP_KEYS:[])){/* no borrar legados por seguridad */} state=seed(); ensureV202Structures(); persist(); init(false); toast('Demo local restaurada');}};
 
 
-  /* =========================================================
-     v2.4.0 · Rentabilidad real por unidad trazable
-     Mantiene diseño v2.4.0/v2.4.0; agrega costo real, precio real y utilidad.
-     ========================================================= */
+  /* v2.4.0 · Rentabilidad real por unidad trazable Mantiene diseño v2.4.0/v2.4.0; agrega costo real, precio real y utilidad. */
   const CHAROLITO_VERSION_203='2.0.3-rentabilidad-real-unidad-proveedor-producto';
 
   function ensureV203Structures(){
@@ -3559,12 +3555,7 @@
   init(false);
 
   
-  /* =========================================================
-     v2.0.4 · Motor de costeo, margen y conciliación estable
-     Mantiene UI v2.4.0/v2.4.0 y estabiliza: PEPS, saldo vivo,
-     costos directos con fuente financiera, devoluciones físicas,
-     P&L devengado/entregado/conciliado y auditoría de precios.
-     ========================================================= */
+  /* v2.0.4 · Motor de costeo, margen y conciliación estable Mantiene UI v2.4.0/v2.4.0 y estabiliza: PEPS, saldo vivo, costos directos con fuente financiera, devoluciones físicas, P&L devengado/entregado/conciliado y auditoría de precios. */
   (function(){
     const CHAROLITO_VERSION_204='2.0.4-costeo-margen-conciliacion-estable';
     const RETURN_PENDING='Devuelto pendiente revisión';
@@ -3970,11 +3961,7 @@
   })();
 
 
-  /* =========================================================
-     v2.0.5 · Corte de caja, diferencias y cierre diario estable
-     Refuerza: caja real vs sistema, diferencias por método, acciones
-     correctivas, banco pendiente, validación y candado de cierre.
-     ========================================================= */
+  /* v2.0.5 · Corte de caja, diferencias y cierre diario estable Refuerza: caja real vs sistema, diferencias por método, acciones correctivas, banco pendiente, validación y candado de cierre. */
   (function(){
     const CHAROLITO_VERSION_205='2.0.5-corte-caja-cierre-diario-estable';
     const CASH_METHODS=[
@@ -4531,11 +4518,7 @@
   </script>
 
 <style id="charolito-dummie-clean-ui-css">
-  /* ============================================================
-     v2.4.0 · Limpieza visual Vista Dummie + Dashboard de acción
-     Capa UX solamente: no cambia datos, permisos, fórmulas,
-     validaciones, auditoría, localStorage ni lógica de negocio.
-     ============================================================ */
+  /* v2.4.0 · Limpieza visual Vista Dummie + Dashboard de acción Capa UX solamente: no cambia datos, permisos, fórmulas, validaciones, auditoría, localStorage ni lógica de negocio. */
   body.for-dummies .dummy-flowbar,
   body.for-dummies .dummy-action-strip,
   body.for-dummies .dummy-floating-help,
@@ -4606,7 +4589,7 @@
   'use strict';
   const VERSION='v2.4.0';
   function E(v){try{return (typeof esc==='function')?esc(v):String(v??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));}catch(e){return String(v??'')}}
-  function N(v){try{return (typeof nval==='function')?nval(v):(Number(v)||0)}catch(e){return Number(v)||0}}
+  function N(v){return nval(v);}
   function M(v){try{return (typeof money==='function')?money(v):('$'+(Number(v)||0).toLocaleString('es-MX'))}catch(e){return '$0'}}
   function KG(v){try{return (typeof kg==='function')?kg(v):((Number(v)||0).toFixed(2)+' kg')}catch(e){return '0.00 kg'}}
   function D(){try{return today()}catch(e){return new Date().toISOString().slice(0,10)}}
@@ -4770,7 +4753,7 @@
     {key:'card',label:'Tarjeta',method:'Tarjeta'},
     {key:'other',label:'Otros / mixto',method:'Mixto'}
   ];
-  function N(v){try{return typeof nval==='function'?nval(v):(Number(String(v??'').replace(/[^0-9.-]/g,''))||0)}catch(e){return Number(v)||0}}
+  function N(v){return nval(v);}
   function M(v){try{return money(v)}catch(e){return '$'+(N(v)).toLocaleString('es-MX',{minimumFractionDigits:2,maximumFractionDigits:2})}}
   function KG(v){try{return kg(v)}catch(e){return `${N(v).toLocaleString('es-MX',{minimumFractionDigits:2,maximumFractionDigits:2})} kg`}}
   function E(v){try{return esc(v)}catch(e){return String(v??'').replace(/[&<>'"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[m]))}}
@@ -5049,7 +5032,7 @@
   var AGENT_URL='https://chatgpt.com/g/g-6a418433a3548191b33f37bf3fc347f0-agente-charolito';
 
   function S(v){return String(v==null?'':v).replace(/[&<>'"]/g,function(m){return {'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[m];});}
-  function N(v){try{return typeof nval==='function'?nval(v):(Number(String(v==null?'':v).replace(/[^0-9.-]/g,''))||0);}catch(e){return 0;}}
+  function N(v){return nval(v);}
   function M(n){try{return typeof money==='function'?money(n):(Number(n)||0).toLocaleString('es-MX',{style:'currency',currency:'MXN'});}catch(e){return '$'+(Number(n)||0).toFixed(2);}}
   function KG(n){try{return typeof kg==='function'?kg(n):((Number(n)||0).toLocaleString('es-MX',{minimumFractionDigits:2,maximumFractionDigits:2})+' kg');}catch(e){return (Number(n)||0).toFixed(2)+' kg';}}
   function T(){try{return typeof today==='function'?today():new Date().toISOString().slice(0,10);}catch(e){return new Date().toISOString().slice(0,10);}}
@@ -5663,15 +5646,8 @@ Movimientos bancarios pendientes de conciliar: ${k.bankPending}
     return `<div class="table-wrap"><table class="table"><thead><tr><th>Unidad CH / PEPS</th><th>Recepción</th><th>Tipo / producto</th><th>Identificador físico</th><th>Peso disponible</th><th>Costo real</th><th>Proveedor</th><th>Ingreso / revisión de calidad</th><th>Estado</th><th>Cliente/Pedido</th><th>Acciones</th></tr></thead><tbody>${rows.map(i=>{normalizeUnitFolioMeta(i); const prof=(typeof itemProfitSummary==='function'?itemProfitSummary(i.id):{kg:0}); return `<tr><td><b>${esc2(i.folio)}</b><br>${typeof fifoBadge==='function'?fifoBadge(i):''}</td><td>${esc2(i.receptionFolio||((state.receptions||[]).find(r=>r.id===i.receptionId)?.folio)||'')}<br><small>${i.unitSequenceInReception?`Unidad ${i.unitSequenceInReception}/${i.unitCountInReception||''}`:''}</small></td><td>${esc2(i.unitType||'Caja')}<br><small>${esc2(prod(i.productId).name)} · ${esc2(prod(i.productId).code)}</small></td><td>${esc2(i.traceCode||'')}</td><td>${mxKg(typeof itemAvailableWeight==='function'?itemAvailableWeight(i):i.weight)}<br><small>orig. ${mxKg(i.weightOriginal||i.weight)}</small></td><td><b>${mxMoney(typeof itemLandedCostKg==='function'?itemLandedCostKg(i):i.costKg)}/kg</b><br><small>total ${mxMoney(i.landedCostTotal||i.costTotal)}</small></td><td>${esc2(supplier(i.supplierId).name)}</td><td>${esc2(i.dateIn)}<br><small>${esc2(i.expiration||'')}</small></td><td>${statusBadge(i.state)}${typeof revisionBadge==='function'?revisionBadge(i):''}</td><td>${esc2(client(i.clientId).name)}<br><small>${esc2(order(i.orderId).folio||'')}</small></td><td><button class="btn small" onclick="printLabel('${esc2(i.id)}')">Etiqueta</button> <button class="btn small" onclick="moveBox('${esc2(i.id)}')">Mover</button> ${typeof itemRowActions==='function'?itemRowActions(i):''}</td></tr>`}).join('')}</tbody></table></div>`;
   };
   try{tableInventoryItems=window.tableInventoryItems;}catch(e){}
-  const priorRenderRecepcion=(typeof renderRecepcion==='function')?renderRecepcion:null;
-  window.renderRecepcion=function(){
-    ensureV216(); if(typeof syncInventoryMirror==='function')syncInventoryMirror(); const todayRec=(state.receptions||[]).slice(0,30); const payables=(state.supplierPayables||[]).filter(p=>p.status!=='Pagado');
-    const target=document.getElementById('view-recepcion'); if(!target){ if(priorRenderRecepcion)return priorRenderRecepcion(); return; }
-    target.innerHTML=`${typeof charolitoScanWidget==='function'?charolitoScanWidget('recepcion','Buscar caja existente: escanea QR/código de barras o escribe un folio CH/identificador físico. Para crear una nueva recepción, llena el formulario; el sistema asigna REC y CH automáticamente.') : ''}<div class="panel"><div class="split"><div><span class="eyebrow">Compra · recepción · inventario · CxP</span><h3>Recepción jerárquica: REC + unidades CH</h3><p class="muted">Una recepción puede contener una o muchas cajas, canales/animales, piezas, lotes kg o reempaques. El documento administrativo es REC; cada unidad física recibe su folio CH individual.</p></div><button class="btn" onclick="exportCSV('inventoryItems')">Inventario CSV</button></div>${can('recepcion','capture')?receptionForm():'<div class="warning-box">No tienes permiso Recepción / Capturar.</div>'}</div><div class="grid cols-2"><div class="panel"><h3>Últimas recepciones</h3>${tableReceptions(todayRec)}</div><div class="panel"><h3>Cuentas por pagar proveedor</h3>${typeof tableSupplierPayables==='function'?tableSupplierPayables(payables):''}</div></div><div class="panel"><h3>Últimas unidades CH ingresadas</h3>${tableInventoryItems((state.inventoryItems||[]).slice(0,40))}</div>`;
-    setTimeout(()=>{updateReceptionPreview(document.querySelector('#view-recepcion form')); if(typeof focusScanInput==='function')focusScanInput('recepcion');},60);
-  };
-  try{renderRecepcion=window.renderRecepcion;}catch(e){}
-  const priorShowBulk=(typeof showBulkReception==='function')?showBulkReception:null;
+  /* [v2.6.0] Se retiró aquí una definición de renderRecepcion que nunca llegó a ejecutarse: v220 (transformación) reconstruye la vista completa sin encadenar esta versión. Verificado por control de flujo antes de eliminar. */
+    const priorShowBulk=(typeof showBulkReception==='function')?showBulkReception:null;
   window.showBulkReception=function(){
     ensureV216(); const firstProduct=state.catalogs.products[0]?.id||'';
     const html=`<header><div><h3>Captura masiva con folios REC + CH</h3><p class="muted">Una sola recepción REC agrupa todas las líneas. Cada línea genera una unidad CH con QR/código de barras.</p></div><button class="btn small" onclick="closeModal()">Cerrar</button></header><form onsubmit="submitBulkReception(event)" class="form">${folioPanel(today())}<div class="form-grid two">${field('date','Fecha recepción','date',today())}${selectField('productId','Producto',state.catalogs.products,firstProduct).replace('<select name="productId">','<select name="productId" onchange="syncProductSupplierOptions(this.form)">')}${supplierSelectForProduct('supplierId','Proveedor',firstProduct)}${field('invoice','Factura/Nota','text','')}${selectField('unitType','Tipo unidad',TRACE_UNIT_TYPES,'Caja')}${field('cost','Costo por kg','number','','step="0.01" min="0"')}${field('expiration','Vencimiento','date',today())}${selectField('location','Ubicación',state.catalogs.zones.map(x=>({id:x,name:x})),'Cámara 1')}${field('paidAmount','Pagado al recibir','number','0','step="0.01" min="0"')}${field('dueDate','Vencimiento CxP','date',today())}${field('receivedBy','Responsable captura','text',currentUser()?.name||'')}</div><div class="field"><label class="required">Líneas identificador,peso</label><textarea name="lines" placeholder="1C,19.62\n2C,19.98\nCANAL-01,18.18"></textarea><small class="muted">No escribas folio CH. El sistema asigna CH consecutivo por cada línea.</small></div><button class="btn primary">Cargar unidades</button></form>`;
@@ -5966,26 +5942,7 @@ Movimientos bancarios pendientes de conciliar: ${k.bankPending}
   window.renderInventario=renderInventario218; try{renderInventario=window.renderInventario;}catch(e){}
 
   // Ajuste visual y conceptual del bloque de Recepción: reemplaza el panel de búsqueda por uno más explícito cuando se renderice.
-  const priorRecep=window.renderRecepcion||null;
-  if(priorRecep){
-    window.renderRecepcion=function(){
-      const r=priorRecep.apply(this,arguments);
-      const target=document.getElementById('view-recepcion');
-      if(target){
-        const old=target.querySelector('.rx-scan-separate');
-        if(old){
-          old.outerHTML=scanBlock('recepcion','Buscar / verificar unidad existente','Úsalo para consultar una caja/canal/pieza ya registrada, evitar duplicados, reimprimir etiqueta o revisar historial. Este bloque no crea recepciones nuevas.',[
-            ['Evitar duplicados','Antes de crear una recepción, verifica si el identificador ya existe.'],
-            ['Reimprimir etiqueta','Localiza el CH y vuelve a imprimir QR/código de barras.'],
-            ['Historial inmediato','Producto, peso, proveedor, ubicación, estado y movimientos.'],
-            ['Corrección controlada','Abre la unidad y corrige solo con permiso y auditoría.']
-          ]);
-        }
-      }
-      return r;
-    };
-    try{renderRecepcion=window.renderRecepcion;}catch(e){}
-  }
+  /* [v2.6.0] Se retiró aquí una definición de renderRecepcion que nunca llegó a ejecutarse (ver nota en v216-folios-js). */
 
   const priorHelp=window.renderAyuda||null;
   if(priorHelp){
@@ -6193,11 +6150,7 @@ Movimientos bancarios pendientes de conciliar: ${k.bankPending}
     try{printLabel=window.printLabel;}catch(e){}
   }
 
-  const priorRecep=window.renderRecepcion||null;
-  if(priorRecep){
-    window.renderRecepcion=function(){ const r=priorRecep.apply(this,arguments); const t=document.getElementById('view-recepcion'); if(t){ normalizeCharolitoTerms(t); const head=t.querySelector('.rx-wizard-head p'); if(head)head.textContent='Una recepción REC agrupa la compra completa; cada unidad física recibe su propio CH. No hay pre-recepción.'; } return r; };
-    try{renderRecepcion=window.renderRecepcion;}catch(e){}
-  }
+  /* [v2.6.0] Se retiró aquí una definición de renderRecepcion que nunca llegó a ejecutarse (ver nota en v216-folios-js). */
   const priorInv=window.renderInventario||null;
   if(priorInv){
     window.renderInventario=function(){ const r=priorInv.apply(this,arguments); const t=document.getElementById('view-inventario'); if(t)normalizeCharolitoTerms(t); return r; };
@@ -6268,7 +6221,7 @@ Movimientos bancarios pendientes de conciliar: ${k.bankPending}
   }; try{tableBoxes=window.tableBoxes;}catch(e){}
   function boxActionsV22(b){let a=[]; a.push(`<button class="btn small" onclick="printLabel('${sx2(b.id)}')">Etiqueta</button>`); if(['Disponible','Disponible en almacén','Etiquetado'].includes(b.state)){a.push(`<button class="btn small" onclick="openRepack('${sx2(b.id)}')">Reempacar</button>`); a.push(`<button class="btn small accent" onclick="openFraction('${sx2(b.id)}')">Fraccionar</button>`);} if(typeof moveBox==='function')a.push(`<button class="btn small" onclick="moveBox('${sx2(b.id)}')">Mover/estado</button>`); return a.join(' ');}
 
-  window.renderRecepcion=function(){ensureV22(); const firstProduct=state.catalogs.products[0]?.id||''; const firstSupplier=activeSuppliers()[0]?.id||''; document.getElementById('view-recepcion').innerHTML=`
+  window.__renderRecepcionBaseV220=function(){ensureV22(); const firstProduct=state.catalogs.products[0]?.id||''; const firstSupplier=activeSuppliers()[0]?.id||''; document.getElementById('view-recepcion').innerHTML=`
     <div class="panel v22-ok"><div class="split"><div><span class="eyebrow">v2.4.0 · Recepción real Charolito</span><h3>Recepción por tipo de entrada</h3><p class="muted">Recepción crea REC + CH. No asigna ubicación definitiva; el responsable es el usuario del login. Animal vivo se distingue de canal porque genera subproductos.</p></div><span class="status info">PEPS</span></div><div class="v22-flow"><span>Caja</span><i>→</i><span>Inventario</span><span>Animal vivo</span><i>→</i><span>Proceso</span><i>→</i><span>Peso frío</span><i>→</i><span>Disponible</span></div></div>
     <div class="panel"><h3>Nueva recepción</h3><form class="form" onsubmit="submitReceptionV22(event)"><div class="form-grid">
       ${field('date','Fecha recepción','date',today())}
@@ -6336,12 +6289,7 @@ Movimientos bancarios pendientes de conciliar: ${k.bankPending}
 })();
 </script>
 <script id="charolito-v224-login-users-recovery">
-/* ============================================================
-   Charolito Digital v2.4.0.4 · Recuperación de usuarios en login
-   Corrige el caso donde localStorage trae catalogs.users vacío,
-   todos inactivos o todos ocultos y el login queda sin botones.
-   No borra inventario, compras, pagos, auditoría ni capturas.
-   ============================================================ */
+/* Charolito Digital v2.4.0.4 · Recuperación de usuarios en login Corrige el caso donde localStorage trae catalogs.users vacío, todos inactivos o todos ocultos y el login queda sin botones. No borra inventario, compras, pagos, auditoría ni capturas. */
 (function(){
   const PATCH_VERSION='2.2.4-login-users-recovery';
   const BASE_LOGIN_USERS=[
@@ -6471,7 +6419,7 @@ Movimientos bancarios pendientes de conciliar: ${k.bankPending}
   'use strict';
   var PATCH_VERSION='2.4.0-estabilizacion-cierre-100';
   function A(v){return Array.isArray(v)?v:(v?[v]:[])}
-  function N(v){return Number(String(v==null?'':v).replace(/[^0-9.-]/g,''))||0}
+  function N(v){return nval(v);}
   function E(v){try{return esc(v)}catch(e){return String(v==null?'':v).replace(/[&<>'"]/g,function(m){return {'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[m]})}}
   function M(v){try{return money(v)}catch(e){return '$'+N(v).toLocaleString('es-MX',{minimumFractionDigits:2,maximumFractionDigits:2})}}
   function K(v){try{return kg(v)}catch(e){return N(v).toLocaleString('es-MX',{minimumFractionDigits:2,maximumFractionDigits:2})+' kg'}}
@@ -6479,6 +6427,22 @@ Movimientos bancarios pendientes de conciliar: ${k.bankPending}
   function Now(){try{return now()}catch(e){return new Date().toISOString()}}
   function U(prefix){try{return uid(prefix)}catch(e){return (prefix||'ID')+'-'+Date.now().toString(36).toUpperCase()+'-'+Math.random().toString(36).slice(2,6).toUpperCase()}}
   function current(){try{return currentUser()}catch(e){return null}}
+  // Respaldo de trazabilidad: si audit() o queueValidationFromAction() fallan al registrar una acción
+  // financiera de Compras (OC, anticipo, pago proveedor, aplicar anticipo, cancelar OC, conciliación,
+  // corte de caja), antes esto se perdía en silencio (catch vacío). Ahora queda una entrada en la
+  // bitácora (state.audit) para que Auditoría pueda detectarlo, sin bloquear la operación principal.
+  function auditFallback(action,entity,id,before,after,reason){
+    try{
+      state.audit=state.audit||[];
+      state.audit.unshift({id:U('AUD'),at:Now(),user:(current()||{}).name||'Sistema',action:action,entity:entity,entityId:id,before:before,after:after,reason:reason});
+    }catch(_){}
+  }
+  function queueValidationFallbackNotice(entity,id,motivo){
+    try{
+      state.audit=state.audit||[];
+      state.audit.unshift({id:U('AUD'),at:Now(),user:'Sistema',action:'VALIDACIÓN NO ENCOLADA',entity:entity,entityId:id,before:null,after:null,reason:'No se pudo generar la validación pendiente automáticamente ('+motivo+'). Requiere revisión manual.'});
+    }catch(_){}
+  }
   function inRange(d,from,to){if(!d)return false; return String(d)>=String(from||'0000-00-00')&&String(d)<=String(to||'9999-99-99')}
   function activeUserIdsByRole(roles){return A(state.catalogs&&state.catalogs.users).filter(function(u){return u&&u.active!==false&&!u.deleted&&roles.indexOf(u.role)>=0}).map(function(u){return u.id})}
   function supplierName(id){try{return supplier(id).name||''}catch(e){return ''}}
@@ -6572,16 +6536,16 @@ Movimientos bancarios pendientes de conciliar: ${k.bankPending}
   function purchaseOrderOptionsHTML(selected){return '<option value="">Sin OC / anticipo directo</option>'+openPOs().map(function(o){return '<option value="'+E(o.id)+'" '+(o.id===selected?'selected':'')+'>'+E(o.folio)+' · '+E(supplierName(o.supplierId))+' · '+E(productName(o.productId))+'</option>';}).join('')}
 
   window.syncAdvanceFromPO226=function(form){var po=A(state.purchaseOrders).find(function(o){return o.id===(form.purchaseOrderId&&form.purchaseOrderId.value)}); if(!po)return; if(form.supplierId)form.supplierId.value=po.supplierId; if(form.productId)form.productId.value=po.productId; if(form.amount&&!N(form.amount.value))form.amount.value=Math.max(0,poBalance(po)).toFixed(2); if(form.reference&&!form.reference.value)form.reference.value=po.folio;};
-  window.submitPurchaseOrder222=window.submitPurchaseOrder226=function(e){e.preventDefault(); ensureV226(); if(typeof requirePerm==='function'&&!requirePerm('compras','capture'))return; var f=Object.fromEntries(new FormData(e.target)); if(!f.supplierId||!f.productId){toast('Proveedor y producto son obligatorios');return} if(N(f.expectedAmount)<=0&&!confirm('La OC no tiene monto estimado. ¿Guardar de todos modos como pedido abierto sin importe?'))return; var po={id:U('PO'),folio:nextF('purchaseOrderV226','OC'),date:f.date||T(),supplierId:f.supplierId,productId:f.productId,expectedUnits:N(f.expectedUnits),expectedKg:N(f.expectedKg),expectedAmount:N(f.expectedAmount),paidAdvance:0,balance:N(f.expectedAmount),expectedDate:f.expectedDate||'',reference:f.reference||'',notes:f.notes||'',status:'Pedido abierto',createdBy:(current()||{}).name||'',createdByUserId:(current()||{}).id||'',createdAt:Now(),source:'Compras'}; state.purchaseOrders.unshift(po); try{audit('CREAR','Orden compra',po.folio,null,po,'OC proveedor antes de recepción')}catch(err){} try{queueValidationFromAction('CREAR','Orden compra',po.folio,po,'Pedido a proveedor / compra inventariable')}catch(err){} if(typeof persist==='function')persist(); render(); toast('OC creada. Ahora puedes registrar anticipo o recibir físicamente cuando llegue.');};
+  window.submitPurchaseOrder222=window.submitPurchaseOrder226=function(e){e.preventDefault(); ensureV226(); if(typeof requirePerm==='function'&&!requirePerm('compras','capture'))return; var f=Object.fromEntries(new FormData(e.target)); if(!f.supplierId||!f.productId){toast('Proveedor y producto son obligatorios');return} if(N(f.expectedAmount)<=0&&!confirm('La OC no tiene monto estimado. ¿Guardar de todos modos como pedido abierto sin importe?'))return; var po={id:U('PO'),folio:nextF('purchaseOrderV226','OC'),date:f.date||T(),supplierId:f.supplierId,productId:f.productId,expectedUnits:N(f.expectedUnits),expectedKg:N(f.expectedKg),expectedAmount:N(f.expectedAmount),paidAdvance:0,balance:N(f.expectedAmount),expectedDate:f.expectedDate||'',reference:f.reference||'',notes:f.notes||'',status:'Pedido abierto',createdBy:(current()||{}).name||'',createdByUserId:(current()||{}).id||'',createdAt:Now(),source:'Compras'}; state.purchaseOrders.unshift(po); try{audit('CREAR','Orden compra',po.folio,null,po,'OC proveedor antes de recepción')}catch(err){auditFallback('CREAR','Orden compra',po.folio,null,po,'OC proveedor antes de recepción')} try{queueValidationFromAction('CREAR','Orden compra',po.folio,po,'Pedido a proveedor / compra inventariable')}catch(err){queueValidationFallbackNotice('Orden compra',po.folio,'creación de OC')} if(typeof persist==='function')persist(); render(); toast('OC creada. Ahora puedes registrar anticipo o recibir físicamente cuando llegue.');};
   window.submitPurchaseAdvance222=window.submitPurchaseAdvance226=function(e){e.preventDefault(); ensureV226(); if(typeof requirePerm==='function'&&!requirePerm('compras','capture'))return; var f=Object.fromEntries(new FormData(e.target)); var po=A(state.purchaseOrders).find(function(o){return o.id===f.purchaseOrderId}); if(!f.supplierId&&po)f.supplierId=po.supplierId; if(!f.productId&&po)f.productId=po.productId; if(!f.supplierId||N(f.amount)<=0){toast('Proveedor e importe son obligatorios');return} if(['Transferencia','Cheque','Tarjeta'].indexOf(f.method)>=0&&!f.reference){toast('Transferencia/cheque/tarjeta requieren referencia bancaria o comprobante');return} if(po&&N(f.amount)>poBalance(po)+0.01&&!confirm('El anticipo excede el saldo estimado de la OC. ¿Guardar y enviar a validación?'))return; if(!po&&!f.notes&&!confirm('Anticipo sin OC ni nota. ¿Guardar de todos modos?'))return; var adv={id:U('ADV'),folio:nextF('advanceV226','ANT'),date:f.date||T(),supplierId:f.supplierId,productId:f.productId||'',purchaseOrderId:po?po.id:'',purchaseOrderFolio:po?po.folio:'',amount:N(f.amount),applied:0,balance:N(f.amount),method:f.method||'Efectivo',reference:f.reference||'',beneficiary:f.beneficiary||supplierName(f.supplierId),notes:f.notes||'',status:'Pendiente aplicar',bankStatus:'Pendiente conciliación',createdBy:(current()||{}).name||'',createdByUserId:(current()||{}).id||'',createdAt:Now(),cashflowType:'Salida anticipo proveedor'}; normalizeAdvance(adv); state.purchaseAdvances.unshift(adv); if(po){po.paidAdvance=N(po.paidAdvance)+adv.amount; po.balance=poBalance(po); po.status=po.paidAdvance>0?'Con anticipo':'Pedido abierto';}
-    try{audit('CREAR','Anticipo',adv.folio,null,adv,'Pago previo a proveedor: salida real de flujo; no es gasto duplicado')}catch(err){} try{queueValidationFromAction('CREAR','Anticipo',adv.folio,adv,'Anticipo proveedor / salida de flujo')}catch(err){} if(typeof persist==='function')persist(); render(); toast('Anticipo registrado. Impacta flujo hoy y queda pendiente de aplicar al recibir.');};
-  function registerSupplierPaymentV226(apId,amount,method,reference,beneficiary,notes){var ap=A(state.accountsPayable).find(function(a){return a.id===apId||a.folio===apId}); if(!ap){toast('CxP no encontrada');return null} var val=Math.min(N(amount),apBalance(ap)); if(val<=0){toast('Importe inválido');return null} if(['Transferencia','Cheque','Tarjeta'].indexOf(method)>=0&&!reference){toast('Este método requiere referencia/comprobante');return null} var pay={id:U('SPAY'),folio:nextF('supplierPaymentV226','PPR'),date:T(),supplierId:ap.supplierId,productId:ap.productId,payableId:ap.id,payableFolio:ap.folio,purchaseOrderId:ap.purchaseOrderId||'',purchaseOrderFolio:ap.purchaseOrderFolio||'',receptionId:ap.receptionId||'',receptionFolio:ap.receptionFolio||'',amount:val,method:method||'Efectivo',reference:reference||'',beneficiary:beneficiary||supplierName(ap.supplierId),notes:notes||'',createdBy:(current()||{}).name||'',createdByUserId:(current()||{}).id||'',createdAt:Now(),bankStatus:'Pendiente conciliación',cashflowType:'Salida proveedor producto'}; state.supplierPayments.unshift(pay); ap.paid=N(ap.paid)+val; normalizeAP(ap); try{audit('PAGAR','Proveedor',pay.folio,null,pay,'Pago a proveedor ligado a CxP/recepción. No genera gasto duplicado.')}catch(err){} try{queueValidationFromAction('PAGAR','Proveedor',pay.folio,pay,'Pago proveedor / salida de flujo')}catch(err){} return pay;}
+    try{audit('CREAR','Anticipo',adv.folio,null,adv,'Pago previo a proveedor: salida real de flujo; no es gasto duplicado')}catch(err){auditFallback('CREAR','Anticipo',adv.folio,null,adv,'Pago previo a proveedor: salida real de flujo; no es gasto duplicado')} try{queueValidationFromAction('CREAR','Anticipo',adv.folio,adv,'Anticipo proveedor / salida de flujo')}catch(err){queueValidationFallbackNotice('Anticipo',adv.folio,'creación de anticipo')} if(typeof persist==='function')persist(); render(); toast('Anticipo registrado. Impacta flujo hoy y queda pendiente de aplicar al recibir.');};
+  function registerSupplierPaymentV226(apId,amount,method,reference,beneficiary,notes){var ap=A(state.accountsPayable).find(function(a){return a.id===apId||a.folio===apId}); if(!ap){toast('CxP no encontrada');return null} var val=Math.min(N(amount),apBalance(ap)); if(val<=0){toast('Importe inválido');return null} if(['Transferencia','Cheque','Tarjeta'].indexOf(method)>=0&&!reference){toast('Este método requiere referencia/comprobante');return null} var pay={id:U('SPAY'),folio:nextF('supplierPaymentV226','PPR'),date:T(),supplierId:ap.supplierId,productId:ap.productId,payableId:ap.id,payableFolio:ap.folio,purchaseOrderId:ap.purchaseOrderId||'',purchaseOrderFolio:ap.purchaseOrderFolio||'',receptionId:ap.receptionId||'',receptionFolio:ap.receptionFolio||'',amount:val,method:method||'Efectivo',reference:reference||'',beneficiary:beneficiary||supplierName(ap.supplierId),notes:notes||'',createdBy:(current()||{}).name||'',createdByUserId:(current()||{}).id||'',createdAt:Now(),bankStatus:'Pendiente conciliación',cashflowType:'Salida proveedor producto'}; state.supplierPayments.unshift(pay); ap.paid=N(ap.paid)+val; normalizeAP(ap); try{audit('PAGAR','Proveedor',pay.folio,null,pay,'Pago a proveedor ligado a CxP/recepción. No genera gasto duplicado.')}catch(err){auditFallback('PAGAR','Proveedor',pay.folio,null,pay,'Pago a proveedor ligado a CxP/recepción. No genera gasto duplicado.')} try{queueValidationFromAction('PAGAR','Proveedor',pay.folio,pay,'Pago proveedor / salida de flujo')}catch(err){queueValidationFallbackNotice('Proveedor',pay.folio,'pago a proveedor')} return pay;}
   window.submitPaySupplier222=window.submitPaySupplier226=function(e,apId){e.preventDefault(); ensureV226(); var f=Object.fromEntries(new FormData(e.target)); var p=registerSupplierPaymentV226(apId,f.amount,f.method,f.reference,f.beneficiary,f.notes); if(p){if(typeof persist==='function')persist(); closeModal(); render(); toast('Pago proveedor registrado en flujo y CxP, sin duplicar gasto.')}};
-  window.submitApplyAdvance222=window.submitApplyAdvance226=function(e,apId){e.preventDefault(); ensureV226(); var f=Object.fromEntries(new FormData(e.target)); var ap=A(state.accountsPayable).find(function(a){return a.id===apId||a.folio===apId}); var adv=A(state.purchaseAdvances).find(function(a){return a.id===f.advanceId||a.folio===f.advanceId}); if(!ap||!adv){toast('CxP o anticipo no encontrado');return} var val=Math.min(N(f.amount),apBalance(ap),N(adv.balance)); if(val<=0){toast('No hay saldo aplicable');return} var before={ap:Object.assign({},ap),advance:Object.assign({},adv)}; ap.appliedAdvance=N(ap.appliedAdvance)+val; normalizeAP(ap); adv.applied=N(adv.applied)+val; adv.balance=Math.max(0,N(adv.balance)-val); normalizeAdvance(adv); adv.appliedTo=adv.appliedTo||[]; adv.appliedTo.push({payableId:ap.id,payableFolio:ap.folio,receptionId:ap.receptionId,receptionFolio:ap.receptionFolio,amount:val,at:Now(),by:(current()||{}).name||''}); try{audit('APLICAR_ANTICIPO','Compras',ap.folio,before,{ap:ap,advance:adv},'No sale dinero otra vez: sólo se aplica anticipo pagado contra CxP.')}catch(err){} try{queueValidationFromAction('APLICAR_ANTICIPO','Anticipo',ap.folio,{ap:ap,advance:adv},'Aplicación contable/operativa de anticipo a recepción')}catch(err){} if(typeof persist==='function')persist(); closeModal(); render(); toast('Anticipo aplicado. No se registró nueva salida de dinero.');};
+  window.submitApplyAdvance222=window.submitApplyAdvance226=function(e,apId){e.preventDefault(); ensureV226(); var f=Object.fromEntries(new FormData(e.target)); var ap=A(state.accountsPayable).find(function(a){return a.id===apId||a.folio===apId}); var adv=A(state.purchaseAdvances).find(function(a){return a.id===f.advanceId||a.folio===f.advanceId}); if(!ap||!adv){toast('CxP o anticipo no encontrado');return} var val=Math.min(N(f.amount),apBalance(ap),N(adv.balance)); if(val<=0){toast('No hay saldo aplicable');return} var before={ap:Object.assign({},ap),advance:Object.assign({},adv)}; ap.appliedAdvance=N(ap.appliedAdvance)+val; normalizeAP(ap); adv.applied=N(adv.applied)+val; adv.balance=Math.max(0,N(adv.balance)-val); normalizeAdvance(adv); adv.appliedTo=adv.appliedTo||[]; adv.appliedTo.push({payableId:ap.id,payableFolio:ap.folio,receptionId:ap.receptionId,receptionFolio:ap.receptionFolio,amount:val,at:Now(),by:(current()||{}).name||''}); try{audit('APLICAR_ANTICIPO','Compras',ap.folio,before,{ap:ap,advance:adv},'No sale dinero otra vez: sólo se aplica anticipo pagado contra CxP.')}catch(err){auditFallback('APLICAR_ANTICIPO','Compras',ap.folio,before,{ap:ap,advance:adv},'No sale dinero otra vez: sólo se aplica anticipo pagado contra CxP.')} try{queueValidationFromAction('APLICAR_ANTICIPO','Anticipo',ap.folio,{ap:ap,advance:adv},'Aplicación contable/operativa de anticipo a recepción')}catch(err){queueValidationFallbackNotice('Anticipo',ap.folio,'aplicar anticipo a CxP')} if(typeof persist==='function')persist(); closeModal(); render(); toast('Anticipo aplicado. No se registró nueva salida de dinero.');};
 
   window.openAdvanceFromOrder222=window.openAdvanceFromOrder226=function(poId){navigate('compras'); setTimeout(function(){var f=document.querySelector('#view-compras form[data-advance-form]'); if(f){f.purchaseOrderId.value=poId; syncAdvanceFromPO226(f); f.scrollIntoView({behavior:'smooth',block:'center'});}},100)};
   window.receivePurchaseOrder222=window.receivePurchaseOrder226=function(poId){state.pendingPurchaseOrderId=poId; if(typeof persist==='function')persist(); navigate('recepcion'); setTimeout(function(){toast('Recepción preparada desde Compras. La entrada física se captura en Recepción; la CxP/anticipo queda ligada.')},80)};
-  window.cancelPurchaseOrder222=window.cancelPurchaseOrder226=function(poId){var po=A(state.purchaseOrders).find(function(o){return o.id===poId}); if(!po)return; var reason=prompt('Motivo de cancelación de OC:'); if(!reason)return; var before=Object.assign({},po); po.status='Cancelada'; po.cancelReason=reason; po.cancelledAt=Now(); po.cancelledBy=(current()||{}).name||''; try{audit('CANCELAR','Orden compra',po.folio,before,po,reason)}catch(e){} if(typeof persist==='function')persist(); render();};
+  window.cancelPurchaseOrder222=window.cancelPurchaseOrder226=function(poId){var po=A(state.purchaseOrders).find(function(o){return o.id===poId}); if(!po)return; var reason=prompt('Motivo de cancelación de OC:'); if(!reason)return; var before=Object.assign({},po); po.status='Cancelada'; po.cancelReason=reason; po.cancelledAt=Now(); po.cancelledBy=(current()||{}).name||''; try{audit('CANCELAR','Orden compra',po.folio,before,po,reason)}catch(e){auditFallback('CANCELAR','Orden compra',po.folio,before,po,reason)} if(typeof persist==='function')persist(); render();};
 
   window.tablePurchaseOrders222=window.tablePurchaseOrders226=function(){var rows=A(state.purchaseOrders); if(!rows.length)return '<div class="empty">Sin órdenes a proveedor.</div>'; return '<div class="table-wrap"><table class="table"><thead><tr><th>OC</th><th>Proveedor</th><th>Producto esperado</th><th>Importe / anticipo</th><th>Estado</th><th>Acciones</th></tr></thead><tbody>'+rows.map(function(o){var open=['Recibida','Cancelada','Cerrada'].indexOf(o.status||'')<0;return '<tr><td><b>'+E(o.folio)+'</b><br><small>'+E(o.date)+' · llega '+E(o.expectedDate||'s/f')+'</small></td><td>'+E(supplierName(o.supplierId))+'<br><small>'+E(o.reference||'')+'</small></td><td>'+E(productName(o.productId))+'<br><small>'+K(o.expectedKg)+' · '+E(o.expectedUnits||0)+' unidad(es)</small></td><td>'+M(o.expectedAmount)+'<br><small>Anticipo: <b>'+M(o.paidAdvance)+'</b> · Saldo OC: '+M(poBalance(o))+'</small></td><td>'+statusBadge(o.status||'Pedido abierto')+'</td><td>'+(open?'<button class="btn small accent" onclick="openAdvanceFromOrder226(\''+E(o.id)+'\')">Pagar antes</button> <button class="btn small primary" onclick="receivePurchaseOrder226(\''+E(o.id)+'\')">Recibir</button> <button class="btn small danger" onclick="cancelPurchaseOrder226(\''+E(o.id)+'\')">Cancelar</button>':'<span class="muted">Sin acción</span>')+'</td></tr>';}).join('')+'</tbody></table></div>'};
   window.tableAdvances222=window.tableAdvances226=function(){var rows=A(state.purchaseAdvances); if(!rows.length)return '<div class="empty">Sin anticipos registrados.</div>'; return '<div class="table-wrap"><table class="table"><thead><tr><th>Anticipo</th><th>Proveedor</th><th>OC / producto</th><th>Importe / saldo</th><th>Banco</th><th>Estado</th></tr></thead><tbody>'+rows.map(function(a){normalizeAdvance(a);return '<tr><td><b>'+E(a.folio)+'</b><br><small>'+E(a.date)+' · '+E(a.method)+'</small></td><td>'+E(supplierName(a.supplierId))+'<br><small>Recibió: '+E(a.beneficiary)+'</small></td><td>'+E(a.purchaseOrderFolio||'Sin OC')+'<br><small>'+E(productName(a.productId))+'</small></td><td>'+M(a.amount)+'<br><b>'+M(a.balance)+'</b></td><td>'+statusBadge(a.bankStatus||'Pendiente conciliación')+'<br><small>'+E(a.reference||'Sin referencia')+'</small></td><td>'+statusBadge(a.status)+'</td></tr>';}).join('')+'</tbody></table></div>'};
@@ -6602,11 +6566,11 @@ Movimientos bancarios pendientes de conciliar: ${k.bankPending}
   window.flujoHtml=function(f){return '<div class="grid cols-4"><div class="kpi"><small>Entradas sistema</small><b>'+M(f.inflow)+'</b></div><div class="kpi"><small>Salidas sistema</small><b>'+M(f.outflow)+'</b><div class="trend">Gastos '+M(f.expensesOut)+' + proveedores '+M(f.supplierAdvancesOut+f.supplierPaymentsOut)+'</div></div><div class="kpi"><small>Flujo neto</small><b>'+M(f.net)+'</b></div><div class="kpi"><small>Diferencia banco</small><b>'+M(f.bankDiff)+'</b><div class="trend '+(Math.abs(f.bankDiff)>1?'status bad':'status ok')+'">'+f.unreconciled+' mov. sin conciliar</div></div></div><div class="v226-finance-row"><div class="v226-ledger"><small>Anticipos proveedor</small><b>'+M(f.supplierAdvancesOut)+'</b></div><div class="v226-ledger"><small>Pagos CxP proveedor</small><b>'+M(f.supplierPaymentsOut)+'</b></div><div class="v226-ledger"><small>Gastos no inventario</small><b>'+M(f.expensesOut)+'</b></div><div class="v226-ledger"><small>Aplicación anticipo</small><b>'+M(0)+'</b><small>No es salida nueva</small></div></div><div class="v226-rule"><b>Regla de flujo v2.4.0:</b> el dinero sale al registrar anticipo o pago proveedor. Aplicar anticipo a una recepción sólo baja CxP; no se suma otra salida.</div><div class="grid cols-2" style="margin-top:14px"><div class="panel"><h3>Registrar movimiento bancario</h3><form class="form" onsubmit="submitBankMovement(event)"><div class="form-grid two">'+field('date','Fecha banco','date',T())+selectField('type','Tipo',[{id:'Ingreso',name:'Ingreso'},{id:'Egreso',name:'Egreso'}])+field('bank','Banco/cuenta','text','Cuenta principal')+field('amount','Importe','number','','step="0.01" min="0"')+field('reference','Referencia banco','text','')+field('concept','Concepto','text','')+'</div><button class="btn primary">Agregar movimiento banco</button></form></div><div class="panel"><h3>Conciliación</h3>'+(typeof tableFlujo==='function'?tableFlujo(f):'')+'<div class="top-actions" style="margin-top:12px"><button class="btn primary" onclick="autoReconcileBank()">Conciliar automático</button><button class="btn" onclick="snapshotFlow(\''+f.from+'\',\''+f.to+'\')">Enviar flujo a validación</button><button class="btn" onclick="exportCSV(\'bankMovements\')">Banco CSV</button></div></div></div><div class="panel"><h3>Movimientos bancarios</h3>'+(typeof tableBankMovements==='function'?tableBankMovements(A(state.bankMovements).filter(function(b){return inRange(b.date,f.from,f.to)})):'')+'</div><div class="panel"><h3>Partidas pendientes de conciliación</h3>'+tableUnreconciledV226(f.from,f.to)+'</div>';}; try{flujoHtml=window.flujoHtml}catch(e){}
   window.tableUnreconciledV226=function(from,to){var rows=[]; A(state.purchaseAdvances).forEach(function(a){if(!a.deleted&&inRange(a.date,from,to)&&!['Conciliado','Validado','Cancelado'].includes(a.bankStatus||''))rows.push(['Anticipo',a.folio,a.date,supplierName(a.supplierId),a.method,a.reference,a.amount]);}); A(state.supplierPayments).forEach(function(p){if(!p.deleted&&inRange(p.date,from,to)&&!['Conciliado','Validado','Cancelado'].includes(p.bankStatus||''))rows.push(['Pago proveedor',p.folio,p.date,supplierName(p.supplierId),p.method,p.reference,p.amount]);}); A(state.expenses).forEach(function(g){if(!g.deleted&&inRange(g.date,from,to)&&!['Conciliado','Validado','Cancelado'].includes(g.bankStatus||''))rows.push(['Gasto',g.folio,g.date,g.beneficiary||'',g.method,g.evidence||g.reference,g.amount]);}); if(!rows.length)return '<div class="success-box"><b>Sin partidas pendientes del sistema en el periodo.</b></div>'; return '<div class="table-wrap"><table class="table"><thead><tr><th>Tipo</th><th>Folio</th><th>Fecha</th><th>Proveedor/beneficiario</th><th>Método</th><th>Referencia</th><th>Importe</th></tr></thead><tbody>'+rows.map(function(r){return '<tr>'+r.map(function(c,i){return '<td>'+(i===6?M(c):E(c))+'</td>'}).join('')+'</tr>'}).join('')+'</tbody></table></div>';};
   window.autoReconcileBank=function(){if(typeof requirePerm==='function'&&!requirePerm('flujo','validate')&&!requirePerm('flujo','edit'))return; ensureV226(); var matched=0; function candidates(m){var dir=m.type==='Ingreso'?'in':'out', rows=[]; if(dir==='in')A(state.payments).forEach(function(p){if(p.kind==='Abono')rows.push({module:'Cartera',id:p.id,folio:p.folio,date:p.date,amount:N(p.amount),ref:p.reference,obj:p});}); else {A(state.expenses).forEach(function(g){rows.push({module:'Gasto',id:g.id,folio:g.folio,date:g.date,amount:N(g.amount),ref:g.evidence||g.reference,obj:g});}); A(state.purchaseAdvances).forEach(function(a){rows.push({module:'Anticipo proveedor',id:a.id,folio:a.folio,date:a.date,amount:N(a.amount),ref:a.reference,obj:a});}); A(state.supplierPayments).forEach(function(p){rows.push({module:'Pago proveedor',id:p.id,folio:p.folio,date:p.date,amount:N(p.amount),ref:p.reference,obj:p});}); } return rows.filter(function(r){var amountOk=Math.abs(N(m.amount)-r.amount)<=1; var refOk=m.reference&&r.ref&&String(m.reference).trim()===String(r.ref).trim(); var dateOk=Math.abs((new Date(m.date)-new Date(r.date))/(86400000))<=3; return amountOk&&(refOk||dateOk);}); }
-    A(state.bankMovements).filter(function(m){return !['Conciliado','Validado','Cancelado'].includes(m.status||m.bankStatus||'')}).forEach(function(m){var c=candidates(m)[0]; if(c){m.status='Conciliado';m.matchedTo=c.folio;m.matchedModule=c.module;m.matchedAt=Now(); if(c.obj)c.obj.bankStatus='Conciliado'; matched++;}}); try{audit('CONCILIAR','Banco','auto-v226',null,{matched:matched},'Conciliación automática banco vs clientes, gastos, anticipos y pagos proveedor')}catch(e){} if(typeof persist==='function')persist(); render(); toast('Conciliación automática v2.4.0: '+matched+' movimiento(s) empatados.');};
+    A(state.bankMovements).filter(function(m){return !['Conciliado','Validado','Cancelado'].includes(m.status||m.bankStatus||'')}).forEach(function(m){var c=candidates(m)[0]; if(c){m.status='Conciliado';m.matchedTo=c.folio;m.matchedModule=c.module;m.matchedAt=Now(); if(c.obj)c.obj.bankStatus='Conciliado'; matched++;}}); try{audit('CONCILIAR','Banco','auto-v226',null,{matched:matched},'Conciliación automática banco vs clientes, gastos, anticipos y pagos proveedor')}catch(e){auditFallback('CONCILIAR','Banco','auto-v226',null,{matched:matched},'Conciliación automática banco vs clientes, gastos, anticipos y pagos proveedor')} if(typeof persist==='function')persist(); render(); toast('Conciliación automática v2.4.0: '+matched+' movimiento(s) empatados.');};
 
   function cashSystem(date){var p=A(state.payments).filter(function(x){return x.kind==='Abono'&&x.date===date}); var exp=A(state.expenses).filter(function(x){return x.date===date}); var adv=A(state.purchaseAdvances).filter(function(x){return x.date===date}); var sp=A(state.supplierPayments).filter(function(x){return x.date===date}); function sum(rows,method){return rows.filter(function(x){return x.method===method}).reduce(function(s,x){return s+N(x.amount)},0)} return {cashIn:sum(p,'Efectivo'),transferIn:sum(p,'Transferencia'),cardIn:sum(p,'Tarjeta'),cashOut:sum(exp,'Efectivo')+sum(adv,'Efectivo')+sum(sp,'Efectivo'),transferOut:sum(exp,'Transferencia')+sum(adv,'Transferencia')+sum(sp,'Transferencia'),cardOut:sum(exp,'Tarjeta')+sum(adv,'Tarjeta')+sum(sp,'Tarjeta'),totalIn:p.reduce(function(s,x){return s+N(x.amount)},0),expenses:exp.reduce(function(s,x){return s+N(x.amount)},0),supplierOut:adv.reduce(function(s,x){return s+N(x.amount)},0)+sp.reduce(function(s,x){return s+N(x.amount)},0)} }
   window.cashSummary=function(date){var c=cashSystem(date); return '<div class="grid cols-4"><div class="kpi"><small>Efectivo neto esperado</small><b>'+M(c.cashIn-c.cashOut)+'</b><div class="trend">Entra '+M(c.cashIn)+' · sale '+M(c.cashOut)+'</div></div><div class="kpi"><small>Transferencia neta sistema</small><b>'+M(c.transferIn-c.transferOut)+'</b></div><div class="kpi"><small>Tarjeta neta sistema</small><b>'+M(c.cardIn-c.cardOut)+'</b></div><div class="kpi"><small>Proveedor pagado hoy</small><b>'+M(c.supplierOut)+'</b><div class="trend">Anticipos + CxP</div></div></div>';}; try{cashSummary=window.cashSummary}catch(e){}
-  window.submitCashCount=function(e){e.preventDefault(); if(typeof requirePerm==='function'&&!requirePerm('caja','capture'))return; ensureV226(); var f=Object.fromEntries(new FormData(e.target)); var c=cashSystem(f.date); var expected={cash:c.cashIn-c.cashOut,transfer:c.transferIn-c.transferOut,card:c.cardIn-c.cardOut}; var real={cash:N(f.cashReal),transfer:N(f.transferReal),card:N(f.cardReal)}; var diff=(real.cash-expected.cash)+(real.transfer-expected.transfer)+(real.card-expected.card); var rec={id:U('CASH'),folio:nextF('cash','CASH'),date:f.date,responsible:f.responsible,expected:expected,real:real,diff:diff,notes:f.notes,createdAt:Now(),createdBy:(current()||{}).name||'',status:Math.abs(diff)<=1?'Cuadrado':'Diferencia'}; state.cashCounts.unshift(rec); if(Math.abs(diff)>1&&typeof addException==='function')addException('Diferencia caja','Corte '+f.date,'Diferencia caja/banco incluyendo pagos proveedor '+M(diff),{amount:diff,impactCash:'Aclarar antes del cierre',responsible:f.responsible}); try{audit('CORTE_CAJA','Caja',rec.folio,null,rec,'Corte v2.4.0 incluye salidas efectivo/transferencia a proveedor')}catch(err){} try{queueValidationFromAction('CORTE_CAJA','Caja',rec.folio,rec,'Corte de caja con compras/proveedor')}catch(err){} if(typeof persist==='function')persist(); render(); toast('Corte guardado. Diferencia total: '+M(diff));}; try{submitCashCount=window.submitCashCount}catch(e){}
+  window.submitCashCount=function(e){e.preventDefault(); if(typeof requirePerm==='function'&&!requirePerm('caja','capture'))return; ensureV226(); var f=Object.fromEntries(new FormData(e.target)); var c=cashSystem(f.date); var expected={cash:c.cashIn-c.cashOut,transfer:c.transferIn-c.transferOut,card:c.cardIn-c.cardOut}; var real={cash:N(f.cashReal),transfer:N(f.transferReal),card:N(f.cardReal)}; var diff=(real.cash-expected.cash)+(real.transfer-expected.transfer)+(real.card-expected.card); var rec={id:U('CASH'),folio:nextF('cash','CASH'),date:f.date,responsible:f.responsible,expected:expected,real:real,diff:diff,notes:f.notes,createdAt:Now(),createdBy:(current()||{}).name||'',status:Math.abs(diff)<=1?'Cuadrado':'Diferencia'}; state.cashCounts.unshift(rec); if(Math.abs(diff)>1&&typeof addException==='function')addException('Diferencia caja','Corte '+f.date,'Diferencia caja/banco incluyendo pagos proveedor '+M(diff),{amount:diff,impactCash:'Aclarar antes del cierre',responsible:f.responsible}); try{audit('CORTE_CAJA','Caja',rec.folio,null,rec,'Corte v2.4.0 incluye salidas efectivo/transferencia a proveedor')}catch(err){auditFallback('CORTE_CAJA','Caja',rec.folio,null,rec,'Corte v2.4.0 incluye salidas efectivo/transferencia a proveedor')} try{queueValidationFromAction('CORTE_CAJA','Caja',rec.folio,rec,'Corte de caja con compras/proveedor')}catch(err){queueValidationFallbackNotice('Caja',rec.folio,'corte de caja')} if(typeof persist==='function')persist(); render(); toast('Corte guardado. Diferencia total: '+M(diff));}; try{submitCashCount=window.submitCashCount}catch(e){}
 
   var oldPnlCalc=(typeof pnlCalc==='function')?pnlCalc:null;
   window.pnlCalc=function(from,to){ensureV226(); var p=oldPnlCalc?oldPnlCalc(from,to):{}; var sup=supplierOutflows(from,to); p.purchaseAdvancesOut=sup.advances; p.supplierPaymentsOut=sup.payments; p.purchaseSupplierOutflow=sup.total; p.accountsPayableOpen=openAPs().reduce(function(s,a){return s+apBalance(a)},0); p.accountsPayableDue=openAPs().filter(function(a){return a.dueDate&&a.dueDate<T()}).reduce(function(s,a){return s+apBalance(a)},0); p.noteInventario='Compras inventariables no se cargan completas al gasto; afectan flujo al pagar y costo de venta cuando se vende la unidad.'; return p;}; try{pnlCalc=window.pnlCalc}catch(e){}
@@ -6617,8 +6581,8 @@ Movimientos bancarios pendientes de conciliar: ${k.bankPending}
   window.renderDashboard=function(){ensureV226(); if(oldRenderDashboard)oldRenderDashboard(); var el=document.getElementById('view-dashboard'); if(!el)return; var k=purchaseKpis(); el.insertAdjacentHTML('afterbegin','<div class="panel"><div class="split"><div><span class="eyebrow">Compras y flujo v2.4.0</span><h3>Control de compras antes de recibir</h3><p class="muted">OC, anticipos, CxP y pagos proveedor ya viven en una sola cadena. Recepción no duplica compras; Caja/Flujo reflejan el dinero.</p></div><button class="btn primary" onclick="navigate(\'compras\')">Abrir Compras</button></div><div class="v226-finance-row"><div class="v226-ledger"><small>OC abiertas</small><b>'+k.openOrders+'</b></div><div class="v226-ledger"><small>Anticipos pendientes</small><b>'+M(k.advancesPending)+'</b></div><div class="v226-ledger"><small>CxP abierta</small><b>'+M(k.apOpen)+'</b></div><div class="v226-ledger"><small>CxP vencida</small><b>'+M(k.apDue)+'</b></div></div></div>');}; try{renderDashboard=window.renderDashboard}catch(e){}
   var oldRenderInventario=(typeof renderInventario==='function')?renderInventario:null;
   window.renderInventario=function(){ensureV226(); if(oldRenderInventario)oldRenderInventario(); var el=document.getElementById('view-inventario'); if(el&&!el.querySelector('[data-v226-inv-note]'))el.insertAdjacentHTML('afterbegin','<div class="panel info-box" data-v226-inv-note="1"><b>Regla inventario:</b> la unidad trazable es la fuente de verdad. PEPS se ordena por fecha de entrada/folio; calidad o caducidad se muestra como alerta separada.</div>');}; try{renderInventario=window.renderInventario}catch(e){}
-  var oldRenderRecepcion=(typeof renderRecepcion==='function')?renderRecepcion:null;
-  window.renderRecepcion=function(){ensureV226(); if(oldRenderRecepcion)oldRenderRecepcion(); var el=document.getElementById('view-recepcion'); if(el&&!el.querySelector('[data-v226-rx-note]'))el.insertAdjacentHTML('afterbegin','<div class="panel info-box" data-v226-rx-note="1"><b>Recepción física:</b> aquí no nace la compra ni el anticipo. Se confirma lo recibido, se etiqueta la unidad y se liga contra OC/CxP cuando aplique.</div>'); try{el.querySelectorAll('h3,p,small,label').forEach(function(x){x.innerHTML=x.innerHTML.replace(/Recepción de compra \/ alta de caja/g,'Recepción física de unidades').replace(/Recepción de compra/g,'Recepción física')})}catch(e){} }; try{renderRecepcion=window.renderRecepcion}catch(e){}
+  /* [v2.6.0] renderRecepcion consolidada: ver definición única en v231-scanner-unico-recepcion-js */
+  /* [v2.6.0] Lógica de este bloque (banner + reemplazo de texto) ahora inline en la función consolidada en v231-scanner-unico-recepcion-js */; try{renderRecepcion=window.renderRecepcion}catch(e){}
   var oldRenderCierre=(typeof renderCierre==='function')?renderCierre:null;
   window.renderCierre=function(){ensureV226(); var d=T(); if(oldRenderCierre)oldRenderCierre(); var el=document.getElementById('view-cierre'); if(!el)return; var sup=supplierOutflows(d,d); var c=cashSystem(d); el.insertAdjacentHTML('afterbegin','<div class="panel"><div class="split"><div><span class="eyebrow">Cierre v2.4.0</span><h3>Compras y proveedor dentro del cierre</h3><p class="muted">El cierre ya considera anticipos y pagos proveedor como salidas de flujo/caja. Aplicaciones de anticipo no suman salida nueva.</p></div><button class="btn" onclick="navigate(\'compras\')">Ver Compras</button></div><div class="grid cols-4"><div class="kpi"><small>Anticipos proveedor hoy</small><b>'+M(sup.advances)+'</b></div><div class="kpi"><small>Pagos CxP hoy</small><b>'+M(sup.payments)+'</b></div><div class="kpi"><small>Efectivo neto esperado</small><b>'+M(c.cashIn-c.cashOut)+'</b></div><div class="kpi"><small>CxP abierta total</small><b>'+M(purchaseKpis().apOpen)+'</b></div></div></div>');}; try{renderCierre=window.renderCierre}catch(e){}
 
@@ -6837,18 +6801,12 @@ Movimientos bancarios pendientes de conciliar: ${k.bankPending}
 
 
 <script id="charolito-v228-oc-unica-cxp-peps-validaciones">
-/* ============================================================
-   Charolito Digital v2.4.0.8
-   OC única · CxP oficial · PEPS operativo real · Validación cruzada
-   Parche estructural: corrige duplicidad Compras/Recepción,
-   evita escritura nueva en supplierPayables, aparta inventoryItems,
-   sincroniza salida/ruta/entrega y agrega checklist accionable.
-   ============================================================ */
+/* Charolito Digital v2.4.0.8 OC única · CxP oficial · PEPS operativo real · Validación cruzada Parche estructural: corrige duplicidad Compras/Recepción, evita escritura nueva en supplierPayables, aparta inventoryItems, sincroniza salida/ruta/entrega y agrega checklist accionable. */
 (function(){
   'use strict';
   var VERSION='v2.4.0.8';
   function A(v){return Array.isArray(v)?v:[];}
-  function N(v){try{return Number(String(v==null?'':v).replace(/[^0-9.-]/g,''))||0}catch(e){return 0}}
+  function N(v){return nval(v);}
   function H(v){return String(v==null?'':v).replace(/[&<>"']/g,function(m){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]});}
   function T(){try{return today()}catch(e){return new Date().toISOString().slice(0,10)}}
   function Now(){try{return now()}catch(e){return new Date().toISOString()}}
@@ -6921,8 +6879,8 @@ Movimientos bancarios pendientes de conciliar: ${k.bankPending}
 
   function productName(id){var p=P(id); return [p.code,p.name].filter(Boolean).join(' · ')||id||''}
   function supplierName(id){return S(id).name||id||''}
-  function itemCostKg(i){return N(i.costKg||i.cost||((N(i.costTotal)&&N(i.weight))?N(i.costTotal)/Math.max(1,N(i.weight)):0));}
-  function itemWeight(i){return N(i.currentWeight||i.availableWeight||i.weight)}
+  function itemCostKg(i){return charolitoItemCostKg(i);}
+  function itemWeight(i){return charolitoItemWeight(i);}
   function parseLines228(txt){return String(txt||'').split(/\n+/).map(function(line,i){line=line.trim(); if(!line)return null; var p=line.split(/[;,\t]/).map(function(x){return x.trim()}); if(p.length===1)return {trace:'Unidad '+(i+1),weight:N(p[0])}; return {trace:p[0]||('Unidad '+(i+1)),weight:N(p[1])};}).filter(function(x){return x&&x.weight>0});}
   function fifoMeta(productId,date){
     var seq=A(state.inventoryItems).filter(function(i){return i.productId===productId}).length+1;
@@ -7160,7 +7118,7 @@ Movimientos bancarios pendientes de conciliar: ${k.bankPending}
   'use strict';
   var PATCH_VERSION='2.3.0-cartera-devengada-cierre-bloqueante-qr-validaciones';
   function A(v){return Array.isArray(v)?v:(v?[v]:[])}
-  function N(v){return Number(String(v==null?'':v).replace(/[^0-9.-]/g,''))||0}
+  function N(v){return nval(v);}
   function H(v){try{return esc(v)}catch(e){return String(v==null?'':v).replace(/[&<>'"]/g,function(m){return {'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[m]})}}
   function M(v){try{return money(v)}catch(e){return '$'+N(v).toLocaleString('es-MX',{minimumFractionDigits:2,maximumFractionDigits:2})}}
   function KG(v){try{return kg(v)}catch(e){return N(v).toLocaleString('es-MX',{minimumFractionDigits:2,maximumFractionDigits:2})+' kg'}}
@@ -7169,9 +7127,9 @@ Movimientos bancarios pendientes de conciliar: ${k.bankPending}
   function U(prefix){try{return uid(prefix)}catch(e){return (prefix||'ID')+'-'+Date.now().toString(36).toUpperCase()+'-'+Math.random().toString(36).slice(2,6).toUpperCase()}}
   function inRange(d,from,to){if(!d)return false; var x=String(d).slice(0,10); return (!from||x>=String(from))&&(!to||x<=String(to));}
   function toastSafe(msg){try{toast(msg)}catch(e){console.log(msg)}}
-  function persistSafe(){try{persist()}catch(e){try{localStorage.setItem(APP_KEY,JSON.stringify(state))}catch(_){}}}
+  function persistSafe(){try{persist()}catch(e){try{localStorage.setItem(APP_KEY,JSON.stringify(state))}catch(_){try{toastSafe('No se pudo guardar el último cambio. Verifica espacio de almacenamiento o vuelve a intentarlo antes de cerrar.')}catch(__){}}}}
   function auditSafe(action,entity,id,before,after,reason){try{audit(action,entity,id,before,after,reason)}catch(e){state.audit=state.audit||[]; state.audit.unshift({id:U('AUD'),at:Now(),user:'Sistema',action:action,entity:entity,entityId:id,before:before,after:after,reason:reason});}}
-  function queueSafe(action,entity,id,after,reason){try{queueValidationFromAction(action,entity,id,after,reason)}catch(e){}}
+  function queueSafe(action,entity,id,after,reason){try{queueValidationFromAction(action,entity,id,after,reason)}catch(e){auditSafe('VALIDACIÓN NO ENCOLADA',entity,id,null,after,'No se pudo generar la validación pendiente automáticamente ('+reason+'). Requiere revisión manual.')}}
   function getProd(id){try{return prod(id)}catch(e){return {name:'',code:'',price:0,cost:0}}}
   function getClient(id){try{return client(id)}catch(e){return {name:'',creditLimit:0}}}
   function getSupplier(id){try{return supplier(id)}catch(e){return {name:''}}}
@@ -7180,8 +7138,8 @@ Movimientos bancarios pendientes de conciliar: ${k.bankPending}
   function expenseCategory(obj){try{return expenseCat(obj.expenseCategoryId||obj.category)}catch(e){return {pnlBehavior:obj.pnlBehavior||'',section:obj.section||'',name:obj.category||''}}}
   function validOrderForLedger(o){return o&&!o.deleted&&['Cancelado','Cancelada','Reversado','Reversada'].indexOf(o.status)<0;}
   function validPayment(p){if(!p||p.deleted||p.status==='Cancelado'||p.status==='Cancelada')return false; var o=p.orderId?getOrder(p.orderId):null; return !p.orderId || validOrderForLedger(o);}
-  function itemWeight(i){return N(i.deliveredKg||i.soldKg||i.currentWeight||i.availableWeight||i.weight||i.kg||0)}
-  function itemCostKg(i){var w=N(i.weight||i.currentWeight||i.availableWeight||1); return N(i.costKg||i.cost||((N(i.costTotal)&&w)?N(i.costTotal)/w:0));}
+  function itemWeight(i){return charolitoItemWeight(i);}
+  function itemCostKg(i){return charolitoItemCostKg(i);}
   function orderPriceKg(o,kgx){return N(o.salePriceKg||o.priceNet||o.price||((N(o.finalAmount||o.amount)&&N(o.kgRequested||kgx))?N(o.finalAmount||o.amount)/N(o.kgRequested||kgx):0));}
   function rowDateFromItem(i){
     if(i.dateOut)return String(i.dateOut).slice(0,10);
@@ -7382,7 +7340,7 @@ Movimientos bancarios pendientes de conciliar: ${k.bankPending}
     e.preventDefault(); var b=A(state.bankMovements).find(function(x){return x.id===bankId}); var f=Object.fromEntries(new FormData(e.target)); if(!b)return; var pay={id:U('PAY'),folio:(typeof folio==='function'?folio('payment'):'PAG-'+Date.now()),date:b.date,clientId:f.clientId,orderId:f.orderId||'',kind:'Abono',method:'Transferencia',amount:N(f.amount),reference:f.reference||b.reference||'',notes:'Creado desde movimiento bancario '+(b.folio||b.id),createdBy:(typeof currentUser==='function'&&currentUser()?currentUser().name:''),createdByUserId:(typeof currentUser==='function'&&currentUser()?currentUser().id:''),bankStatus:'Conciliado',bankMovementId:b.id}; state.payments.unshift(pay); b.status='Conciliado'; b.bankStatus='Conciliado'; b.matchedTo=pay.folio; b.matchedModule='Cartera'; b.matchedAt=Now(); auditSafe('CREAR','Cartera',pay.folio,null,{payment:pay,bank:b},'Cobro creado desde banco'); queueSafe('CREAR','Cartera',pay.folio,pay,'Cobro creado desde banco'); persistSafe(); try{closeModal()}catch(e){}; try{render()}catch(e){}; toastSafe('Cobro cliente creado y banco conciliado.');
   };
   window.openCreateExpenseFromBankV229=function(bankId){toastSafe('Usa Gastos para clasificar el egreso; después vuelve a Flujo y lígalo con Resolver. Esto evita gastos sin categoría ER.');};
-  window.justifyBankDiffV229=function(bankId){var b=A(state.bankMovements).find(function(x){return x.id===bankId||x.folio===bankId}); if(!b)return; var note=prompt('Motivo de justificación / evidencia:'); if(!note)return; var before=Object.assign({},b); b.status='Justificado'; b.bankStatus='Justificado'; b.justification=note; b.justifiedAt=Now(); b.justifiedBy=(typeof currentUser==='function'&&currentUser()?currentUser().name:''); try{addException('Diferencia banco justificada',b.folio||b.id,note,{amount:b.type==='Egreso'?-N(b.amount):N(b.amount),impactCash:'Justificación bancaria',responsible:b.justifiedBy})}catch(e){} auditSafe('JUSTIFICAR','Banco',b.folio||b.id,before,b,note); persistSafe(); try{render()}catch(e){}; toastSafe('Movimiento bancario justificado con evento de soporte.');};
+  window.justifyBankDiffV229=function(bankId){var b=A(state.bankMovements).find(function(x){return x.id===bankId||x.folio===bankId}); if(!b)return; var note=prompt('Motivo de justificación / evidencia:'); if(!note)return; var before=Object.assign({},b); b.status='Justificado'; b.bankStatus='Justificado'; b.justification=note; b.justifiedAt=Now(); b.justifiedBy=(typeof currentUser==='function'&&currentUser()?currentUser().name:''); try{addException('Diferencia banco justificada',b.folio||b.id,note,{amount:b.type==='Egreso'?-N(b.amount):N(b.amount),impactCash:'Justificación bancaria',responsible:b.justifiedBy})}catch(e){auditSafe('EXCEPCIÓN NO REGISTRADA','Banco',b.folio||b.id,null,null,'No se pudo registrar la excepción de diferencia bancaria justificada; la justificación en sí sí quedó guardada.')} auditSafe('JUSTIFICAR','Banco',b.folio||b.id,before,b,note); persistSafe(); try{render()}catch(e){}; toastSafe('Movimiento bancario justificado con evento de soporte.');};
   window.autoReconcileBank=function(){
     ensureV229(); if(typeof requirePerm==='function'&&!requirePerm('flujo','validate')&&!requirePerm('flujo','edit'))return; var matched=0;
     A(state.bankMovements).filter(function(b){return !b.deleted&&['Conciliado','Validado','Cancelado','Justificado'].indexOf(b.status||b.bankStatus||'')<0}).forEach(function(b){var c=candidatesForBankV229(b)[0]; if(c){window.reconcileBankCandidateV229(b.id,c.kind,c.id); matched++;}});
@@ -7407,7 +7365,7 @@ Movimientos bancarios pendientes de conciliar: ${k.bankPending}
   window.submitCloseRoute=function(e,id){
     var beforeCount=A(state.saleAllocations).length; var res;
     if(oldSubmitCloseRouteV229)res=oldSubmitCloseRouteV229(e,id);
-    try{var r=regenerateSaleAllocationsForDelivered(); if((r.created||r.updated)&&A(state.saleAllocations).length!==beforeCount){auditSafe('RECALCULAR','Rentabilidad','cierre-ruta-v229',null,r,'Recalcular utilidad real después de cerrar ruta.'); persistSafe();}}catch(err){}
+    try{var r=regenerateSaleAllocationsForDelivered(); if((r.created||r.updated)&&A(state.saleAllocations).length!==beforeCount){auditSafe('RECALCULAR','Rentabilidad','cierre-ruta-v229',null,r,'Recalcular utilidad real después de cerrar ruta.'); persistSafe();}}catch(err){auditSafe('RECALCULAR_FALLIDA','Rentabilidad','cierre-ruta-v229',null,null,'No se pudo recalcular la utilidad real tras cerrar la ruta. Verificar asignaciones de venta manualmente.')}
     return res;
   };
   try{submitCloseRoute=window.submitCloseRoute}catch(e){}
@@ -7450,7 +7408,7 @@ Movimientos bancarios pendientes de conciliar: ${k.bankPending}
   var oldRenderV229=window.render||((typeof render==='function')?render:null);
   window.render=function(){ensureV229(); var r=oldRenderV229?oldRenderV229():undefined; setVersionBrandV229(); return r;};
   try{render=window.render}catch(e){}
-  function boot(){ensureV229(); try{regenerateSaleAllocationsForDelivered()}catch(e){} try{if(typeof currentUser==='function'&&currentUser())render()}catch(e){}}
+  function boot(){ensureV229(); try{regenerateSaleAllocationsForDelivered()}catch(e){auditSafe('RECALCULAR_FALLIDA','Rentabilidad','boot-v229',null,null,'No se pudieron regenerar las asignaciones de venta al iniciar la aplicación.')} try{if(typeof currentUser==='function'&&currentUser())render()}catch(e){}}
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot); else setTimeout(boot,0); setTimeout(boot,250);
 })();
 </script>
@@ -7472,7 +7430,7 @@ Movimientos bancarios pendientes de conciliar: ${k.bankPending}
   'use strict';
   var PATCH_VERSION='2.3.0-cartera-devengada-cierre-bloqueante-qr-validaciones';
   function A(v){return Array.isArray(v)?v:(v?[v]:[])}
-  function N(v){return Number(String(v==null?'':v).replace(/[^0-9.-]/g,''))||0}
+  function N(v){return nval(v);}
   function H(v){try{return esc(v)}catch(e){return String(v==null?'':v).replace(/[&<>'"]/g,function(m){return {'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[m]})}}
   function M(v){try{return money(v)}catch(e){return '$'+N(v).toLocaleString('es-MX',{minimumFractionDigits:2,maximumFractionDigits:2})}}
   function KG(v){try{return kg(v)}catch(e){return N(v).toLocaleString('es-MX',{minimumFractionDigits:2,maximumFractionDigits:2})+' kg'}}
@@ -7481,9 +7439,9 @@ Movimientos bancarios pendientes de conciliar: ${k.bankPending}
   function U(prefix){try{return uid(prefix)}catch(e){return (prefix||'ID')+'-'+Date.now().toString(36).toUpperCase()+'-'+Math.random().toString(36).slice(2,6).toUpperCase()}}
   function cur(){try{return currentUser&&currentUser()}catch(e){return null}}
   function toastSafe(msg){try{toast(msg)}catch(e){console.log(msg)}}
-  function persistSafe(){try{persist()}catch(e){try{localStorage.setItem(APP_KEY,JSON.stringify(state))}catch(_){}}}
+  function persistSafe(){try{persist()}catch(e){try{localStorage.setItem(APP_KEY,JSON.stringify(state))}catch(_){try{toastSafe('No se pudo guardar el último cambio. Verifica espacio de almacenamiento o vuelve a intentarlo antes de cerrar.')}catch(__){}}}}
   function auditSafe(action,entity,id,before,after,reason){try{audit(action,entity,id,before,after,reason)}catch(e){state.audit=state.audit||[];state.audit.unshift({id:U('AUD'),at:Now(),user:(cur()||{}).name||'Sistema',role:(cur()||{}).role||'',action:action,entity:entity,entityId:id,before:before,after:after,reason:reason})}}
-  function queueSafe(action,entity,id,after,reason){try{queueValidationFromAction(action,entity,id,after,reason)}catch(e){}}
+  function queueSafe(action,entity,id,after,reason){try{queueValidationFromAction(action,entity,id,after,reason)}catch(e){auditSafe('VALIDACIÓN NO ENCOLADA',entity,id,null,after,'No se pudo generar la validación pendiente automáticamente ('+reason+'). Requiere revisión manual.')}}
   function statusSafe(s){try{return statusBadge(s)}catch(e){return '<span class="status hold">'+H(s)+'</span>'}}
   function inRange(d,from,to){if(!d)return false;var x=String(d).slice(0,10);return(!from||x>=String(from))&&(!to||x<=String(to))}
   function normalizeText(s){return String(s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/\s+/g,' ').trim()}
@@ -7495,8 +7453,8 @@ Movimientos bancarios pendientes de conciliar: ${k.bankPending}
   function validOrder(o){return o&&!o.deleted&&['Cancelado','Cancelada','Reversado','Reversada'].indexOf(o.status)<0}
   function validPayment(p){if(!p||p.deleted||['Cancelado','Cancelada'].indexOf(p.status)>=0)return false; var o=p.orderId?orderById(p.orderId):null; return !p.orderId||validOrder(o)}
   function isDeliveredOrder(o){if(!validOrder(o))return false; if(['Entregado','Cerrado','Liquidado'].indexOf(String(o.status||''))>=0)return true; return A(state.saleAllocations).some(function(a){return !a.deleted&&a.orderId===o.id&&N(a.kgDelivered)>0})||A(state.inventoryItems).some(function(i){return !i.deleted&&i.orderId===o.id&&(String(i.state)==='Entregado'||N(i.deliveredKg)>0)})}
-  function itemWeight(i){return N(i.deliveredKg||i.soldKg||i.currentWeight||i.availableWeight||i.weight||i.kg)}
-  function itemCostKg(i){var w=N(i.weight||i.currentWeight||i.availableWeight||1);return N(i.costKg||i.cost||((N(i.costTotal)&&w)?N(i.costTotal)/w:0))}
+  function itemWeight(i){return charolitoItemWeight(i);}
+  function itemCostKg(i){return charolitoItemCostKg(i);}
   function orderPriceKg(o,kgx){return N(o.salePriceKg||o.priceNet||o.price||((N(o.finalAmount||o.amount)&&N(o.kgRequested||kgx))?N(o.finalAmount||o.amount)/N(o.kgRequested||kgx):0))}
   function orderDeliveredKg(o){var rsa=A(state.saleAllocations).filter(function(a){return !a.deleted&&a.orderId===o.id&&N(a.kgDelivered)>0}).reduce(function(s,a){return s+N(a.kgDelivered)},0); if(rsa>0)return rsa; var inv=A(state.inventoryItems).filter(function(i){return !i.deleted&&i.orderId===o.id&&(String(i.state)==='Entregado'||N(i.deliveredKg)>0)}).reduce(function(s,i){return s+(N(i.deliveredKg)||itemWeight(i))},0); if(inv>0)return inv; return N(o.kgDelivered||o.kgReserved||o.kgRequested)}
   function orderDeliveredAmount(o){var rsa=A(state.saleAllocations).filter(function(a){return !a.deleted&&a.orderId===o.id&&N(a.kgDelivered)>0}).reduce(function(s,a){return s+(N(a.saleAmount)||N(a.kgDelivered)*N(a.salePriceKg))},0); if(rsa>0)return rsa; var kgx=orderDeliveredKg(o); var price=orderPriceKg(o,kgx); var val=kgx*price; return val>0?val:N(o.realSaleAmount||o.finalAmount||o.amount)}
@@ -7522,6 +7480,7 @@ Movimientos bancarios pendientes de conciliar: ${k.bankPending}
     state.meta.version=PATCH_VERSION; state.meta.v230Fixes='Cargos de venta para toda entrega; anti-cartera negativa; cierre definitivo bloqueante; OC/anticipo/recepción/precio/catálogo/banco/papel/merma con validaciones integrales; scanner QR/barra simulado con checksum EAN-13.';
     if(updateBrand!==false)setVersionBrandV230();
   }
+  window.ensureV230=ensureV230;
   function setVersionBrandV230(){try{document.title='Charolito Digital v2.4.0 | Cierre de gaps, render maestro completo';}catch(e){} try{document.querySelectorAll('.brand-text small').forEach(function(el){el.textContent='v2.4.0 · Cierre gaps / Render completo';});}catch(e){} try{var m=document.querySelector('meta[name="description"]'); if(m)m.setAttribute('content','Charolito Digital v2.4.0: operación integral con cartera devengada, cierre bloqueante, QR/barras simulado, PEPS, caja/bancos y validación cruzada.');}catch(e){}}
 
   var oldPnlCalcV230=(typeof pnlCalc==='function')?pnlCalc:null;
@@ -7581,10 +7540,11 @@ Movimientos bancarios pendientes de conciliar: ${k.bankPending}
   window.v230ProcessScan=function(context){ensureV230(); var input=document.getElementById('v230Scan-'+context); if(!input)return; var raw=String(input.value||'').trim(); if(!raw)return toastSafe('Escanea o captura un código.'); var code=raw.replace(/\s+/g,''); if(/^\d{13}$/.test(code)&&!ean13Valid(code))return toastSafe('Código EAN-13 inválido: falla checksum. No se procesa.'); var item=A(state.inventoryItems).find(function(i){return [i.folio,i.traceCode,i.fifoCode,i.id].map(String).indexOf(raw)>=0||[i.folio,i.traceCode,i.fifoCode,i.id].map(String).indexOf(code)>=0}); var box=A(state.boxes).find(function(b){return [b.folio,b.supplierBox,b.id].map(String).indexOf(raw)>=0||[b.folio,b.supplierBox,b.id].map(String).indexOf(code)>=0}); var rec={id:U('SCAN'),folio:'SCAN-'+(state.counters.scanV230++),at:Now(),context:context,raw:raw,validEAN:(!/^\d{13}$/.test(code)||ean13Valid(code)),matchedType:item?'inventoryItem':box?'box':'none',matchedId:item?item.id:(box?box.id:''),user:(cur()||{}).name||''}; state.scanLogV230.unshift(rec); auditSafe('ESCANEAR','Scanner',rec.folio,null,rec,'Escaneo/lectura v2.4.0 '+context); persistSafe(); if(item||box){toastSafe('Código localizado: '+((item||box).folio||raw)+' · '+((item||box).state||'')); try{if(context==='inventario')navigate('inventario')}catch(e){}} else toastSafe('Código válido pero no localizado. Puedes usarlo como referencia nueva, pero queda en bitácora de scanner.');};
   function scanPanel(context){return '<div class="v230-scan" data-v230-scan="'+H(context)+'"><b>Scanner QR / barras / captura rápida v2.4.0</b><small class="inline-note">Acepta pistola lectora, QR pegado como texto o EAN-13 con checksum. Si no hay cámara, funciona como entrada controlada, no como texto libre.</small><div class="scan-row"><input id="v230Scan-'+H(context)+'" placeholder="Escanea o pega CH, traceCode, folio, QR o EAN-13"><button class="btn primary" onclick="v230ProcessScan(\''+H(context)+'\')">Procesar código</button></div></div>'}
   function insertScanner(context){var el=document.getElementById('view-'+context); if(el&&!el.querySelector('[data-v230-scan]'))el.insertAdjacentHTML('afterbegin',scanPanel(context));}
+  window.insertScanner=insertScanner;
 
   /* Compras stable: wrapper v230/scanner heredado removido. */
-  var oldRenderRecepV230=window.renderRecepcion||(typeof renderRecepcion==='function'?renderRecepcion:null);
-  window.renderRecepcion=function(){ensureV230(); var r=oldRenderRecepV230?oldRenderRecepV230.apply(this,arguments):undefined; var el=document.getElementById('view-recepcion'); if(el&&!el.querySelector('[data-v230-rx]')){el.insertAdjacentHTML('afterbegin','<div class="panel info-box" data-v230-rx="1"><b>v2.4.0:</b> si existe OC abierta para proveedor/producto, la recepción debe ligarse. Si entra sin OC, exige nota “recepción directa autorizada” y queda en validación.</div>'); insertScanner('recepcion');} return r;}; try{renderRecepcion=window.renderRecepcion}catch(e){}
+  /* [v2.6.0] renderRecepcion consolidada: ver definición única en v231-scanner-unico-recepcion-js */
+  /* [v2.6.0] Lógica de este bloque (banner OC + insertScanner) ahora inline en la función consolidada en v231-scanner-unico-recepcion-js */; try{renderRecepcion=window.renderRecepcion}catch(e){}
   var oldRenderInvV230=window.renderInventario||(typeof renderInventario==='function'?renderInventario:null);
   window.renderInventario=function(){ensureV230(); normalizeLocationByStateV230(); var r=oldRenderInvV230?oldRenderInvV230.apply(this,arguments):undefined; insertScanner('inventario'); return r;}; try{renderInventario=window.renderInventario}catch(e){}
 
@@ -7624,7 +7584,7 @@ Movimientos bancarios pendientes de conciliar: ${k.bankPending}
 
   var oldRenderV230=window.render||(typeof render==='function'?render:null);
   window.render=function(){ensureV230(false); var r=oldRenderV230?oldRenderV230.apply(this,arguments):undefined; setVersionBrandV230(); normalizeLocationByStateV230(); return r;}; try{render=window.render}catch(e){}
-  function boot(){ensureV230(); try{ensureSalesChargesForDeliveredV230(true)}catch(e){} try{normalizeLocationByStateV230()}catch(e){} try{if(typeof currentUser==='function'&&currentUser())render()}catch(e){}}
+  function boot(){ensureV230(); try{ensureSalesChargesForDeliveredV230(true)}catch(e){auditSafe('CARGOS_NO_GENERADOS','Cartera','boot-v230',null,null,'No se pudieron generar/actualizar los cargos devengados de entregas al iniciar la aplicación.')} try{normalizeLocationByStateV230()}catch(e){auditSafe('NORMALIZACIÓN_FALLIDA','Inventario','boot-v230',null,null,'No se pudo normalizar la ubicación de artículos por estado al iniciar la aplicación.')} try{if(typeof currentUser==='function'&&currentUser())render()}catch(e){}}
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot); else setTimeout(boot,0); setTimeout(boot,300); setTimeout(boot,1000);
 })();
 </script>
@@ -7634,7 +7594,7 @@ Movimientos bancarios pendientes de conciliar: ${k.bankPending}
 (function(){
   'use strict';
   function A(v){return Array.isArray(v)?v:(v?[v]:[])}
-  function N(v){return Number(String(v==null?'':v).replace(/[^0-9.-]/g,''))||0}
+  function N(v){return nval(v);}
   function H(v){try{return esc(v)}catch(e){return String(v==null?'':v).replace(/[&<>'"]/g,function(m){return {'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[m]})}}
   function M(v){try{return money(v)}catch(e){return '$'+N(v).toLocaleString('es-MX',{minimumFractionDigits:2,maximumFractionDigits:2})}}
   function cur(){try{return currentUser&&currentUser()}catch(e){return null}}
@@ -7725,12 +7685,24 @@ Movimientos bancarios pendientes de conciliar: ${k.bankPending}
     if(scanner && note && note.nextElementSibling!==scanner){note.insertAdjacentElement('afterend', scanner);}
     bindReceptionScanner();
   }
-  var priorRenderRecepcion=window.renderRecepcion||(typeof renderRecepcion==='function'?renderRecepcion:null);
+  /* [v2.6.0] renderRecepcion consolidada: única definición, sustituye la cadena de 4 wrappers
+   (v220 base -> v226 banner/terminología -> v230 banner OC/scanner -> v231 limpieza/marca).
+   Orden verificado contra el call-stack original antes de aplanar: los "ensure*" corren en
+   orden inverso a la capa (v230, v226, v22) porque cada wrapper llamaba a la capa previa
+   ANTES de hacer su propio post-procesado del DOM; el post-procesado sí queda en orden
+   v226 -> v230 -> v231, igual que antes. No se cambió ningún efecto, sólo se quitó el
+   anidamiento de funciones. */
   window.renderRecepcion=function(){
-    var r=priorRenderRecepcion?priorRenderRecepcion.apply(this,arguments):undefined;
+    ensureV230();
+    ensureV226();
+    if(typeof window.__renderRecepcionBaseV220==='function')window.__renderRecepcionBaseV220();
+    var el=document.getElementById('view-recepcion');
+    if(el&&!el.querySelector('[data-v226-rx-note]'))el.insertAdjacentHTML('afterbegin','<div class="panel info-box" data-v226-rx-note="1"><b>Recepción física:</b> aquí no nace la compra ni el anticipo. Se confirma lo recibido, se etiqueta la unidad y se liga contra OC/CxP cuando aplique.</div>');
+    try{el.querySelectorAll('h3,p,small,label').forEach(function(x){x.innerHTML=x.innerHTML.replace(/Recepción de compra \/ alta de caja/g,'Recepción física de unidades').replace(/Recepción de compra/g,'Recepción física')})}catch(e){}
+    el=document.getElementById('view-recepcion');
+    if(el&&!el.querySelector('[data-v230-rx]')){el.insertAdjacentHTML('afterbegin','<div class="panel info-box" data-v230-rx="1"><b>v2.4.0:</b> si existe OC abierta para proveedor/producto, la recepción debe ligarse. Si entra sin OC, exige nota “recepción directa autorizada” y queda en validación.</div>'); insertScanner('recepcion');}
     cleanupReceptionScanner();
     setBrandV231();
-    return r;
   };
   try{renderRecepcion=window.renderRecepcion}catch(e){}
   var priorRender=window.render||(typeof render==='function'?render:null);
@@ -7754,7 +7726,7 @@ Movimientos bancarios pendientes de conciliar: ${k.bankPending}
   function A(x){return Array.isArray(x)?x:[];}
   function S(x){return String(x==null?'':x);}
   function H(x){try{return typeof esc==='function'?esc(x):S(x).replace(/[&<>'"]/g,function(m){return {'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[m];});}catch(e){return S(x);}}
-  function N(x){try{return typeof nval==='function'?nval(x):(Number(String(x||'').replace(/[^0-9.-]/g,''))||0);}catch(e){return Number(x)||0;}}
+  function N(x){return nval(x);}
   function M(x){try{return typeof money==='function'?money(x):('$'+(N(x)).toLocaleString('es-MX',{minimumFractionDigits:2,maximumFractionDigits:2}));}catch(e){return '$'+N(x);}}
   function T(){try{return typeof today==='function'?today():new Date().toISOString().slice(0,10);}catch(e){return new Date().toISOString().slice(0,10);}}
   function Now(){try{return typeof now==='function'?now():new Date().toISOString();}catch(e){return new Date().toISOString();}}
@@ -7872,15 +7844,7 @@ Movimientos bancarios pendientes de conciliar: ${k.bankPending}
 </script>
 
 <script id="charolito-v233-product-service-supplier-catalogs">
-/* ============================================================
-   Charolito Digital v2.3.3
-   Proveedores separados por catálogo: Productos vs Servicios
-   - Renombra Proveedor de carne → Proveedor de productos.
-   - Catálogos muestra dos espacios independientes, no un cuadro combinado.
-   - Compras usa proveedores de productos.
-   - Gastos usa proveedores de servicios.
-   - CV-INV sigue existiendo para Estado de Resultados, pero nace desde Compras.
-   ============================================================ */
+/* Charolito Digital v2.3.3 Proveedores separados por catálogo: Productos vs Servicios - Renombra Proveedor de carne → Proveedor de productos. - Catálogos muestra dos espacios independientes, no un cuadro combinado. - Compras usa proveedores de productos. - Gastos usa proveedores de servicios. - CV-INV sigue existiendo para Estado de Resultados, pero nace desde Compras. */
 (function(){
   'use strict';
   var VERSION='v2.3.3 · Proveedores Productos/Servicios · CV-INV';
@@ -7888,7 +7852,7 @@ Movimientos bancarios pendientes de conciliar: ${k.bankPending}
   function S(v){return String(v==null?'':v);}
   function H(v){return S(v).replace(/[&<>'"]/g,function(m){return {'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[m];});}
   function ids(v){return Array.isArray(v)?v:(v?[v]:[]);}
-  function N(v){return Number(String(v==null?'':v).replace(/[^0-9.-]/g,''))||0;}
+  function N(v){return nval(v);}
   function norm(v){return S(v).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/\s+/g,' ').trim();}
   function T(){try{return typeof today==='function'?today():new Date().toISOString().slice(0,10);}catch(e){return new Date().toISOString().slice(0,10);}}
   function Persist(){try{if(typeof persist==='function')persist();}catch(e){}}
@@ -8073,7 +8037,7 @@ Movimientos bancarios pendientes de conciliar: ${k.bankPending}
   var NEW_APP_KEY=(typeof APP_KEY!=='undefined'?APP_KEY:'charolito_digital_v2_4_0_estabilizacion_login_ok_compras_stable_2026');
   var OLD_APP_KEY='charolito_digital_v2_2_3_compras_visibles_anticipos_cpp_peps_2026';
   function S(v){return String(v==null?'':v);} 
-  function N(v){return Number(String(v==null?'':v).replace(/[^0-9.-]/g,''))||0;}
+  function N(v){return nval(v);}
   function A(v){return Array.isArray(v)?v:[];}
   function H(v){return S(v).replace(/[&<>"']/g,function(ch){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch];});}
   function M(v){try{return (Number(v)||0).toLocaleString('es-MX',{style:'currency',currency:'MXN'});}catch(e){return '$'+(Number(v)||0).toFixed(2);}}
@@ -8252,7 +8216,7 @@ Movimientos bancarios pendientes de conciliar: ${k.bankPending}
   var LEGACY_V223='charolito_digital_v2_2_3_compras_visibles_anticipos_cpp_peps_2026';
   function S(v){return String(v==null?'':v);} 
   function A(v){return Array.isArray(v)?v:[];}
-  function N(v){return Number(S(v).replace(/[^0-9.-]/g,''))||0;}
+  function N(v){return nval(v);}
   function H(v){return S(v).replace(/[&<>"']/g,function(ch){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch];});}
   function M(v){try{return (Number(v)||0).toLocaleString('es-MX',{style:'currency',currency:'MXN'});}catch(e){return '$'+(Number(v)||0).toFixed(2);}}
   function KG(v){return (Number(v)||0).toLocaleString('es-MX',{minimumFractionDigits:2,maximumFractionDigits:2})+' kg';}
@@ -8263,9 +8227,9 @@ Movimientos bancarios pendientes de conciliar: ${k.bankPending}
   function Role(){return (Cur()||{}).role||'';}
   function CanAdmin(){return ['Direccion','Administracion','Gerencia'].indexOf(Role())>=0;}
   function UID(p){try{return typeof uid==='function'?uid(p||'ID'):(p||'ID')+'-'+Date.now();}catch(e){return (p||'ID')+'-'+Date.now();}}
-  function Persist(){try{if(typeof persist==='function')persist();}catch(e){} try{if(window.state)localStorage.setItem(APP_KEY_V236,JSON.stringify(state));}catch(e){} }
-  function Audit(action,entity,id,before,after,reason){try{if(typeof audit==='function')audit(action,entity,id,before,after,reason);}catch(e){} }
-  function Queue(action,entity,id,after,reason){try{if(typeof queueValidationFromAction==='function')queueValidationFromAction(action,entity,id,after,reason);}catch(e){} }
+  function Persist(){try{if(typeof persist==='function')persist();}catch(e){} try{if(window.state)localStorage.setItem(APP_KEY_V236,JSON.stringify(state));}catch(e){try{Toast('No se pudo guardar el último cambio. Verifica espacio de almacenamiento o vuelve a intentarlo antes de cerrar.')}catch(_){}} }
+  function Audit(action,entity,id,before,after,reason){try{if(typeof audit==='function')audit(action,entity,id,before,after,reason);}catch(e){try{if(window.state){state.audit=state.audit||[]; state.audit.unshift({id:'AUD-'+Date.now().toString(36).toUpperCase(),at:Now(),user:'Sistema',action:action,entity:entity,entityId:id,before:before,after:after,reason:reason});}}catch(_){}} }
+  function Queue(action,entity,id,after,reason){try{if(typeof queueValidationFromAction==='function')queueValidationFromAction(action,entity,id,after,reason);}catch(e){try{if(window.state){state.audit=state.audit||[]; state.audit.unshift({id:'AUD-'+Date.now().toString(36).toUpperCase(),at:Now(),user:'Sistema',action:'VALIDACIÓN NO ENCOLADA',entity:entity,entityId:id,before:null,after:after,reason:'No se pudo generar la validación pendiente automáticamente ('+reason+'). Requiere revisión manual.'});}}catch(_){}} }
   function Prod(id){try{return typeof prod==='function'?prod(id):A(state.catalogs&&state.catalogs.products).find(function(p){return p.id===id;})||{};}catch(e){return {};}}
   function Supp(id){try{return typeof supplier==='function'?supplier(id):A(state.catalogs&&state.catalogs.suppliers).find(function(s){return s.id===id;})||{};}catch(e){return {};}}
   function Client(id){try{return typeof client==='function'?client(id):A(state.catalogs&&state.catalogs.clients).find(function(c){return c.id===id;})||{};}catch(e){return {};}}
@@ -8304,7 +8268,7 @@ Movimientos bancarios pendientes de conciliar: ${k.bankPending}
         catch(e){}
       });
       if(window.state){state.meta=state.meta||{};state.meta.activeStorageKey=APP_KEY_V236;}
-    }catch(e){}
+    }catch(e){try{console.warn('Migración v2.3.6->v2.4.0 no se completó correctamente; revisar datos locales.',e);}catch(_){}}
   }
   function showMigrationBanner(){
     try{var notice=localStorage.getItem('charolito_migration_notice_v237'); if(!notice)return; var app=document.getElementById('app'); if(!app||document.querySelector('[data-v236-migration]'))return; app.insertAdjacentHTML('afterbegin','<div class="v236-banner no-print" data-v236-migration="1">✅ Datos locales migrados a v2.4.0. Usa este archivo como versión activa para evitar diferencias entre versiones anteriores y nuevas.</div>');}
@@ -8440,14 +8404,7 @@ Movimientos bancarios pendientes de conciliar: ${k.bankPending}
 
 
 <script id="charolito-v238-corrida10-fixes">
-/* ============================================================
-   Charolito Digital v2.4.0 · Fix corrida integral 10x
-   - Versión visible e interna sincronizada.
-   - Recepción bloqueante por peso fuera de rango.
-   - Unidades sospechosas quedan bloqueadas, no disponibles.
-   - PEPS no sobreaparta sin decisión: fraccionar o ajustar pedido.
-   - Validaciones agrupadas por proceso operativo para reducir ruido.
-   ============================================================ */
+/* Charolito Digital v2.4.0 · Fix corrida integral 10x - Versión visible e interna sincronizada. - Recepción bloqueante por peso fuera de rango. - Unidades sospechosas quedan bloqueadas, no disponibles. - PEPS no sobreaparta sin decisión: fraccionar o ajustar pedido. - Validaciones agrupadas por proceso operativo para reducir ruido. */
 (function(){
   'use strict';
   var VERSION_SHORT='v2.4.0';
@@ -8458,7 +8415,7 @@ Movimientos bancarios pendientes de conciliar: ${k.bankPending}
   function St(){ try{return state;}catch(e){return window.state||null;} }
   function Ex(name){ try{return window[name];}catch(e){return null;} }
   function S(v){ return String(v==null?'':v); }
-  function N(v){ return Number(S(v).replace(/[^0-9.-]/g,''))||0; }
+  function N(v){return nval(v);}
   function A(v){ return Array.isArray(v)?v:[]; }
   function H(v){ return S(v).replace(/[&<>"']/g,function(m){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m];}); }
   function T(){ try{return today();}catch(e){return new Date().toISOString().slice(0,10);} }
@@ -8468,7 +8425,7 @@ Movimientos bancarios pendientes de conciliar: ${k.bankPending}
   function KG(v){ try{return kg(N(v));}catch(e){return N(v).toLocaleString('es-MX',{minimumFractionDigits:2,maximumFractionDigits:2})+' kg';} }
   function M(v){ try{return money(N(v));}catch(e){return '$'+N(v).toLocaleString('es-MX',{minimumFractionDigits:2,maximumFractionDigits:2});} }
   function Toast(msg){ try{toast(msg);return;}catch(e){} try{window.toast(msg);return;}catch(e){} try{console.warn(msg);}catch(e){} }
-  function Persist(){ var st=St(); try{if(typeof persist==='function')persist();}catch(e){} try{if(st&&typeof APP_KEY!=='undefined')localStorage.setItem(APP_KEY,JSON.stringify(st));}catch(e){} /* storage consolidado v2.4.0: no escribir llave heredada adicional */ }
+  function Persist(){ var st=St(); try{if(typeof persist==='function')persist();}catch(e){} try{if(st&&typeof APP_KEY!=='undefined')localStorage.setItem(APP_KEY,JSON.stringify(st));}catch(e){try{Toast('No se pudo guardar el último cambio. Verifica espacio de almacenamiento o vuelve a intentarlo antes de cerrar.')}catch(_){}} /* storage consolidado v2.4.0: no escribir llave heredada adicional */ }
   function Audit(action,entity,id,before,after,reason){ try{audit(action,entity,id,before,after,reason);return;}catch(e){} var st=St(); if(!st)return; st.audit=st.audit||[]; st.audit.unshift({id:U('AUD'),at:Now(),user:(Cur()||{}).name||'Sistema',role:(Cur()||{}).role||'Sistema',action:action,entity:entity,entityId:id,before:before,after:after,reason:reason||''}); }
   function Cur(){ try{return currentUser();}catch(e){var st=St(); return A(st&&st.catalogs&&st.catalogs.users).find(function(u){return st.session&&u.id===st.session.userId;})||null;} }
   function Product(id){ var st=St(); try{return prod(id);}catch(e){} return A(st&&st.catalogs&&st.catalogs.products).find(function(p){return p.id===id||p.code===id;})||{}; }
@@ -8629,7 +8586,7 @@ Movimientos bancarios pendientes de conciliar: ${k.bankPending}
     var before={order:clone(o),items:items.map(clone)};
     var sum=0; items.forEach(function(i){sum+=itemW(i); i.state='Apartado'; i.clientId=o.clientId; i.orderId=o.id; i.location='Apartado'; i.responsible=(Cur()||{}).name||'';});
     o.status='Apartado'; o.kgReserved=sum; o.itemIds=items.map(function(i){return i.id;});
-    try{if(typeof syncInventoryMirror==='function')syncInventoryMirror();}catch(e){} try{if(typeof syncMirror228==='function')syncMirror228();}catch(e){}
+    try{if(typeof syncInventoryMirror==='function')syncInventoryMirror();}catch(e){console.warn('v2.4.0 syncInventoryMirror falló tras apartar; la vista de inventario podría no reflejar el cambio hasta el próximo refresco.',e);} try{if(typeof syncMirror228==='function')syncMirror228();}catch(e){console.warn('v2.4.0 syncMirror228 falló tras apartar.',e);}
     try{saveAction('APARTAR','Pedido',o.folio,before,{order:o,items:items},reason||'Apartado PEPS v2.4.0');}catch(e){Audit('APARTAR','Pedido',o.folio,before,{order:o,items:items},reason||'Apartado PEPS v2.4.0'); Persist();}
     Toast('Apartado '+KG(sum)+' para '+(o.folio||'')); return items;
   }
@@ -8662,7 +8619,7 @@ Movimientos bancarios pendientes de conciliar: ${k.bankPending}
     st.inventoryItems.unshift(child);
     st.transformations=st.transformations||[]; st.transformations.unshift({id:U('TRF'),folio:F('event','TRF'),date:T(),type:'Fraccionado',parentItemId:item.id,parentFolio:item.folio,parentWeightBefore:available,parentWeightAfter:remaining,childItemId:child.id,childFolio:child.folio,childWeight:take,orderId:o.id,reason:reason,createdBy:(Cur()||{}).name||'',createdAt:Now()});
     o.status='Apartado'; o.kgReserved=(N(o.kgReserved)||0)+take; o.itemIds=A(o.itemIds).concat([child.id]); o.surtidoDecision='FRACCIONADO'; o.surtidoDecisionReason=reason; o.surtidoDecisionAt=Now(); o.surtidoDecisionBy=(Cur()||{}).name||'';
-    try{if(typeof syncMirror228==='function')syncMirror228(); else if(typeof syncInventoryMirror==='function')syncInventoryMirror();}catch(e){}
+    try{if(typeof syncMirror228==='function')syncMirror228(); else if(typeof syncInventoryMirror==='function')syncInventoryMirror();}catch(e){console.warn('v2.4.0 sync de espejo de inventario falló tras fraccionar; la vista de inventario podría no reflejar el cambio hasta el próximo refresco.',e);}
     try{saveAction('FRACCIONAR_APARTAR','Pedido',o.folio,before,{order:o,parent:item,child:child},reason);}catch(e){Audit('FRACCIONAR_APARTAR','Pedido',o.folio,before,{order:o,parent:item,child:child},reason); Persist();}
     try{closeModal();}catch(e){} try{render();}catch(e){} Toast('Fracción '+(child.folio||'')+' apartada por '+KG(take)+'. Remanente disponible '+KG(remaining)+'.'); return true;
   }
@@ -8777,24 +8734,12 @@ Movimientos bancarios pendientes de conciliar: ${k.bankPending}
     postRenderV238(); Persist();
   }
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',install); else setTimeout(install,0);
-  [100,500,1200,2400,3600].forEach(function(ms){setTimeout(function(){try{install();}catch(e){}},ms);});
+  [100,500,1200,2400,3600].forEach(function(ms){setTimeout(function(){try{install();}catch(e){console.warn('v2.4.0 install() (corrida 10) falló en un reintento programado a los '+ms+'ms.',e);}},ms);});
 })();
 </script>
 
 <script id="charolito-v239-consolidado-corrida10">
-/* ============================================================
-   Charolito Digital v2.4.0 · Consolidado integral corrida 10x
-   Integra sin duplicar:
-   - minKg/maxKg operables en Catálogos y seed/migración.
-   - Devoluciones reconectadas a inventario en revisión + nota crédito.
-   - PEPS sobre inventoryItems + boxes, sin lógica OR exclusiva.
-   - Render final plano: no vuelve a encadenar oldRender.
-   - Fraccionamiento/ajuste PEPS con motivo dentro del modal, sin prompt().
-   - CxP con pago guiado desde Compras hacia flujo/banco.
-   - Scanner transversal y limpieza de EAN inválido.
-   - Rutas con validación de kg devuelto/cobro/km.
-   - Reportes con transformaciones y confiabilidad de datos.
-   ============================================================ */
+/* Charolito Digital v2.4.0 · Consolidado integral corrida 10x Integra sin duplicar: - minKg/maxKg operables en Catálogos y seed/migración. - Devoluciones reconectadas a inventario en revisión + nota crédito. - PEPS sobre inventoryItems + boxes, sin lógica OR exclusiva. - Render final plano: no vuelve a encadenar oldRender. - Fraccionamiento/ajuste PEPS con motivo dentro del modal, sin prompt(). - CxP con pago guiado desde Compras hacia flujo/banco. - Scanner transversal y limpieza de EAN inválido. - Rutas con validación de kg devuelto/cobro/km. - Reportes con transformaciones y confiabilidad de datos. */
 (function(){
   'use strict';
   var VERSION_SHORT='v2.4.0';
@@ -9065,7 +9010,7 @@ Movimientos bancarios pendientes de conciliar: ${k.bankPending}
 
   function A(v){return Array.isArray(v)?v:(v?[v]:[])}
   function S(v){return String(v==null?'':v)}
-  function N(v){return Number(S(v).replace(/[^0-9.-]/g,''))||0}
+  function N(v){return nval(v);}
   function H(v){try{return esc(v)}catch(e){return S(v).replace(/[&<>"']/g,function(m){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]})}}
   function M(v){try{return money(v)}catch(e){return '$'+N(v).toLocaleString('es-MX',{minimumFractionDigits:2,maximumFractionDigits:2})}}
   function K(v){try{return kg(v)}catch(e){return N(v).toLocaleString('es-MX',{minimumFractionDigits:2,maximumFractionDigits:2})+' kg'}}
@@ -9228,7 +9173,7 @@ Movimientos bancarios pendientes de conciliar: ${k.bankPending}
   var LABELS={dashboard:'Dashboard',compras:'Compras',recepcion:'Recepción',inventario:'Inventario',conciliacion:'Conciliación',reempaque:'Reempaque',pedidos:'Pedidos',surtido:'Surtido',rutas:'Rutas',cartera:'Cartera',caja:'Caja',gastos:'Gastos',estados:'Estados resultados',flujo:'Flujo caja/bancos',ajustes:'Ajustes',papel:'Captura papel',validaciones:'Validaciones',cierre:'Cierre diario',formatos:'Formatos',agente:'Agente Charolito',reportes:'Reportes',auditoria:'Auditoría',catalogos:'Catálogos',permisos:'Usuarios/permisos',ayuda:'Manual'};
   function A(v){return Array.isArray(v)?v:(v?[v]:[])}
   function S(v){return String(v==null?'':v)}
-  function N(v){return Number(S(v).replace(/[^0-9.-]/g,''))||0}
+  function N(v){return nval(v);}
   function T(){try{return today()}catch(e){return new Date().toISOString().slice(0,10)}}
   function NOW(){try{return now()}catch(e){return new Date().toISOString()}}
   function CUR(){try{return currentUser()||{}}catch(e){return {}}}
@@ -9279,15 +9224,7 @@ Movimientos bancarios pendientes de conciliar: ${k.bankPending}
 
 
 <script id="charolito-v240-compras-stable-js">
-/* ============================================================
-   Charolito Digital v2.4.0 · Compras estable
-   Alcance: sólo módulo Compras.
-   - Un solo render oficial de Compras.
-   - Sin MutationObserver, sin DOMContentLoaded encadenado.
-   - Sin paneles inyectados por versiones heredadas.
-   - Sin escribir nuevas CxP en supplierPayables.
-   - Sin duplicar pagos proveedor como gasto operativo.
-   ============================================================ */
+/* Charolito Digital v2.4.0 · Compras estable Alcance: sólo módulo Compras. - Un solo render oficial de Compras. - Sin MutationObserver, sin DOMContentLoaded encadenado. - Sin paneles inyectados por versiones heredadas. - Sin escribir nuevas CxP en supplierPayables. - Sin duplicar pagos proveedor como gasto operativo. */
 (function(){
   'use strict';
   var VERSION='v2.4.0 · Compras estable';
@@ -9295,7 +9232,7 @@ Movimientos bancarios pendientes de conciliar: ${k.bankPending}
 
   function A(v){return Array.isArray(v)?v:(v?[v]:[])}
   function S(v){return String(v==null?'':v)}
-  function N(v){try{return Number(S(v).replace(/[^0-9.-]/g,''))||0}catch(e){return 0}}
+  function N(v){return nval(v);}
   function H(v){return S(v).replace(/[&<>"']/g,function(m){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]})}
   function T(){try{return today()}catch(e){return new Date().toISOString().slice(0,10)}}
   function NOW(){try{return now()}catch(e){return new Date().toISOString()}}
@@ -9527,15 +9464,7 @@ Movimientos bancarios pendientes de conciliar: ${k.bankPending}
 
 <!-- BLOQUE 05.8 · Recepción estable oficial: REC + CH + CxP + inventario -->
 <script id="charolito-v242-recepcion-stable-js">
-/* ============================================================
-   Charolito Digital v2.4.2 · Recepción estable
-   Alcance: sólo módulo Recepción.
-   - Un solo render oficial de Recepción.
-   - Sin MutationObserver, sin DOMContentLoaded encadenado como fuente de UI.
-   - Sin paneles duplicados de búsqueda/scanner.
-   - Sin supplierPayables como escritura nueva: accountsPayable es CxP oficial.
-   - Sin submit/render pisados por versiones heredadas para Recepción.
-   ============================================================ */
+/* Charolito Digital v2.4.2 · Recepción estable Alcance: sólo módulo Recepción. - Un solo render oficial de Recepción. - Sin MutationObserver, sin DOMContentLoaded encadenado como fuente de UI. - Sin paneles duplicados de búsqueda/scanner. - Sin supplierPayables como escritura nueva: accountsPayable es CxP oficial. - Sin submit/render pisados por versiones heredadas para Recepción. */
 (function(){
   'use strict';
   var VERSION='2.4.2-recepcion-render-unico-cxp-oficial';
@@ -9543,7 +9472,7 @@ Movimientos bancarios pendientes de conciliar: ${k.bankPending}
 
   function A(v){return Array.isArray(v)?v:(v?[v]:[])}
   function S(v){return String(v==null?'':v)}
-  function N(v){try{return Number(S(v).replace(/[^0-9.-]/g,''))||0}catch(e){return 0}}
+  function N(v){return nval(v);}
   function H(v){return S(v).replace(/[&<>"']/g,function(m){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]})}
   function T(){try{return today()}catch(e){return new Date().toISOString().slice(0,10)}}
   function NOW(){try{return now()}catch(e){return new Date().toISOString()}}
@@ -9580,7 +9509,7 @@ Movimientos bancarios pendientes de conciliar: ${k.bankPending}
     state.catalogs.boxStates=state.catalogs.boxStates||['Recepción','Disponible','Apartado','Surtido','En ruta','Entregado','Devuelto','Merma','Bloqueado','Cancelado'];
     state.meta.receptionModuleStable=VERSION;
     state.meta.receptionPolicy='Recepción estable: REC documenta la entrada; CH nace por unidad; inventoryItems es inventario real; accountsPayable es CxP oficial; supplierPayables queda histórico/read-only.';
-    state.meta.activeStorageKey=(typeof APP_KEY!=='undefined'?APP_KEY:'charolito_digital_v2_5_0_base_ordenada_1a1_2026');
+    state.meta.activeStorageKey=(typeof APP_KEY!=='undefined'?APP_KEY:'charolito_digital_v2_6_0_consolidado_2026');
     try{modules.recepcion='Recepción'}catch(_){ }
   }
 
@@ -9804,23 +9733,23 @@ Movimientos bancarios pendientes de conciliar: ${k.bankPending}
 </script>
 
 
-<!-- BLOQUE 06 · Capa final v2.5.0: identidad, compatibilidad y mapa técnico 1:1 -->
+<!-- BLOQUE 06 · Capa final v2.6.0: identidad, compatibilidad y mapa técnico 1:1 -->
 <script id="charolito-v250-base-ordenada-1a1-js">
 (function(){
   'use strict';
-  var VERSION='v2.5.0 · Base ordenada 1:1';
+  var VERSION='v2.6.0 · Consolidado';
   var VERSION_META='2.5.0-base-ordenada-1a1';
   function applyVersionLabels(){
-    try{document.title='Charolito Digital v2.5.0 | Base ordenada 1:1';}catch(_){ }
+    try{document.title='Charolito Digital v2.6.0 | Consolidado';}catch(_){ }
     try{document.querySelectorAll('.brand-text small').forEach(function(el){el.textContent=VERSION;});}catch(_){ }
-    try{var meta=document.querySelector('meta[name="description"]'); if(meta)meta.setAttribute('content','Charolito Digital v2.5.0: Base ordenada 1:1 con comportamiento funcional conservado, render estable, CxP oficial e inventario trazable.');}catch(_){ }
+    try{var meta=document.querySelector('meta[name="description"]'); if(meta)meta.setAttribute('content','Charolito Digital v2.6.0: consolidado y estabilizado, comportamiento funcional conservado, render estable, CxP oficial e inventario trazable.');}catch(_){ }
   }
   function applyStateMeta(){
     try{
       if(typeof state==='object'&&state){
         state.meta=state.meta||{};
         state.meta.version=VERSION_META;
-        state.meta.activeStorageKey=(typeof APP_KEY!=='undefined'?APP_KEY:'charolito_digital_v2_5_0_base_ordenada_1a1_2026');
+        state.meta.activeStorageKey=(typeof APP_KEY!=='undefined'?APP_KEY:'charolito_digital_v2_6_0_consolidado_2026');
         state.meta.baseFunctional='Charolito Digital v2.4.2 Recepción estable';
         state.meta.refactorMode='Base ordenada 1:1: misma lógica funcional, misma cadena de valor, misma compatibilidad de datos.';
         state.meta.structureMap=[
@@ -9829,7 +9758,7 @@ Movimientos bancarios pendientes de conciliar: ${k.bankPending}
           '03 HTML shell',
           '04 Core JS: estado, permisos, auditoría y renders base',
           '05 Capas funcionales estabilizadas por dominio',
-          '06 Capa final v2.5.0 de identidad y compatibilidad'
+          '06 Capa final v2.6.0 de identidad y compatibilidad'
         ];
         if(typeof persist==='function')persist();
       }
